@@ -5,7 +5,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
 
-const port = 3454;
+const port = 80;
 
 nextApp.prepare().then(() => {
   const app = express();
