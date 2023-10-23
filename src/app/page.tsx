@@ -52,10 +52,14 @@ export default function Home() {
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <Link
           href="/Dev"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 overflow-hidden"
           rel="noopener noreferrer"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
+          <video autoPlay muted loop className="video hidden  group-hover:block -z-10 absolute object-cover w-full h-full ">
+            <source src="Dev.mp4" type="video/mp4" />
+          </video>
+          <div className=" px-5 py-4">
+            <h2 className={`mb-3 text-2xl font-semibold`}>
             Développement{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
@@ -65,17 +69,19 @@ export default function Home() {
             Conception, Architecture,
             <br />
             C# , Python, JavaScript
-          </p>
-          <video autoPlay muted loop className="video">
-            <source src="Dev.mp4" type="video/mp4" />
-          </video>
+          </p></div>
+          
         </Link>
 
         <Link
-          href=""
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href="/Data"
+          className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 overflow-hidden"
           rel="noopener noreferrer"
         >
+          <video autoPlay muted loop className="video hidden  group-hover:block -z-10 absolute object-cover w-full h-full ">
+            <source src="Data.mp4" type="video/mp4" />
+          </video>
+          <div className=" px-5 py-4">
           <h2 className={`mb-3 text-2xl font-semibold`}>
             DataScience{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
@@ -87,17 +93,17 @@ export default function Home() {
             <br />
             Machine Learning
           </p>
-          <video autoPlay muted loop className="video">
-            <source src="Data.mp4" type="video/mp4" />
-          </video>
+          </div>
         </Link>
 
         <Link
-          href=""
-          className=" box inline-block group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 overflow-hidden"
-          rel="noopener noreferrer"
-        >
-          <div className="caption">
+          href="/Design"
+          className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 overflow-hidden"
+          rel="noopener noreferrer">
+          <video autoPlay muted loop className="video hidden  group-hover:block -z-10 absolute object-cover w-full h-full ">
+            <source src="Design.mp4" type="video/mp4" />
+          </video>
+          <div className=" px-5 py-4">
             <h2 className={`mb-3 text-2xl font-semibold`}>
               Design{" "}
               <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
@@ -111,17 +117,20 @@ export default function Home() {
               <br />
               3D
             </p>
-          </div>
-          <video autoPlay muted loop className="video">
-            <source src="Wave.mp4" type="video/mp4" />
-          </video>
+            </div>
+          
+
         </Link>
 
         <Link
-          href=""
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href="/Fct"
+          className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 overflow-hidden"
           rel="noopener noreferrer"
         >
+           <video autoPlay muted loop className="video hidden  group-hover:block -z-10 absolute object-cover w-full h-full ">
+            <source src="Fct.mp4" type="video/mp4" />
+          </video>
+          <div className=" px-5 py-4">
           <h2 className={`mb-3 text-2xl font-semibold`}>
             Fonctionnel{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
@@ -135,6 +144,7 @@ export default function Home() {
             <br />
             Ventes, Comptabilité, Gestion Technico-Commerciale
           </p>
+          </div>
         </Link>
       </div>
     </main>
