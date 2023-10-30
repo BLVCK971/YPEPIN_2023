@@ -1,0 +1,94 @@
+{
+  "CV": [
+    {
+      "entreprise": "Avisto / Schneider Electric",
+      "poste": "Ingénieur Logiciel C# et Scrum Master",
+      "date": "Depuis 06/2023",
+      "Projets": [
+        {
+          "nom": "EcoStructure Machine Expert - Team Device Integration",
+          "desc": "Developpement et Maintenance de la communication entre les automates Schneider et l'application Machine Expert",
+          "duree": "En cours",
+          "taches": [
+            "Scrum Master en méthode agile SAFe d'une équipe de 8 au sein d'un train de 90 personnes (basé en France, Allemagne, Inde et Singapour)",
+            "Développement C# d'un IDE avec WinForms afin de programmer des automates d'usines."
+          ],
+          "envtech": [
+            "Visual Studio Enterprise",
+            "GitHub Enterprise",
+            "Jira",
+            "C#, WinForms",
+            "Typescript, Python"
+          ]
+        }
+      ]
+    },
+    {
+      "entreprise": "DIGITOM",
+      "poste": "Ingénieur Développement Informatique",
+      "date": "Du 10/2019 - 06/2023",
+      "Projets": [
+        {
+          "nom": "BusinessZone ",
+          "desc": "Application .NET d’affichage de rapport BI ",
+          "duree": "Septembre 2020 à Mai 2023 – 8 mois",
+          "taches": [
+            "Une application Web ASP.NET MVC en C# en Clean Architecture permettant le partage contrôlé de rapports Power BI pour les clients de DIGITOM dans leur service.",
+            "TechLead sur l’ensemble du projet, chapeauté par Régis GEROMEGNACE",
+            "Besoin perçu de plusieurs projets et problématiques en amont, Conception de l’idée, du Cahier des Charges, Présentation à la Direction du POC, Conception UML, Développement, Lancement de produit",
+            "CleanArchitecture en place permettant une application modulaire, maintenable et évolutive.",
+            "- Authentification et autorisation",
+            "- Intégration de Power BI",
+            "- Gestion des rôles",
+            "- Sécurité des données",
+            "- Partage contrôlé de rapport Power BI ",
+            "Fonctionnalités prévues :",
+            "- Multi Tenant : Accès sur la même instance de plusieurs instance AzureAD/PowerBIService",
+            "- Pré-Filtre : Pour un rapport Power BI partagé, Filtrage dynamique selon l’identification sur BZ",
+            "- Multi BDD : Elaboration de rapports pouvant s’adapter à la majorité des BDD des ERP du marché.",
+            "- Multi Service : Standardisation des rapports pour répondre aux besoins principaux de n’importe quelle entreprise. Amélioration continue des rapports de clients ayant déjà souscrit à BZ",
+            "- Multi BI : Prise en charge de BusinessObject, Tableau voire Framework de visualisation (JS, Python, R ou autres) pour éviter une limitation de la solution à Power BI Embedded."
+          ],
+          "envtech": [
+            "C#, .NET MVC, EntityFramework",
+            "Power BI Service, Power BI Embedded, Azure AD",
+            "SQL Server",
+            "Principes SOLID, Pattern CQRS, Mediator et Repository",
+            "AutoMapper, MediatR, FluentValidation et Swagger"
+          ],
+          "role" : "Concepteur, TechLead et Analyste BI",
+          "collaborateurs": [
+            
+            {
+              "nom": "GEROMEGNACE",
+              "prenom" : "Régis",
+              "Role" : "Product Owner et Product Manager",
+              "linkedIn" : ""
+            },
+            {
+              "nom": "ANGELE",
+              "prenom" : "Olivier",
+              "Role" : "",
+              "linkedIn" : ""
+            }
+            
+          ]
+        }
+      ]
+    },
+    {
+      "entreprise": "Wi-Bash",
+      "poste": "Ingénieur Logiciel C# et Scrum Master",
+      "date": "Depuis 06/2023",
+      "Projets": [
+        {
+          "nom": "",
+          "desc": "",
+          "duree": "",
+          "taches": [],
+          "envtech": []
+        }
+      ]
+    }
+  ]
+}
