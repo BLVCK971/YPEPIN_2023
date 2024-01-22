@@ -1,0 +1,71 @@
+.floatbox{
+    position: absolute; /* or absolute */
+    left: 50%;
+}
+
+.floatbox .square{
+    position: absolute;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    animation: animate 10s linear infinite;
+    animation-delay: calc(-1s* var(--i));
+}
+
+@keyframes animate{
+    0%,100%{
+        transform: translateY(-40px);
+    }
+    50%{
+        transform: translateY(40px);
+    }
+}
+
+#first.square {
+
+    top: -50px;
+    right: -60px;
+    width: 100px;
+    height: 100px;
+    z-index: -1;
+    --i:0;
+}
+#second.square {
+
+    top: 150px;
+    left: -100px;
+    width: 120px;
+    height: 120px;
+    z-index: -1;
+    --i:1;
+}
+#third.square{
+
+    bottom: 50px;
+    right: -60px;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+    --i:2;
+}
+#fourth.square {
+
+    bottom: -80px;
+    left: 100px;
+    width: 80px;
+    height: 80px;
+    --i:3;
+}
+#fifth.square {
+
+    top: -80px;
+    right: 140px;
+    width: 60px;
+    height: 60px;
+    z-index: -1;
+    --i:4;
+}
