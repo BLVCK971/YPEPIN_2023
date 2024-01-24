@@ -1,8 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconDefinition } from "@fortawesome/react-fontawesome";
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import Ul, { Li } from "./listComponent";
+import {
+  faCheck,
+  faBuilding,
+  faPeopleArrows,
+  faCode,
+  faUser,
+  faGears,
+  faNetworkWired,
+  faLaptopCode,
+  faCodeBranch,
+  faTerminal,
+} from "@fortawesome/free-solid-svg-icons";
+
+import Ul from "./Ul";
+import Li from "./Li";
 
 export default function DeviceIntegration() {
   return (
@@ -12,69 +23,57 @@ export default function DeviceIntegration() {
       </div>
 
       <div className="text-3xl my-10">
-        <FontAwesomeIcon icon={faCheck} /> <span /> Contexte :
+        <FontAwesomeIcon icon={faBuilding} /> <span /> Contexte :
       </div>
 
       <div className="text-2xl my-10">
-      Développement et Maintenance de la communication entre les automates
-          Schneider et l&apos;application Machine Expert
+        Développement et Maintenance de la communication entre les automates
+        Schneider et l&apos;application Machine Expert
       </div>
-
 
       <div className="text-3xl my-10">
-        <FontAwesomeIcon icon={faCheck } /> <span /> Tâches :
+        <FontAwesomeIcon icon={faCheck} /> <span /> Tâches :
       </div>
-
       <Ul>
-      <Li icon = {faCheck as IconProp}> 
-        
-      </Li>
-      </Ul>
-
-      <ul className="fa-ul">
-    
-        <li className="py-1">
-          <span className="fa-li">
-            <FontAwesomeIcon icon={faCheck} />
-          </span>
+        <Li icon={faCheck}>
           Application de la méthodologie Scrum en méthode agile SAFe d&apos;une
           équipe de 8 au sein d&apos;un train de 90 personnes
           <br />
           (basé en France, Allemagne, Inde et Singapour),
-        </li>
-        <li className="py-1">
-          <span className="fa-li">
-            <FontAwesomeIcon icon={faCheck} />
-          </span>
+        </Li>
+        <Li icon={faCheck}>
           Développement C# d&apos;un IDE avec WinForms afin de programmer des
           automates d&apos;usines.
-        </li>
-      </ul>
+        </Li>
+      </Ul>
 
-      <div className="text-3xl my-10">
-        <FontAwesomeIcon icon={faCheck} /> <span /> Environnement Technique :
+      <div className="col-span-2">
+        <div className="text-3xl my-10">
+          <FontAwesomeIcon icon={faLaptopCode} /> <span /> Environnement
+          Technique :
+        </div>
+
+        <Ul>
+          <Li icon={faCode}>.NET, WinForms, IEC</Li>
+          <Li icon={faTerminal}>Typescript, Python</Li>
+          <Li icon={faNetworkWired}>OPCUA, Eip, ModbusTCP, Sercos</Li>
+          <Li icon={faCodeBranch}>Jira , GitHub Enterprise , iObeya</Li>
+        </Ul>
       </div>
 
-      <ul className="fa-ul">
-        <li className="py-1">
-          <span className="fa-li">
-            <FontAwesomeIcon icon={faCheck} />
-          </span>
-          .NET, WinForms
-        </li>
-        <li className="py-1">
-          <span className="fa-li">
-            <FontAwesomeIcon icon={faCheck} />
-          </span>
-          Jira , GitHub Enterprise , iObeya
-        </li>
-        <li className="py-1">
-          <span className="fa-li">
-            <FontAwesomeIcon icon={faCheck} />
-          </span>
-          Typescript, Python
-        </li>
-      </ul>
+      <div className="col-span-2">
+        <div className="text-3xl my-10">
+          <FontAwesomeIcon icon={faPeopleArrows} /> <span /> Collaborateurs &
+          Roles :
+        </div>
+
+        <Ul>
+          <Li icon={faUser}>ORSSAUD Stéphane, Product Owner</Li>
+          <Li icon={faUser}>Guillaume, Product Owner</Li>
+          <Li icon={faUser}>POITEVIN William, Ingénieur C#</Li>
+          <Li icon={faUser}>GARNIER Romain, Ingénieur C#</Li>
+        </Ul>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import BusinessZone from "../Projects/BusinessZone";
 import "./Digitom.tsx.css"
+
 export default function Digitom() {
   return (
     <div className=" DigitomBox sm:grid-cols-12  pb-6 pt-8 backdrop-blur-2xl  dark:border-neutral-800 lg:w-auto  lg:rounded-xl lg:border  lg:p-4 p-4  mb-5">
