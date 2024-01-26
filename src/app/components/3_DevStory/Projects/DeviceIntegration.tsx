@@ -9,7 +9,7 @@ import {
   faNetworkWired,
   faLaptopCode,
   faCodeBranch,
-  faTerminal,
+  faTerminal,faPenToSquare
 } from "@fortawesome/free-solid-svg-icons";
 
 import Ul from "./Ul";
@@ -17,11 +17,12 @@ import Li from "./Li";
 
 export default function DeviceIntegration() {
   return (
-    <div className="text-lg col-span-4 p-24">
-      <div className="text-5xl font-semibold">
+    <div className="text-lg col-span-4 grid grid-cols-4 p-24">
+      <div className=" col-span-4 text-5xl font-semibold">
         EcoStructure Machine Expert - Team Device Integration
       </div>
 
+      <div className="col-span-4">
       <div className="text-3xl my-10">
         <FontAwesomeIcon icon={faBuilding} /> <span /> Contexte :
       </div>
@@ -30,9 +31,11 @@ export default function DeviceIntegration() {
         Développement et Maintenance de la communication entre les automates
         Schneider et l&apos;application Machine Expert
       </div>
+      </div>
 
+      <div className="col-span-4">
       <div className="text-3xl my-10">
-        <FontAwesomeIcon icon={faCheck} /> <span /> Tâches :
+        <FontAwesomeIcon icon={faPenToSquare} /> <span /> Tâches :
       </div>
       <Ul>
         <Li icon={faCheck}>
@@ -45,7 +48,7 @@ export default function DeviceIntegration() {
           Développement C# d&apos;un IDE avec WinForms afin de programmer des
           automates d&apos;usines.
         </Li>
-      </Ul>
+      </Ul></div>
 
       <div className="col-span-2">
         <div className="text-3xl my-10">
@@ -68,10 +71,10 @@ export default function DeviceIntegration() {
         </div>
 
         <Ul>
-          <Li icon={faUser}>ORSSAUD Stéphane, Product Owner</Li>
-          <Li icon={faUser}>Guillaume, Product Owner</Li>
-          <Li icon={faUser}>POITEVIN William, Ingénieur C#</Li>
-          <Li icon={faUser}>GARNIER Romain, Ingénieur C#</Li>
+          <Li icon={faUser}>Stéphane ORSSAUD, Product Owner</Li>
+          <Li icon={faUser}>Guillaume LANDRU, Product Owner</Li>
+          <Li icon={faUser}>William POITEVIN, Ingénieur C#</Li>
+          <Li icon={faUser}>Romain GARNIER, Ingénieur C#</Li>
         </Ul>
       </div>
     </div>
