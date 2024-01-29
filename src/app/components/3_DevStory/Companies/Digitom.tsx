@@ -30,7 +30,7 @@ export default function Digitom() {
         </h1>
 
         <Image
-          src="/digitom.png"
+          src="/DIGITOM.png"
           width={800}
           height={800}
           alt="Digitom's logo"

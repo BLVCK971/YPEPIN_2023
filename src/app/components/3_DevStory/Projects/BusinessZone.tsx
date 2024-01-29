@@ -23,7 +23,7 @@ import Li from "./Li";
 export default function BusinessZone() {
   return (
     <div className="text-lg col-span-4 grid grid-cols-4 p-24">
-      <div className=" col-span-4 text-5xl font-semibold col-span-4">Business Zone</div>
+      <div className=" col-span-4 text-5xl font-semibold ">Business Zone</div>
 
       <div className="col-span-4">
         <div className="text-3xl my-10">
