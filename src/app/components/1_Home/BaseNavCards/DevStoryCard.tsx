@@ -2,7 +2,7 @@ export default function DevStoryCard() {
   return (
     <a
       href="#DevStory"
-      className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 overflow-hidden"
+      className="group mt-14 relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:border-neutral-700 hover:bg-neutral-800/30 overflow-hidden"
       rel="noopener noreferrer"
     >
       <video

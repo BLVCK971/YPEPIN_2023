@@ -4,7 +4,7 @@ export default function Categories() {
     <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
       <Link
         href="/Dev"
-        className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 overflow-hidden"
+        className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:border-neutral-700 hover:bg-neutral-800/30 overflow-hidden"
         rel="noopener noreferrer"
       >
         <video
@@ -32,7 +32,7 @@ export default function Categories() {
 
       <Link
         href="/Data"
-        className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 overflow-hidden"
+        className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:border-neutral-700 hover:bg-neutral-800/30 overflow-hidden"
         rel="noopener noreferrer"
       >
         <video
@@ -60,7 +60,7 @@ export default function Categories() {
 
       <Link
         href="/Design"
-        className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 overflow-hidden"
+        className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:border-neutral-700 hover:bg-neutral-800/30 overflow-hidden"
         rel="noopener noreferrer"
       >
         <video
@@ -90,7 +90,7 @@ export default function Categories() {
 
       <Link
         href="/Fct"
-        className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 overflow-hidden"
+        className="group relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:border-neutral-700 hover:bg-neutral-800/30 overflow-hidden"
         rel="noopener noreferrer"
       >
         <video

@@ -22,14 +22,14 @@ import Li from "./Li";
 
 export default function BusinessZone() {
   return (
-    <div className="text-lg col-span-4 grid grid-cols-4 p-24">
-      <div className=" col-span-4 text-5xl font-semibold ">Business Zone</div>
+    <div className="text-base col-span-4 grid grid-cols-4 p-4 mt-6">
+      <div className=" col-span-4 text-xl font-semibold mb-5">Business Zone</div>
 
       <div className="col-span-4">
-        <div className="text-3xl my-10">
+        <div className="text-lg mb-2">
           <FontAwesomeIcon icon={faBuilding} /> <span /> Contexte :
         </div>
-        <div className="text-2xl my-10">
+        <div className="text-base mb-10">
           Une application Web ASP.NET MVC en C# en Clean Architecture permettant
           le partage contrôlé de rapports Power BI pour les clients de DIGITOM
           dans leur service.
@@ -37,10 +37,10 @@ export default function BusinessZone() {
       </div>
 
       <div className="col-span-4">
-        <div className="text-3xl my-10">
+        <div className="text-lg mb-2">
           <FontAwesomeIcon icon={faPenToSquare} /> <span /> Tâches :
         </div>
-
+        <div className="text-base mb-10">
         <Ul>
           <Li icon={faCheck}>
             TechLead sur l&apos;ensemble du projet, chapeauté par Régis
@@ -94,15 +94,15 @@ export default function BusinessZone() {
               une limitation de la solution à Power BI Embedded.
             </Li>
           </Ul>
-        </Ul>
+        </Ul></div>
       </div>
 
       <div className="col-span-2">
-        <div className="text-3xl my-10">
+        <div className="text-lg mb-2">
           <FontAwesomeIcon icon={faLaptopCode} /> <span /> Environnement
           Technique :
         </div>
-
+        <div className="text-base">
         <Ul>
           <Li icon={faCode}>C#, .NET MVC, EntityFramework</Li>
           <Li icon={faChartPie}>
@@ -117,19 +117,19 @@ export default function BusinessZone() {
           </Li>
         </Ul>
       </div>
-
+      </div>
       <div className="col-span-2">
-        <div className="text-3xl my-10">
+        <div className="text-lg mb-2">
           <FontAwesomeIcon icon={faPeopleArrows} /> <span /> Collaborateurs &
           Roles :
         </div>
-
+        <div className="text-base">
         <Ul>
           <Li icon={faUser}>
             Régis GEROMEGNACE, Product Owner et Product Manager
           </Li>
           <Li icon={faUser}>Olivier ANGELE, Gestion client avant-vente</Li>
-        </Ul>
+        </Ul></div>
       </div>
     </div>
   );
