@@ -12,7 +12,7 @@ export default function PricingPureCSS() {
 
             <Link href={"/Web/PricingPureCSS/index.html"}
             className="row-span-3"> 
-            <Image
+            <Image unoptimized
               src="/pricing.png"
               width={800}
               height={800}

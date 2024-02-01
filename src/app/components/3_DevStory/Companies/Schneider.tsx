@@ -23,8 +23,8 @@ export default function Schneider() {
           </div>
         </h1>
 
-        <Image src="/avisto.png" width={300} height={200} alt="Avisto's logo" />
-        <Image
+        <Image unoptimized src="/avisto.png" width={300} height={200} alt="Avisto's logo" />
+        <Image unoptimized
           src="/SCHNEIDER.png"
           width={500}
           height={500}

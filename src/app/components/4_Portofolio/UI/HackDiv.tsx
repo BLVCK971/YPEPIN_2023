@@ -16,7 +16,7 @@ export default function HackDiv() {
 
         <Link href={"/Web/HackDiv/index.html"}
         className="row-span-3">
-        <Image
+        <Image unoptimized
           src="/hackdiv.png"
           width={800}
           height={800}

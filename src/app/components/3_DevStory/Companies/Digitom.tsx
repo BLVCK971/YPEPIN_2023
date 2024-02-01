@@ -29,7 +29,7 @@ export default function Digitom() {
           </div>
         </h1>
 
-        <Image
+        <Image unoptimized
           src="/DIGITOM.png"
           width={800}
           height={800}
