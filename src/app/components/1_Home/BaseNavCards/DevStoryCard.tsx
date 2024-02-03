@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 export default function DevStoryCard() {
   return (
-    <a
-      href="#DevStory"
+    <Link
+      href={"#DevStory"}
       className="group mt-14 relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:border-neutral-700 hover:bg-neutral-800/30 overflow-hidden"
       rel="noopener noreferrer"
     >
@@ -26,6 +28,6 @@ export default function DevStoryCard() {
           C# , Python, JavaScript
         </p>
       </div>
-    </a>
+    </Link>
   );
 }

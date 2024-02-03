@@ -14,7 +14,7 @@ export default function Main() {
         <Poste />
         <BaseNav />
       </section>
-      <section id="DevStory" className="flex min-h-screen flex-col items-center">
+      <section id="DevStory" className="flex min-h-screen flex-col items-center ">
         <h1 className="mb-3 text-9xl font-semibold">Dev Story</h1>
         <DevStory/>
       </section>
@@ -22,8 +22,6 @@ export default function Main() {
         <h1 className="mb-3 text-9xl font-semibold">Portofolio</h1>
         <Portofolio/>
       </section>
-
-      
     </main>
   );
 }
