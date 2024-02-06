@@ -29,8 +29,8 @@ renderer.setAnimationLoop(t => {
 
 const W = 10, H = 10, SW = W * 20, SH = H * 20;
 const IMG_URLS = [
-    "test.jpg",
     "test2.jpg",
+    "icekera.png",
 ];
 
 camera.position.set(0, 0, 8);

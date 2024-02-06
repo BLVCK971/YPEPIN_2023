@@ -8,18 +8,18 @@ import Portofolio from "./4_Portofolio/Portofolio";
 export default function Main() {
   return (
     <main >
-      <section id="Home" className="flex min-h-screen flex-col items-center justify-between p-24">
+      <section id="Home" className="flex min-h-screen flex-col items-center justify-between pt-24 p-2 md:p-24 ">
         <Contact />
         <Title />
         <Poste />
         <BaseNav />
       </section>
-      <section id="DevStory" className="flex min-h-screen flex-col items-center ">
-        <h1 className="mb-3 text-9xl font-semibold">Dev Story</h1>
+      <section id="DevStory" className="flex min-h-screen flex-col items-center justify-between ">
+        <h1 className="mb-3 text-5xl md:text-9xl font-semibold">Dev Story</h1>
         <DevStory/>
       </section>
-      <section id="Portofolio" className="flex min-h-screen flex-col items-center">
-        <h1 className="mb-3 text-9xl font-semibold">Portofolio</h1>
+      <section id="Portofolio" className="flex min-h-screen flex-col items-center justify-between">
+        <h1 className="mb-3 text-5xl md:text-9xl font-semibold">Portofolio</h1>
         <Portofolio/>
       </section>
     </main>
