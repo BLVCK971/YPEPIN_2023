@@ -5,3 +5,12 @@
     /* filter: drop-shadow(0px -20px 60px rgba(59, 71, 95, 0.60)) drop-shadow(0px 20px 60px rgba(16, 20, 28, 0.60)); */
     backdrop-filter: blur(50px);
 }
+
+.PYBox{
+    background: linear-gradient(112deg, #dff41d  2.19%, rgba(109, 68, 20, 0.2) 95%);
+    stroke-width: 2px;
+    stroke: #FFF;
+    /* filter: drop-shadow(0px -20px 60px rgba(59, 71, 95, 0.60)) drop-shadow(0px 20px 60px rgba(16, 20, 28, 0.60)); */
+    backdrop-filter: blur(50px);
+}
+
