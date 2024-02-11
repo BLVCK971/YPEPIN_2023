@@ -9,7 +9,7 @@ export default function Py() {
       <div className="grid lg:grid-cols-4">
         <PYDemo
           title="Tictactoe vs IA"
-          image="/ttt.png"
+          image="/portofolio/ttt.png"
           href="/py/aittt/index.html"
           desc="Contre une IA basé sur l'algorithme MinMax"
         >
@@ -22,8 +22,8 @@ export default function Py() {
         </PYDemo>
         <PYDemo
           title="Dino Google"
-          image="/Dino.png"
-          href="/py/Dino/index.html"
+          image="/portofolio/Dino.png"
+          href="/py/dino/index.html"
           desc="Réplique du mini-jeu Dinosaure de Google"
         >
           <span className="inline-block bg-yellow-400 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
