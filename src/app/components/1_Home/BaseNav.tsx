@@ -1,4 +1,4 @@
-import DevStoryCard from "./BaseNavCards/DevStoryCard";
+
 import NavCard from "./BaseNavCards/NavCard";
 
 export default function BaseNav() {

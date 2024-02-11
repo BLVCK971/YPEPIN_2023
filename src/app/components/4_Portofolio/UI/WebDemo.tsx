@@ -2,10 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 
+const technosColor ={
+  'css': 'bg-blue-400',
+  'js': 'bg-yellow-400',
+  'threejs': 'bg-orange-400',
+  'dat.gui': 'bg-orange-400',
+  'sass': 'bg-rose-400',
+}
 
-export const WebDemo: React.FC<{ children: ReactNode, title : string, image : string, href : string, desc : string  }> = ({ children, title,image,href,desc }) => {
+export const WebDemo: React.FC<{ title : string, image : string, href : string, desc : string , technos : string[] }> = ({title,image,href,desc , technos}) => {
   return (
-    <div className="UIBox grid grid-rows-3  border-neutral-800 w-auto rounded-xl border   m-5 max-w-sm  overflow-hidden shadow-lg  ">
+    <div className="UIBox grid grid-rows-3  border-neutral-800 w-auto rounded-xl border  m-5 max-w-sm  overflow-hidden shadow-lg  ">
       <Link href={href} className="row-span-3">
         <Image
           unoptimized
@@ -28,7 +35,16 @@ export const WebDemo: React.FC<{ children: ReactNode, title : string, image : st
         </button>
       </Link>
 
-      <div className="px-6 pt-4 pb-2 flex justify-center">{children}</div>
+      <div className="px-6 pt-4 pb-2 flex justify-center">
+      {technos.map((tech) => {
+                return (
+                  <span key={tech} className={`inline-block ${technosColor[tech]} rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2`}>
+                  #{tech}
+                </span>
+                );
+              })}
+
+        </div>
     </div>
   );
 };
