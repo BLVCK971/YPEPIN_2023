@@ -2,8 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 
-
-export const PYDemo: React.FC<{ children: ReactNode, title : string, image : string, href : string, desc : string  }> = ({ children, title,image,href,desc }) => {
+export const PYDemo: React.FC<{
+  children: ReactNode;
+  title: string;
+  image: string;
+  href: string;
+  desc: string;
+}> = ({ children, title, image, href, desc }) => {
   return (
     <div className="PYBox grid grid-rows-3  border-neutral-800 w-auto rounded-xl border   m-5 max-w-sm  overflow-hidden shadow-lg  ">
       <Link href={href} className="row-span-3">
