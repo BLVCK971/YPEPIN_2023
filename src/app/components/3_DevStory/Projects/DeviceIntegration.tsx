@@ -13,8 +13,8 @@ import {
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
-import Ul from "./Ul";
-import Li from "./Li";
+import Ul from "../components/Ul";
+import Li from "../components/Li";
 
 export default function DeviceIntegration() {
   return (
