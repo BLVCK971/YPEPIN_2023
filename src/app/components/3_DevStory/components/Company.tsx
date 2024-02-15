@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import Ul from "./Ul";
 import { Li } from "./Li";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { IPoste } from "../data/interfaces";
 
 
@@ -17,7 +17,7 @@ export const Company: React.FC<{
   nom: string;
   dates: string;
   companyPostes: IPoste[];
-  companyLogos : string[];
+  companyLogos : StaticImageData [];
   children: ReactNode
 }> = ({Id, nom, dates, companyPostes, children, companyLogos }) => {
 
@@ -44,13 +44,14 @@ export const Company: React.FC<{
         {companyLogos.map((logo) => {
                 return (
                   <Image 
-                  key={logo}
-                  unoptimized
+                  key={Id}
                   src={logo}
-                  width={1800}
-                  height={1800}
                   alt={`${Id}'s logo`}
-                  className={`object-cover ${companyLogos.length == 1 ? 'col-span-2' : ''}`}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                  }}
+                  className={`${companyLogos.length == 1 ? 'col-span-2' : ''}`}
                 />
                 );
               })}

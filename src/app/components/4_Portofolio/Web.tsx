@@ -1,5 +1,14 @@
 import WebDemo from "./UI/WebDemo";
 import "./UI/ui.css";
+import hackdiv from 'public/portofolio/hackdiv.png'
+import pricing from 'public/portofolio/pricing.png'
+import duo from 'public/portofolio/Duo.png'
+import glassmorphism from 'public/portofolio/glassmorphism.png'
+import split from 'public/portofolio/split.png'
+import universe from 'public/portofolio/Universe.png'
+import gravity from 'public/portofolio/gravity.png'
+import paw from 'public/portofolio/paw.png'
+import transition from 'public/portofolio/transition.png'
 
 const technos = {
   css: "bg-blue-400",
@@ -18,7 +27,7 @@ export default function Web() {
       <div className="grid lg:grid-cols-4">
         <WebDemo
           title="HackDiv"
-          image="/portofolio/hackdiv.png"
+          image={hackdiv}
           href="/Web/HackDiv/index.html"
           desc="Effet Hacking plein écran"
           technos={["css", "js"]}
@@ -26,7 +35,7 @@ export default function Web() {
 
         <WebDemo
           title="Animation Prix CSS"
-          image="/portofolio/pricing.png"
+          image={pricing}
           href="/Web/PricingPureCSS/index.html"
           desc="Carte de prix avec effet 3D"
           technos={["css"]}
@@ -34,7 +43,7 @@ export default function Web() {
 
         <WebDemo
           title="Duo"
-          image="/portofolio/Duo.png"
+          image={duo}
           href="/Web/Duo/index.html"
           desc="Effet visuel d'un élément Three.js"
           technos={["css", "js"]}
@@ -42,7 +51,7 @@ export default function Web() {
 
         <WebDemo
           title="Glassmorphism Login Form"
-          image="/portofolio/glassmorphism.png"
+          image={glassmorphism}
           href="/Web/Glassmorphism Login/index.html"
           desc="Effet glassmorphisme avec blocs volant"
           technos={["css"]}
@@ -50,7 +59,7 @@ export default function Web() {
 
         <WebDemo
           title="Split 3D Carousel"
-          image="/portofolio/split.png"
+          image={split}
           href="/Web/Split3D Carousel/index.html"
           desc="Animation 3D Carousel qui se coupent"
           technos={["css", "js"]}
@@ -58,7 +67,7 @@ export default function Web() {
 
         <WebDemo
           title="Universe"
-          image="/portofolio/Universe.png"
+          image={universe}
           href="/Web/Universe/index.html"
           desc="Effet 3D Etoiles et d'accélération"
           technos={["css", "js", "threejs"]}
@@ -66,7 +75,7 @@ export default function Web() {
 
         <WebDemo
           title="Gravity Points"
-          image="/portofolio/gravity.png"
+          image={gravity}
           href="/Web/Gravity Points/index.html"
           desc="Interaction avec des points de gravités"
           technos={["css", "js", "dat.gui"]}
@@ -74,7 +83,7 @@ export default function Web() {
 
         <WebDemo
           title="Paw Clap Button"
-          image="/portofolio/paw.png"
+          image={paw}
           href="/Web/PawClapButton/index.html"
           desc="Animation bouton j'aime"
           technos={["css", "js", "sass"]}
@@ -82,7 +91,7 @@ export default function Web() {
 
         <WebDemo
           title="3ImgTransition"
-          image="/portofolio/transition.png"
+          image={transition}
           href="/Web/3ImgTransition/index.html"
           desc="Transition controlable 3D entre 2 images"
           technos={["css", "js", "threejs"]}

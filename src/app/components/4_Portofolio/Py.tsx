@@ -1,5 +1,10 @@
 import { PYDemo } from "./UI/PYDemo";
 import "./UI/ui.css";
+import ttt from 'public/portofolio/ttt.png'
+import dino from 'public/portofolio/Dino.png'
+
+
+
 export default function Py() {
   return (
     <div>
@@ -9,7 +14,7 @@ export default function Py() {
       <div className="grid lg:grid-cols-4">
         <PYDemo
           title="Tictactoe vs IA"
-          image="/portofolio/ttt.png"
+          image={ttt}
           href="/py/aittt/index.html"
           desc="Contre une IA basé sur l'algorithme MinMax"
         >
@@ -22,7 +27,7 @@ export default function Py() {
         </PYDemo>
         <PYDemo
           title="Dino Google"
-          image="/portofolio/Dino.png"
+          image={dino}
           href="/py/dino/index.html"
           desc="Réplique du mini-jeu Dinosaure de Google"
         >

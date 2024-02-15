@@ -1,11 +1,11 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 
 export const PYDemo: React.FC<{
   children: ReactNode;
   title: string;
-  image: string;
+  image: StaticImageData;
   href: string;
   desc: string;
 }> = ({ children, title, image, href, desc }) => {
@@ -13,10 +13,7 @@ export const PYDemo: React.FC<{
     <div className="PYBox grid grid-rows-3  border-neutral-800 w-auto rounded-xl border   m-5 max-w-sm  overflow-hidden shadow-lg  ">
       <Link href={href} className="row-span-3">
         <Image
-          unoptimized
           src={image}
-          width={800}
-          height={200}
           alt="hackdiv Image"
           className="col-span-1 w-full h-48 object-cover"
         />
