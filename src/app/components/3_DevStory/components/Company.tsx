@@ -43,7 +43,7 @@ export const Company: React.FC<{
         </h1>
         {companyLogos.map((logo) => {
                 return (
-                  <Image 
+                  <Image  unoptimized
                   key={Id}
                   src={logo}
                   alt={`${Id}'s logo`}
