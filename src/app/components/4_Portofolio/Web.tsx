@@ -10,13 +10,6 @@ import gravity from 'public/portofolio/gravity.png'
 import paw from 'public/portofolio/paw.png'
 import transition from 'public/portofolio/transition.png'
 
-const technos = {
-  css: "bg-blue-400",
-  js: "bg-yellow-400",
-  threejs: "bg-orange-400",
-  "dat.gui": "bg-orange-400",
-  sass: "bg-rose-400",
-};
 
 export default function Web() {
   return (

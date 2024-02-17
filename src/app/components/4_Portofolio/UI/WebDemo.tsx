@@ -20,7 +20,7 @@ export const WebDemo: React.FC<{
   return (
     <div className="UIBox grid grid-rows-3  border-neutral-800 w-auto rounded-xl border  m-5 max-w-sm  overflow-hidden shadow-lg  ">
       <Link href={href} className="row-span-3">
-        <Image
+        <Image unoptimized
           src={image}
           alt="hackdiv Image"
           className="col-span-1 w-full h-48 object-cover"
