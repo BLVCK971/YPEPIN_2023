@@ -1,7 +1,7 @@
-import { PYDemo } from "./UI/PYDemo";
+import { Demo } from "./UI/Demo";
 import "./UI/ui.css";
-import ttt from 'public/portofolio/ttt.png'
-import dino from 'public/portofolio/Dino.png'
+import ttt from '/public/portofolio/ttt.png'
+import dino from '/public/portofolio/Dino.png'
 
 
 
@@ -12,29 +12,23 @@ export default function Py() {
         Python
       </h1>
       <div className="grid lg:grid-cols-4">
-        <PYDemo
+        <Demo
           title="Tictactoe vs IA"
           image={ttt}
           href="/py/aittt/index.html"
           desc="Contre une IA basé sur l'algorithme MinMax"
-        >
-          <span className="inline-block bg-red-400 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
-            #minmax
-          </span>
-          <span className="inline-block bg-yellow-400 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
-            #pygame
-          </span>
-        </PYDemo>
-        <PYDemo
+          technos={["minmax","pygame"]}
+          classe="PYBox"
+        />
+        <Demo
           title="Dino Google"
           image={dino}
           href="/py/dino/index.html"
           desc="Réplique du mini-jeu Dinosaure de Google"
-        >
-          <span className="inline-block bg-yellow-400 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
-            #pygame
-          </span>
-        </PYDemo>
+          technos={["pygame"]}
+          classe="PYBox"
+        />
+        
       </div>
     </div>
   );

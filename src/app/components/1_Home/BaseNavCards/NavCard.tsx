@@ -10,7 +10,7 @@ export const NavCard: React.FC<{
   return (
     <Link
       href={href}
-      className="group  relative box inline-block rounded-lg border border-transparent  transition-colors hover:border-gray-300 hover:bg-gray-100 hover:border-neutral-700 hover:bg-neutral-800/30 overflow-hidden"
+      className="group  relative box inline-block rounded-lg border border-transparent  transition-colors  hover:bg-gray-100 hover:border-neutral-700 hover:bg-neutral-800/30 overflow-hidden z-10"
       rel="noopener noreferrer"
     >
       <video

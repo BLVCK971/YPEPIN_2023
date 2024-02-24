@@ -44,7 +44,7 @@ export const Company: React.FC<{
         {companyLogos.map((logo) => {
                 return (
                   <Image  unoptimized
-                  key={Id}
+                  key={logo.src}
                   src={logo}
                   alt={`${Id}'s logo`}
                   style={{
