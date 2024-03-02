@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+# YPEPIN 2024
+
+My name : Yoel PEPIN
+
+## Description
+
+Personal portofolio to present my experiences and my skills.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm i
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# To Do
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 02/03/2024
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### New features
+- [] Add a Stack section with the technologies I use for each layer 
+  - (Front, Back, IA/DataScience , DevOps, Design, Management, Others)
+- [] Add a Gantt chart to show each time I spent on each enterprise
+- [] Add my 3D models with a Three.js viewer
+- [] Folding the professional experiences to fludify the page
+- [] Add at the beginning options to choose the language
+- [] Add at the beginning options to choose the purpose of the visit (Recruitment, Partnership, Other)
+- [] Block the access to some projects if the user is not a recruiter
+- [] When attempting to access a project, the user must fill in a form to access it
+- [] Adapt the path of the website for a story telling during a recruitment process
+- [] Add a "More Details" button on the project's card to show more details about the project
 
-## Learn More
+### Bugs
+- [] Gradient between the sections
+- [] Pygbag "can't download apk" on the project's loading
 
-To learn more about Next.js, take a look at the following resources:
+### Informations to add
+- [] Add others Enterprise experiences
+- [] Add (maybe) a section for Wi-Bash 
+- [] Add a special button for the projects I'm still working on
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Other projets to finish to add
+- [] Finish and Add AI Minesweeper
+- [] Add Local projects already on ypepin.com
+- [] Add Recolt
+- [] Add Budget
+- [] Add Discipline
+- [] Finish and Add JS Map Simulation
+- [] Begin and Add Ticket Data Retriever
+- [] Begin and Add Promovor v1
+- [] Begin and Add AI Ticket Information Recognition
+- [] Begin and Add Blender Python Chart Presentation (by Polyfjord)
+- [] Begin and Add WI-Bash at Google Hashcode data comparison 
+- [] Add (maybe) Console projects
