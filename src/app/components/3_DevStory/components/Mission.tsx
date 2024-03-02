@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./style.css";
+import Slides from "./Slides/Slides";
 
 export const Mission: React.FC<{
   mission: string;
@@ -32,7 +33,7 @@ export const Mission: React.FC<{
         <div className="text-base mb-10">{contexte}</div>
       </div>
 
-      <div className="col-span-4">
+      <div className="col-span-3">
         <div className="text-lg mb-2">
           <FontAwesomeIcon icon={faPenToSquare} /> <span /> Tâches :
         </div>
@@ -60,6 +61,9 @@ export const Mission: React.FC<{
             })}
           </Ul>
         </div>
+      </div>
+      <div className="col-span-1">
+      <Slides id="slide"/>
       </div>
 
       <div className="col-span-2">
