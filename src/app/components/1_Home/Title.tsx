@@ -10,23 +10,6 @@ export default function Title() {
         <div className="square" id="fourth"></div>
         <div className="square" id="fifth"></div>
       </div>
-
-      {/* <video
-        autoPlay
-        muted
-        loop
-        className="video  group-hover:block -z-10 fixed top-0 left-0 right-0 bottom-0"
-      >
-        <source src="Design.mp4" type="video/mp4" />
-      </video> */}
-      {/* <Image
-          className="relative drop-shadow-[0_0_0.3rem_#ffffff70] invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        /> */}
     </div>
   );
 }
