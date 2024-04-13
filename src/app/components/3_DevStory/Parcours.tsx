@@ -5,7 +5,6 @@ import avisto from '/public/logos/avisto.png'
 import schneider from '/public/logos/SCHNEIDER.png'
 import digitom from '/public/logos/DIGITOM.png'
 import Mission from "./components/Mission";
-import Slides from "./components/Slides/Slides";
 
 
 export default function Parcours() {
@@ -48,7 +47,6 @@ export default function Parcours() {
           collabos={OdooDocker.collabs}/>
       </Company>
 
-      {/* <Slides id="yoel"/> */}
     </div>
   );
 }
