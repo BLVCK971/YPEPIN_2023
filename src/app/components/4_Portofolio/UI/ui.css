@@ -1,9 +1,15 @@
 .UIBox{
     background: linear-gradient(112deg, #f4931d  2.19%, rgba(109, 68, 20, 0.2) 95%);
+    border-color: #61dafb !important;
+}
 
+.UIBox:hover {
+    box-shadow: 0 0 15px #61dafb !important;
+    background: linear-gradient(112deg, #61dafb 2.19%, rgba(97, 218, 251, 0.2) 95%);
 }
 
 .PYBox{
     background: linear-gradient(112deg, #dff41d  2.19%, rgba(109, 68, 20, 0.2) 95%);
+    border-color: #dff41d !important;
 }
 

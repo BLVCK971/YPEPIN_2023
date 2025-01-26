@@ -11,6 +11,7 @@ import {
   faPenToSquare,
   faPeopleArrows,
 } from "@fortawesome/free-solid-svg-icons";
+import { TaskItem } from "./TaskItem";
 
 import "./style.css";
 
@@ -38,26 +39,9 @@ export const Mission: React.FC<{
         </div>
         <div className="text-base mb-10">
           <Ul>
-            {taches.map((tache) => {
-              return ! tache.soustaches ? (
-                <Li key={tache.texte} icon={tache.icone}>
-                  {tache.texte}
-                </Li>
-              ) : (
-                  <Li key={tache.texte} icon={tache.icone}>
-                    {tache.texte}
-                    <Ul>
-                      {tache.soustaches.map((soustache: ITache) => {
-                        return (
-                          <Li key={soustache.texte} icon={soustache.icone}>
-                            {soustache.texte}
-                          </Li>
-                        );
-                      })}
-                    </Ul>
-                  </Li> 
-              );
-            })}
+            {taches.map((tache) => (
+              <TaskItem key={tache.texte} tache={tache} />
+            ))}
           </Ul>
         </div>
       </div>

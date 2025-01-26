@@ -10,14 +10,11 @@ import gravity from '/public/portofolio/gravity.png'
 import paw from '/public/portofolio/paw.png'
 import transition from '/public/portofolio/transition.png'
 import Demo from "./UI/Demo";
-
+import { CollapsibleSection } from "./UI/CollapsibleSection";
 
 export default function Web() {
   return (
-    <div>
-      <h1 className="UIBox text-3xl md:text-5xl font-semibold flex justify-center pb-6 pt-8  lg:p-4 p-2 mb-5  bg-gradient-to-b from-zinc-200  backdrop-blur-2xl border-neutral-800 bg-zinc-800/30 from-inherit   rounded-xl border bg-gray-200">
-        Web User Interfaces
-      </h1>
+    <CollapsibleSection title="Web User Interfaces" className="UIBox">
       <div className="grid lg:grid-cols-4">
         <Demo
           title="HackDiv"
@@ -100,6 +97,6 @@ export default function Web() {
           classe="UIBox"
         />
       </div>
-    </div>
+    </CollapsibleSection>
   );
 }

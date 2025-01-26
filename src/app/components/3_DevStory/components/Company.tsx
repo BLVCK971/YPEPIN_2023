@@ -1,10 +1,9 @@
-import React, { ReactNode, useState } from "react";
-import Ul from "./Ul";
-import { Li } from "./Li";
-import Image, { StaticImageData } from "next/image";
+"use client";
+import React, { useState } from "react";
 import { IPoste } from "../data/interfaces";
-import { Button } from "@nextui-org/react";
 import { ArrowIcon } from "../CustomIcons/ArrowIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./Company.css";
 
 const companyColors = {
   Schneider: "SchneiderBox",
@@ -17,50 +16,77 @@ export const Company: React.FC<{
   nom: string;
   dates: string;
   companyPostes: IPoste[];
-  companyLogos: StaticImageData[];
-  children: ReactNode;
+  companyLogos: any[];
+  children: React.ReactNode;
 }> = ({ Id, nom, dates, companyPostes, children, companyLogos }) => {
-  return (
-    <div
-      className={`sm:grid-cols-12 bg-gradient-to-b from-zinc-200  backdrop-blur-2xl border-neutral-800 bg-zinc-800/30 from-inherit  lg:w-auto  rounded-xl border bg-gray-200 lg:p-4 p-2 pt-8 mb-5 ${companyColors[Id]}`}
-    >
-      <div className="grid grid-cols-4">
-        <h1 className="text-xl font-bold col-span-2">
-          {nom}
-          <Button isIconOnly aria-label="Like" className=" ml-2">
-            <ArrowIcon />
-          </Button>
-          <div className="text-lg font-semibold">{dates}</div>
-          <div className="mt-5 text-base font-semibold">
-            <Ul>
-              <div className="mt-2">Postes occupés : </div>
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
-              {companyPostes.map((poste) => {
-                return (
-                  <Li key={poste.texte} icon={poste.icone}>
-                    {poste.texte}
-                  </Li>
-                );
-              })}
-            </Ul>
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+  return (
+    <div className={`sm:grid-cols-12 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl border-neutral-800 bg-zinc-800/30 from-inherit lg:w-auto rounded-xl border bg-gray-200 lg:p-4 p-2 pt-8 mb-5 ${companyColors[Id]}`}>
+      <div className="grid grid-cols-4 gap-4">
+        <div className="col-span-2">
+          <h1 className="text-xl font-bold">
+            <div className="flex items-center">
+              {nom}
+            </div>
+            <div className="text-lg font-semibold">{dates}</div>
+            <div className="mt-5 text-base font-semibold">
+              <div className="mt-2 mb-3">Postes occupés : </div>
+              {companyPostes.map((poste) => (
+                <div key={poste.texte} className="flex items-center gap-3 mb-2">
+                  <div className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-lg">
+                    <FontAwesomeIcon icon={poste.icone} className="w-8 h-8" />
+                  </div>
+                  <span>{poste.texte}</span>
+                </div>
+              ))}
+            </div>
+          </h1>
+        </div>
+        <div className="col-span-2 flex items-center justify-between flex-wrap gap-4">
+          <div className="flex justify-start items-center">
+            {companyLogos.map((logo) => (
+              <div key={logo.src} className="flex items-center justify-start h-full">
+                <img
+                  src={logo.src}
+                  alt={`${Id}'s logo`}
+                  className="h-32 object-contain"
+                />
+              </div>
+            ))}
           </div>
-        </h1>
-        {companyLogos.map((logo) => {
-          return (
-            <Image
-              unoptimized
-              key={logo.src}
-              src={logo}
-              alt={`${Id}'s logo`}
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
-              className={`${companyLogos.length == 1 ? "col-span-2" : ""}`}
-            />
-          );
-        })}
-        {children}
+          <button
+            onClick={toggleCollapse}
+            className="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-white/10 hover:bg-white/20 rounded-lg shadow-lg hover:shadow-xl ml-auto"
+            aria-label={isCollapsed ? "Déplier les missions" : "Replier les missions"}
+          >
+            <span className="hidden sm:inline whitespace-nowrap">
+              {isCollapsed ? "Voir les missions" : "Masquer les missions"}
+            </span>
+            <div 
+              className="transition-transform duration-300" 
+              style={{ transform: isCollapsed ? 'rotate(0deg)' : 'rotate(90deg)' }}
+            >
+              <ArrowIcon />
+            </div>
+          </button>
+        </div>
+      </div>
+      <div 
+        className={`transition-all duration-300 mt-4 origin-top ${
+          isCollapsed 
+            ? 'grid-rows-[0fr] opacity-0 scale-y-0' 
+            : 'grid-rows-[1fr] opacity-100 scale-y-100'
+        }`}
+        style={{ display: 'grid' }}
+      >
+        <div className="overflow-hidden">
+          {children}
+        </div>
       </div>
     </div>
   );
