@@ -9,6 +9,7 @@ import { ArrowIcon } from "../CustomIcons/ArrowIcon";
 const companyColors = {
   Schneider: "SchneiderBox",
   Digitom: "DigitomBox",
+  Ayming: "AymingBox",
 };
 
 export const Company: React.FC<{

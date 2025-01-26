@@ -1,7 +1,7 @@
 import Company from "./components/Company";
-import {  BZ, DigitomPostes, ESME, OdooDocker, SchneiderPostes } from "./data/data";
+import {  BZ, DigitomPostes, ESME, OdooDocker, SchneiderPostes, AymingPostes, roboatmp, robosylae, robocred } from "./data/data";
 import "./components/Company.css";
-import avisto from '/public/logos/avisto.png'
+import ayming from '/public/logos/AYMING.png'
 import schneider from '/public/logos/SCHNEIDER.png'
 import digitom from '/public/logos/DIGITOM.png'
 import Mission from "./components/Mission";
@@ -10,12 +10,41 @@ import Mission from "./components/Mission";
 export default function Parcours() {
   return (
     <div className="md:p-24 p-2">
+        <Company
+        Id="Ayming"
+        nom="Ayming"
+        dates="06/2024 - 02/2025"
+        companyPostes={AymingPostes}
+        companyLogos={[ayming]}
+      >
+        <Mission 
+          mission={roboatmp.nom}
+          contexte={roboatmp.contexte}
+          taches={roboatmp.taches}
+          environ={roboatmp.techs}
+          collabos={roboatmp.collabs}/>
+
+        <Mission 
+          mission={robosylae.nom}
+          contexte={robosylae.contexte}
+          taches={robosylae.taches}
+          environ={robosylae.techs}
+          collabos={robosylae.collabs}/>
+
+        <Mission 
+          mission={robocred.nom}
+          contexte={robocred.contexte}
+          taches={robocred.taches}
+          environ={robocred.techs}
+          collabos={robocred.collabs}/>
+      </Company>
+
       <Company
         Id="Schneider"
-        nom="Avisto / Schneider Electric"
-        dates="06/2023 - Aujourd'hui"
+        nom="Schneider Electric"
+        dates="06/2023 - 05/2024"
         companyPostes={SchneiderPostes}
-        companyLogos={[avisto,schneider]}
+        companyLogos={[schneider]}
       >
         <Mission 
           mission={ESME.nom}

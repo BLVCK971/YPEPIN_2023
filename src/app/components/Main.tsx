@@ -23,7 +23,7 @@ export default function Main() {
         <Contact />
         <Title />
         <Poste />
-        <NavOpt/>
+        {/* <NavOpt/> */}
         <BaseNav />
       </BackgroundGradientAnimation>
       <section
@@ -47,7 +47,7 @@ export default function Main() {
       </section>
       <section
         id="Portofolio"
-        className="flex min-h-screen flex-col items-center justify-between"
+        className="flex min-h-screen flex-col items-center "
       >
         <h1 className="mb-3 text-5xl md:text-9xl font-semibold">Portofolio</h1>
         <Portofolio />
