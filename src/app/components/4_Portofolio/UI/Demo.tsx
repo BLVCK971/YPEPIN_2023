@@ -2,7 +2,6 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 import { CardBody, CardContainer, CardItem } from "../../ui/3d-card";
-import Image from 'next/image'
 
 const technosColor = {
   css: "bg-blue-400",
