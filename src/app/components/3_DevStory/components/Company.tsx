@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from 'next/image'
 import "./Company.css";
 
-const companyColors = {
+const companyColors: { [key: string]: string } = {
   Schneider: "SchneiderBox",
   Digitom: "DigitomBox",
   Ayming: "AymingBox",

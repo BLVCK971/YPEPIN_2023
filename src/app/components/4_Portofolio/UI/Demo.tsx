@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { ReactNode } from "react";
 import { CardBody, CardContainer, CardItem } from "../../ui/3d-card";
 
-const technosColor = {
+const technosColor: { [key: string]: string } = {
   css: "bg-blue-400",
   js: "bg-yellow-400",
   threejs: "bg-orange-400",

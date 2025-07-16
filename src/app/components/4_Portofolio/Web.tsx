@@ -1,4 +1,3 @@
-import WebDemo from "./UI/WebDemo";
 import "./UI/ui.css";
 import hackdiv from '/public/portofolio/hackdiv.png'
 import pricing from '/public/portofolio/pricing.png'

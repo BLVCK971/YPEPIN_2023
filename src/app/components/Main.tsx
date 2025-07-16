@@ -5,7 +5,6 @@ import BaseNav from "./1_Home/BaseNav";
 import Parcours from "./3_DevStory/Parcours";
 import Portofolio from "./4_Portofolio/Portofolio";
 import { BackgroundGradientAnimation } from "./ui/background-gradient-animation";
-import NavOpt from "./1_Home/NavOpt";
 
 export default function Main() {
   return (
