@@ -2,6 +2,7 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 import { CardBody, CardContainer, CardItem } from "../../ui/3d-card";
+import Image from 'next/image'
 
 const technosColor = {
   css: "bg-blue-400",
@@ -18,15 +19,14 @@ export const Demo: React.FC<{
   image: StaticImageData;
   href: string;
   desc: string;
-  classe : string;
+  classe: string;
   technos: string[];
-}> = ({ title, image, href, desc, classe , technos}) => {
+}> = ({ title, image, href, desc, classe, technos }) => {
   return (
     <CardContainer className="inter-var   border-neutral-800 w-auto rounded-xl border mx-5 max-w-sm  overflow-hidden shadow-lg">
       <CardBody className={` bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-2 border ${classe}`}>
         <CardItem translateZ="200" className="w-full">
           <Image
-            unoptimized
             src={image}
             alt="hackdiv Image"
             height="20"
@@ -48,7 +48,7 @@ export const Demo: React.FC<{
             className=" text-xl font-bold px-4 py-2 rounded-xl dark:text-white"
           >
             <Link href={href}>
-              <button  className="bg-gradient-to-tr w-44 from-pink-500 to-yellow-500 text-white shadow-lg rounded-full ">
+              <button className="bg-gradient-to-tr w-44 from-pink-500 to-yellow-500 text-white shadow-lg rounded-full ">
                 Accéder à la Démo
               </button>
             </Link>
@@ -58,16 +58,16 @@ export const Demo: React.FC<{
             translateZ="50"
             className="flex justify-center items-center w-full"
           >
-             {technos.map((tech) => {
-          return (
-            <span
-              key={tech}
-              className={`inline-block ${technosColor[tech]} rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2`}
-            >
-              #{tech}
-            </span>
-          );
-        })}
+            {technos.map((tech) => {
+              return (
+                <span
+                  key={tech}
+                  className={`inline-block ${technosColor[tech]} rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2`}
+                >
+                  #{tech}
+                </span>
+              );
+            })}
           </CardItem>
         </div>
       </CardBody>

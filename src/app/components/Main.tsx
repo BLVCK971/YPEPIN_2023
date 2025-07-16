@@ -33,15 +33,15 @@ export default function Main() {
         <h1 className=" text-5xl md:text-8xl font-semibold z-50">
           Parcours Professionnel
         </h1>
-
-        <video
-          autoPlay
-          muted
-          loop
-          className="video -z-30 fixed top-0 left-0 right-0 bottom-0 brightness-50"
-        >
-          <source src="/videos/Design.mp4" type="video/mp4" />
-        </video>
+        {/**/}
+        {/* <video */}
+        {/*   autoPlay */}
+        {/*   muted */}
+        {/*   loop */}
+        {/*   className="video -z-30 fixed top-0 left-0 right-0 bottom-0 brightness-50" */}
+        {/* > */}
+        {/*   <source src="/videos/Design.mp4" type="video/mp4" /> */}
+        {/* </video> */}
 
         <Parcours />
       </section>

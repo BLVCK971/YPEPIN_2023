@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { IPoste } from "../data/interfaces";
 import { ArrowIcon } from "../CustomIcons/ArrowIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from 'next/image'
 import "./Company.css";
 
 const companyColors = {
@@ -51,7 +52,7 @@ export const Company: React.FC<{
           <div className="flex justify-start items-center">
             {companyLogos.map((logo) => (
               <div key={logo.src} className="flex items-center justify-start h-full">
-                <img
+                <Image
                   src={logo.src}
                   alt={`${Id}'s logo`}
                   className="h-32 object-contain"
@@ -67,8 +68,8 @@ export const Company: React.FC<{
             <span className="hidden sm:inline whitespace-nowrap">
               {isCollapsed ? "Voir les missions" : "Masquer les missions"}
             </span>
-            <div 
-              className="transition-transform duration-300" 
+            <div
+              className="transition-transform duration-300"
               style={{ transform: isCollapsed ? 'rotate(0deg)' : 'rotate(90deg)' }}
             >
               <ArrowIcon />
@@ -76,12 +77,11 @@ export const Company: React.FC<{
           </button>
         </div>
       </div>
-      <div 
-        className={`transition-all duration-300 mt-4 origin-top ${
-          isCollapsed 
-            ? 'grid-rows-[0fr] opacity-0 scale-y-0' 
-            : 'grid-rows-[1fr] opacity-100 scale-y-100'
-        }`}
+      <div
+        className={`transition-all duration-300 mt-4 origin-top ${isCollapsed
+          ? 'grid-rows-[0fr] opacity-0 scale-y-0'
+          : 'grid-rows-[1fr] opacity-100 scale-y-100'
+          }`}
         style={{ display: 'grid' }}
       >
         <div className="overflow-hidden">
