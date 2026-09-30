@@ -42,7 +42,10 @@ Enregistrements `A` de `ypepin.com` et `www.ypepin.com` vers l'IP du VPS.
 Traefik obtient le certificat Let's Encrypt tout seul dès que le DNS est propagé
 (`www` redirige vers `ypepin.com`).
 
-## Premier déploiement manuel
+## Premier déploiement manuel (optionnel)
+
+La CI crée elle-même `VPS_TARGET_DIR` au premier déploiement ; ceci ne sert que
+pour déployer à la main sans passer par GitHub Actions.
 
 ```bash
 ssh -p <PORT> -i ~/.ssh/ypepin_deploy deploy@<VPS> "mkdir -p /opt/apps/ypepin"

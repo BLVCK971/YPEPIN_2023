@@ -67,6 +67,8 @@ jobs:
 
       - name: Sync le code source vers le VPS
         run: |
+          ssh -p "${{ secrets.VPS_PORT }}" "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+            "mkdir -p ${{ secrets.VPS_TARGET_DIR }}"
           rsync -az --delete \
             --exclude 'node_modules' --exclude 'dist' --exclude '.git' \
             -e "ssh -p ${{ secrets.VPS_PORT }}" \
