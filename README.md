@@ -7,13 +7,26 @@ My name : Yoel PEPIN
 
 Personal portofolio to present my experiences and my skills.
 
+## Stack
+
+Site 100 % statique : React + TypeScript + Tailwind, bundlé avec Vite.
+Aucun serveur Node.js en production, nginx sert simplement le dossier `dist/`.
+
 ## Getting Started
 
 ```bash
 npm i
-
-npm run dev
+npm run dev       # dev server sur http://localhost:5173
+npm run build     # génère dist/
+npm run preview   # prévisualise le build
 ```
+
+## Déploiement (Raspberry Pi)
+
+1. Installer nginx sur le Pi et copier `deploy/nginx.conf` dans `/etc/nginx/sites-available/ypepin.com`
+   (puis `ln -s` dans `sites-enabled`, et `certbot --nginx` pour le HTTPS).
+2. `sudo mkdir -p /var/www/ypepin.com && sudo chown yopi: /var/www/ypepin.com`
+3. Depuis la machine de dev : `./deploy.sh`
 
 # To Do
 
