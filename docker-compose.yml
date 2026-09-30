@@ -1,0 +1,31 @@
+services:
+  web:
+    build: .
+    image: ypepin:latest
+    container_name: ypepin
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.ypepin.rule=Host(`ypepin.com`) || Host(`www.ypepin.com`)
+      - traefik.http.routers.ypepin.entrypoints=websecure
+      - traefik.http.routers.ypepin.tls=true
+      - traefik.http.routers.ypepin.tls.certresolver=letsencrypt
+      - traefik.http.services.ypepin.loadbalancer.server.port=80
+      # www.ypepin.com -> ypepin.com (domaine canonique)
+      - traefik.http.middlewares.ypepin-wwwredirect.redirectregex.regex=^https://www\.ypepin\.com/(.*)
+      - traefik.http.middlewares.ypepin-wwwredirect.redirectregex.replacement=https://ypepin.com/$${1}
+      - traefik.http.middlewares.ypepin-wwwredirect.redirectregex.permanent=true
+      - traefik.http.routers.ypepin.middlewares=ypepin-wwwredirect
+
+networks:
+  traefik-public:
+    external: true

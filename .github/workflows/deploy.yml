@@ -1,0 +1,84 @@
+name: Build & Deploy
+
+# - Sur toute push/PR : build de vérification (tsc + bundle Vite).
+# - Sur push vers main uniquement : déploiement automatique sur le VPS
+#   (rsync du code source vers VPS_TARGET_DIR, puis `docker compose build && up -d`
+#   exécuté à distance en SSH par le compte `deploy`). Traefik (déjà en place sur
+#   le VPS, cf. repo ARC-GR deploy/traefik/) route ypepin.com et gère le TLS.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Audit des dépendances
+        run: npm audit --audit-level=high
+
+      - name: Build (tsc + Vite)
+        run: npm run build
+
+      - name: Build de l'image Docker
+        run: docker build -t ypepin:ci .
+
+  deploy:
+    name: Deploy sur le VPS (Docker + Traefik)
+    needs: build
+    # Ne déploie que sur un push direct vers main (jamais sur une simple PR).
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Trust the VPS host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p "${{ secrets.VPS_PORT }}" -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Sync le code source vers le VPS
+        run: |
+          ssh -p "${{ secrets.VPS_PORT }}" "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+            "mkdir -p ${{ secrets.VPS_TARGET_DIR }}"
+          rsync -az --delete \
+            --exclude 'node_modules' --exclude 'dist' --exclude '.git' \
+            -e "ssh -p ${{ secrets.VPS_PORT }}" \
+            ./ "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.VPS_TARGET_DIR }}"
+
+      - name: Build et (re)démarre le conteneur
+        run: |
+          ssh -p "${{ secrets.VPS_PORT }}" "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" \
+            "cd ${{ secrets.VPS_TARGET_DIR }} && docker compose build && \
+             docker compose up -d && docker image prune -f"
+
+      - name: Résumé
+        run: echo "✅ Déployé (ypepin.com via Traefik)"

@@ -7,13 +7,24 @@ My name : Yoel PEPIN
 
 Personal portofolio to present my experiences and my skills.
 
+## Stack
+
+Site 100 % statique : React + TypeScript + Tailwind, bundlé avec Vite.
+Aucun serveur Node.js en production : un conteneur nginx sert simplement le dossier `dist/`.
+
 ## Getting Started
 
 ```bash
 npm i
-
-npm run dev
+npm run dev       # dev server sur http://localhost:5173
+npm run build     # génère dist/
+npm run preview   # prévisualise le build
 ```
+
+## Déploiement
+
+Docker (nginx qui sert `dist/`) derrière le Traefik partagé du VPS, déployé
+automatiquement par GitHub Actions à chaque push sur `main`. Voir [DEPLOY.md](DEPLOY.md).
 
 # To Do
 
