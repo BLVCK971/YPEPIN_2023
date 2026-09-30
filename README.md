@@ -10,7 +10,7 @@ Personal portofolio to present my experiences and my skills.
 ## Stack
 
 Site 100 % statique : React + TypeScript + Tailwind, bundlé avec Vite.
-Aucun serveur Node.js en production, nginx sert simplement le dossier `dist/`.
+Aucun serveur Node.js en production : un conteneur nginx sert simplement le dossier `dist/`.
 
 ## Getting Started
 
@@ -21,12 +21,10 @@ npm run build     # génère dist/
 npm run preview   # prévisualise le build
 ```
 
-## Déploiement (Raspberry Pi)
+## Déploiement
 
-1. Installer nginx sur le Pi et copier `deploy/nginx.conf` dans `/etc/nginx/sites-available/ypepin.com`
-   (puis `ln -s` dans `sites-enabled`, et `certbot --nginx` pour le HTTPS).
-2. `sudo mkdir -p /var/www/ypepin.com && sudo chown yopi: /var/www/ypepin.com`
-3. Depuis la machine de dev : `./deploy.sh`
+Docker (nginx qui sert `dist/`) derrière le Traefik partagé du VPS, déployé
+automatiquement par GitHub Actions à chaque push sur `main`. Voir [DEPLOY.md](DEPLOY.md).
 
 # To Do
 
