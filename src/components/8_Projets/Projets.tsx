@@ -66,7 +66,7 @@ const PROJETS: Projet[] = [
     periode: "06/2024 - 02/2025",
     accroche:
       "Récupération automatisée des taux AT/MP, feuilles de calcul et attestations pour environ 5 000 comptes clients via NET ENTREPRISE. Migration d'une solution Java vers une architecture Python asynchrone : chaque tâche AWS ECS s'exécute indépendamment et déclenche sa propre pipeline SnapLogic, avec auto-scaling selon la charge.",
-    chiffre: "~5 000 comptes · 1–2 M€/mois de bénéfice estimé",
+    chiffre: "~5 000 comptes · ~1,5 M€ de perte par semaine de retard (DSI)",
     tags: ["Python", "Requests", "AWS ECS", "DynamoDB", "S3", "XRay", "SnapLogic"],
     parallele: true,
   },

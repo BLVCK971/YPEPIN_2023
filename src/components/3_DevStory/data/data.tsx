@@ -310,7 +310,7 @@ export const set: IMission = {
 /// AYMING .............
 
 export const roboatmp: IMission = {
-  chiffreCle: "~5 000 comptes · 1–2 M€/mois estimés",
+  chiffreCle: "~5 000 comptes · ~1,5 M€ par semaine de retard (DSI)",
   nom: "ATMP (Scraping NET ENTREPRISE)",
   contexte:
     "Automatiser la récupération des taux AT/MP, feuilles de calcul et attestations pour environ 5000 comptes clients via NET ENTREPRISE.",
@@ -322,7 +322,7 @@ export const roboatmp: IMission = {
   ],
   resultats: [
     { icone: faMoneyBillTrendUp, texte: "Transition réussie de Java vers une architecture Python moderne et économique, plus flexible et plus fiable" },
-    { icone: faTrophy, texte: "Bénéfice estimé entre 1 et 2 millions d'euros par mois grâce à l'amélioration du scraping" },
+    { icone: faTrophy, texte: "Enjeu critique : selon la DSI, chaque semaine de retard représentait une perte d'environ 1,5 million d'euros" },
   ],
   techs: [
     { icone: faPython, texte: "Python, Requests, Pandas" },
