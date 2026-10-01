@@ -1,5 +1,5 @@
 import { cn } from "./utils/cn";
-import { CSSProperties, useEffect, useRef } from "react";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 
 // Fond animé fixe, affiché derrière toute la page (pas seulement le hero).
 // Les couleurs sont au format "R, G, B" car elles sont injectées dans rgba(...).
@@ -62,9 +62,12 @@ export const BackgroundGradientAnimation = ({
   }, [interactive]);
 
   // Safari gère mal le filtre SVG "goo" combiné au blur : simple flou à la place.
-  const isSafari =
-    typeof navigator !== "undefined" &&
-    /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  // Détecté après le montage : le HTML est prérendu au build (sans navigateur),
+  // un calcul pendant le rendu ferait diverger l'hydratation.
+  const [isSafari, setIsSafari] = useState(false);
+  useEffect(() => {
+    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+  }, []);
 
   const vars = {
     "--gradient-background-start": gradientBackgroundStart,

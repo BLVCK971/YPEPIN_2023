@@ -19,7 +19,7 @@ export const Mission: React.FC<{ mission: IMission }> = ({ mission }) => {
   return (
     <div className="text-base col-span-4 grid grid-cols-4 mt-6 p-4 gap-4 w-full bg-neutral-500 rounded-xl bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 border border-neutral-800">
       <div className="col-span-4 mb-5">
-        <div className="text-xl font-semibold">{nom}</div>
+        <h4 className="text-xl font-semibold">{nom}</h4>
         {periode && <div className="text-sm opacity-70 mt-1">{periode}</div>}
       </div>
 

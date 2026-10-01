@@ -1,13 +1,13 @@
 import "./UI/ui.css";
-const hackdiv = "/portofolio/hackdiv.png";
-const pricing = "/portofolio/pricing.png";
-const duo = "/portofolio/Duo.png";
-const glassmorphism = "/portofolio/glassmorphism.png";
-const split = "/portofolio/split.png";
-const universe = "/portofolio/Universe.png";
-const gravity = "/portofolio/gravity.png";
-const paw = "/portofolio/paw.png";
-const transition = "/portofolio/transition.png";
+const hackdiv = "/portofolio/hackdiv.webp";
+const pricing = "/portofolio/pricing.webp";
+const duo = "/portofolio/Duo.webp";
+const glassmorphism = "/portofolio/glassmorphism.webp";
+const split = "/portofolio/split.webp";
+const universe = "/portofolio/Universe.webp";
+const gravity = "/portofolio/gravity.webp";
+const paw = "/portofolio/paw.webp";
+const transition = "/portofolio/transition.webp";
 import Demo from "./UI/Demo";
 import { CollapsibleSection } from "./UI/CollapsibleSection";
 

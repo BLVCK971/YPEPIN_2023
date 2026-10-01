@@ -28,3 +28,4 @@ yarn-error.log*
 
 # vite
 /dist
+/dist-ssr

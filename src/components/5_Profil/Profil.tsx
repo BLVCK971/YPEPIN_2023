@@ -120,9 +120,9 @@ export default function Profil() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
         {stacks.map((stack) => (
           <div key={stack.titre} className={card}>
-            <h2 className="text-2xl font-semibold mb-4">
+            <h3 className="text-2xl font-semibold mb-4">
               <FontAwesomeIcon icon={stack.icone} /> {stack.titre}
-            </h2>
+            </h3>
             <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm md:text-base">
               {stack.lignes.map(([domaine, valeur]) => (
                 <div key={domaine} className="contents">

@@ -16,6 +16,19 @@
 - Contenu du CV : `src/components/3_DevStory/data/data.tsx` (expériences et missions),
   `src/components/5_Profil/Profil.tsx` (résumé, stacks), `src/components/6_Formation/Formation.tsx`.
   Le CV de Yoel fait foi : ne pas inventer de chiffres ou de réalisations absents du CV.
+- CV téléchargeable : `public/cv/CV_Yoel_PEPIN.docx` (source Word) et `public/cv/CV_Yoel_PEPIN.pdf`.
+  Le docx doit rester aligné avec le contenu du site : toute modification de `data.tsx`,
+  `Profil.tsx` ou `Formation.tsx` doit être reportée dans le docx, puis le PDF régénéré
+  (`soffice --headless --convert-to pdf public/cv/CV_Yoel_PEPIN.docx --outdir public/cv`).
+
+## SEO
+
+- `npm run build` prérend le HTML complet (`src/entry-server.tsx` + `scripts/prerender.mjs`) dans
+  `dist/index.html`, puis React l'hydrate : les composants doivent rester rendables côté serveur
+  (pas d'accès à `window`/`document` pendant le rendu, uniquement dans les effets).
+- Métadonnées (title, description, Open Graph, JSON-LD schema.org) dans `index.html` ;
+  `public/sitemap.xml` (mettre à jour `lastmod`), `public/robots.txt`, `public/og-image.jpg`.
+- Un seul `<h1>` (le nom) ; les sections utilisent `<h2>`, les entreprises `<h3>`, les missions `<h4>`.
 
 ## Vérifications avant push
 

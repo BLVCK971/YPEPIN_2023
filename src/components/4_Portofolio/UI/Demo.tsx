@@ -35,7 +35,7 @@ export const Demo: React.FC<{
             translateZ="200"
             className="text-xl font-bold text-neutral-600 dark:text-white px-6 pt-2"
           >
-            <h1 className="text-lg font-bold mb-1 ">{title}</h1>
+            <h4 className="text-lg font-bold mb-1 ">{title}</h4>
             <div className="text-sm font-semibold">{desc}</div>
           </CardItem>
 

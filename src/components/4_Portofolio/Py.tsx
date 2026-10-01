@@ -1,7 +1,7 @@
 import { Demo } from "./UI/Demo";
 import "./UI/ui.css";
-const ttt = "/portofolio/ttt.png";
-const dino = "/portofolio/Dino.png";
+const ttt = "/portofolio/ttt.webp";
+const dino = "/portofolio/Dino.webp";
 import { CollapsibleSection } from "./UI/CollapsibleSection";
 
 export default function Py() {

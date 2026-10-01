@@ -21,7 +21,7 @@ export const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   return (
     <div>
       <div className={`flex items-center justify-between ${className} text-3xl md:text-5xl font-semibold pb-6 pt-8 lg:p-4 p-2 mb-5 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl border-neutral-800 bg-zinc-800/30 from-inherit rounded-xl border bg-gray-200`}>
-        <h1>{title}</h1>
+        <h3>{title}</h3>
         <button
           onClick={toggleCollapse}
           className="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-white/10 hover:bg-white/20 rounded-lg shadow-lg hover:shadow-xl"

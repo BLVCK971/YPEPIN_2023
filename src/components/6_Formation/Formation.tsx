@@ -32,9 +32,9 @@ export default function Formation() {
     <div className="md:px-24 p-2 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-6">
       {blocs.map((bloc) => (
         <div key={bloc.titre} className={card}>
-          <h2 className="text-2xl font-semibold mb-4">
+          <h3 className="text-2xl font-semibold mb-4">
             <FontAwesomeIcon icon={bloc.icone} /> {bloc.titre}
-          </h2>
+          </h3>
           <ul className="space-y-4">
             {bloc.items.map((item) => (
               <li key={item.titre} className="flex gap-4">

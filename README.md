@@ -1,5 +1,5 @@
 
-# YPEPIN 2024
+# YPEPIN
 
 My name : Yoel PEPIN
 
@@ -17,7 +17,7 @@ Aucun serveur Node.js en production : un conteneur nginx sert simplement le doss
 ```bash
 npm i
 npm run dev       # dev server sur http://localhost:5173
-npm run build     # génère dist/
+npm run build     # tsc + build Vite + prérendu HTML (SEO) dans dist/
 npm run preview   # prévisualise le build
 ```
 
