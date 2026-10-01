@@ -1,21 +1,23 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { companies } from "../3_DevStory/data/data";
+import { companies as companiesEn } from "../3_DevStory/data/data.en";
+import { Lang, useLang, useT } from "../../i18n";
 import { IMission, ITache } from "../3_DevStory/data/interfaces";
 
 // Réseau des compétences : 6 domaines autour du centre, les technologies
 // autour de chaque domaine. Les missions associées à une techno sont
 // calculées à partir des données du parcours (aucun chiffre saisi à la main).
 
-type Domaine = { id: string; nom: string; couleur: string };
-type Techno = { nom: string; domaine: string; motif: RegExp };
+type Domaine = { id: string; nom: string; en?: string; couleur: string };
+type Techno = { nom: string; en?: string; domaine: string; motif: RegExp };
 
 // Ordre = ordre du cercle : les voisins ont été validés (daltonisme,
 // contraste) sur fond sombre avec le validateur de palette dataviz.
 const DOMAINES: Domaine[] = [
   { id: "dotnet", nom: ".NET", couleur: "#3987e5" },
   { id: "python", nom: "Python", couleur: "#d95926" },
-  { id: "data", nom: "Data & IA", couleur: "#199e70" },
-  { id: "db", nom: "Bases de données", couleur: "#c98500" },
+  { id: "data", nom: "Data & IA", en: "Data & AI", couleur: "#199e70" },
+  { id: "db", nom: "Bases de données", en: "Databases", couleur: "#c98500" },
   { id: "front", nom: "Front & Mobile", couleur: "#d55181" },
   { id: "cloud", nom: "Cloud & DevOps", couleur: "#008300" },
 ];
@@ -40,7 +42,7 @@ const TECHNOS: Techno[] = [
 
   { nom: "Power BI", domaine: "data", motif: /Power ?BI/i },
   { nom: "OpenAI", domaine: "data", motif: /OpenAI/ },
-  { nom: "API Claude", domaine: "data", motif: /Claude/ },
+  { nom: "API Claude", en: "Claude API", domaine: "data", motif: /Claude/ },
   { nom: "Qwen / Ollama", domaine: "data", motif: /Qwen|Ollama/ },
   { nom: "RAG / Qdrant", domaine: "data", motif: /\bRAG\b|Qdrant/ },
   { nom: "ETL", domaine: "data", motif: /\bETLs?\b/ },
@@ -78,11 +80,16 @@ const texteMission = (m: IMission) => {
   return [m.nom, m.contexte, ...taches(m.taches), ...(m.resultats ? taches(m.resultats) : []), ...m.techs.map((t) => t.texte)].join(" \n ");
 };
 
-const usagesDe = (techno: Techno): Usage[] =>
-  companies.flatMap((c) =>
-    c.missions
-      .filter((m) => techno.motif.test(texteMission(m)))
-      .map((m) => ({ entreprise: c.nom, mission: m.nom.split(" - ")[0] }))
+// La recherche se fait toujours sur le texte français (mêmes comptes dans les
+// deux langues), l'affichage reprend la mission traduite au même index.
+const usagesDe = (techno: Techno, lang: Lang): Usage[] =>
+  companies.flatMap((c, ci) =>
+    c.missions.flatMap((m, mi) => {
+      if (!techno.motif.test(texteMission(m))) return [];
+      const ce = lang === "en" ? companiesEn[ci] : c;
+      const me = lang === "en" ? companiesEn[ci].missions[mi] : m;
+      return [{ entreprise: ce.nom, mission: me.nom.split(" - ")[0] }];
+    })
   );
 
 // --- Mise en page (viewBox 1100 x 740) ---------------------------------------
@@ -107,22 +114,23 @@ type Noeud = {
   phase: number;
 };
 
-const construireNoeuds = (): Noeud[] => {
+const construireNoeuds = (lang: Lang): Noeud[] => {
+  const nom = (x: { nom: string; en?: string }) => (lang === "en" ? x.en ?? x.nom : x.nom);
   const noeuds: Noeud[] = [{ id: "centre", label: "Yoel", type: "centre", x: CX, y: CY, r: 30, phase: 0 }];
   DOMAINES.forEach((d, i) => {
     const angle = (-90 + i * 60) * (Math.PI / 180);
     const hx = CX + RX * Math.cos(angle);
     const hy = CY + RY * Math.sin(angle);
-    noeuds.push({ id: d.id, label: d.nom, type: "domaine", domaine: d, x: hx, y: hy, r: 20, phase: i });
+    noeuds.push({ id: d.id, label: nom(d), type: "domaine", domaine: d, x: hx, y: hy, r: 20, phase: i });
     const technos = TECHNOS.filter((t) => t.domaine === d.id);
     const ouverture = 160; // degrés couverts par l'éventail des technos
     technos.forEach((t, j) => {
       const a = angle + ((-ouverture / 2 + (ouverture * (j + 0.5)) / technos.length) * Math.PI) / 180;
       const rayon = j % 2 === 0 ? 100 : 152;
-      const usages = usagesDe(t);
+      const usages = usagesDe(t, lang);
       noeuds.push({
         id: `${d.id}-${t.nom}`,
-        label: t.nom,
+        label: nom(t),
         type: "techno",
         domaine: d,
         parent: d.id,
@@ -210,7 +218,9 @@ const separer = (noeuds: Noeud[]): Noeud[] => {
 };
 
 export default function StackGraph() {
-  const noeuds = useMemo(construireNoeuds, []);
+  const lang = useLang();
+  const t = useT();
+  const noeuds = useMemo(() => construireNoeuds(lang), [lang]);
   const parId = useMemo(() => new Map(noeuds.map((n) => [n.id, n])), [noeuds]);
   const liens = useMemo(
     () =>
@@ -305,7 +315,7 @@ export default function StackGraph() {
           {DOMAINES.map((d) => (
             <li key={d.id} className="flex items-center gap-2">
               <span className="inline-block w-3 h-3 rounded-full" style={{ background: d.couleur }} />
-              {d.nom}
+              {lang === "en" ? d.en ?? d.nom : d.nom}
             </li>
           ))}
         </ul>
@@ -314,7 +324,7 @@ export default function StackGraph() {
           viewBox={`0 0 ${W} ${H}`}
           className="w-full h-auto select-none"
           role="group"
-          aria-label="Réseau des compétences : domaines et technologies"
+          aria-label={t("Réseau des compétences : domaines et technologies", "Skills network: domains and technologies")}
           onMouseLeave={() => setSelection(null)}
         >
           <g>
@@ -369,7 +379,7 @@ export default function StackGraph() {
                     n.type === "techno"
                       ? `${n.label}, ${n.usages?.length ?? 0} mission(s)`
                       : n.type === "domaine"
-                        ? `Domaine ${n.label}`
+                        ? `${t("Domaine", "Domain")} ${n.label}`
                         : undefined
                   }
                   className="cursor-pointer outline-none"
@@ -444,17 +454,24 @@ export default function StackGraph() {
       <div className="rounded-xl border border-white/10 bg-black/40 backdrop-blur-xl p-4 md:p-6 min-h-[12rem]" aria-live="polite">
         {!sel && (
           <div className="text-neutral-300">
-            <h3 className="text-xl font-semibold text-white mb-2">Explorer la stack</h3>
+            <h3 className="text-xl font-semibold text-white mb-2">{t("Explorer la stack", "Explore the stack")}</h3>
             <p>
-              Survolez (ou touchez) une technologie pour voir dans quelles missions elle a été utilisée, ou
-              un domaine pour voir ses technologies.
+              {t(
+                "Survolez (ou touchez) une technologie pour voir dans quelles missions elle a été utilisée, ou un domaine pour voir ses technologies.",
+                "Hover (or tap) a technology to see which missions used it, or a domain to see its technologies."
+              )}
             </p>
-            <p className="mt-3 text-sm">La taille d'un point est proportionnelle au nombre de missions.</p>
+            <p className="mt-3 text-sm">
+              {t("La taille d'un point est proportionnelle au nombre de missions.", "Dot size is proportional to the number of missions.")}
+            </p>
             <p className="mt-2 text-sm flex items-center gap-2">
               <svg width="14" height="14" viewBox="0 0 14 14" className="shrink-0" aria-hidden="true">
                 <circle cx="7" cy="7" r="5" fill="none" stroke="#d4d4d4" strokeWidth="2" />
               </svg>
-              Point creux : technologie maîtrisée, hors missions détaillées sur ce site.
+              {t(
+                "Point creux : technologie maîtrisée, hors missions détaillées sur ce site.",
+                "Hollow dot: technology I master, used outside the missions detailed on this site."
+              )}
             </p>
           </div>
         )}
@@ -462,7 +479,7 @@ export default function StackGraph() {
           <div>
             <div className="flex items-center gap-2 text-sm text-neutral-300">
               <span className="inline-block w-4 h-[2px]" style={{ background: sel.domaine!.couleur }} />
-              {sel.domaine!.nom}
+              {lang === "en" ? sel.domaine!.en ?? sel.domaine!.nom : sel.domaine!.nom}
             </div>
             <h3 className="text-2xl font-semibold text-white mt-1">{sel.label}</h3>
             <p className="mt-1 text-neutral-300">
@@ -472,7 +489,7 @@ export default function StackGraph() {
                   mission{sel.usages!.length > 1 ? "s" : ""}
                 </>
               ) : (
-                "Hors missions détaillées"
+                t("Hors missions détaillées", "Outside detailed missions")
               )}
             </p>
             <ul className="mt-4 space-y-2">
@@ -484,7 +501,10 @@ export default function StackGraph() {
               ))}
               {sel.usages!.length === 0 && (
                 <li className="text-sm text-neutral-400">
-                  Technologie maîtrisée, utilisée hors des missions détaillées sur ce site.
+                  {t(
+                    "Technologie maîtrisée, utilisée hors des missions détaillées sur ce site.",
+                    "Technology I master, used outside the missions detailed on this site."
+                  )}
                 </li>
               )}
             </ul>
@@ -494,20 +514,20 @@ export default function StackGraph() {
           <div>
             <div className="flex items-center gap-2 text-sm text-neutral-300">
               <span className="inline-block w-4 h-[2px]" style={{ background: sel.domaine!.couleur }} />
-              Domaine
+              {t("Domaine", "Domain")}
             </div>
             <h3 className="text-2xl font-semibold text-white mt-1">{sel.label}</h3>
             <ul className="mt-4 space-y-1">
               {technosDuDomaine
                 .slice()
                 .sort((a, b) => (b.usages?.length ?? 0) - (a.usages?.length ?? 0))
-                .map((t) => (
-                  <li key={t.id} className="flex justify-between gap-4 text-sm">
-                    <span className="text-white">{t.label}</span>
+                .map((n) => (
+                  <li key={n.id} className="flex justify-between gap-4 text-sm">
+                    <span className="text-white">{n.label}</span>
                     <span className="text-neutral-400 tabular-nums">
-                      {t.usages?.length
-                        ? `${t.usages.length} mission${t.usages.length > 1 ? "s" : ""}`
-                        : "hors missions"}
+                      {n.usages?.length
+                        ? `${n.usages.length} mission${n.usages.length > 1 ? "s" : ""}`
+                        : t("hors missions", "outside missions")}
                     </span>
                   </li>
                 ))}

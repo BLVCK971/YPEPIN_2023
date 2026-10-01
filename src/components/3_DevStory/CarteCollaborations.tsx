@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Reveal from "../ui/Reveal";
 import { cn } from "../ui/utils/cn";
+import { Lang, useLang, useT } from "../../i18n";
 
 // Carte des collaborations internationales : fond en points (public/carte-monde.svg,
 // projection équirectangulaire lon -100..125, lat -20..65, 4 unités par degré),
@@ -9,18 +10,18 @@ const W = 900;
 const H = 340;
 const projeter = (lon: number, lat: number) => ({ x: (lon + 100) * 4, y: (65 - lat) * 4 });
 
-type Lieu = { id: string; nom: string; lon: number; lat: number; dx: number; dy: number; ancre?: "start" | "end" | "middle"; hub?: boolean };
+type Lieu = { id: string; nom: string; en?: string; lon: number; lat: number; dx: number; dy: number; ancre?: "start" | "end" | "middle"; hub?: boolean };
 
 const LIEUX: Lieu[] = [
   { id: "gp", nom: "Guadeloupe", lon: -61.53, lat: 16.24, dx: 0, dy: 20, ancre: "middle", hub: true },
   { id: "fr", nom: "France", lon: 2.35, lat: 48.86, dx: -10, dy: 4, ancre: "end", hub: true },
   { id: "nice", nom: "Nice", lon: 7.26, lat: 43.7, dx: -2, dy: 17, ancre: "middle" },
-  { id: "es", nom: "Espagne", lon: -3.7, lat: 40.42, dx: -10, dy: 12, ancre: "end" },
-  { id: "de", nom: "Allemagne", lon: 8.68, lat: 50.11, dx: 4, dy: -12, ancre: "middle" },
-  { id: "rs", nom: "Serbie", lon: 20.46, lat: 44.79, dx: -2, dy: 20, ancre: "middle" },
-  { id: "ro", nom: "Roumanie", lon: 26.1, lat: 44.43, dx: 10, dy: -6, ancre: "start", hub: true },
-  { id: "in", nom: "Inde", lon: 77.59, lat: 12.97, dx: 0, dy: 22, ancre: "middle" },
-  { id: "sg", nom: "Singapour", lon: 103.82, lat: 1.35, dx: 0, dy: 22, ancre: "middle" },
+  { id: "es", nom: "Espagne", en: "Spain", lon: -3.7, lat: 40.42, dx: -10, dy: 12, ancre: "end" },
+  { id: "de", nom: "Allemagne", en: "Germany", lon: 8.68, lat: 50.11, dx: 4, dy: -12, ancre: "middle" },
+  { id: "rs", nom: "Serbie", en: "Serbia", lon: 20.46, lat: 44.79, dx: -2, dy: 20, ancre: "middle" },
+  { id: "ro", nom: "Roumanie", en: "Romania", lon: 26.1, lat: 44.43, dx: 10, dy: -6, ancre: "start", hub: true },
+  { id: "in", nom: "Inde", en: "India", lon: 77.59, lat: 12.97, dx: 0, dy: 22, ancre: "middle" },
+  { id: "sg", nom: "Singapour", en: "Singapore", lon: 103.82, lat: 1.35, dx: 0, dy: 22, ancre: "middle" },
 ];
 
 // Liens : [depuis, vers, courbure]
@@ -35,13 +36,19 @@ const LIENS: [string, string, number][] = [
   ["ro", "nice", 0.45],
 ];
 
-const LEGENDE = [
+const LEGENDE: Record<Lang, { lieux: string; texte: string }[]> = { fr: [
   { lieux: "Guadeloupe", texte: "Université des Antilles (MIAGE), DIGITOM, et les clients ICEKERA : SESAM, ARC Gestion et Recouvrement, Matheva, Aivocat, Valado" },
   { lieux: "France", texte: "Ayming, AViSTO et PROELAN pour Schneider Electric, DREVIO à Nice" },
   { lieux: "Allemagne · Serbie · Inde · Singapour", texte: "Train Agile SAFe international de 90 personnes (AViSTO / Schneider)" },
   { lieux: "Roumanie", texte: "Télétravail depuis la Roumanie pour DREVIO (Nice), et développement avec des développeurs roumains (PROELAN / Schneider)" },
   { lieux: "Espagne", texte: "Formation par l'équipe espagnole (PROELAN / Schneider)" },
-];
+], en: [
+  { lieux: "Guadeloupe", texte: "Université des Antilles (MIAGE), DIGITOM, and ICEKERA clients: SESAM, ARC Gestion et Recouvrement, Matheva, Aivocat, Valado" },
+  { lieux: "France", texte: "Ayming, AViSTO and PROELAN for Schneider Electric, DREVIO in Nice" },
+  { lieux: "Germany · Serbia · India · Singapore", texte: "International SAFe Agile Release Train of 90 people (AViSTO / Schneider)" },
+  { lieux: "Romania", texte: "Remote work from Romania for DREVIO (Nice), and development alongside Romanian developers (PROELAN / Schneider)" },
+  { lieux: "Spain", texte: "Training by the Spanish team (PROELAN / Schneider)" },
+] };
 
 const point = (id: string) => {
   const l = LIEUX.find((x) => x.id === id)!;
@@ -59,6 +66,8 @@ const arc = (a: { x: number; y: number }, b: { x: number; y: number }, k: number
 export default function CarteCollaborations() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const lang = useLang();
+  const t = useT();
 
   useEffect(() => {
     const el = ref.current;
@@ -79,13 +88,19 @@ export default function CarteCollaborations() {
   return (
     <Reveal className="w-full max-w-6xl px-4 mt-16">
       <div className="rounded-2xl border border-white/10 bg-black/40 p-5 md:p-7 backdrop-blur-xl">
-        <h3 className="text-xl md:text-2xl font-semibold tracking-tight">Collaborations internationales</h3>
+        <h3 className="text-xl md:text-2xl font-semibold tracking-tight">{t("Collaborations internationales", "International collaborations")}</h3>
         <p className="mt-1 text-sm text-neutral-400">
-          De la Guadeloupe à la Roumanie, avec des équipes réparties en Europe et en Asie.
+          {t(
+            "De la Guadeloupe à la Roumanie, avec des équipes réparties en Europe et en Asie.",
+            "From Guadeloupe to Romania, with teams spread across Europe and Asia."
+          )}
         </p>
 
         <div ref={ref} className={cn("carte mt-4", visible && "carte-visible")}>
-          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Carte des collaborations : Guadeloupe, France (dont Nice), Espagne, Allemagne, Serbie, Roumanie, Inde et Singapour">
+          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label={t(
+              "Carte des collaborations : Guadeloupe, France (dont Nice), Espagne, Allemagne, Serbie, Roumanie, Inde et Singapour",
+              "Collaboration map: Guadeloupe, France (including Nice), Spain, Germany, Serbia, Romania, India and Singapore"
+            )}>
             <defs>
               <linearGradient id="arc-grad" x1="0" x2="1">
                 <stop offset="0%" stopColor="#8b5cf6" />
@@ -138,7 +153,7 @@ export default function CarteCollaborations() {
                     stroke="#0a0a12"
                     strokeWidth={3}
                   >
-                    {l.nom}
+                    {lang === "en" ? l.en ?? l.nom : l.nom}
                   </text>
                 </g>
               );
@@ -148,7 +163,7 @@ export default function CarteCollaborations() {
 
         {/* Légende textuelle : le détail ne repose pas sur la carte seule */}
         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-          {LEGENDE.map((l) => (
+          {LEGENDE[lang].map((l) => (
             <li key={l.lieux} className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
               <div className="text-sm font-semibold text-cyan-300">{l.lieux}</div>
               <div className="mt-0.5 text-sm text-neutral-300">{l.texte}</div>

@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import { FaBars, FaFilePdf, FaGithub, FaLinkedin, FaTimes } from "react-icons/fa";
 import { CV_PDF } from "../1_Home/CvButtons";
 import { cn } from "../ui/utils/cn";
+import { ACCUEIL, useLang, useT } from "../../i18n";
 
 export const SECTIONS = [
-  { id: "Profil", label: "Profil" },
-  { id: "Parcours", label: "Parcours" },
-  { id: "Formation", label: "Formation" },
-  { id: "Projets", label: "Projets" },
-  { id: "Services", label: "Services" },
-  { id: "Contact", label: "Contact" },
+  { id: "Profil", label: "Profil", en: "Profile" },
+  { id: "Parcours", label: "Parcours", en: "Experience" },
+  { id: "Formation", label: "Formation", en: "Education" },
+  { id: "Projets", label: "Projets", en: "Projects" },
+  { id: "Services", label: "Services", en: "Services" },
+  { id: "Contact", label: "Contact", en: "Contact" },
 ];
 
 // Barre de navigation fixe : transparente en haut de page, floutée au défilement,
@@ -18,6 +19,8 @@ export default function NavBar() {
   const [defile, setDefile] = useState(false);
   const [active, setActive] = useState<string | null>(null);
   const [menuOuvert, setMenuOuvert] = useState(false);
+  const lang = useLang();
+  const t = useT();
 
   useEffect(() => {
     const onScroll = () => setDefile(window.scrollY > 24);
@@ -49,7 +52,7 @@ export default function NavBar() {
 
   return (
     <nav
-      aria-label="Navigation principale"
+      aria-label={t("Navigation principale", "Main navigation")}
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         defile || menuOuvert
@@ -58,7 +61,7 @@ export default function NavBar() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <a href="#top" className="font-semibold tracking-tight text-lg" aria-label="Retour en haut">
+        <a href="#top" className="font-semibold tracking-tight text-lg" aria-label={t("Retour en haut", "Back to top")}>
           Y<span className="text-cyan-300">P</span>
         </a>
 
@@ -66,7 +69,7 @@ export default function NavBar() {
           {SECTIONS.map((s) => (
             <li key={s.id}>
               <a href={`#${s.id}`} className={lien(s.id)}>
-                {s.label}
+                {t(s.label, s.en)}
                 <span
                   className={cn(
                     "absolute inset-x-3 -bottom-0.5 h-[2px] rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 transition-transform duration-300 origin-left",
@@ -79,6 +82,16 @@ export default function NavBar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          {/* Bascule de langue : lien vers l'autre version prérendue */}
+          <a
+            href={ACCUEIL[lang === "en" ? "fr" : "en"]}
+            hrefLang={lang === "en" ? "fr" : "en"}
+            lang={lang === "en" ? "fr" : "en"}
+            className="flex items-center rounded-full border border-white/15 px-2.5 py-1 text-xs font-semibold tracking-wider text-neutral-300 transition-colors hover:border-white/40 hover:text-white"
+            aria-label={lang === "en" ? "Version française" : "English version"}
+          >
+            {lang === "en" ? "FR" : "EN"}
+          </a>
           <a
             href="https://www.linkedin.com/in/ypepin/"
             target="_blank"
@@ -108,7 +121,7 @@ export default function NavBar() {
           <button
             type="button"
             className="md:hidden p-2 text-neutral-300"
-            aria-label={menuOuvert ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-label={menuOuvert ? t("Fermer le menu", "Close menu") : t("Ouvrir le menu", "Open menu")}
             aria-expanded={menuOuvert}
             onClick={() => setMenuOuvert((o) => !o)}
           >
@@ -126,7 +139,7 @@ export default function NavBar() {
                 onClick={() => setMenuOuvert(false)}
                 className={cn("block py-3 border-b border-white/5", active === s.id ? "text-white" : "text-neutral-300")}
               >
-                {s.label}
+                {t(s.label, s.en)}
               </a>
             </li>
           ))}

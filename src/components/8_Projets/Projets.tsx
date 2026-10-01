@@ -2,6 +2,7 @@ import Reveal from "../ui/Reveal";
 import Experimentations from "../4_Portofolio/Portofolio";
 import FlowDiagram, { Etape } from "./FlowDiagram";
 import ParallelDiagram from "./ParallelDiagram";
+import { Lang, useLang, useT } from "../../i18n";
 
 // Projets phares : résumé court de missions détaillées dans le Parcours.
 type Projet = {
@@ -17,7 +18,7 @@ type Projet = {
   parallele?: boolean;
 };
 
-const PROJETS: Projet[] = [
+const PROJETS_FR: Projet[] = [
   {
     nom: "Aivocat",
     categorie: "IA souveraine · Freelance",
@@ -108,11 +109,106 @@ const PROJETS: Projet[] = [
   },
 ];
 
+const PROJETS_EN: Projet[] = [
+  {
+    nom: "Aivocat",
+    categorie: "Sovereign AI · Freelance",
+    periode: "07/2026 - 08/2026",
+    accroche:
+      "100% local AI legal assistant for a law firm: it analyses the documents of a case file without any data leaving the machine, and its answers cite their sources.",
+    chiffre: "~650 tests · 100% offline",
+    tags: ["Python", "FastAPI", "Qdrant", "Ollama", "Qwen 3.5", "RAG"],
+    schema: {
+      colonnes: 4,
+      cadre: "Law firm's PC · 100% offline",
+      etapes: [
+        { titre: "Files & laws", sous: "PDF, Word, LEGI" },
+        { titre: "OCR", sous: "RapidOCR" },
+        { titre: "Embedding", sous: "bge-m3" },
+        { titre: "Search", sous: "Qdrant + BM25" },
+        { titre: "Reranking", sous: "cross-encoder" },
+        { titre: "Generation", sous: "Qwen 3.5 9B" },
+        { titre: "Answer", sous: "cited sources" },
+      ],
+    },
+  },
+  {
+    nom: "DREVIO",
+    categorie: "Mobile & SaaS · Tech Lead",
+    periode: "Since 05/2026",
+    accroche:
+      "AI-powered vehicle damage assessment: photos of the vehicle, damage analysis, assessment report, a quote for each partner garage and online payment.",
+    chiffre: "140+ PRs reviewed · 60+ deliverable work packages",
+    tags: ["React Native", "Expo", ".NET 10", "Supabase", "Stripe", "OpenAI"],
+    lien: { href: "https://drevio.tech", label: "drevio.tech" },
+    schema: {
+      etapes: [
+        { titre: "Guided scan", sous: "React Native · Expo" },
+        { titre: "Private storage", sous: "Supabase · RLS" },
+        { titre: "AI analysis", sous: "Worker · OpenAI" },
+        { titre: "Report", sous: "Located damage" },
+        { titre: "Quote per garage", sous: "Each garage's rates" },
+        { titre: "Payment", sous: "Stripe" },
+      ],
+    },
+  },
+  {
+    nom: "ATMP",
+    categorie: "Large-scale automation · Ayming",
+    periode: "06/2024 - 02/2025",
+    accroche:
+      "Automated retrieval of AT/MP (workplace accident) rates, calculation sheets and certificates for about 5,000 client accounts through NET ENTREPRISE. Migration from a Java solution to an asynchronous Python architecture: each AWS ECS task runs independently and triggers its own SnapLogic pipeline, with load-based auto-scaling.",
+    chiffre: "~5,000 accounts · ~€1.5M lost per week of delay (IT director)",
+    tags: ["Python", "Requests", "AWS ECS", "DynamoDB", "S3", "XRay", "SnapLogic"],
+    parallele: true,
+  },
+  {
+    nom: "ARC Gestion et Recouvrement",
+    categorie: "Website, CRM & portal · Freelance",
+    periode: "08/2026 - 09/2026",
+    accroche:
+      "Platform for a debt collection firm: showcase website, mini-CRM to track reminders, client file import, AI-generated Word reports and a private client portal.",
+    tags: ["React", "FastAPI", "PostgreSQL", "Claude API", "Docker", "Traefik"],
+    lien: { href: "https://arc-gr.fr", label: "arc-gr.fr" },
+    schema: {
+      etapes: [
+        { titre: "File import", sous: "Excel / CSV" },
+        { titre: "Mini-CRM", sous: "Case Kanban board" },
+        { titre: "Reminders", sous: "Bulk emails" },
+        { titre: "Report", sous: "Word + Claude AI" },
+        { titre: "Client portal", sous: "Secure JWT access" },
+      ],
+    },
+  },
+  {
+    nom: "Matheva",
+    categorie: "Education platform · Freelance",
+    periode: "08/2026 - 09/2026",
+    accroche:
+      "Private maths tutoring platform: public diagnostic test, tutor area (students, sessions, payments) and parent area, with Google Calendar export.",
+    tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "iCal"],
+    schema: {
+      etapes: [
+        { titre: "Diagnostic test", sous: "Server-side scoring" },
+        { titre: "Waiting students", sous: "Captured leads" },
+        { titre: "Sessions", sous: "Calendar · topics" },
+        { titre: "Payments", sous: "Generated automatically" },
+        { titre: "Parent area", sous: "Personal link" },
+        { titre: "Google Calendar", sous: "iCal feed" },
+      ],
+    },
+  },
+];
+
+const PROJETS: Record<Lang, Projet[]> = { fr: PROJETS_FR, en: PROJETS_EN };
+
 export default function Projets() {
+  const lang = useLang();
+  const t = useT();
   return (
     <div className="flex w-full max-w-6xl flex-col gap-12 px-4">
       <div className="grid gap-6 md:grid-cols-2">
-        {PROJETS.map((p, i) => (
+        {PROJETS[lang].map((p, i) => (
           <Reveal key={p.nom} delay={p.parallele ? 0 : (i % 2) * 120} className={p.parallele ? "md:col-span-2" : undefined}>
             <article className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:shadow-2xl hover:shadow-violet-900/30">
               {/* Halo d'accent au survol */}
@@ -146,7 +242,7 @@ export default function Projets() {
                 </ul>
                 <div className="mt-auto flex flex-wrap gap-4 pt-6 text-sm font-medium">
                   <a href="#Parcours" className="text-neutral-300 hover:text-white transition-colors">
-                    Détail dans le parcours →
+                    {t("Détail dans le parcours", "Details in my experience")} →
                   </a>
                   {p.lien && (
                     <a

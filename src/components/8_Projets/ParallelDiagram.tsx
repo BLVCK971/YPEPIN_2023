@@ -1,6 +1,7 @@
 // Schéma "fan-out" d'ATMP : ~5 000 comptes répartis sur des tâches AWS ECS
 // indépendantes qui tournent en parallèle, puis une pipeline SnapLogic par
 // tâche vers le stockage et le monitoring. 100 % SVG (SMIL), sans JavaScript.
+import { Lang, useLang } from "../../i18n";
 
 type Boite = { x: number; y: number; w: number; h: number; titre: string; sous: string };
 
@@ -18,14 +19,38 @@ type Layout = {
 const CELL = 22;
 const PAS = 31;
 
-const SOURCE = { titre: "~5 000 comptes", sous: "NET ENTREPRISE" };
-const SNAP = { titre: "SnapLogic", sous: "1 pipeline par tâche" };
-const SORTIES = [
-  { titre: "DynamoDB · S3", sous: "Données & états" },
-  { titre: "XRay · mails", sous: "Monitoring & alertes" },
-];
+type Textes = {
+  source: { titre: string; sous: string };
+  snap: { titre: string; sous: string };
+  sorties: { titre: string; sous: string }[];
+  ecs: string;
+  aria: string;
+};
 
-const horizontal = (): Layout => {
+const TEXTES: Record<Lang, Textes> = {
+  fr: {
+    source: { titre: "~5 000 comptes", sous: "NET ENTREPRISE" },
+    snap: { titre: "SnapLogic", sous: "1 pipeline par tâche" },
+    sorties: [
+      { titre: "DynamoDB · S3", sous: "Données & états" },
+      { titre: "XRay · mails", sous: "Monitoring & alertes" },
+    ],
+    ecs: "AWS ECS · tâches en parallèle · auto-scaling",
+    aria: "Schéma ATMP : environ 5 000 comptes répartis sur des tâches AWS ECS indépendantes en parallèle, chacune déclenchant une pipeline SnapLogic vers DynamoDB et S3, avec monitoring XRay et alertes par mail",
+  },
+  en: {
+    source: { titre: "~5,000 accounts", sous: "NET ENTREPRISE" },
+    snap: { titre: "SnapLogic", sous: "1 pipeline per task" },
+    sorties: [
+      { titre: "DynamoDB · S3", sous: "Data & states" },
+      { titre: "XRay · emails", sous: "Monitoring & alerts" },
+    ],
+    ecs: "AWS ECS · parallel tasks · auto-scaling",
+    aria: "ATMP diagram: about 5,000 accounts spread over independent AWS ECS tasks running in parallel, each triggering a SnapLogic pipeline to DynamoDB and S3, with XRay monitoring and email alerts",
+  },
+};
+
+const horizontal = ({ source: SOURCE, snap: SNAP, sorties: SORTIES }: Textes): Layout => {
   const g = { x0: 262, y0: 72, cols: 10, rows: 5 };
   const xFin = g.x0 + g.cols * PAS - (PAS - CELL);
   return {
@@ -46,7 +71,7 @@ const horizontal = (): Layout => {
   };
 };
 
-const vertical = (): Layout => {
+const vertical = ({ source: SOURCE, snap: SNAP, sorties: SORTIES }: Textes): Layout => {
   const g = { x0: 91, y0: 132, cols: 6, rows: 6 };
   const yFin = g.y0 + g.rows * PAS - (PAS - CELL);
   return {
@@ -93,7 +118,7 @@ function Noeud({ b, accent }: { b: Boite; accent?: boolean }) {
   );
 }
 
-function Schema({ id, l }: { id: string; l: Layout }) {
+function Schema({ id, l, txt }: { id: string; l: Layout; txt: Textes }) {
   const { grille: g } = l;
   const gw = g.cols * PAS - (PAS - CELL);
   const gh = g.rows * PAS - (PAS - CELL);
@@ -104,7 +129,7 @@ function Schema({ id, l }: { id: string; l: Layout }) {
       viewBox={`0 0 ${l.W} ${l.H}`}
       className="flow-diagram w-full h-auto"
       role="img"
-      aria-label="Schéma ATMP : environ 5 000 comptes répartis sur des tâches AWS ECS indépendantes en parallèle, chacune déclenchant une pipeline SnapLogic vers DynamoDB et S3, avec monitoring XRay et alertes par mail"
+      aria-label={txt.aria}
     >
       <defs>
         <radialGradient id={`halo-${id}`}>
@@ -126,7 +151,7 @@ function Schema({ id, l }: { id: string; l: Layout }) {
         strokeDasharray="5 6"
       />
       <text x={g.x0 - 4} y={g.y0 - 13} fontSize={11} fill="#fbbf24" fontWeight={600}>
-        AWS ECS · tâches en parallèle · auto-scaling
+        {txt.ecs}
       </text>
 
       {/* Voies : de la source vers chaque rangée de tâches, puis SnapLogic */}
@@ -213,13 +238,14 @@ function Schema({ id, l }: { id: string; l: Layout }) {
 }
 
 export default function ParallelDiagram({ id }: { id: string }) {
+  const txt = TEXTES[useLang()];
   return (
     <>
       <div className="hidden sm:block">
-        <Schema id={id} l={horizontal()} />
+        <Schema id={id} l={horizontal(txt)} txt={txt} />
       </div>
       <div className="sm:hidden">
-        <Schema id={`${id}-m`} l={vertical()} />
+        <Schema id={`${id}-m`} l={vertical(txt)} txt={txt} />
       </div>
     </>
   );

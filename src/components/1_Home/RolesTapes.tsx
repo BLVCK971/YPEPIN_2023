@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
+import { Lang, useLang } from "../../i18n";
 
 // Rôles affichés un par un avec un effet de frappe (puis effacés).
 // Rendu serveur : premier rôle complet ; la ligne entière reste lisible
 // par les moteurs de recherche et les lecteurs d'écran (sr-only).
-const ROLES = ["Tech Lead", "Architecture .NET", "Mobile", "Data & IA", "Consultant IT"];
+const ROLES_LANG: Record<Lang, string[]> = {
+  fr: ["Tech Lead", "Architecture .NET", "Mobile", "Data & IA", "Consultant IT"],
+  en: ["Tech Lead", ".NET Architecture", "Mobile", "Data & AI", "IT Consultant"],
+};
 
 export default function RolesTapes() {
+  const ROLES = ROLES_LANG[useLang()];
   const [index, setIndex] = useState(0);
   const [texte, setTexte] = useState(ROLES[0]);
   const [efface, setEfface] = useState(false);
@@ -26,7 +31,7 @@ export default function RolesTapes() {
       );
     }
     return () => window.clearTimeout(t);
-  }, [texte, efface, index]);
+  }, [texte, efface, index, ROLES]);
 
   return (
     <p className="text-base md:text-xl font-medium text-neutral-300">

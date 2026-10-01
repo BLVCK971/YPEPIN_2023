@@ -6,12 +6,17 @@ import "./index.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Main from "./components/Main";
+import { LangProvider } from "./i18n";
 config.autoAddCss = false;
 
 const root = document.getElementById("root")!;
+// Même règle qu'au prérendu : /en/ = anglais, le reste = français
+const lang = window.location.pathname.startsWith("/en") ? "en" : "fr";
 const app = (
   <StrictMode>
-    <Main />
+    <LangProvider value={lang}>
+      <Main />
+    </LangProvider>
   </StrictMode>
 );
 

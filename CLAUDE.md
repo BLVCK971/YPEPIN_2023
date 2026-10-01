@@ -16,6 +16,11 @@
 - Contenu du CV : `src/components/3_DevStory/data/data.tsx` (expériences et missions),
   `src/components/5_Profil/Profil.tsx` (résumé, stacks), `src/components/6_Formation/Formation.tsx`.
   Le CV de Yoel fait foi : ne pas inventer de chiffres ou de réalisations absents du CV.
+- Version anglaise (`/en/`) : même composants, langue fournie par `src/i18n.tsx` (`useLang`, `useT`).
+  Traductions du parcours dans `src/components/3_DevStory/data/data.en.tsx` (le build échoue si une
+  tâche, un résultat ou une mission française n'y a pas son équivalent) ; textes d'interface traduits
+  directement dans chaque composant. Toute modification du contenu français doit être reportée en anglais.
+  Le CV téléchargeable reste en français.
 - CV téléchargeable : `public/cv/CV_Yoel_PEPIN.docx` (source Word) et `public/cv/CV_Yoel_PEPIN.pdf`.
   Le docx doit rester aligné avec le contenu du site : toute modification de `data.tsx`,
   `Profil.tsx` ou `Formation.tsx` doit être reportée dans le docx, puis le PDF régénéré
@@ -24,7 +29,7 @@
 ## SEO
 
 - `npm run build` prérend le HTML complet (`src/entry-server.tsx` + `scripts/prerender.mjs`) dans
-  `dist/index.html`, puis React l'hydrate : les composants doivent rester rendables côté serveur
+  `dist/index.html` et `dist/en/index.html` (métadonnées anglaises et hreflang générées par le script), puis React l'hydrate : les composants doivent rester rendables côté serveur
   (pas d'accès à `window`/`document` pendant le rendu, uniquement dans les effets).
 - Métadonnées (title, description, Open Graph, JSON-LD schema.org) dans `index.html` ;
   `public/sitemap.xml` (mettre à jour `lastmod`), `public/robots.txt`, `public/og-image.jpg`.

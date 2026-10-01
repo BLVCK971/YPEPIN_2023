@@ -1,6 +1,7 @@
 // Schéma d'architecture animé : étapes disposées en serpentin, ligne qui
 // s'écoule et "particules" de données qui traversent la chaîne.
 // 100 % SVG (animateMotion) : rendu serveur possible, aucun JavaScript.
+import { useT } from "../../i18n";
 
 export type Etape = { titre: string; sous: string };
 
@@ -52,6 +53,7 @@ const keyTimes = (f: number) => {
 };
 
 function Schema({ id, etapes, colonnes = 3, cadre }: Props) {
+  const t = useT();
   // Largeur 540 (3-4 colonnes) ou 360 en 2 colonnes : le texte reste lisible sur mobile
   const W = colonnes <= 2 ? COL_W * 2 : COL_W * 3;
   const colW = W / colonnes;
@@ -83,7 +85,7 @@ function Schema({ id, etapes, colonnes = 3, cadre }: Props) {
       viewBox={`0 0 ${W} ${H}`}
       className="flow-diagram w-full h-auto"
       role="img"
-      aria-label={`Schéma : ${etapes.map((e) => e.titre).join(" → ")}`}
+      aria-label={`${t("Schéma :", "Diagram:")} ${etapes.map((e) => e.titre).join(" → ")}`}
     >
       <defs>
         <linearGradient id={`grad-${id}`} x1="0" x2="1" y1="0" y2="0">

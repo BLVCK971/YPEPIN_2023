@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 import Company from "./components/Company";
 import Mission from "./components/Mission";
-import { companies } from "./data/data";
+import { companies as companiesFr } from "./data/data";
+import { companies as companiesEn } from "./data/data.en";
+import { useLang } from "../../i18n";
 import Reveal from "../ui/Reveal";
 
 // Frise du parcours : une ligne verticale se dessine au défilement et chaque
@@ -10,6 +12,7 @@ export default function Parcours() {
   const frise = useRef<HTMLDivElement>(null);
   const trait = useRef<HTMLDivElement>(null);
   const points = useRef<(HTMLSpanElement | null)[]>([]);
+  const companies = useLang() === "en" ? companiesEn : companiesFr;
 
   useEffect(() => {
     const el = frise.current;

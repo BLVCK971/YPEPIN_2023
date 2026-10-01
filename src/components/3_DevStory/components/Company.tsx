@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ICompany } from "../data/interfaces";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { cn } from "../../ui/utils/cn";
+import { useT } from "../../../i18n";
 
 // Carte d'une expérience : style unique pour toutes les entreprises (le logo
 // porte l'identité), missions repliées par défaut.
@@ -11,6 +12,7 @@ export const Company: React.FC<{
 }> = ({ company, children }) => {
   const { nom, dates, contexte, postes, logos, missions } = company;
   const [ouvert, setOuvert] = useState(false);
+  const t = useT();
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl">
@@ -44,7 +46,7 @@ export const Company: React.FC<{
                 >
                   <img
                     src={logo.src}
-                    alt={`Logo ${nom}`}
+                    alt={t(`Logo ${nom}`, `${nom} logo`)}
                     loading="lazy"
                     className={cn("w-auto object-contain", logo.surFondClair ? "h-10 md:h-12" : "h-12 md:h-16")}
                   />
@@ -60,10 +62,10 @@ export const Company: React.FC<{
           type="button"
           onClick={() => setOuvert((o) => !o)}
           aria-expanded={ouvert}
-          aria-label={ouvert ? "Replier les missions" : "Déplier les missions"}
+          aria-label={ouvert ? t("Replier les missions", "Collapse missions") : t("Déplier les missions", "Expand missions")}
           className="mt-5 flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/15"
         >
-          {ouvert ? "Masquer les missions" : `Voir les missions (${missions.length})`}
+          {ouvert ? t("Masquer les missions", "Hide missions") : `${t("Voir les missions", "View missions")} (${missions.length})`}
           <span className={cn("inline-block transition-transform duration-300", ouvert && "rotate-90")}>›</span>
         </button>
 
