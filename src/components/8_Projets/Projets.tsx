@@ -13,6 +13,8 @@ type Projet = {
   chiffre?: string;
   tags: string[];
   lien?: { href: string; label: string };
+  // Démo interactive (public/demos/, données fictives)
+  demo?: string;
   schema?: { etapes: Etape[]; colonnes?: number; cadre?: string };
   // Schéma spécifique (fan-out ATMP) et carte pleine largeur
   parallele?: boolean;
@@ -27,6 +29,7 @@ const PROJETS_FR: Projet[] = [
       "Assistant juridique IA 100 % local pour un cabinet d'avocats : il analyse les pièces d'un dossier sans qu'aucune donnée ne sorte de la machine, et ses réponses citent leurs sources.",
     chiffre: "~650 tests · 100 % hors ligne",
     tags: ["Python", "FastAPI", "Qdrant", "Ollama", "Qwen 3.5", "RAG"],
+    demo: "/demos/aivocat/",
     schema: {
       colonnes: 4,
       cadre: "PC du cabinet · 100 % hors ligne",
@@ -72,6 +75,43 @@ const PROJETS_FR: Projet[] = [
     parallele: true,
   },
   {
+    nom: "HellBoy",
+    categorie: "Dataset IA · DREVIO Phase 2",
+    periode: "Depuis 09/2026",
+    accroche:
+      "Plateforme qui fabrique le jeu d'entraînement du futur modèle DREVIO : photos de dégâts adossées au prix réellement facturé, lues depuis les archives des carrossiers, annotées puis relues.",
+    tags: ["TypeScript", "Fastify", "React 19", "PostgreSQL", "TanStack Query"],
+    demo: "/demos/hellboy/",
+    schema: {
+      etapes: [
+        { titre: "Archive garage", sous: "ZIP photos + PDF" },
+        { titre: "Lecture du devis", sous: "Contrôle au centime" },
+        { titre: "Annotation", sous: "Zones sur la photo" },
+        { titre: "Relecture", sous: "Droits par rôle" },
+        { titre: "Dataset", sous: "Export versionné" },
+      ],
+    },
+  },
+  {
+    nom: "WONDO",
+    categorie: "Application mobile · Freelance",
+    periode: "Depuis 08/2026",
+    accroche:
+      "Application iOS / Android pour les clubs d'arts martiaux de Guadeloupe : planning, appel, progression et abonnements côté adhérents comme côté encadrement, avec inscription en ligne et back-office web.",
+    tags: ["React Native", "Expo", "FastAPI", "PostgreSQL", "EAS"],
+    demo: "/demos/wondo/",
+    schema: {
+      etapes: [
+        { titre: "Inscription", sous: "Formulaire en ligne" },
+        { titre: "Planning", sous: "Cours récurrents" },
+        { titre: "Appel", sous: "Quatre statuts" },
+        { titre: "Progression", sous: "Niveaux · techniques" },
+        { titre: "Paiements", sous: "Formules · abonnements" },
+        { titre: "Back-office", sous: "Registre générique" },
+      ],
+    },
+  },
+  {
     nom: "ARC Gestion et Recouvrement",
     categorie: "Site, CRM & portail · Freelance",
     periode: "08/2026 - 09/2026",
@@ -79,6 +119,7 @@ const PROJETS_FR: Projet[] = [
       "Plateforme d'un cabinet de recouvrement : site vitrine, mini-CRM de suivi des relances, import des fichiers clients, comptes rendus Word générés avec l'IA et portail client privé.",
     tags: ["React", "FastAPI", "PostgreSQL", "API Claude", "Docker", "Traefik"],
     lien: { href: "https://arc-gr.fr", label: "arc-gr.fr" },
+    demo: "/demos/arc-gr/",
     schema: {
       etapes: [
         { titre: "Import fichiers", sous: "Excel / CSV" },
@@ -96,6 +137,7 @@ const PROJETS_FR: Projet[] = [
     accroche:
       "Plateforme de cours particuliers de mathématiques : test diagnostique public, espace professeur (élèves, séances, paiements) et espace parent, avec export Google Calendar.",
     tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "iCal"],
+    demo: "/demos/matheva/",
     schema: {
       etapes: [
         { titre: "Test diagnostique", sous: "Scoring serveur" },
@@ -118,6 +160,7 @@ const PROJETS_EN: Projet[] = [
       "100% local AI legal assistant for a law firm: it analyses the documents of a case file without any data leaving the machine, and its answers cite their sources.",
     chiffre: "~650 tests · 100% offline",
     tags: ["Python", "FastAPI", "Qdrant", "Ollama", "Qwen 3.5", "RAG"],
+    demo: "/demos/aivocat/",
     schema: {
       colonnes: 4,
       cadre: "Law firm's PC · 100% offline",
@@ -163,6 +206,43 @@ const PROJETS_EN: Projet[] = [
     parallele: true,
   },
   {
+    nom: "HellBoy",
+    categorie: "AI dataset · DREVIO Phase 2",
+    periode: "Since 09/2026",
+    accroche:
+      "Platform building the training set of DREVIO's future model: damage photos tied to the price actually invoiced, read from body shops' archives, annotated then reviewed.",
+    tags: ["TypeScript", "Fastify", "React 19", "PostgreSQL", "TanStack Query"],
+    demo: "/demos/hellboy/",
+    schema: {
+      etapes: [
+        { titre: "Garage archive", sous: "ZIP photos + PDF" },
+        { titre: "Quote reading", sous: "Checked to the cent" },
+        { titre: "Annotation", sous: "Zones on the photo" },
+        { titre: "Review", sous: "Role-based rights" },
+        { titre: "Dataset", sous: "Versioned export" },
+      ],
+    },
+  },
+  {
+    nom: "WONDO",
+    categorie: "Mobile app · Freelance",
+    periode: "Since 08/2026",
+    accroche:
+      "iOS / Android app for martial arts clubs in Guadeloupe: schedule, attendance, progress and memberships for members and staff alike, with online registration and a web back office.",
+    tags: ["React Native", "Expo", "FastAPI", "PostgreSQL", "EAS"],
+    demo: "/demos/wondo/",
+    schema: {
+      etapes: [
+        { titre: "Registration", sous: "Online form" },
+        { titre: "Schedule", sous: "Recurring classes" },
+        { titre: "Attendance", sous: "Four statuses" },
+        { titre: "Progress", sous: "Levels · techniques" },
+        { titre: "Payments", sous: "Plans · memberships" },
+        { titre: "Back office", sous: "Generic registry" },
+      ],
+    },
+  },
+  {
     nom: "ARC Gestion et Recouvrement",
     categorie: "Website, CRM & portal · Freelance",
     periode: "08/2026 - 09/2026",
@@ -170,6 +250,7 @@ const PROJETS_EN: Projet[] = [
       "Platform for a debt collection firm: showcase website, mini-CRM to track reminders, client file import, AI-generated Word reports and a private client portal.",
     tags: ["React", "FastAPI", "PostgreSQL", "Claude API", "Docker", "Traefik"],
     lien: { href: "https://arc-gr.fr", label: "arc-gr.fr" },
+    demo: "/demos/arc-gr/",
     schema: {
       etapes: [
         { titre: "File import", sous: "Excel / CSV" },
@@ -187,6 +268,7 @@ const PROJETS_EN: Projet[] = [
     accroche:
       "Private maths tutoring platform: public diagnostic test, tutor area (students, sessions, payments) and parent area, with Google Calendar export.",
     tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "iCal"],
+    demo: "/demos/matheva/",
     schema: {
       etapes: [
         { titre: "Diagnostic test", sous: "Server-side scoring" },
@@ -240,7 +322,18 @@ export default function Projets() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-auto flex flex-wrap gap-4 pt-6 text-sm font-medium">
+                <div className="mt-auto flex flex-wrap items-center gap-4 pt-6 text-sm font-medium">
+                  {p.demo && (
+                    <a
+                      href={p.demo}
+                      target="_blank"
+                      rel="noopener"
+                      className="rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-1.5 text-cyan-200 transition-colors hover:bg-cyan-400/20 hover:text-white"
+                      title={t("Application réelle, données fictives", "Real application (French interface), sample data")}
+                    >
+                      {t("Essayer la démo", "Try the demo")} ↗
+                    </a>
+                  )}
                   <a href="#Parcours" className="text-neutral-300 hover:text-white transition-colors">
                     {t("Détail dans le parcours", "Details in my experience")} →
                   </a>

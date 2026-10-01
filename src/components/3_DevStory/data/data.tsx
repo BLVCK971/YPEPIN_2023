@@ -67,6 +67,7 @@ import {
   faShareFromSquare,
   faShieldHalved,
   faSitemap,
+  faTable,
   faTrophy,
   faUser,
   faUserGroup,
@@ -74,9 +75,37 @@ import {
   faVault,
   faVial,
   faWandMagicSparkles,
+  faFileZipper,
+  faCrosshairs,
+  faFileExport,
+  faTags,
+  faUserCheck,
+  faStore,
 } from "@fortawesome/free-solid-svg-icons";
 
 /// DREVIO .............
+
+export const hellboy: IMission = {
+  nom: "DREVIO Phase 2 - HellBoy, plateforme de constitution du dataset d'entraînement",
+  periode: "09/2026 - aujourd'hui",
+  contexte:
+    "Pour entraîner demain un modèle de reconnaissance des dégâts de carrosserie et d'estimation du coût de réparation, DREVIO a besoin de photos adossées au prix réellement facturé. HellBoy fabrique cette matière première : chaque dossier validé (photos, dégâts localisés, prix facturé) devient un échantillon d'entraînement.",
+  taches: [
+    { icone: faFileZipper, texte: "Import des archives transmises par les carrossiers (ZIP : photos et estimation de travaux en PDF) : lecture du véhicule, des taux horaires, des pièces et des opérations, avec contrôle que le total reconstitué retombe au centime sur le total HT imprimé" },
+    { icone: faTags, texte: "Vocabulaire fermé (32 zones de carrosserie, 13 natures de dégât, 3 gravités) dans un paquet de domaine partagé par l'API et le dashboard, imposé en base par clés étrangères" },
+    { icone: faCrosshairs, texte: "Atelier photos et annotation : saisie des dégâts directement sur la photo, boîtes englobantes normalisées dans le repère du fichier, déplacement et redimensionnement des zones" },
+    { icone: faCheckDouble, texte: "Circuit de relecture (brouillon, à relire, validé ou écarté), dossiers validés figés, droits par rôle (admin, relecteur, annotateur, lecteur) appliqués par l'API" },
+    { icone: faArrowsRotate, texte: "Reprise en lecture seule des dossiers DREVIO dont l'expertise humaine est validée : seul le chiffrage humain est repris, pour ne pas apprendre au modèle à imiter l'IA actuelle" },
+    { icone: faFileExport, texte: "Export versionné du dataset (dossiers validés uniquement, montants en centimes entiers, contexte de prix)" },
+    { icone: faDocker, texte: "Déploiement Docker sur le VPS de DREVIO derrière Traefik, avec sa propre base et son propre sous-domaine" },
+  ],
+  techs: [
+    { icone: faCode, texte: "TypeScript, Node.js, Fastify (monorepo npm workspaces)" },
+    { icone: faReact, texte: "React 19, Vite, TanStack Query, Zustand" },
+    { icone: faDatabase, texte: "PostgreSQL" },
+    { icone: faDocker, texte: "Docker, Traefik, GitHub Actions" },
+  ],
+};
 
 export const drevioMobile: IMission = {
   chiffreCle: "140+ PR relues · 60+ lots livrables",
@@ -165,6 +194,33 @@ export const aivocat: IMission = {
     { icone: faDatabase, texte: "Qdrant (base vectorielle)" },
     { icone: faImages, texte: "RapidOCR" },
     { icone: faGears, texte: "Nuitka, PowerShell" },
+  ],
+};
+
+export const wondo: IMission = {
+  nom: "WONDO - Application mobile de gestion de clubs d'arts martiaux",
+  periode: "08/2026 - aujourd'hui",
+  contexte:
+    "Application iOS / Android destinée aux clubs d'arts martiaux de Guadeloupe : chaque adhérent y retrouve son planning, sa progression et son abonnement, l'encadrement gère le club depuis son téléphone ou depuis un back-office web. Premier club équipé : Song Long.",
+  taches: [
+    { icone: faMobileScreen, texte: "Application Expo / React Native à trois espaces (élève, instructeur, admin) avec garde de rôle, et sélecteur de vue et de club pour l'administrateur de la plateforme" },
+    { icone: faCalendarDays, texte: "Élève : planning et réservations, abonnement et formules, progression par discipline (niveaux, techniques), actualités du club" },
+    { icone: faUserCheck, texte: "Instructeur : feuille d'appel à quatre statuts (semaine, jour puis cours), recherche d'élèves et fiche élève complète" },
+    { icone: faUsersGear, texte: "Admin : membres et rôles, cours récurrents (modifier une série ne touche que les séances à venir), encaissement des paiements depuis le téléphone, statistiques" },
+    { icone: faClipboardList, texte: "Inscription en ligne sur le modèle du formulaire du club (photo par caméra ou fichier, e-mail récapitulatif, export Excel) ; la validation envoie l'accès à l'élève et active son abonnement" },
+    { icone: faTable, texte: "Back-office web générique : tableaux et formulaires générés à partir d'un registre de ressources déclaré côté API, cloisonnement des données par club" },
+    { icone: faDatabase, texte: "API FastAPI / PostgreSQL : adhésions calées sur l'année scolaire, fuseau horaire de la Guadeloupe, suppression du compte et des données personnelles depuis l'application" },
+    { icone: faStore, texte: "Publication : builds EAS (TestFlight, APK et Google Play), mises à jour OTA, fiche App Store en cours de soumission ; déploiement Docker / Traefik par GitHub Actions" },
+  ],
+  techs: [
+    { icone: faMobileScreen, texte: "React Native 0.81, Expo SDK 54 (Expo Router, EAS Build, EAS Update)" },
+    { icone: faReact, texte: "TypeScript, TanStack Query, Zustand, React Hook Form + Zod ; back-office React, Vite, Tailwind" },
+    { icone: faPython, texte: "FastAPI, SQLAlchemy, Alembic" },
+    { icone: faDatabase, texte: "PostgreSQL" },
+    { icone: faDocker, texte: "Docker, Traefik, GitHub Actions" },
+  ],
+  collabs: [
+    { icone: faUser, texte: "JP (GPLK), Commanditaire" },
   ],
 };
 
@@ -596,21 +652,21 @@ export const companies: ICompany[] = [
       { icone: faServer, texte: "Consultant IT" },
     ],
     logos: [{ src: "/Icekera.svg" }],
-    missions: [sesam, arcgr, matheva, valado, aivocat],
+    missions: [sesam, wondo, arcgr, matheva, valado, aivocat],
   },
   {
     id: "Drevio",
     nom: "DREVIO",
     dates: "Depuis 05/2026",
     contexte:
-      "Phase 1 terminée en août 2026, application mobile en cours. Une phase 2 démarre en novembre 2026.",
+      "Phase 1 terminée en août 2026, application mobile en cours. Phase 2 amorcée en septembre 2026 avec HellBoy (dataset d'entraînement), lancement complet en novembre 2026.",
     postes: [
       { icone: faPeopleGroup, texte: "Tech Lead" },
       { icone: faCode, texte: "Lead Developer" },
       { icone: faSitemap, texte: "Architecte logiciel Full Stack" },
     ],
     logos: [{ src: "/logos/DREVIO.png" }],
-    missions: [drevioMobile, drevio],
+    missions: [hellboy, drevioMobile, drevio],
   },
   {
     id: "Proelan",

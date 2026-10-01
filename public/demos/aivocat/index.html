@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta name="robots" content="noindex, nofollow" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Démo · Aivocat</title>
+<script>
+  // Thème avant le premier rendu, pour éviter un éclair clair en mode sombre.
+  (function () {
+    try {
+      var t = localStorage.getItem("aivocat.theme");
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) document.documentElement.dataset.theme = "dark";
+    } catch (e) { /* navigation privée */ }
+  })();
+</script>
+<link rel="stylesheet" href="/demos/aivocat/style.css?v=0.17.1">
+</head>
+<body>
+<div id="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span class="brand-name" id="brand-name">Aivocat</span>
+    </div>
+    <div class="top-actions">
+      <div class="models-wrap" id="models-wrap">
+        <button class="models" id="models-badge" type="button" title="État des modèles">
+          <span class="dot dot-wait" id="models-dot"></span>
+          <span id="models-text">Chargement…</span>
+        </button>
+        <div class="models-pop" id="models-pop"></div>
+      </div>
+      <button class="btn btn-ghost icon" id="btn-theme" type="button" title="Thème clair / sombre">☾</button>
+    </div>
+  </header>
+
+  <div class="status-line license-banner" id="license-banner" role="status" hidden></div>
+
+  <div class="jobs-bar" id="jobs-bar" hidden title="Cliquer pour ouvrir ce dossier">
+    <span id="jobs-text"></span>
+    <div class="track"><div class="fill" id="jobs-fill"></div></div>
+  </div>
+
+  <nav class="pagenav" id="pagenav" aria-label="Pages">
+    <div class="nav-group">
+      <p class="nav-title">Travail</p>
+      <button class="nav-item active" type="button" data-page="dossiers"><span class="nav-icon" aria-hidden="true">▤</span>Dossiers</button>
+    </div>
+    <div class="nav-group">
+      <p class="nav-title">Références</p>
+      <button class="nav-item" type="button" data-page="bibliotheque"><span class="nav-icon" aria-hidden="true">▥</span>Bibliothèque</button>
+    </div>
+  </nav>
+
+  <aside class="sidebar">
+    <div class="side-head">
+      <h2>Dossiers</h2>
+    </div>
+    <button class="btn btn-primary btn-add" id="btn-add-case" type="button">＋ Ajouter un dossier</button>
+    <ul class="case-list" id="case-list"></ul>
+  </aside>
+
+  <main class="main">
+
+    <div class="empty" id="empty-state">
+      <p class="empty-title">Bienvenue.</p>
+      <p>Sélectionnez un dossier, ou ajoutez-en un.</p>
+    </div>
+
+    <section id="view-add" class="view-add" hidden>
+      <h2>Ajouter un dossier</h2>
+      <p class="muted small">Les pièces restent où elles sont : l'assistant les lit sur place et n'y écrit jamais.</p>
+      <form id="form-add" class="panel" autocomplete="off">
+        <label>Nom du dossier
+          <input type="text" id="add-label" placeholder="Durand c/ Martin" maxlength="200" required>
+        </label>
+
+        <div class="choice" id="add-source">
+          <label>
+            <input type="radio" name="source" value="existing" checked>
+            <span>Les pièces sont déjà dans un dossier ou sur une clé
+              <span class="sub">Choisissez le dossier ou la clé. L'analyse démarre tout de suite.</span></span>
+          </label>
+          <label id="add-local-choice">
+            <input type="radio" name="source" value="local">
+            <span>Je déposerai les pièces dans l'application
+              <span class="sub">Un dossier est créé sur cet ordinateur ; vous y déposerez les fichiers ensuite.</span></span>
+          </label>
+        </div>
+
+        <div id="add-existing">
+          <label>Où sont les pièces
+            <span class="path-row">
+              <input type="text" id="add-documents" list="volume-roots" placeholder="E:\  ou  D:\Dossiers\Durand">
+              <button class="btn" type="button" id="btn-pick-documents" title="Choisir un dossier ou une clé dans une fenêtre">Parcourir…</button>
+            </span>
+          </label>
+          <div class="keys-hint" id="key-chips"></div>
+          <ul class="orphan-list" id="orphan-list"></ul>
+          <datalist id="volume-roots"></datalist>
+          <datalist id="writable-roots"></datalist>
+        </div>
+
+        <details class="advanced">
+          <summary>Options avancées</summary>
+          <label>Identifiant technique <span class="muted">(déduit du nom)</span>
+            <input type="text" id="add-case-id" placeholder="DURAND_C_MARTIN" pattern="[A-Za-z0-9][A-Za-z0-9_\-]{0,63}">
+          </label>
+          <label id="add-memory-field">Où ranger les données de l'assistant <span class="muted" id="add-memory-hint"></span>
+            <span class="path-row">
+              <input type="text" id="add-memory" list="writable-roots" placeholder="emplacement par défaut">
+              <button class="btn" type="button" id="btn-pick-memory" title="Choisir un dossier ou une clé dans une fenêtre">Parcourir…</button>
+            </span>
+          </label>
+        </details>
+
+        <div class="add-actions">
+          <button class="btn btn-primary" type="submit" id="btn-add-submit">Ouvrir et analyser</button>
+          <button class="btn btn-ghost" type="button" id="btn-add-cancel">Annuler</button>
+          <span class="muted small" id="add-status"></span>
+        </div>
+      </form>
+    </section>
+
+    <section id="view-library" class="view-library" hidden>
+      <div class="library-head">
+        <h2>Bibliothèque</h2>
+        <p class="muted small">Les recueils de référence (lois, codes, documents du cabinet). Un recueil chargé est consulté pour tous les dossiers. Déposez un document ou un dossier de documents dans <code id="library-dir"></code>, puis analysez-le ici.</p>
+      </div>
+      <div class="library-list" id="library-list"></div>
+    </section>
+
+    <div id="case-view" hidden>
+      <div class="case-head">
+        <h2 id="case-title">—</h2>
+      </div>
+
+      <section class="panel chat-panel" id="panel-question">
+        <div class="thread-bar">
+          <select id="conversation-select" title="Conversations enregistrées avec ce dossier"></select>
+          <button class="btn btn-ghost mini" type="button" id="btn-new-thread" title="Commence une nouvelle conversation ; les précédentes restent consultables">Nouvelle conversation</button>
+          <button class="btn btn-ghost mini" type="button" id="btn-delete-thread" title="Supprime cette conversation des données de l'assistant" hidden>Supprimer</button>
+        </div>
+        <div class="thread" id="thread" hidden></div>
+        <form id="form-ask">
+          <textarea id="question" rows="2" placeholder="Votre question… (Ctrl+Entrée pour envoyer)"></textarea>
+          <div class="ask-row">
+            <button class="btn btn-primary" type="submit" id="btn-ask">Envoyer</button>
+            <button class="btn" type="button" id="btn-references" title="Passages précis des pièces, avec leurs extraits">Rechercher des références</button>
+            <button class="btn btn-ghost" type="button" id="btn-overview" title="Présentation du dossier en un paragraphe">Résumer le dossier</button>
+            <span class="muted small" id="ask-status"></span>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <aside class="dashboard" id="dashboard" hidden>
+    <section class="step" id="step-pieces">
+      <header>
+        <span class="step-title">Pièces</span>
+        <span class="step-state" id="step-pieces-state"></span>
+      </header>
+      <div class="status-line usb-banner compact" id="usb-banner" hidden></div>
+      <div class="status-line warn" id="pending-status" hidden></div>
+      <div class="dropzone compact" id="dropzone" title="PDF (même scannés), Word, Excel, PowerPoint, courriels, images">
+        <p><strong>Déposez des pièces ici</strong></p>
+        <div class="drop-actions">
+          <label class="btn mini">Fichiers<input type="file" id="input-files" multiple hidden></label>
+          <label class="btn mini">Répertoire<input type="file" id="input-folder" webkitdirectory multiple hidden></label>
+        </div>
+      </div>
+      <details id="docs-details">
+        <summary id="docs-summary">Voir les pièces</summary>
+        <div class="table-wrap">
+          <table class="docs" id="docs-table">
+            <thead>
+              <tr><th>Pièce</th><th>Statut</th><th>Pages</th><th>Détail</th></tr>
+            </thead>
+            <tbody id="docs-body"></tbody>
+          </table>
+        </div>
+        <p class="muted small" id="docs-empty" hidden>Aucune pièce analysée pour l'instant.</p>
+      </details>
+    </section>
+
+    <section class="step" id="step-index">
+      <header>
+        <span class="step-title">Analyse des pièces</span>
+        <span class="step-state" id="step-index-state"></span>
+      </header>
+      <div class="actions left">
+        <button class="btn btn-primary mini" id="btn-index" title="Lit les pièces nouvelles ou modifiées et prépare les réponses">Analyser les pièces</button>
+        <button class="btn mini" id="btn-reindex" title="Relit toutes les pièces depuis le début">Tout réanalyser</button>
+      </div>
+      <div class="status-line" id="ingest-status" hidden></div>
+    </section>
+
+    <section class="step" id="step-ask">
+      <header>
+        <span class="step-title">Questions</span>
+        <span class="step-state" id="step-ask-state"></span>
+      </header>
+      <details class="brief" id="brief-box" open>
+        <summary>Fiche du dossier</summary>
+        <div class="answer-text brief-text" id="brief-text"></div>
+        <div class="muted small" id="brief-meta"></div>
+        <div class="actions left">
+          <button class="btn mini" id="btn-brief" title="Rédige, ou met à jour, la fiche à partir des pièces analysées">Mettre à jour la fiche</button>
+          <button class="btn mini" id="btn-brief-open" type="button" title="La fiche en pleine page : lisible, copiable, imprimable" disabled>Pleine page</button>
+          <button class="btn mini" id="btn-brief-copy" type="button" title="Copie la fiche en texte dans le presse-papiers" disabled>Copier</button>
+          <span class="muted small" id="brief-status"></span>
+        </div>
+      </details>
+    </section>
+
+    <div class="danger">
+      <button class="btn mini" id="btn-close-case" title="Relâche le dossier : les clés peuvent être retirées" hidden>Fermer le dossier</button>
+      <button class="btn btn-warn mini" id="btn-clear-index" title="Efface l'analyse ; les pièces sont conservées">Effacer l'analyse</button>
+      <button class="btn btn-danger mini" id="btn-delete-case" title="Supprime le dossier ET ses pièces">Supprimer le dossier</button>
+    </div>
+  </aside>
+
+  <footer class="footer" id="footer" hidden>
+    <details id="logs-details" open>
+      <summary>Journal technique <span class="muted small">(jamais de contenu de pièce)</span></summary>
+      <pre class="logs" id="logs"></pre>
+    </details>
+  </footer>
+
+  <!-- La fiche du dossier en pleine page : sélectionnable, copiable, imprimable. -->
+  <div class="fiche-overlay" id="fiche-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="fiche-title">
+    <article class="fiche" id="fiche">
+      <header class="fiche-head">
+        <div>
+          <h2 id="fiche-title">Fiche du dossier</h2>
+          <p class="muted small" id="fiche-meta"></p>
+        </div>
+        <div class="fiche-actions">
+          <button class="btn mini" id="fiche-copy" type="button" title="Copie le texte de la fiche dans le presse-papiers">Copier le texte</button>
+          <a class="btn mini" id="fiche-download" href="#" download title="Enregistre la fiche en fichier texte">Enregistrer (.txt)</a>
+          <button class="btn mini" id="fiche-print" type="button" title="Imprime la fiche seule, ou l'enregistre en PDF">Imprimer / PDF</button>
+          <button class="btn mini" id="fiche-close" type="button" title="Fermer (Échap)">Fermer</button>
+        </div>
+      </header>
+      <div class="answer-text fiche-text" id="fiche-text"></div>
+      <section class="fiche-sources" id="fiche-sources"></section>
+      <p class="muted small fiche-foot">Rédigée automatiquement à partir des pièces analysées : à vérifier avant tout usage.</p>
+    </article>
+  </div>
+  <div class="toasts" id="toasts"></div>
+</div>
+<script src="/demos/aivocat/demo-mock.js"></script>
+<script src="/demos/aivocat/app.js?v=0.17.1"></script>
+</body>
+</html>

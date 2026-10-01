@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /demos/
 
 Sitemap: https://ypepin.com/sitemap.xml

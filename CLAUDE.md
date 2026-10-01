@@ -26,6 +26,20 @@
   `Profil.tsx` ou `Formation.tsx` doit être reportée dans les deux docx (FR et EN), puis les PDF régénérés
   (`soffice --headless --convert-to pdf public/cv/CV_Yoel_PEPIN.docx --outdir public/cv`, idem `_EN`).
 
+## Démos interactives (`/demos/`)
+
+- `public/demos/<nom>/` : vrais fronts de projets, compilés tels quels depuis les dépôts voisins
+  (jamais modifiés) avec une fausse API dans le navigateur (`demos/<nom>/mock.ts`, harnais
+  `demos/shared/runtime.ts`) : données fictives, aucun appel serveur. Démos : `arc-gr` (../ARC_GR),
+  `matheva` (../Matheva), `hellboy` (../HellBoy/apps/web), `aivocat` (../avocat-local-ai/app/ui,
+  interface HTML copiée), `wondo` (../DojoApp, export web Expo depuis une copie temporaire).
+- Build manuel, hors `npm run build` (la CI n'a pas les dépôts voisins) : `npm run demos`
+  (ou `npm run demos -- arc-gr`), `npm run demos:check` (types des fausses API), puis commiter
+  `public/demos/`. Essai local : `node demos/serve.mjs` (http://localhost:5180/demos/arc-gr/, même
+  fallback SPA que nginx). Une nouvelle démo doit aussi être ajoutée à la regex de `deploy/nginx.conf`.
+- Marques des clients affichées avec leur accord ; toutes les autres données (personnes, dossiers,
+  photos, pièces) doivent rester fictives. Démos en `noindex` (meta, en-tête nginx et robots.txt).
+
 ## SEO
 
 - `npm run build` prérend le HTML complet (`src/entry-server.tsx` + `scripts/prerender.mjs`) dans

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/demos/matheva/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2F6B4F" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16301F" media="(prefers-color-scheme: dark)" />
+
+    <title>Démo · Matheva | Cours de mathématiques avec Maeva Lesi</title>
+    <meta
+      name="description"
+      content="Matheva, cours et accompagnement en mathématiques avec Maeva Lesi : une pédagogie personnalisée pour progresser et reprendre confiance en maths."
+    />
+    <meta name="author" content="Matheva — Maeva Lesi" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="Matheva | Cours de mathématiques avec Maeva Lesi" />
+    <meta
+      property="og:description"
+      content="Une pédagogie personnalisée pour progresser en mathématiques et reprendre confiance, avec Maeva Lesi."
+    />
+    <meta property="og:site_name" content="Matheva" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Applique le thème (clair/sombre) avant le premier rendu pour éviter tout flash. -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('matheva-theme')
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          var dark = stored ? stored === 'dark' : prefersDark
+          document.documentElement.classList.toggle('dark', dark)
+        } catch (e) {}
+      })()
+    </script>
+    <script type="module" crossorigin src="/demos/matheva/assets/index-B3ch-Vo5.js"></script>
+    <link rel="stylesheet" crossorigin href="/demos/matheva/assets/index-DbuhRfkv.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

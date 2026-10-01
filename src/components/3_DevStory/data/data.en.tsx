@@ -59,6 +59,28 @@ const traduire = (m: IMission, t: Traduction): IMission => {
 
 /// DREVIO .............
 
+const hellboy = traduire(fr.hellboy, {
+  nom: "DREVIO Phase 2 - HellBoy, training dataset platform",
+  periode: "09/2026 - present",
+  contexte:
+    "To train a future model that recognises bodywork damage and estimates repair costs, DREVIO needs photos tied to the price actually invoiced. HellBoy produces this raw material: every validated case (photos, located damage, invoiced price) becomes a training sample.",
+  taches: [
+    "Import of the archives sent by body shops (ZIP: photos and repair estimate as PDF): reading of the vehicle, hourly rates, parts and operations, with a check that the rebuilt total matches the printed pre-tax total to the cent",
+    "Closed vocabulary (32 body zones, 13 damage types, 3 severities) in a domain package shared by the API and the dashboard, enforced in the database through foreign keys",
+    "Photo and annotation workshop: damage entered directly on the photo, bounding boxes normalised in the file's coordinate system, zones that can be moved and resized",
+    "Review workflow (draft, to review, validated or rejected), frozen validated cases, role-based permissions (admin, reviewer, annotator, viewer) enforced by the API",
+    "Read-only import of DREVIO cases whose human assessment is validated: only the human costing is taken, so the model does not learn to imitate the current AI",
+    "Versioned dataset export (validated cases only, amounts in integer cents, price context)",
+    "Docker deployment on DREVIO's VPS behind Traefik, with its own database and subdomain",
+  ],
+  techs: [
+    "TypeScript, Node.js, Fastify (npm workspaces monorepo)",
+    "React 19, Vite, TanStack Query, Zustand",
+    "PostgreSQL",
+    "Docker, Traefik, GitHub Actions",
+  ],
+});
+
 const drevioMobile = traduire(fr.drevioMobile, {
   chiffreCle: "140+ PRs reviewed · 60+ deliverable work packages",
   nom: "DREVIO Mobile - Tech Lead of the iOS / Android app",
@@ -126,6 +148,31 @@ const aivocat = traduire(fr.aivocat, {
     "RapidOCR",
     "Nuitka, PowerShell",
   ],
+});
+
+const wondo = traduire(fr.wondo, {
+  nom: "WONDO - Mobile app for martial arts clubs",
+  periode: "08/2026 - present",
+  contexte:
+    "iOS / Android app for martial arts clubs in Guadeloupe: members find their schedule, progress and membership in it, and staff run the club from their phone or from a web back office. First club on board: Song Long.",
+  taches: [
+    "Expo / React Native app with three areas (student, instructor, admin) behind role guards, plus a view and club switcher for the platform administrator",
+    "Student: schedule and bookings, membership and plans, progress per discipline (levels, techniques), club news",
+    "Instructor: attendance sheet with four statuses (week, day, then class), student search and full student profile",
+    "Admin: members and roles, recurring classes (editing a series only changes upcoming sessions), payments recorded from the phone, statistics",
+    "Online registration modelled on the club's paper form (photo from camera or file, summary email, Excel export); approval emails the student their access and activates their membership",
+    "Generic web back office: tables and forms generated from a resource registry declared in the API, data partitioned per club",
+    "FastAPI / PostgreSQL API: memberships aligned with the school year, Guadeloupe time zone, account and personal data deletion from the app",
+    "Release: EAS builds (TestFlight, APK and Google Play), OTA updates, App Store listing under submission; Docker / Traefik deployment through GitHub Actions",
+  ],
+  techs: [
+    "React Native 0.81, Expo SDK 54 (Expo Router, EAS Build, EAS Update)",
+    "TypeScript, TanStack Query, Zustand, React Hook Form + Zod; React, Vite, Tailwind back office",
+    "FastAPI, SQLAlchemy, Alembic",
+    "PostgreSQL",
+    "Docker, Traefik, GitHub Actions",
+  ],
+  collabs: ["JP (GPLK), Sponsor"],
 });
 
 const valado = traduire(fr.valado, {
@@ -453,9 +500,11 @@ const gestrav = traduire(fr.gestrav, {
 type TradSociete = { nom?: string; dates: string; contexte?: string; postes: string[] };
 
 const missionsEn = new Map<IMission, IMission>([
+  [fr.hellboy, hellboy],
   [fr.drevioMobile, drevioMobile],
   [fr.drevio, drevio],
   [fr.aivocat, aivocat],
+  [fr.wondo, wondo],
   [fr.valado, valado],
   [fr.arcgr, arcgr],
   [fr.matheva, matheva],
@@ -482,7 +531,8 @@ const SOCIETES: Record<string, TradSociete> = {
   },
   Drevio: {
     dates: "Since 05/2026",
-    contexte: "Phase 1 completed in August 2026, mobile app in progress. Phase 2 starts in November 2026.",
+    contexte:
+      "Phase 1 completed in August 2026, mobile app in progress. Phase 2 started in September 2026 with HellBoy (training dataset), full launch in November 2026.",
     postes: ["Tech Lead", "Lead Developer", "Full Stack software architect"],
   },
   Proelan: {

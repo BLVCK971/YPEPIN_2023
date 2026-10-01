@@ -1,0 +1,20 @@
+{
+  // Vérification des fausses API des démos : `npm run demos:check`.
+  // Hors du `tsc` de `npm run build` : HellBoy importe les règles de son paquet
+  // de domaine, présent seulement avec le dépôt voisin (absent de la CI).
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "types": ["vite/client"],
+    "paths": { "@/*": ["../../HellBoy/apps/web/src/*"] }
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["**/outils/**", "**/assets/**"]
+}

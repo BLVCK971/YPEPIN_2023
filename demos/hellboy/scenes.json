@@ -1,0 +1,1952 @@
+{
+ "c01": {
+  "vehicle": {
+   "make": "Peugeot",
+   "model": "208",
+   "mileageKm": 38400
+  },
+  "plate": "DE-101-MO",
+  "photos": [
+   {
+    "file": "c01-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18971,
+    "sha256": "58261e1551947402a5faa820637b3c944ae2eae57b8ca3b787510d38f98de509",
+    "viewType": "trois_quarts_avant_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c01-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18958,
+    "sha256": "43055c316e42408314d91223d5ff76609d9bfffdcd438d9d803cccd89d46215b",
+    "viewType": "trois_quarts_avant_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c01-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19107,
+    "sha256": "e8419cfd13e329bb3446147ad566c045e680d7bfb6289760af6c97a097b8e92e",
+    "viewType": "trois_quarts_arriere_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c01-4.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18537,
+    "sha256": "e31cf64158d91927536273482e9b37f8e1f8f0f908bec0607a2e98b07cf47918",
+    "viewType": "trois_quarts_arriere_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c01-5.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19314,
+    "sha256": "37b06f0dc0230fa0008632bc4d1e3ce0bfe8fe61569f01e8be19e2d02f685e98",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c01-6.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19725,
+    "sha256": "c1d4db5154ff8141320bbd974e76454dca9e40167eae466aa9c2e2c21e435fb5",
+    "viewType": "compteur",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "rear_bumper",
+    "damageType": "scratch",
+    "severity": "minor",
+    "photo": "c01-3.jpg",
+    "bbox": {
+     "x": 0.6917,
+     "y": 0.6664,
+     "width": 0.0994,
+     "height": 0.0562
+    }
+   },
+   {
+    "key": "d2",
+    "zone": "rear_left_fender",
+    "damageType": "dent",
+    "severity": "medium",
+    "photo": "c01-5.jpg",
+    "bbox": {
+     "x": 0.3221,
+     "y": 0.3077,
+     "width": 0.3557,
+     "height": 0.3846
+    }
+   }
+  ]
+ },
+ "c02": {
+  "vehicle": {
+   "make": "Renault",
+   "model": "Clio IV",
+   "mileageKm": 92150
+  },
+  "plate": "DE-102-MO",
+  "photos": [
+   {
+    "file": "c02-1.jpg",
+    "width": 600,
+    "height": 800,
+    "bytes": 19099,
+    "sha256": "60cb8a686ad8a9d6c62c3f5247334bbc9464374b88dbff2891627203c2d2d2dc",
+    "viewType": "trois_quarts_avant_gauche",
+    "rotationDegrees": 90
+   },
+   {
+    "file": "c02-2.jpg",
+    "width": 600,
+    "height": 800,
+    "bytes": 18395,
+    "sha256": "cd0436a2871cb72de00279e4a6c3e2dfaf8e47bb3fa07ecb9092f8bb31b76710",
+    "viewType": "trois_quarts_avant_droit",
+    "rotationDegrees": 90
+   },
+   {
+    "file": "c02-3.jpg",
+    "width": 600,
+    "height": 800,
+    "bytes": 24556,
+    "sha256": "e14f5da27692e24f5a6cf648bd553ab8459947ba2b4323d6ce94385486686f9c",
+    "viewType": "probleme",
+    "rotationDegrees": 90
+   },
+   {
+    "file": "c02-4.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 20464,
+    "sha256": "9ee3d326ff68d9e6ca356d64d8b218dbaa2a060d9f41b9354d81ab7847c347f5",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c02-5.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18065,
+    "sha256": "6ad2b655aa4d9e314ea3a878882877f89ce57b9d69c278c5ecb56f40969c5740",
+    "viewType": "plaque_constructeur",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "front_bumper",
+    "damageType": "tear",
+    "severity": "medium",
+    "photo": "c02-4.jpg",
+    "bbox": {
+     "x": 0.3077,
+     "y": 0.4014,
+     "width": 0.3846,
+     "height": 0.1973
+    }
+   },
+   {
+    "key": "d2",
+    "zone": "headlight_left",
+    "damageType": "broken_light",
+    "severity": "critical",
+    "photo": "c02-3.jpg",
+    "bbox": {
+     "x": 0.3437,
+     "y": 0.3351,
+     "width": 0.3126,
+     "height": 0.3297
+    }
+   }
+  ],
+  "estimate": {
+   "bodyshop": "CARROSSERIE DES ACACIAS",
+   "documentNumber": "E-24-0412",
+   "documentDate": "2026-08-04",
+   "incidentDate": "2026-07-30",
+   "insurer": "MUTUELLE EXEMPLE",
+   "expert": "Cabinet Expertise Démo",
+   "vehicle": {
+    "plate": "DE-102-MO",
+    "make": "RENAULT",
+    "model": "CLIO IV",
+    "mileageKm": 92150,
+    "firstRegistration": "2017-03-14",
+    "vin": "DEMO-VIN-0000102",
+    "color": "GRIS PLATINE",
+    "colorCode": "TED",
+    "bodyType": "BERLINE 5P"
+   },
+   "rates": {
+    "bodyworkT1Cents": 6400,
+    "bodyworkT2Cents": 7200,
+    "bodyworkT3Cents": 8400,
+    "paintCents": 6800,
+    "ingredientsCents": 3400
+   },
+   "parts": [
+    {
+     "label": "PARE-CHOCS AV",
+     "reference": "DEMO-PC-0102",
+     "quantity": 1,
+     "unitPriceCents": 21460,
+     "totalCents": 21460
+    },
+    {
+     "label": "PROJECTEUR G - ADAPTABLE (DEMO-0000) - Homologation ECE",
+     "reference": "DEMO-PJ-0102",
+     "quantity": 1,
+     "unitPriceCents": 16840,
+     "totalCents": 16840
+    },
+    {
+     "label": "GRILLE PARE-CHOCS AV",
+     "reference": null,
+     "quantity": 1,
+     "unitPriceCents": 3820,
+     "totalCents": 3820
+    },
+    {
+     "label": "AGRAFES DIVERSES",
+     "reference": null,
+     "quantity": 10,
+     "unitPriceCents": 68,
+     "totalCents": 680
+    }
+   ],
+   "operations": [
+    {
+     "code": "C01",
+     "label": "DEPOSE-POSE PARE-CHOCS AV",
+     "minutes": 54,
+     "scale": "t1",
+     "category": "T",
+     "intervention": "D"
+    },
+    {
+     "code": "C02",
+     "label": "ECHANGE PROJECTEUR G",
+     "minutes": 30,
+     "scale": "t1",
+     "category": "T",
+     "intervention": "C"
+    },
+    {
+     "code": "C03",
+     "label": "REGLAGE PROJECTEURS G, D",
+     "minutes": 18,
+     "scale": "t2",
+     "category": "M",
+     "intervention": "G"
+    }
+   ],
+   "paintOperations": [
+    {
+     "code": "P01",
+     "label": "PEINTURE PARE-CHOCS AV",
+     "minutes": 96,
+     "scale": "paint",
+     "category": "P",
+     "intervention": null
+    }
+   ],
+   "totals": {
+    "laborCents": 22000,
+    "partsCents": 42800,
+    "ingredientsCents": 5440,
+    "miscCents": 0,
+    "totalHtCents": 70240,
+    "vatCents": 14048,
+    "totalTtcCents": 84288
+   },
+   "laborHours": {
+    "t1": 1.4,
+    "t2": 0.3,
+    "t3": 0
+   },
+   "paintHours": 1.6
+  },
+  "documents": [
+   {
+    "kind": "estimate",
+    "fileName": "ESTIMATION_E-24-0412.pdf",
+    "file": "estimation-c02.pdf",
+    "bytes": 5813,
+    "sha256": "8ff5204fae55bbeb710a661410ffa966667ccb7e6b59556e08b351cb958e32c5"
+   },
+   {
+    "kind": "quote",
+    "fileName": "DEVIS_E-24-0412.pdf",
+    "file": "devis-c02.pdf",
+    "bytes": 2079,
+    "sha256": "2a704be04f6eda30a68fdad7e3aa52e76c5f3914555ef9a514f1d0019394fb4a"
+   }
+  ]
+ },
+ "c03": {
+  "vehicle": {
+   "make": "Volkswagen",
+   "model": "Golf VII",
+   "mileageKm": 121300
+  },
+  "plate": "DE-103-MO",
+  "photos": [
+   {
+    "file": "c03-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18369,
+    "sha256": "51017095d918966efdc8e896896805fd0eaf572045be5131612dedc2ed9c4491",
+    "viewType": "trois_quarts_avant_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c03-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17850,
+    "sha256": "83af32cce5928b65a15095ca67410964d92cee4fedb142f26ba832efcc7bcb86",
+    "viewType": "trois_quarts_avant_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c03-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17564,
+    "sha256": "c3b0727bf6d118771a24d5abc9d2a9ce30aa92a0feb2a88320258d9501ec53be",
+    "viewType": "trois_quarts_arriere_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c03-4.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 16917,
+    "sha256": "13de9ac91c4d44aa0d8452ba12a91b359934fca0e22d5415729ba0b3660f0830",
+    "viewType": "trois_quarts_arriere_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c03-5.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 20086,
+    "sha256": "8da8425e96e2b1d9a155e767527dc338cfd64ddd36182f16ed73127d13e035cf",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c03-6.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17174,
+    "sha256": "25b9f16655f61bdb8ab95e896190b14758675a798f65eac41220631e44c10ee8",
+    "viewType": "plan_large",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "front_left_door",
+    "damageType": "dent",
+    "severity": "medium",
+    "photo": "c03-5.jpg",
+    "bbox": {
+     "x": 0.3083,
+     "y": 0.3077,
+     "width": 0.3833,
+     "height": 0.3846
+    }
+   },
+   {
+    "key": "d2",
+    "zone": "rear_left_door",
+    "damageType": "scratch",
+    "severity": "minor",
+    "photo": "c03-1.jpg",
+    "bbox": {
+     "x": 0.7153,
+     "y": 0.5619,
+     "width": 0.0657,
+     "height": 0.0934
+    }
+   }
+  ]
+ },
+ "c04": {
+  "vehicle": {
+   "make": "Toyota",
+   "model": "Yaris III",
+   "mileageKm": 54800
+  },
+  "plate": "DE-104-MO",
+  "photos": [
+   {
+    "file": "c04-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18081,
+    "sha256": "34e62d8ed77371af6b39154e9c1a1f66996f661fe406f2851f7c4db2b9a1395f",
+    "viewType": "trois_quarts_avant_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c04-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19011,
+    "sha256": "785e4f89e239e74c78873eaea0205f4f19e220000055ccde4c244a1414c7e7b2",
+    "viewType": "trois_quarts_avant_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c04-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17438,
+    "sha256": "0669f34b2071e7e44c0b237c1d12988ceb34ab8cff6c41f4c86edb9a70a347a2",
+    "viewType": "trois_quarts_arriere_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c04-4.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18016,
+    "sha256": "ed11a0dd81d3cc462c84af3fcbc6fe65a31a97dd67382e23740088be10cdf83d",
+    "viewType": "trois_quarts_arriere_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c04-5.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 22684,
+    "sha256": "b6662fb9a5e6ba4dff21873294ae7c1b3f4e4e38435067ffb42c01edb0d9e01d",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "rear_right_door",
+    "damageType": "scratch",
+    "severity": "minor",
+    "photo": "c04-5.jpg",
+    "bbox": {
+     "x": 0.3526,
+     "y": 0.3077,
+     "width": 0.2947,
+     "height": 0.3846
+    }
+   },
+   {
+    "key": "d2",
+    "zone": "right_rocker_panel",
+    "damageType": "paint_chip",
+    "severity": "minor",
+    "photo": "c04-2.jpg",
+    "bbox": {
+     "x": 0.2341,
+     "y": 0.6775,
+     "width": 0.227,
+     "height": 0.0618
+    }
+   }
+  ]
+ },
+ "c05": {
+  "vehicle": {
+   "make": "Citroën",
+   "model": "C3 III",
+   "mileageKm": 46900
+  },
+  "plate": "DE-105-MO",
+  "photos": [
+   {
+    "file": "c05-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19721,
+    "sha256": "f4a379de0e6e4c5609521c0e014b6174543103876c268f440a7fcecb5bf5386f",
+    "viewType": "trois_quarts_avant_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c05-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18643,
+    "sha256": "719b596d502001a32a709d0cd00d5aa8a4a173eff9bc44c9c350ba6a528ec14d",
+    "viewType": "trois_quarts_arriere_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c05-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 21840,
+    "sha256": "4049efc7b393b2fab6434bb5a0f6803859d3360444dcf9599e7e93e07a80eefe",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c05-4.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 25789,
+    "sha256": "e51e95e110a7b1f26f7ba4cdecfc9eb74bc62332c535dc9ea19c082de7081daf",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c05-5.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19711,
+    "sha256": "b79702f63d3a349e9c5b54fd13fe6e74b673603836c7cb74a7a8ab24aa375ace",
+    "viewType": "compteur",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "right_mirror",
+    "damageType": "missing_part",
+    "severity": "medium",
+    "photo": "c05-3.jpg",
+    "bbox": {
+     "x": 0.4112,
+     "y": 0.3801,
+     "width": 0.1775,
+     "height": 0.2397
+    }
+   },
+   {
+    "key": "d2",
+    "zone": "front_right_fender",
+    "damageType": "scratch",
+    "severity": "minor",
+    "photo": "c05-4.jpg",
+    "bbox": {
+     "x": 0.4154,
+     "y": 0.3077,
+     "width": 0.1692,
+     "height": 0.3846
+    }
+   }
+  ],
+  "estimate": {
+   "bodyshop": "GARAGE DU MOULIN - CARROSSERIE",
+   "documentNumber": "2024/1187",
+   "documentDate": "2026-08-21",
+   "incidentDate": "2026-08-17",
+   "insurer": "ASSURANCE EXEMPLE",
+   "expert": null,
+   "vehicle": {
+    "plate": "DE-105-MO",
+    "make": "CITROËN",
+    "model": "C3 III",
+    "mileageKm": 46900,
+    "firstRegistration": "2020-06-02",
+    "vin": "DEMO-VIN-0000105",
+    "color": "ORANGE",
+    "colorCode": "KRF",
+    "bodyType": "BERLINE 5P"
+   },
+   "rates": {
+    "bodyworkT1Cents": 6600,
+    "bodyworkT2Cents": 7400,
+    "bodyworkT3Cents": 8600,
+    "paintCents": 7000,
+    "ingredientsCents": 3600
+   },
+   "parts": [
+    {
+     "label": "RETROVISEUR EXT D",
+     "reference": "DEMO-RV-0105",
+     "quantity": 1,
+     "unitPriceCents": 14230,
+     "totalCents": 14230
+    }
+   ],
+   "operations": [
+    {
+     "code": "1",
+     "label": "DEPOSE-POSE RETROVISEUR EXT D",
+     "minutes": 24,
+     "scale": "t1",
+     "category": "T",
+     "intervention": "D"
+    },
+    {
+     "code": "2",
+     "label": "REPARATION AILE AV D",
+     "minutes": 42,
+     "scale": "t1",
+     "category": "T",
+     "intervention": null
+    }
+   ],
+   "paintOperations": [
+    {
+     "code": null,
+     "label": "PEINTURE AILE AV D",
+     "minutes": 84,
+     "scale": "paint",
+     "category": "T",
+     "intervention": null
+    },
+    {
+     "code": null,
+     "label": "PEINTURE COQUE RETROVISEUR D",
+     "minutes": 30,
+     "scale": "paint",
+     "category": "T",
+     "intervention": null
+    }
+   ],
+   "totals": {
+    "laborCents": 20560,
+    "partsCents": 14230,
+    "ingredientsCents": 6840,
+    "miscCents": 0,
+    "totalHtCents": 41630,
+    "vatCents": 8326,
+    "totalTtcCents": 49956
+   },
+   "laborHours": {
+    "t1": 1.1,
+    "t2": 0,
+    "t3": 0
+   },
+   "paintHours": 1.9
+  },
+  "documents": [
+   {
+    "kind": "estimate",
+    "fileName": "ESTIMATION_2024-1187.pdf",
+    "file": "estimation-c05.pdf",
+    "bytes": 5018,
+    "sha256": "e310746f9345a6877da7a8b6b93519cb5591945b73ac1c078b392786882b6287"
+   }
+  ]
+ },
+ "c06": {
+  "vehicle": {
+   "make": "Dacia",
+   "model": "Sandero III",
+   "mileageKm": 21700
+  },
+  "plate": "DE-106-MO",
+  "photos": [
+   {
+    "file": "c06-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19009,
+    "sha256": "aca8506672dd8620b3cc6198e4a8ed8da1d74bcee28fbe1516bc0df9192ce7ab",
+    "viewType": "trois_quarts_avant_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c06-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19052,
+    "sha256": "4d5450701663c771a0a99521d3795a4e85195c9c7b82d3faced573add1f2f8c4",
+    "viewType": "trois_quarts_avant_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c06-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17960,
+    "sha256": "d37a9508354d26d2a67bab817525786f9341c3aa6050460ffffb38a13208ce82",
+    "viewType": "trois_quarts_arriere_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c06-4.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17959,
+    "sha256": "cd287ff4caa7b80a04a20dfb6952edf0187e5f3bfda8ccd30f03de4b16fda3d6",
+    "viewType": "trois_quarts_arriere_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c06-5.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 26376,
+    "sha256": "377fb2cf50e9fb03863b8021774e74355b64453b24a6f34730cb8608a7b0389c",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "front_bumper",
+    "damageType": "scratch",
+    "severity": "minor",
+    "photo": "c06-1.jpg",
+    "bbox": {
+     "x": 0.1969,
+     "y": 0.6756,
+     "width": 0.1016,
+     "height": 0.0519
+    }
+   },
+   {
+    "key": "d2",
+    "zone": "grille",
+    "damageType": "tear",
+    "severity": "medium",
+    "photo": "c06-5.jpg",
+    "bbox": {
+     "x": 0.3077,
+     "y": 0.3625,
+     "width": 0.3846,
+     "height": 0.275
+    }
+   }
+  ]
+ },
+ "c07": {
+  "vehicle": {
+   "make": "Peugeot",
+   "model": "3008 II",
+   "mileageKm": 88000
+  },
+  "plate": "DE-107-MO",
+  "photos": [
+   {
+    "file": "c07-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18235,
+    "sha256": "e74b77e9708a0bb55d32df2a563b24a50aa3f97468850dcc66554ec41e399c98",
+    "viewType": "trois_quarts_avant_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c07-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 16740,
+    "sha256": "068105011a82e5eb313f78be7e16529de8054a389cc4eaff44711232c1f7c426",
+    "viewType": "trois_quarts_arriere_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c07-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18152,
+    "sha256": "4a52f20e39b775acec49c19c30471c1185386f0bf58e4fdf1fdb8a91bcd224d7",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c07-4.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 16286,
+    "sha256": "b3e77cbe20e836156fc06193cf8a1539df81727c82932e67b0b812f1c462312b",
+    "viewType": "plan_large",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c07-5.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19713,
+    "sha256": "717a25c12f5e66ede837bec019bbc75e5e1da35d0de593fa374546641519d6bc",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "rear_left_door",
+    "damageType": "dent",
+    "severity": "medium",
+    "photo": "c07-3.jpg",
+    "bbox": {
+     "x": 0.3526,
+     "y": 0.3077,
+     "width": 0.2947,
+     "height": 0.3846
+    }
+   },
+   {
+    "key": "d2",
+    "zone": "left_rocker_panel",
+    "damageType": "scratch",
+    "severity": "minor",
+    "photo": "c07-1.jpg",
+    "bbox": {
+     "x": 0.5389,
+     "y": 0.6775,
+     "width": 0.227,
+     "height": 0.0618
+    }
+   }
+  ],
+  "estimate": {
+   "bodyshop": "ATELIER CARROSSERIE BELLEVUE",
+   "documentNumber": "EST-7731",
+   "documentDate": "2026-09-19",
+   "incidentDate": "2026-09-15",
+   "insurer": "MUTUELLE EXEMPLE",
+   "expert": "Cabinet Expertise Démo",
+   "vehicle": {
+    "plate": "DE-107-MO",
+    "make": "PEUGEOT",
+    "model": "3008 II",
+    "mileageKm": 88000,
+    "firstRegistration": "2018-09-21",
+    "vin": "DEMO-VIN-0000107",
+    "color": "GRIS ARTENSE",
+    "colorCode": "M0F4",
+    "bodyType": "SUV 5P"
+   },
+   "rates": {
+    "bodyworkT1Cents": 7000,
+    "bodyworkT2Cents": 7800,
+    "bodyworkT3Cents": 9000,
+    "paintCents": 7400,
+    "ingredientsCents": 3800
+   },
+   "parts": [
+    {
+     "label": "BAGUETTE PORTE AR G",
+     "reference": "DEMO-BG-0107",
+     "quantity": 1,
+     "unitPriceCents": 4690,
+     "totalCents": 4690
+    }
+   ],
+   "operations": [
+    {
+     "code": "B1",
+     "label": "DEBOSSELAGE PORTE AR G",
+     "minutes": 90,
+     "scale": "t2",
+     "category": "T",
+     "intervention": null
+    },
+    {
+     "code": "B2",
+     "label": "DEPOSE-POSE GARNITURE PORTE AR G",
+     "minutes": 36,
+     "scale": "t1",
+     "category": "S",
+     "intervention": "D"
+    },
+    {
+     "code": "B3",
+     "label": "REPARATION BAS DE CAISSE G",
+     "minutes": 48,
+     "scale": "t1",
+     "category": "T",
+     "intervention": null
+    }
+   ],
+   "paintOperations": [
+    {
+     "code": null,
+     "label": "PEINTURE PORTE AR G",
+     "minutes": 108,
+     "scale": "paint",
+     "category": "T",
+     "intervention": null
+    },
+    {
+     "code": null,
+     "label": "PEINTURE BAS DE CAISSE G",
+     "minutes": 60,
+     "scale": "paint",
+     "category": "T",
+     "intervention": null
+    }
+   ],
+   "totals": {
+    "laborCents": 42220,
+    "partsCents": 4690,
+    "ingredientsCents": 10640,
+    "miscCents": 0,
+    "totalHtCents": 57550,
+    "vatCents": 11510,
+    "totalTtcCents": 69060
+   },
+   "laborHours": {
+    "t1": 1.4,
+    "t2": 1.5,
+    "t3": 0
+   },
+   "paintHours": 2.8
+  },
+  "documents": [
+   {
+    "kind": "estimate",
+    "fileName": "ESTIMATION_EST-7731.pdf",
+    "file": "estimation-c07.pdf",
+    "bytes": 5305,
+    "sha256": "12175d12f27ae37992dd5885688a3ad13532ead281e67eafa6fc5e4c2c339ae0"
+   }
+  ]
+ },
+ "c08": {
+  "vehicle": {
+   "make": "Renault",
+   "model": "Mégane IV",
+   "mileageKm": 67400
+  },
+  "plate": "DE-108-MO",
+  "photos": [
+   {
+    "file": "c08-1.jpg",
+    "width": 600,
+    "height": 800,
+    "bytes": 18378,
+    "sha256": "284839ab78aeba3d45e0e41bb236ee1703b8cdc3aeba7774eedf58cbaf731896",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c08-2.jpg",
+    "width": 600,
+    "height": 800,
+    "bytes": 17591,
+    "sha256": "90f86c80e54f3a84226b17f95fc404fcd95e88e1ed525544a4cc770a8717ea29",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c08-3.jpg",
+    "width": 600,
+    "height": 800,
+    "bytes": 19195,
+    "sha256": "1976db49921f37b79a2645f605ed364a24e8beadb5d63452aa2413034e8af3c3",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c08-4.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17417,
+    "sha256": "9b8c260ebac9d02cd1304f92dfa0cb02ad78a43e818b9228da1c2e2da3dad5ce",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c08-5.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19695,
+    "sha256": "30002ebb61ef91392e832912cda6c19c6a2db034f18104a0c9f2d733ac3cdfad",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "front_right_door",
+    "damageType": "scratch",
+    "severity": "medium",
+    "photo": null,
+    "bbox": null
+   },
+   {
+    "key": "d2",
+    "zone": "rear_right_door",
+    "damageType": "dent",
+    "severity": "medium",
+    "photo": null,
+    "bbox": null
+   }
+  ],
+  "estimate": {
+   "bodyshop": "CARROSSERIE DES ACACIAS",
+   "documentNumber": "E-24-0538",
+   "documentDate": "2026-09-28",
+   "incidentDate": "2026-09-22",
+   "insurer": "ASSURANCE EXEMPLE",
+   "expert": null,
+   "vehicle": {
+    "plate": "DE-108-MO",
+    "make": "RENAULT",
+    "model": "MÉGANE IV",
+    "mileageKm": 67400,
+    "firstRegistration": "2019-01-30",
+    "vin": "DEMO-VIN-0000108",
+    "color": "NOIR ETOILE",
+    "colorCode": "GNE",
+    "bodyType": "BERLINE 5P"
+   },
+   "rates": {
+    "bodyworkT1Cents": 6400,
+    "bodyworkT2Cents": 7200,
+    "bodyworkT3Cents": 8400,
+    "paintCents": 6800,
+    "ingredientsCents": 3400
+   },
+   "parts": [
+    {
+     "label": "BAGUETTE PORTE AV D - ADAPTABLE",
+     "reference": null,
+     "quantity": 1,
+     "unitPriceCents": 3950,
+     "totalCents": 3950
+    }
+   ],
+   "operations": [
+    {
+     "code": "C01",
+     "label": "REPARATION PORTE AV D",
+     "minutes": 60,
+     "scale": "t1",
+     "category": "T",
+     "intervention": null
+    },
+    {
+     "code": "C02",
+     "label": "DEBOSSELAGE PORTE AR D",
+     "minutes": 75,
+     "scale": "t2",
+     "category": "T",
+     "intervention": null
+    }
+   ],
+   "paintOperations": [
+    {
+     "code": null,
+     "label": "PEINTURE PORTE AV D",
+     "minutes": 96,
+     "scale": "paint",
+     "category": "T",
+     "intervention": null
+    },
+    {
+     "code": null,
+     "label": "PEINTURE PORTE AR D",
+     "minutes": 96,
+     "scale": "paint",
+     "category": "T",
+     "intervention": null
+    }
+   ],
+   "totals": {
+    "laborCents": 37160,
+    "partsCents": 3950,
+    "ingredientsCents": 10880,
+    "miscCents": 0,
+    "totalHtCents": 51990,
+    "vatCents": 10398,
+    "totalTtcCents": 62388
+   },
+   "laborHours": {
+    "t1": 1.0,
+    "t2": 1.25,
+    "t3": 0
+   },
+   "paintHours": 3.2
+  },
+  "documents": [
+   {
+    "kind": "estimate",
+    "fileName": "ESTIMATION_E-24-0538.pdf",
+    "file": "estimation-c08.pdf",
+    "bytes": 5014,
+    "sha256": "b8242153221260cdeca9569c86e4986e3fcf6e97cd40a421e9a830ccfd7d9796"
+   }
+  ]
+ },
+ "c09": {
+  "vehicle": {
+   "make": "Ford",
+   "model": "Fiesta VII",
+   "mileageKm": 73900
+  },
+  "plate": "DE-109-MO",
+  "photos": [
+   {
+    "file": "c09-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 20096,
+    "sha256": "c278588aee13f51ea79560684b511215f5c8523478e6f29bfdbff8d2a842fc8f",
+    "viewType": "trois_quarts_avant_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c09-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 25197,
+    "sha256": "5eace59728531f8f8996b3b3802244ab26fdd8c99b3cbd0c39fcc8e5ee9c5471",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "front_left_fender",
+    "damageType": "dent",
+    "severity": "medium",
+    "photo": null,
+    "bbox": null
+   }
+  ]
+ },
+ "c11": {
+  "vehicle": {
+   "make": "Opel",
+   "model": "Corsa F",
+   "mileageKm": 39000
+  },
+  "plate": "DE-111-MO",
+  "photos": [
+   {
+    "file": "c11-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18566,
+    "sha256": "968e75b680750f54b1a6fdf5fafcc615619b10cdf8691a8fa9780f60eec1d4df",
+    "viewType": "trois_quarts_avant_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c11-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 14595,
+    "sha256": "c41630387a0d629ccf2854d7798314d4644c005169536bdc546d7aeb0da014a7",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c11-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17973,
+    "sha256": "51201193c2c4d4ceffc7f445991ce0b5418ae46b0f4b043145d0ef5e702d3e62",
+    "viewType": "trois_quarts_arriere_gauche",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "front_left_door",
+    "damageType": "scratch",
+    "severity": "minor",
+    "photo": "c11-2.jpg",
+    "bbox": {
+     "x": 0.3083,
+     "y": 0.3077,
+     "width": 0.3833,
+     "height": 0.3846
+    }
+   }
+  ]
+ },
+ "c12": {
+  "vehicle": {
+   "make": "Renault",
+   "model": "Kangoo III",
+   "mileageKm": 102600
+  },
+  "plate": "DE-112-MO",
+  "photos": [
+   {
+    "file": "c12-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18897,
+    "sha256": "f1c817826c999dd40d6fd64c5a15dced335486f14bd55028cdaa6b6b3f2db2f7",
+    "viewType": "trois_quarts_arriere_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c12-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18810,
+    "sha256": "cafc4c9f72fde5d32406870c3326dd83abb44a5e0170dc4c63209ea412542c52",
+    "viewType": "trois_quarts_arriere_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c12-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19246,
+    "sha256": "afeab2e59a17cbf750de0336eec36ba5f2a8179f359d2efc19960d322412b00b",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c12-4.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 13350,
+    "sha256": "cdaeab6153f9437a58d484e5293300c0715794e3e25507b9f9761e2198023ca3",
+    "viewType": "plaque",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c12-5.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19834,
+    "sha256": "90fc67117f76f9f1a9436d0bb887743e5a613025e5933b8c8a53b77d5f895f76",
+    "viewType": "compteur",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "rear_bumper_right",
+    "damageType": "dent",
+    "severity": "medium",
+    "photo": "c12-1.jpg",
+    "bbox": {
+     "x": 0.2904,
+     "y": 0.5667,
+     "width": 0.0813,
+     "height": 0.1338
+    }
+   },
+   {
+    "key": "d2",
+    "zone": "taillight_right",
+    "damageType": "broken_light",
+    "severity": "critical",
+    "photo": "c12-3.jpg",
+    "bbox": {
+     "x": 0.3819,
+     "y": 0.3077,
+     "width": 0.2362,
+     "height": 0.3846
+    }
+   }
+  ],
+  "estimate": {
+   "bodyshop": "GARAGE DU MOULIN - CARROSSERIE",
+   "documentNumber": "2024/0954",
+   "documentDate": "2026-09-01",
+   "incidentDate": "2026-08-28",
+   "insurer": "MUTUELLE EXEMPLE",
+   "expert": "Cabinet Expertise Démo",
+   "vehicle": {
+    "plate": "DE-112-MO",
+    "make": "RENAULT",
+    "model": "KANGOO III",
+    "mileageKm": 102600,
+    "firstRegistration": "2021-11-08",
+    "vin": "DEMO-VIN-0000112",
+    "color": "BLANC GLACIER",
+    "colorCode": "QNG",
+    "bodyType": "FOURGONNETTE"
+   },
+   "rates": {
+    "bodyworkT1Cents": 6600,
+    "bodyworkT2Cents": 7400,
+    "bodyworkT3Cents": 8600,
+    "paintCents": 7000,
+    "ingredientsCents": 3600
+   },
+   "parts": [
+    {
+     "label": "FEU AR D",
+     "reference": "DEMO-FE-0112",
+     "quantity": 1,
+     "unitPriceCents": 9680,
+     "totalCents": 9680
+    },
+    {
+     "label": "PARE-CHOCS AR D",
+     "reference": "DEMO-PC-0112",
+     "quantity": 1,
+     "unitPriceCents": 12840,
+     "totalCents": 12840
+    }
+   ],
+   "operations": [
+    {
+     "code": "1",
+     "label": "DEPOSE-POSE PARE-CHOCS AR",
+     "minutes": 48,
+     "scale": "t1",
+     "category": "T",
+     "intervention": "D"
+    },
+    {
+     "code": "2",
+     "label": "ECHANGE FEU AR D",
+     "minutes": 18,
+     "scale": "t1",
+     "category": "T",
+     "intervention": "C"
+    }
+   ],
+   "paintOperations": [
+    {
+     "code": null,
+     "label": "PEINTURE PARE-CHOCS AR",
+     "minutes": 102,
+     "scale": "paint",
+     "category": "T",
+     "intervention": null
+    }
+   ],
+   "totals": {
+    "laborCents": 19160,
+    "partsCents": 22520,
+    "ingredientsCents": 6120,
+    "miscCents": 0,
+    "totalHtCents": 47800,
+    "vatCents": 9560,
+    "totalTtcCents": 57360
+   },
+   "laborHours": {
+    "t1": 1.1,
+    "t2": 0,
+    "t3": 0
+   },
+   "paintHours": 1.7
+  },
+  "documents": [
+   {
+    "kind": "estimate",
+    "fileName": "ESTIMATION_2024-0954.pdf",
+    "file": "estimation-c12.pdf",
+    "bytes": 5126,
+    "sha256": "6c603d927a109a0cdb28a6b0d937b9db8d2067243e91b56ed3d182c1b42ae783"
+   },
+   {
+    "kind": "quote",
+    "fileName": "DEVIS_2024-0954.pdf",
+    "file": "devis-c12.pdf",
+    "bytes": 1734,
+    "sha256": "4d5615dd429995612e7f0b791cc163f56d96df8f788a933aa41fbc6058c74e09"
+   }
+  ]
+ },
+ "c13": {
+  "vehicle": {
+   "make": "Skoda",
+   "model": "Octavia III",
+   "mileageKm": 134200
+  },
+  "plate": "DE-113-MO",
+  "photos": [
+   {
+    "file": "c13-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17632,
+    "sha256": "513bc250c06bef8fd156a89e062190f8cb17e333f35cfeed27b774d083ceb77d",
+    "viewType": "trois_quarts_avant_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c13-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18377,
+    "sha256": "358119a8f9815403b7f63fe1f8036f51d1a6b9df87a4b5a94be9aa50377d071b",
+    "viewType": "trois_quarts_avant_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c13-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 16263,
+    "sha256": "d42b495517e81c51b31c2c78998b3307bb680ad97ca369ae7cf141eaf63f2313",
+    "viewType": "trois_quarts_arriere_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c13-4.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17701,
+    "sha256": "01a714dd120410ff26921a97731bea4cfd5095acfae3a498e2110aa39a82ba30",
+    "viewType": "trois_quarts_arriere_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "c13-5.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 23622,
+    "sha256": "bcf4f0bbf9ae11ee73a696f89585523affc604fbb18e1297a99d5c5a6ca55129",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "front_right_door",
+    "damageType": "scratch",
+    "severity": "medium",
+    "photo": "c13-5.jpg",
+    "bbox": {
+     "x": 0.3083,
+     "y": 0.3077,
+     "width": 0.3833,
+     "height": 0.3846
+    }
+   },
+   {
+    "key": "d2",
+    "zone": "front_right_fender",
+    "damageType": "paint_chip",
+    "severity": "minor",
+    "photo": "c13-2.jpg",
+    "bbox": {
+     "x": 0.4339,
+     "y": 0.5491,
+     "width": 0.0506,
+     "height": 0.115
+    }
+   }
+  ]
+ },
+ "impA": {
+  "vehicle": {
+   "make": "Volkswagen",
+   "model": "Polo VI",
+   "mileageKm": 58300
+  },
+  "plate": "DE-201-MO",
+  "photos": [
+   {
+    "file": "impA-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19133,
+    "sha256": "1d675d7586625b55ed30cbc4505bd4f66f9dc10c973eb5c6b24bb42c4639b2f0",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "impA-2.jpg",
+    "width": 600,
+    "height": 800,
+    "bytes": 19122,
+    "sha256": "148edb2ff0c7c28fda1846fbfee4e0dfd436b84e87000357f642102d5173d348",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "impA-3.jpg",
+    "width": 600,
+    "height": 800,
+    "bytes": 23634,
+    "sha256": "81f2368601a7cbd216bbe0036adddd4744eddb644f0c44850ce5ced81c789ac7",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "impA-4.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 25185,
+    "sha256": "1e21aecadbea414ec2d5beb617109d871795a424f460b9c431accc35eab338e2",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "impA-5.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19730,
+    "sha256": "01aa81e2c240a8f2a9fde282a64198a81bcde2a53d19db02b480456e64030eb4",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "front_left_door",
+    "damageType": "dent",
+    "severity": "medium",
+    "photo": null,
+    "bbox": null
+   },
+   {
+    "key": "d2",
+    "zone": "front_left_fender",
+    "damageType": "scratch",
+    "severity": "minor",
+    "photo": null,
+    "bbox": null
+   }
+  ],
+  "estimate": {
+   "bodyshop": "ATELIER CARROSSERIE BELLEVUE",
+   "documentNumber": "EST-8102",
+   "documentDate": "2026-09-29",
+   "incidentDate": "2026-09-25",
+   "insurer": "ASSURANCE EXEMPLE",
+   "expert": null,
+   "vehicle": {
+    "plate": "DE-201-MO",
+    "make": "VOLKSWAGEN",
+    "model": "POLO VI",
+    "mileageKm": 58300,
+    "firstRegistration": "2019-04-17",
+    "vin": "DEMO-VIN-0000201",
+    "color": "BLEU AZUR",
+    "colorCode": "LH5X",
+    "bodyType": "BERLINE 5P"
+   },
+   "rates": {
+    "bodyworkT1Cents": 7000,
+    "bodyworkT2Cents": 7800,
+    "bodyworkT3Cents": 9000,
+    "paintCents": 7400,
+    "ingredientsCents": 3800
+   },
+   "parts": [
+    {
+     "label": "BAGUETTE PORTE AV G",
+     "reference": "DEMO-BG-0201",
+     "quantity": 1,
+     "unitPriceCents": 5260,
+     "totalCents": 5260
+    }
+   ],
+   "operations": [
+    {
+     "code": "B1",
+     "label": "DEBOSSELAGE PORTE AV G",
+     "minutes": 84,
+     "scale": "t2",
+     "category": "T",
+     "intervention": null
+    },
+    {
+     "code": "B2",
+     "label": "REPARATION AILE AV G",
+     "minutes": 36,
+     "scale": "t1",
+     "category": "T",
+     "intervention": null
+    },
+    {
+     "code": "B3",
+     "label": "DEPOSE-POSE GARNITURE PORTE AV G",
+     "minutes": 30,
+     "scale": "t1",
+     "category": "S",
+     "intervention": "D"
+    }
+   ],
+   "paintOperations": [
+    {
+     "code": null,
+     "label": "PEINTURE PORTE AV G",
+     "minutes": 108,
+     "scale": "paint",
+     "category": "T",
+     "intervention": null
+    },
+    {
+     "code": null,
+     "label": "PEINTURE AILE AV G",
+     "minutes": 72,
+     "scale": "paint",
+     "category": "T",
+     "intervention": null
+    }
+   ],
+   "totals": {
+    "laborCents": 40820,
+    "partsCents": 5260,
+    "ingredientsCents": 11400,
+    "miscCents": 0,
+    "totalHtCents": 57480,
+    "vatCents": 11496,
+    "totalTtcCents": 68976
+   },
+   "laborHours": {
+    "t1": 1.1,
+    "t2": 1.4,
+    "t3": 0
+   },
+   "paintHours": 3.0
+  },
+  "documents": [
+   {
+    "kind": "estimate",
+    "fileName": "ESTIMATION_EST-8102.pdf",
+    "file": "estimation-impA.pdf",
+    "bytes": 5272,
+    "sha256": "6f74af3779f4d91dfd630871a83d171b43727083a6f291a84ab8282b34c5bc4f"
+   },
+   {
+    "kind": "quote",
+    "fileName": "DEVIS_EST-8102.pdf",
+    "file": "devis-impA.pdf",
+    "bytes": 1588,
+    "sha256": "f1cb3dd9bdb9301c07ea3852e79464b7f77963e4c35e606936abde95d9842a2e"
+   }
+  ]
+ },
+ "impB": {
+  "vehicle": {
+   "make": "Renault",
+   "model": "Captur II",
+   "mileageKm": 31200
+  },
+  "plate": "DE-202-MO",
+  "photos": [
+   {
+    "file": "impB-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18595,
+    "sha256": "654c7d332c5257561826f42bb9e5db580b49e077c96feb86765423c3defa9462",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "impB-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19438,
+    "sha256": "1ec7951a05a48bdcd9bb3b06fbeee79efe88cafdfae9e5fac30ab43a75fd8ef6",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "impB-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17949,
+    "sha256": "3045f5e75a2cfa542a2c83efbdaace3e5cf018b7e27046bab1b397192770538a",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "impB-4.jpg",
+    "width": 600,
+    "height": 800,
+    "bytes": 19822,
+    "sha256": "7d1ef8ecc6736863ada8a969ec6d9ac6d200fa9b6bd6c94dda2255f31a9307d3",
+    "viewType": "autre",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "rear_bumper_left",
+    "damageType": "tear",
+    "severity": "medium",
+    "photo": null,
+    "bbox": null
+   },
+   {
+    "key": "d2",
+    "zone": "taillight_left",
+    "damageType": "broken_light",
+    "severity": "critical",
+    "photo": null,
+    "bbox": null
+   }
+  ],
+  "estimate": {
+   "bodyshop": "GARAGE DU MOULIN - CARROSSERIE",
+   "documentNumber": "2024/1342",
+   "documentDate": "2026-09-30",
+   "incidentDate": "2026-09-27",
+   "insurer": null,
+   "expert": null,
+   "vehicle": {
+    "plate": null,
+    "make": "RENAULT",
+    "model": "CAPTUR II",
+    "mileageKm": 31200,
+    "firstRegistration": "2021-02-25",
+    "vin": null,
+    "color": null,
+    "colorCode": null,
+    "bodyType": "SUV 5P"
+   },
+   "rates": {
+    "bodyworkT1Cents": 6600,
+    "bodyworkT2Cents": 7400,
+    "bodyworkT3Cents": 8600,
+    "paintCents": 7000,
+    "ingredientsCents": 3600
+   },
+   "parts": [
+    {
+     "label": "FEU AR G",
+     "reference": "DEMO-FE-0202",
+     "quantity": 1,
+     "unitPriceCents": 11420,
+     "totalCents": 11420
+    },
+    {
+     "label": "PARE-CHOCS AR G",
+     "reference": "DEMO-PC-0202",
+     "quantity": 1,
+     "unitPriceCents": 13960,
+     "totalCents": 13960
+    },
+    {
+     "label": "AGRAFES DIVERSES",
+     "reference": null,
+     "quantity": 6,
+     "unitPriceCents": 90,
+     "totalCents": 540
+    }
+   ],
+   "operations": [
+    {
+     "code": "1",
+     "label": "DEPOSE-POSE PARE-CHOCS AR",
+     "minutes": 54,
+     "scale": "t1",
+     "category": "T",
+     "intervention": "D"
+    },
+    {
+     "code": "2",
+     "label": "ECHANGE FEU AR G",
+     "minutes": 18,
+     "scale": "t1",
+     "category": "T",
+     "intervention": "C"
+    }
+   ],
+   "paintOperations": [
+    {
+     "code": null,
+     "label": "PEINTURE PARE-CHOCS AR",
+     "minutes": 108,
+     "scale": "paint",
+     "category": "T",
+     "intervention": null
+    }
+   ],
+   "totals": {
+    "laborCents": 20520,
+    "partsCents": 25920,
+    "ingredientsCents": 6480,
+    "miscCents": 0,
+    "totalHtCents": 53160,
+    "vatCents": 10632,
+    "totalTtcCents": 63792
+   },
+   "laborHours": {
+    "t1": 1.2,
+    "t2": 0,
+    "t3": 0
+   },
+   "paintHours": 1.8
+  },
+  "documents": [
+   {
+    "kind": "estimate",
+    "fileName": "ESTIMATION_2024-1342.pdf",
+    "file": "estimation-impB.pdf",
+    "bytes": 5241,
+    "sha256": "3f725c0302fd7d80762d12ce6d6e32172227856d35dfc09e62d7d2cd966aff61"
+   }
+  ]
+ },
+ "drv1": {
+  "vehicle": {
+   "make": "Peugeot",
+   "model": "2008 II",
+   "mileageKm": 27400
+  },
+  "plate": "DE-301-MO",
+  "photos": [
+   {
+    "file": "drv1-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19187,
+    "sha256": "a38ee18690214f1ba7435479fc88a9d21e4f62c902de3c1fe944ee8c4507ee0a",
+    "viewType": "trois_quarts_avant_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "drv1-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18232,
+    "sha256": "cec141b0984d502b9d145f11ce708fae97872fccf4c5ddf3559a51900e8abd5a",
+    "viewType": "trois_quarts_arriere_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "drv1-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19565,
+    "sha256": "3716d89ba3c8a5a11f175c0fb8610eb19af1e6f66aeaa114f66b58fa7ab0748a",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "front_right_door",
+    "damageType": "dent",
+    "severity": "medium",
+    "photo": null,
+    "bbox": null
+   },
+   {
+    "key": "d2",
+    "zone": "front_right_fender",
+    "damageType": "scratch",
+    "severity": "minor",
+    "photo": null,
+    "bbox": null
+   }
+  ]
+ },
+ "drv2": {
+  "vehicle": {
+   "make": "Fiat",
+   "model": "500",
+   "mileageKm": 61800
+  },
+  "plate": "DE-302-MO",
+  "photos": [
+   {
+    "file": "drv2-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18916,
+    "sha256": "d8990d3c5f82f5d4d54a9e481241976489d9ea5ea1ef9876ccff6bdf5e3aadce",
+    "viewType": "trois_quarts_arriere_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "drv2-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 18491,
+    "sha256": "3d80518e232aeef4f1333a9a81e39726d114a64b58f36b01c3e945f97618f294",
+    "viewType": "trois_quarts_arriere_droit",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "drv2-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 17007,
+    "sha256": "2ef21eee0d54ae95c0d20cfa9fa016eb935446e45cbf99684b4420f02f6575f1",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "rear_bumper",
+    "damageType": "scratch",
+    "severity": "minor",
+    "photo": null,
+    "bbox": null
+   }
+  ]
+ },
+ "drv3": {
+  "vehicle": {
+   "make": "Renault",
+   "model": "Zoé",
+   "mileageKm": 44100
+  },
+  "plate": "DE-303-MO",
+  "photos": [
+   {
+    "file": "drv3-1.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19248,
+    "sha256": "86bb9a2f7a8e8973abde0498655151ada12d19713d94425b12267d31304e8100",
+    "viewType": "trois_quarts_avant_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "drv3-2.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 19253,
+    "sha256": "8ee7a9f4e2143ae8ebd47a83ae871e9872c0fa7f6793f94ddf04a058f3a8952f",
+    "viewType": "trois_quarts_arriere_gauche",
+    "rotationDegrees": 0
+   },
+   {
+    "file": "drv3-3.jpg",
+    "width": 800,
+    "height": 600,
+    "bytes": 23432,
+    "sha256": "5630bea20a2f37e02f42cd702b9c5ae177562e83c206732f198ffcf5bf188b5f",
+    "viewType": "probleme",
+    "rotationDegrees": 0
+   }
+  ],
+  "damages": [
+   {
+    "key": "d1",
+    "zone": "front_left_door",
+    "damageType": "scratch",
+    "severity": "medium",
+    "photo": null,
+    "bbox": null
+   },
+   {
+    "key": "d2",
+    "zone": "rear_left_fender",
+    "damageType": "dent",
+    "severity": "medium",
+    "photo": null,
+    "bbox": null
+   }
+  ]
+ }
+}
