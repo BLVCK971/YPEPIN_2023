@@ -568,13 +568,13 @@ const schneiderLogo = { src: "/logos/SCHNEIDER.png" };
 export const companies: ICompany[] = [
   {
     id: "Freelance",
-    nom: "Freelance",
+    nom: "ICEKERA - Freelance (EI Yoel PEPIN)",
     dates: "Depuis 07/2026",
     postes: [
       { icone: faCode, texte: "Ingénieur logiciel FullStack indépendant" },
       { icone: faServer, texte: "Consultant IT" },
     ],
-    logos: [],
+    logos: [{ src: "/Icekera.svg" }],
     missions: [sesam, arcgr, matheva, valado, aivocat],
   },
   {
