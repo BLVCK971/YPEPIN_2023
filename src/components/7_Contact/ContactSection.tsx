@@ -13,8 +13,9 @@ const liens = [
 const nav = [
   { href: "#Profil", label: "Profil" },
   { href: "#Parcours", label: "Parcours" },
-  { href: "#Projets", label: "Projets" },
   { href: "#Formation", label: "Formation" },
+  { href: "#Projets", label: "Projets" },
+  { href: "#Services", label: "Services" },
 ];
 
 export default function ContactSection() {

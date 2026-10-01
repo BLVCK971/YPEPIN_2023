@@ -9,6 +9,7 @@ import Profil from "./5_Profil/Profil";
 import Formation from "./6_Formation/Formation";
 import ContactSection from "./7_Contact/ContactSection";
 import Projets from "./8_Projets/Projets";
+import Services from "./9_Services/Services";
 import SectionTitle from "./ui/SectionTitle";
 import { BackgroundGradientAnimation } from "./ui/background-gradient-animation";
 
@@ -42,13 +43,17 @@ export default function Main() {
           <Parcours />
           <CarteCollaborations />
         </section>
+        <section id="Formation" className={section}>
+          <SectionTitle etiquette="Formation" titre="Diplômes, certifications & concours" />
+          <Formation />
+        </section>
         <section id="Projets" className={section}>
           <SectionTitle etiquette="Projets" titre="Projets phares" />
           <Projets />
         </section>
-        <section id="Formation" className={section}>
-          <SectionTitle etiquette="Formation" titre="Diplômes, certifications & concours" />
-          <Formation />
+        <section id="Services" className={section}>
+          <SectionTitle etiquette="Services · ICEKERA" titre="Ce que je peux faire pour vous" />
+          <Services />
         </section>
       </main>
       <ContactSection />

@@ -6,8 +6,9 @@ import { cn } from "../ui/utils/cn";
 export const SECTIONS = [
   { id: "Profil", label: "Profil" },
   { id: "Parcours", label: "Parcours" },
-  { id: "Projets", label: "Projets" },
   { id: "Formation", label: "Formation" },
+  { id: "Projets", label: "Projets" },
+  { id: "Services", label: "Services" },
   { id: "Contact", label: "Contact" },
 ];
 
