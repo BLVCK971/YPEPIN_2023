@@ -21,7 +21,7 @@ const PAS = 31;
 const SOURCE = { titre: "~5 000 comptes", sous: "NET ENTREPRISE" };
 const SNAP = { titre: "SnapLogic", sous: "1 pipeline par tâche" };
 const SORTIES = [
-  { titre: "DynamoDB · S3", sous: "Données { titre: "DynamoDB · S3", sous: "Données & état des comptes" } états" },
+  { titre: "DynamoDB · S3", sous: "Données & états" },
   { titre: "XRay · mails", sous: "Monitoring & alertes" },
 ];
 
