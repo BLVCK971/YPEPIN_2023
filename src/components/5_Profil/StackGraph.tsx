@@ -28,6 +28,7 @@ const TECHNOS: Techno[] = [
   { nom: "WinForms", domaine: "dotnet", motif: /WinForms/ },
   { nom: "MediatR / CQRS", domaine: "dotnet", motif: /MediatR|CQRS/ },
   { nom: "Clean Architecture", domaine: "dotnet", motif: /Clean Architecture/i },
+  { nom: "SignalR", domaine: "dotnet", motif: /SignalR/ },
 
   { nom: "Python", domaine: "python", motif: /\bPython\b/ },
   { nom: "FastAPI", domaine: "python", motif: /FastAPI/ },
@@ -43,12 +44,14 @@ const TECHNOS: Techno[] = [
   { nom: "Qwen / Ollama", domaine: "data", motif: /Qwen|Ollama/ },
   { nom: "RAG / Qdrant", domaine: "data", motif: /\bRAG\b|Qdrant/ },
   { nom: "ETL", domaine: "data", motif: /\bETLs?\b/ },
+  { nom: "TensorFlow", domaine: "data", motif: /TensorFlow/ },
 
   { nom: "PostgreSQL", domaine: "db", motif: /PostgreSQL/i },
   { nom: "SQL Server", domaine: "db", motif: /SQL Server/ },
   { nom: "DynamoDB", domaine: "db", motif: /DynamoDB/ },
   { nom: "Supabase", domaine: "db", motif: /Supabase/ },
   { nom: "Azure SQL", domaine: "db", motif: /Azure SQL/ },
+  { nom: "Redis", domaine: "db", motif: /\bRedis\b/ },
 
   { nom: "React", domaine: "front", motif: /\bReact\b(?! Native)/ },
   { nom: "React Native", domaine: "front", motif: /React Native/ },
@@ -63,6 +66,8 @@ const TECHNOS: Techno[] = [
   { nom: "GitHub Actions", domaine: "cloud", motif: /GitHub Actions/ },
   { nom: "Traefik", domaine: "cloud", motif: /Traefik/ },
   { nom: "SnapLogic", domaine: "cloud", motif: /SnapLogic/ },
+  { nom: "Kafka", domaine: "cloud", motif: /Kafka/ },
+  { nom: "RabbitMQ", domaine: "cloud", motif: /RabbitMQ/ },
 ];
 
 type Usage = { entreprise: string; mission: string };
@@ -131,6 +136,76 @@ const construireNoeuds = (): Noeud[] => {
       });
     });
   });
+  return separer(noeuds);
+};
+
+// --- Anti-chevauchement -------------------------------------------------------
+// Boîte englobante approximative d'un nœud + de son libellé (unités du viewBox).
+type Boite = { x1: number; y1: number; x2: number; y2: number };
+
+const boite = (n: Noeud): Boite => {
+  const lw = n.label.length * 7 + 4; // largeur approx. du texte en 13px
+  if (n.type === "centre") return { x1: n.x - n.r, y1: n.y - n.r, x2: n.x + n.r, y2: n.y + n.r };
+  if (n.type === "domaine") {
+    const w = Math.max(n.r, (n.label.length * 9.5) / 2);
+    return { x1: n.x - w, y1: n.y - n.r - 26, x2: n.x + w, y2: n.y + n.r };
+  }
+  const cos = Math.cos(n.angle ?? 0);
+  const sin = Math.sin(n.angle ?? 0);
+  if (Math.abs(cos) > 0.4) {
+    return cos > 0
+      ? { x1: n.x - n.r, y1: n.y - 9, x2: n.x + n.r + 6 + lw, y2: n.y + 9 }
+      : { x1: n.x - n.r - 6 - lw, y1: n.y - 9, x2: n.x + n.r, y2: n.y + 9 };
+  }
+  const w = Math.max(n.r, lw / 2);
+  return sin > 0
+    ? { x1: n.x - w, y1: n.y - n.r, x2: n.x + w, y2: n.y + n.r + 20 }
+    : { x1: n.x - w, y1: n.y - n.r - 20, x2: n.x + w, y2: n.y + n.r };
+};
+
+// Écarte les technos dont les boîtes se chevauchent (domaines et centre fixes).
+const separer = (noeuds: Noeud[]): Noeud[] => {
+  const marge = 3;
+  for (let iter = 0; iter < 400; iter++) {
+    let bouge = false;
+    for (let i = 0; i < noeuds.length; i++) {
+      for (let j = i + 1; j < noeuds.length; j++) {
+        const a = noeuds[i];
+        const b = noeuds[j];
+        if (a.type !== "techno" && b.type !== "techno") continue;
+        const A = boite(a);
+        const B = boite(b);
+        const ox = Math.min(A.x2, B.x2) - Math.max(A.x1, B.x1) + marge;
+        const oy = Math.min(A.y2, B.y2) - Math.max(A.y1, B.y1) + marge;
+        if (ox <= 0 || oy <= 0) continue;
+        bouge = true;
+        // Pousse le long de l'axe le moins chevauché, en ne bougeant que les technos
+        const axeX = ox < oy;
+        const d = (axeX ? ox : oy) / (a.type === "techno" && b.type === "techno" ? 2 : 1);
+        const signe = axeX
+          ? (A.x1 + A.x2) / 2 <= (B.x1 + B.x2) / 2 ? -1 : 1
+          : (A.y1 + A.y2) / 2 <= (B.y1 + B.y2) / 2 ? -1 : 1;
+        if (a.type === "techno") {
+          if (axeX) a.x += signe * d;
+          else a.y += signe * d;
+        }
+        if (b.type === "techno") {
+          if (axeX) b.x -= signe * d;
+          else b.y -= signe * d;
+        }
+      }
+    }
+    // Reste dans le cadre
+    for (const n of noeuds) {
+      if (n.type !== "techno") continue;
+      const B = boite(n);
+      if (B.x1 < 4) n.x += 4 - B.x1;
+      if (B.x2 > W - 4) n.x -= B.x2 - (W - 4);
+      if (B.y1 < 4) n.y += 4 - B.y1;
+      if (B.y2 > H - 4) n.y -= B.y2 - (H - 4);
+    }
+    if (!bouge) break;
+  }
   return noeuds;
 };
 
@@ -311,13 +386,24 @@ export default function StackGraph() {
                       </>
                     ) : (
                       <>
-                        <circle
-                          r={estSel ? n.r + 3 : n.r}
-                          fill={n.domaine!.couleur}
-                          stroke="#120d1a"
-                          strokeWidth={2}
-                          style={{ transition: "r 200ms" }}
-                        />
+                        {n.type === "techno" && n.usages!.length === 0 ? (
+                          // Point creux : techno maîtrisée, hors missions détaillées
+                          <circle
+                            r={estSel ? n.r + 3 : n.r}
+                            fill="#120d1a"
+                            stroke={n.domaine!.couleur}
+                            strokeWidth={2}
+                            style={{ transition: "r 200ms" }}
+                          />
+                        ) : (
+                          <circle
+                            r={estSel ? n.r + 3 : n.r}
+                            fill={n.domaine!.couleur}
+                            stroke="#120d1a"
+                            strokeWidth={2}
+                            style={{ transition: "r 200ms" }}
+                          />
+                        )}
                         {estSel && <circle r={n.r + 7} fill="none" stroke={n.domaine!.couleur} strokeWidth={2} />}
                         <text
                           x={lx}
@@ -354,6 +440,12 @@ export default function StackGraph() {
               un domaine pour voir ses technologies.
             </p>
             <p className="mt-3 text-sm">La taille d'un point est proportionnelle au nombre de missions.</p>
+            <p className="mt-2 text-sm flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 14 14" className="shrink-0" aria-hidden="true">
+                <circle cx="7" cy="7" r="5" fill="none" stroke="#d4d4d4" strokeWidth="2" />
+              </svg>
+              Point creux : technologie maîtrisée, hors missions détaillées sur ce site.
+            </p>
           </div>
         )}
         {sel?.type === "techno" && (
@@ -364,8 +456,14 @@ export default function StackGraph() {
             </div>
             <h3 className="text-2xl font-semibold text-white mt-1">{sel.label}</h3>
             <p className="mt-1 text-neutral-300">
-              <span className="text-white font-semibold text-lg">{sel.usages!.length}</span>{" "}
-              mission{sel.usages!.length > 1 ? "s" : ""}
+              {sel.usages!.length > 0 ? (
+                <>
+                  <span className="text-white font-semibold text-lg">{sel.usages!.length}</span>{" "}
+                  mission{sel.usages!.length > 1 ? "s" : ""}
+                </>
+              ) : (
+                "Hors missions détaillées"
+              )}
             </p>
             <ul className="mt-4 space-y-2">
               {sel.usages!.map((u) => (
@@ -375,7 +473,9 @@ export default function StackGraph() {
                 </li>
               ))}
               {sel.usages!.length === 0 && (
-                <li className="text-sm text-neutral-400">Pas de mission détaillée sur ce site.</li>
+                <li className="text-sm text-neutral-400">
+                  Technologie maîtrisée, utilisée hors des missions détaillées sur ce site.
+                </li>
               )}
             </ul>
           </div>
@@ -395,7 +495,9 @@ export default function StackGraph() {
                   <li key={t.id} className="flex justify-between gap-4 text-sm">
                     <span className="text-white">{t.label}</span>
                     <span className="text-neutral-400 tabular-nums">
-                      {t.usages?.length ?? 0} mission{(t.usages?.length ?? 0) > 1 ? "s" : ""}
+                      {t.usages?.length
+                        ? `${t.usages.length} mission${t.usages.length > 1 ? "s" : ""}`
+                        : "hors missions"}
                     </span>
                   </li>
                 ))}
