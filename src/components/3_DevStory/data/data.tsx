@@ -1,7 +1,8 @@
-import { faAngular, faAws, faDocker, faMicrosoft, faPython, faReact } from "@fortawesome/free-brands-svg-icons";
+import { faAngular, faAws, faUsb, faDocker, faMicrosoft, faPython, faReact } from "@fortawesome/free-brands-svg-icons";
 import { ICompany, IMission } from "./interfaces";
 import {
   faArrowsRotate,
+  faComments,
   faMobileScreen,
   faBell,
   faFileShield,
@@ -221,15 +222,26 @@ export const matheva: IMission = {
 };
 
 export const sesam: IMission = {
-  nom: "SESAM - Migration de la base documentaire Synology",
-  periode: "09/2026 - 10/2026",
-  contexte: "Migration de la base documentaire Synology de l'entreprise SESAM.",
+  nom: "Reprise en main et réorganisation du SI d'un groupe BTP (Consultant IT & Ingénieur Python)",
+  periode: "09/2026 - aujourd'hui",
+  contexte:
+    "Mission pour un groupe familial BTP de 6 sociétés en Guadeloupe, qui réalise des travaux pour le Conseil départemental. Leurs données étaient stockées sur un NAS Synology installé par un précédent prestataire, après une migration incomplète depuis l'ancien serveur Windows : serveurs divergents, aucune organisation des fichiers et droits d'accès incohérents. Le dirigeant attendait des solutions concrètes, pas un audit.",
   taches: [
-    { icone: faFolderTree, texte: "Scripts Python de migration de la base documentaire Synology" },
+    { icone: faComments, texte: "Cadrage et entretiens avec la direction, la comptabilité et le contrôle de gestion, mission recentrée sur la chaîne de données réellement utilisée (bon de commande → devis → états d'acompte → facturation Chorus)" },
+    { icone: faUsb, texte: "Kit d'audit sur clé USB en Python portable, lancé sur les postes sans rien installer et en lecture seule (prouvé par empreinte avant / après) : inventaire de ~265 000 fichiers sur 5 partages réseau et un ancien serveur (arborescence, métadonnées Office, doublons, droits, statistiques par société)" },
+    { icone: faCodeCompare, texte: "Analyse de la migration : bilan transféré / modifié / oublié entre l'ancien serveur et le NAS, qui a révélé des écritures partant encore vers l'ancien serveur (paie, scans du copieur, sauvegardes du logiciel de facturation)" },
+    { icone: faFolderTree, texte: "Conception de l'arborescence cible : 7 variantes comparées automatiquement sur des indicateurs mesurés, validées par des tests utilisateurs sur une maquette HTML autonome (droits simulés, prédictions archivées avant les tests) et améliorées avec les retours de la comptable" },
+    { icone: faFileExcel, texte: "Outil de migration des liaisons Excel (xlsx / xls / xlsm, analyse des formats binaires) : inventaire, correction sur copies et annulation possible, 78 tests automatisés ; il a révélé que des classeurs migrés lisaient encore l'ancien serveur, en silence" },
+    { icone: faShieldHalved, texte: "Reprise en main de la sécurité : audit et correction des droits SMB / ACL du NAS (droits par rôle), fermeture des accès de l'ancien prestataire, gel progressif de l'ancien serveur" },
+    { icone: faFileWord, texte: "Procédures d'exploitation pas à pas et livrables Word générés à partir d'une charte (python-docx)" },
+    { icone: faWandMagicSparkles, texte: "Conception assistée par IA : un agent simulant une utilisatrice a servi à éprouver l'arborescence avant de la soumettre aux vrais utilisateurs" },
   ],
   techs: [
-    { icone: faPython, texte: "Python" },
-    { icone: faServer, texte: "Synology" },
+    { icone: faPython, texte: "Python 3.12 (portable), pypdf, olefile, python-docx" },
+    { icone: faServer, texte: "Synology DSM (SMB, ACL, QuickConnect, Active Backup for Business), Windows Server" },
+    { icone: faFileExcel, texte: "Excel (liaisons externes)" },
+    { icone: faCode, texte: "HTML / JavaScript, PowerShell" },
+    { icone: faWandMagicSparkles, texte: "Claude Code" },
   ],
 };
 
@@ -550,6 +562,7 @@ export const companies: ICompany[] = [
     dates: "Depuis 07/2026",
     postes: [
       { icone: faCode, texte: "Ingénieur logiciel FullStack indépendant" },
+      { icone: faServer, texte: "Consultant IT" },
     ],
     logos: [],
     missions: [sesam, arcgr, matheva, valado, aivocat],
