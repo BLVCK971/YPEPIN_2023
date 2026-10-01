@@ -2,6 +2,9 @@ import { faAngular, faAws, faDocker, faMicrosoft, faPython, faReact } from "@for
 import { ICompany, IMission } from "./interfaces";
 import {
   faArrowsRotate,
+  faCalendarDays,
+  faUserShield,
+  faFileWord,
   faBolt,
   faBrain,
   faBook,
@@ -29,6 +32,7 @@ import {
   faGears,
   faGlobe,
   faHandshake,
+  faImages,
   faIndustry,
   faKey,
   faLanguage,
@@ -90,17 +94,29 @@ export const drevio: IMission = {
 /// FREELANCE .............
 
 export const aivocat: IMission = {
-  nom: "Aivocat - LLM d'étude de dossiers légaux hors réseau",
+  nom: "Aivocat - Assistant juridique IA 100 % local (RAG souverain)",
   periode: "07/2026 - 08/2026",
   contexte:
-    "LLM basé sur Qwen, spécialisé dans l'étude de dossiers légaux et fonctionnant entièrement hors réseau, sans aucune possibilité de fuite d'information.",
+    "Mission freelance pour un cabinet d'avocats : les avocats ne peuvent pas envoyer les pièces de leurs clients à ChatGPT. Conception et livraison, seul, d'un assistant IA qui tourne entièrement sur un PC du cabinet (une RTX 3060 suffit), sans connexion internet : aucune donnée ne sort de la machine (secret professionnel).",
   taches: [
-    { icone: faBrain, texte: "Spécialisation d'un modèle Qwen pour l'étude de dossiers légaux" },
-    { icone: faShieldHalved, texte: "Fonctionnement 100 % hors réseau : aucune donnée des dossiers ne peut sortir de l'infrastructure" },
+    { icone: faMagnifyingGlass, texte: "Chaîne RAG complète : ingestion multi-format (PDF, Word, Excel, courriels) avec OCR, découpage, vectorisation, recherche hybride (BM25 et vecteurs) avec reranking cross-encoder" },
+    { icone: faShieldHalved, texte: "Réponses qui citent les passages exacts sur lesquels elles s'appuient, ou refusent de répondre quand rien ne les appuie (seuils d'abstention calibrés sur des mesures réelles)" },
+    { icone: faBook, texte: "Intégration des textes de loi (Code civil, loi de 1989…) à partir de l'open data officiel LEGI/DILA, découpés article par article et interrogés en parallèle des pièces du dossier" },
+    { icone: faBrain, texte: "Fonctions métier : fiche de synthèse du dossier, conversation, analyse juridique, SWOT et stratégies d'attaque ou de réfutation" },
+    { icone: faLock, texte: "Dossiers lus sur clé USB en lecture seule, mémoire de l'assistant conservée sur une clé séparée" },
+    { icone: faMicrochip, texte: "Gestion de la VRAM sur 12 Go : embeddings, reranker et LLM 9B se partagent le GPU tour à tour" },
+    { icone: faRocket, texte: "Industrialisation : paquet d'installation entièrement hors ligne (14 Go) avec vérification des empreintes SHA-256, code compilé (Nuitka), licence signée Ed25519 liée à la machine, scripts de diagnostic et de sauvegarde" },
+  ],
+  resultats: [
+    { icone: faVial, texte: "Environ 650 tests automatisés pour environ 15 000 lignes de Python" },
+    { icone: faCheckDouble, texte: "« Jury » d'évaluation automatisé qui note la précision des citations et le taux de bonnes réponses sur des dossiers de test, dont un dossier fiscal fictif généré pour l'occasion" },
   ],
   techs: [
-    { icone: faBrain, texte: "Qwen (LLM)" },
-    { icone: faLock, texte: "Déploiement hors réseau (air-gapped)" },
+    { icone: faPython, texte: "Python 3.12, FastAPI, SQLite, HTML/JS" },
+    { icone: faBrain, texte: "Ollama, Qwen 3.5 9B, bge-m3, bge-reranker-v2-m3" },
+    { icone: faDatabase, texte: "Qdrant (base vectorielle)" },
+    { icone: faImages, texte: "RapidOCR" },
+    { icone: faGears, texte: "Nuitka, PowerShell" },
   ],
 };
 
@@ -116,8 +132,54 @@ export const valado: IMission = {
   ],
 };
 
+export const arcgr: IMission = {
+  nom: "ARC Gestion et Recouvrement - Site vitrine, CRM et portail client",
+  periode: "08/2026 - 09/2026",
+  contexte:
+    "Plateforme complète pour un cabinet de recouvrement de créances : site vitrine (arc-gr.fr), mini-CRM interne de suivi des dossiers de relance et portail client privé pour suivre les montants recouvrés.",
+  taches: [
+    { icone: faGlobe, texte: "Site vitrine avec calculateur d'impact des impayés, SEO et pages légales" },
+    { icone: faUsersGear, texte: "Mini-CRM : clients, dossiers de créances, statuts en kanban, historique des relances, alertes d'échéances et recherche / tri" },
+    { icone: faEnvelopeOpenText, texte: "Relance par mail en deux temps, envoi groupé multi-clients, verrou anti-double envoi" },
+    { icone: faFileExcel, texte: "Import Excel / CSV des fichiers clients : aperçu avant import, correspondance des colonnes mémorisée par client, réconciliation et annulation complète d'un import" },
+    { icone: faFileWord, texte: "Compte rendu client en Word (.docx) avec part due sur les montants recouvrés et commentaire généré par IA (API Claude)" },
+    { icone: faUserShield, texte: "Portail client privé : authentification par rôle (JWT), accès ouverts depuis le CRM, consultation des montants en cours et recouvrés" },
+    { icone: faDatabase, texte: "PostgreSQL sur réseau Docker interne, migrations Alembic jouées à chaque déploiement, corbeille (soft-delete) et sauvegarde automatique" },
+    { icone: faShieldHalved, texte: "VPS durci (SSH par clé, pare-feu, fail2ban) et reverse proxy Traefik partagé avec TLS Let's Encrypt" },
+  ],
+  techs: [
+    { icone: faReact, texte: "React, TypeScript, Vite, Tailwind, React Hook Form, Zod" },
+    { icone: faPython, texte: "FastAPI, SQLAlchemy, Alembic, python-docx" },
+    { icone: faDatabase, texte: "PostgreSQL" },
+    { icone: faWandMagicSparkles, texte: "API Claude (Anthropic)" },
+    { icone: faDocker, texte: "Docker, Traefik, GitHub Actions, VPS Linux" },
+  ],
+};
+
+export const matheva: IMission = {
+  nom: "Matheva - Plateforme de cours particuliers de mathématiques",
+  periode: "08/2026 - 09/2026",
+  contexte:
+    "Plateforme en 3 volets pour une professeure de mathématiques (site public, espace parent, espace professeur), organisée autour d'un fil pédagogique : évaluer, identifier les besoins, accompagner, mesurer les progrès et informer les parents.",
+  taches: [
+    { icone: faGlobe, texte: "Site public avec formulaire de contact envoyé par e-mail (SMTP)" },
+    { icone: faClipboardList, texte: "Test diagnostique public : banque de questions, scoring côté serveur, restitution par paliers et capture des leads (page « Élèves en attente »)" },
+    { icone: faChalkboardUser, texte: "Espace professeur : élèves, calendrier et fiches de séance, suivi des notions par programme, types de cours et tarifs" },
+    { icone: faMoneyBillTrendUp, texte: "Module paiements : un cours réalisé ou annulé génère automatiquement son paiement, KPI de revenu prévu" },
+    { icone: faUserGroup, texte: "Espace parent en lecture seule : suivi des notions, séances, travail à faire et paiements de chaque enfant, accès par lien personnel sans mot de passe" },
+    { icone: faCalendarDays, texte: "Export du planning vers Google Calendar (flux iCal)" },
+  ],
+  techs: [
+    { icone: faReact, texte: "React, TypeScript, Vite, Tailwind" },
+    { icone: faPython, texte: "FastAPI, SQLAlchemy, icalendar" },
+    { icone: faDatabase, texte: "PostgreSQL" },
+    { icone: faDocker, texte: "Docker, Traefik, GitHub Actions" },
+  ],
+};
+
 export const sesam: IMission = {
   nom: "SESAM - Migration de la base documentaire Synology",
+  periode: "09/2026 - 10/2026",
   contexte: "Migration de la base documentaire Synology de l'entreprise SESAM.",
   taches: [
     { icone: faFolderTree, texte: "Scripts Python de migration de la base documentaire Synology" },
@@ -447,7 +509,7 @@ export const companies: ICompany[] = [
       { icone: faCode, texte: "Ingénieur logiciel FullStack indépendant" },
     ],
     logos: [],
-    missions: [aivocat, valado, sesam],
+    missions: [sesam, arcgr, matheva, valado, aivocat],
   },
   {
     id: "Drevio",
