@@ -270,10 +270,20 @@ export default function StackGraph() {
           el.setAttribute("y2", b.y.toFixed(1));
         }
       }
-      frame = requestAnimationFrame(tick);
+      frame = enVue ? requestAnimationFrame(tick) : 0;
     };
+    // La boucle ne tourne que lorsque le réseau est à l'écran
+    let enVue = true;
+    const io = new IntersectionObserver(([e]) => {
+      enVue = e.isIntersecting;
+      if (enVue && !frame) frame = requestAnimationFrame(tick);
+    });
+    if (svgRef.current) io.observe(svgRef.current);
     frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(frame);
+    };
   }, [visible, noeuds, liens]);
 
   const sel = selection ? parId.get(selection) : undefined;
