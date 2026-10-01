@@ -24,8 +24,26 @@ export interface IPoste {
 
  export interface IMission {
    nom: string
+   periode?: string
    contexte: string
    taches : ITache[]
+   resultats?: ITache[]
    techs : ITech[]
-   collabs : ICollab[]
+   collabs? : ICollab[]
+}
+
+export interface ILogo {
+   src: string
+   // Logo sombre : affiché sur une pastille claire pour rester lisible
+   surFondClair?: boolean
+}
+
+export interface ICompany {
+   id: string
+   nom: string
+   dates: string
+   contexte?: string
+   postes: IPoste[]
+   logos: ILogo[]
+   missions: IMission[]
 }

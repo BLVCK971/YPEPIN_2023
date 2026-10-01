@@ -4,6 +4,8 @@ import Poste from "./1_Home/Poste";
 import BaseNav from "./1_Home/BaseNav";
 import Parcours from "./3_DevStory/Parcours";
 import Portofolio from "./4_Portofolio/Portofolio";
+import Profil from "./5_Profil/Profil";
+import Formation from "./6_Formation/Formation";
 import { BackgroundGradientAnimation } from "./ui/background-gradient-animation";
 
 export default function Main() {
@@ -26,23 +28,31 @@ export default function Main() {
         <BaseNav />
       </BackgroundGradientAnimation>
       <section
-        id="Parcours"
-        className="bg-gradient-to-b from-black flex min-h-screen flex-col items-center justify-between "
+        id="Profil"
+        className="bg-gradient-to-b from-black flex flex-col items-center gap-8 py-16"
       >
-        <h1 className=" text-5xl md:text-8xl font-semibold z-50">
+        <h1 className="text-5xl md:text-8xl font-semibold z-50 text-center">
+          Profil & Compétences
+        </h1>
+        <Profil />
+      </section>
+      <section
+        id="Parcours"
+        className="flex min-h-screen flex-col items-center justify-between "
+      >
+        <h1 className=" text-5xl md:text-8xl font-semibold z-50 text-center">
           Parcours Professionnel
         </h1>
-        {/**/}
-        {/* <video */}
-        {/*   autoPlay */}
-        {/*   muted */}
-        {/*   loop */}
-        {/*   className="video -z-30 fixed top-0 left-0 right-0 bottom-0 brightness-50" */}
-        {/* > */}
-        {/*   <source src="/videos/Design.mp4" type="video/mp4" /> */}
-        {/* </video> */}
-
         <Parcours />
+      </section>
+      <section
+        id="Formation"
+        className="flex flex-col items-center gap-8 py-16"
+      >
+        <h1 className="text-5xl md:text-8xl font-semibold z-50 text-center">
+          Formation
+        </h1>
+        <Formation />
       </section>
       <section
         id="Portofolio"

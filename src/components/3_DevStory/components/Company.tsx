@@ -1,23 +1,22 @@
 import React, { useState } from "react";
-import { IPoste } from "../data/interfaces";
+import { ICompany } from "../data/interfaces";
 import { ArrowIcon } from "../CustomIcons/ArrowIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Company.css";
 
 const companyColors: { [key: string]: string } = {
-  Schneider: "SchneiderBox",
+  Drevio: "DrevioBox",
+  Proelan: "SchneiderBox",
+  Avisto: "AvistoBox",
   Digitom: "DigitomBox",
   Ayming: "AymingBox",
 };
 
 export const Company: React.FC<{
-  Id: string;
-  nom: string;
-  dates: string;
-  companyPostes: IPoste[];
-  companyLogos: string[];
+  company: ICompany;
   children: React.ReactNode;
-}> = ({ Id, nom, dates, companyPostes, children, companyLogos }) => {
+}> = ({ company, children }) => {
+  const { id: Id, nom, dates, contexte, postes: companyPostes, logos: companyLogos } = company;
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleCollapse = () => {
@@ -26,8 +25,8 @@ export const Company: React.FC<{
 
   return (
     <div className={`sm:grid-cols-12 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl border-neutral-800 bg-zinc-800/30 from-inherit lg:w-auto rounded-xl border bg-gray-200 lg:p-4 p-2 pt-8 mb-5 ${companyColors[Id]}`}>
-      <div className="grid grid-cols-4 gap-4">
-        <div className="col-span-2">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <div className="sm:col-span-2">
           <h1 className="text-xl font-bold">
             <div className="flex items-center">
               {nom}
@@ -46,14 +45,17 @@ export const Company: React.FC<{
             </div>
           </h1>
         </div>
-        <div className="col-span-2 flex items-center justify-between flex-wrap gap-4">
-          <div className="flex justify-start items-center">
+        <div className="sm:col-span-2 flex items-center justify-between flex-wrap gap-4">
+          <div className="flex justify-start items-center gap-4 flex-wrap">
             {companyLogos.map((logo) => (
-              <div key={logo} className="flex items-center justify-start h-full">
+              <div
+                key={logo.src}
+                className={`flex items-center justify-start h-full ${logo.surFondClair ? "bg-white/90 rounded-xl p-2" : ""}`}
+              >
                 <img
-                  src={logo}
+                  src={logo.src}
                   alt={`${Id}'s logo`}
-                  className="h-32 object-contain"
+                  className={logo.surFondClair ? "h-14 sm:h-28 object-contain" : "h-16 sm:h-32 object-contain"}
                 />
               </div>
             ))}
@@ -83,6 +85,9 @@ export const Company: React.FC<{
         style={{ display: 'grid' }}
       >
         <div className="overflow-hidden">
+          {contexte && (
+            <div className="text-base bg-white/5 rounded-xl p-4">{contexte}</div>
+          )}
           {children}
         </div>
       </div>
