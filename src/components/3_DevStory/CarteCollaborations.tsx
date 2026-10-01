@@ -17,7 +17,7 @@ const LIEUX: Lieu[] = [
   { id: "es", nom: "Espagne", lon: -3.7, lat: 40.42, dx: -10, dy: 12, ancre: "end" },
   { id: "de", nom: "Allemagne", lon: 8.68, lat: 50.11, dx: 4, dy: -12, ancre: "middle" },
   { id: "rs", nom: "Serbie", lon: 20.46, lat: 44.79, dx: -2, dy: 20, ancre: "middle" },
-  { id: "ro", nom: "Roumanie", lon: 26.1, lat: 44.43, dx: 10, dy: -6, ancre: "start" },
+  { id: "ro", nom: "Roumanie", lon: 26.1, lat: 44.43, dx: 10, dy: -6, ancre: "start", hub: true },
   { id: "in", nom: "Inde", lon: 77.59, lat: 12.97, dx: 0, dy: 22, ancre: "middle" },
   { id: "sg", nom: "Singapour", lon: 103.82, lat: 1.35, dx: 0, dy: 22, ancre: "middle" },
 ];
@@ -37,7 +37,8 @@ const LEGENDE = [
   { lieux: "Guadeloupe", texte: "Université des Antilles (MIAGE), DIGITOM, missions ICEKERA (SESAM)" },
   { lieux: "France", texte: "Ayming, AViSTO et PROELAN pour Schneider Electric" },
   { lieux: "Allemagne · Serbie · Inde · Singapour", texte: "Train Agile SAFe international de 90 personnes (AViSTO / Schneider)" },
-  { lieux: "Espagne · Roumanie", texte: "Formation par l'équipe espagnole, développement avec des développeurs roumains (PROELAN / Schneider)" },
+  { lieux: "Roumanie", texte: "Télétravail depuis la Roumanie (DREVIO), et développement avec des développeurs roumains (PROELAN / Schneider)" },
+  { lieux: "Espagne", texte: "Formation par l'équipe espagnole (PROELAN / Schneider)" },
 ];
 
 const point = (id: string) => {
@@ -77,7 +78,9 @@ export default function CarteCollaborations() {
     <Reveal className="w-full max-w-6xl px-4 mt-16">
       <div className="rounded-2xl border border-white/10 bg-black/40 p-5 md:p-7 backdrop-blur-xl">
         <h3 className="text-xl md:text-2xl font-semibold tracking-tight">Collaborations internationales</h3>
-        <p className="mt-1 text-sm text-neutral-400">De la Guadeloupe aux équipes réparties en Europe et en Asie.</p>
+        <p className="mt-1 text-sm text-neutral-400">
+          De la Guadeloupe à la Roumanie, avec des équipes réparties en Europe et en Asie.
+        </p>
 
         <div ref={ref} className={cn("carte mt-4", visible && "carte-visible")}>
           <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Carte des collaborations : Guadeloupe, France, Espagne, Allemagne, Serbie, Roumanie, Inde et Singapour">
