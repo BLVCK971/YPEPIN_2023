@@ -21,7 +21,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://ypepin.com/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ypepin.com/" />
     <image:image>
-      <image:loc>https://ypepin.com/og-image.jpg</image:loc>
+      <image:loc>https://ypepin.com/og-image-en.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -29,5 +29,11 @@
     <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ypepin.com/cv/CV_Yoel_PEPIN_EN.pdf</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

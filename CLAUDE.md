@@ -20,11 +20,11 @@
   Traductions du parcours dans `src/components/3_DevStory/data/data.en.tsx` (le build échoue si une
   tâche, un résultat ou une mission française n'y a pas son équivalent) ; textes d'interface traduits
   directement dans chaque composant. Toute modification du contenu français doit être reportée en anglais.
-  Le CV téléchargeable reste en français.
-- CV téléchargeable : `public/cv/CV_Yoel_PEPIN.docx` (source Word) et `public/cv/CV_Yoel_PEPIN.pdf`.
+- CV téléchargeable : `public/cv/CV_Yoel_PEPIN.docx` (source Word) et `public/cv/CV_Yoel_PEPIN.pdf`,
+  version anglaise `public/cv/CV_Yoel_PEPIN_EN.docx` / `.pdf` (proposée sur `/en/`, même mise en page).
   Le docx doit rester aligné avec le contenu du site : toute modification de `data.tsx`,
-  `Profil.tsx` ou `Formation.tsx` doit être reportée dans le docx, puis le PDF régénéré
-  (`soffice --headless --convert-to pdf public/cv/CV_Yoel_PEPIN.docx --outdir public/cv`).
+  `Profil.tsx` ou `Formation.tsx` doit être reportée dans les deux docx (FR et EN), puis les PDF régénérés
+  (`soffice --headless --convert-to pdf public/cv/CV_Yoel_PEPIN.docx --outdir public/cv`, idem `_EN`).
 
 ## SEO
 

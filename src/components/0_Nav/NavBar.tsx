@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaBars, FaFilePdf, FaGithub, FaLinkedin, FaTimes } from "react-icons/fa";
-import { CV_PDF } from "../1_Home/CvButtons";
+import { useCv } from "../1_Home/CvButtons";
 import { cn } from "../ui/utils/cn";
 import { ACCUEIL, useLang, useT } from "../../i18n";
 
@@ -21,6 +21,7 @@ export default function NavBar() {
   const [menuOuvert, setMenuOuvert] = useState(false);
   const lang = useLang();
   const t = useT();
+  const cv = useCv();
 
   useEffect(() => {
     const onScroll = () => setDefile(window.scrollY > 24);
@@ -111,7 +112,7 @@ export default function NavBar() {
             <FaGithub className="text-xl" aria-hidden="true" />
           </a>
           <a
-            href={CV_PDF}
+            href={cv.pdf}
             download
             className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium transition-colors hover:bg-white/20"
           >

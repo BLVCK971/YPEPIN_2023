@@ -1,5 +1,5 @@
 import { FaEnvelope, FaFilePdf, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa";
-import { CV_PDF } from "../1_Home/CvButtons";
+import { useCv } from "../1_Home/CvButtons";
 import SectionTitle from "../ui/SectionTitle";
 import Reveal from "../ui/Reveal";
 import { useLang, useT } from "../../i18n";
@@ -17,6 +17,7 @@ const nav = SECTIONS.filter((s) => s.id !== "Contact");
 export default function ContactSection() {
   const lang = useLang();
   const t = useT();
+  const cv = useCv();
   return (
     <footer id="Contact" className="flex flex-col items-center gap-8 px-4 pt-20 md:pt-28 pb-10">
       <SectionTitle etiquette="Contact" titre={t("Travaillons ensemble", "Let's work together")} />
@@ -44,12 +45,12 @@ export default function ContactSection() {
           ))}
         </ul>
         <a
-          href={CV_PDF}
+          href={cv.pdf}
           download
           className="flex items-center gap-2 px-6 py-3 font-semibold text-white rounded-full shadow-lg bg-gradient-to-r from-violet-600 to-cyan-500 transition-transform duration-300 hover:scale-105"
         >
           <FaFilePdf className="text-xl" aria-hidden="true" />
-          {t("Télécharger mon CV (PDF)", "Download my CV (PDF, French)")}
+          {t("Télécharger mon CV (PDF)", "Download my CV (PDF)")}
         </a>
       </div>
       </Reveal>

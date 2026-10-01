@@ -89,6 +89,8 @@ const versionAnglaise = (html) => {
       `content="${DESCRIPTION_EN}"`,
     ],
     ['<link rel="canonical" href="https://ypepin.com/" />', '<link rel="canonical" href="https://ypepin.com/en/" />'],
+    // og:image et twitter:image : visuel en anglais
+    ['content="https://ypepin.com/og-image.jpg"', 'content="https://ypepin.com/og-image-en.jpg"'],
     ['<meta property="og:locale" content="fr_FR" />', '<meta property="og:locale" content="en_US" />'],
     ['<meta property="og:locale:alternate" content="en_US" />', '<meta property="og:locale:alternate" content="fr_FR" />'],
     ['<meta property="og:url" content="https://ypepin.com/" />', '<meta property="og:url" content="https://ypepin.com/en/" />'],
