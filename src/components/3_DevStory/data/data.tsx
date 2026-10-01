@@ -112,7 +112,7 @@ export const drevioMobile: IMission = {
 
 export const drevio: IMission = {
   nom: "DREVIO Phase 1 - Plateforme SaaS d'évaluation des dommages automobiles",
-  periode: "05/2026 - 07/2026",
+  periode: "05/2026 - 08/2026",
   contexte:
     "Conception de DREVIO, une plateforme SaaS destinée à digitaliser et automatiser l'évaluation des dommages automobiles : création d'un dossier à partir d'un véhicule et de photographies, analyse des dommages par intelligence artificielle, puis génération d'une première estimation exploitable par les professionnels de la carrosserie.",
   taches: [
@@ -581,6 +581,8 @@ export const companies: ICompany[] = [
     id: "Drevio",
     nom: "DREVIO",
     dates: "Depuis 05/2026",
+    contexte:
+      "Phase 1 terminée en août 2026, application mobile en cours. Une phase 2 démarre en novembre 2026.",
     postes: [
       { icone: faPeopleGroup, texte: "Tech Lead" },
       { icone: faCode, texte: "Lead Developer" },
