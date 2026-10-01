@@ -167,7 +167,7 @@ export const aivocat: IMission = {
 };
 
 export const valado: IMission = {
-  nom: "Migration et sécurisation d'une infrastructure Sage Batigest (PME)",
+  nom: "Valado - Migration et sécurisation d'une infrastructure Sage Batigest",
   periode: "08/2026",
   contexte:
     "Migration et remise à niveau d'une infrastructure Sage Batigest reposant sur SQL Server, avec transfert vers un nouveau serveur Windows et rétablissement des accès multi-postes.",
@@ -208,6 +208,9 @@ export const arcgr: IMission = {
     { icone: faWandMagicSparkles, texte: "API Claude (Anthropic)" },
     { icone: faDocker, texte: "Docker, Traefik, GitHub Actions, VPS Linux" },
   ],
+  collabs: [
+    { icone: faUser, texte: "Ariane Arçon, Cliente (ARC Gestion et Recouvrement)" },
+  ],
 };
 
 export const matheva: IMission = {
@@ -229,10 +232,13 @@ export const matheva: IMission = {
     { icone: faDatabase, texte: "PostgreSQL" },
     { icone: faDocker, texte: "Docker, Traefik, GitHub Actions" },
   ],
+  collabs: [
+    { icone: faUser, texte: "Maeva, Cliente (professeure de mathématiques)" },
+  ],
 };
 
 export const sesam: IMission = {
-  nom: "Reprise en main et réorganisation du SI d'un groupe BTP (Consultant IT & Ingénieur Python)",
+  nom: "SESAM - Reprise en main et réorganisation du SI d'un groupe BTP (Consultant IT & Ingénieur Python)",
   periode: "09/2026 - aujourd'hui",
   contexte:
     "Mission pour un groupe familial BTP de 6 sociétés en Guadeloupe, qui réalise des travaux pour le Conseil départemental. Leurs données étaient stockées sur un NAS Synology installé par un précédent prestataire, après une migration incomplète depuis l'ancien serveur Windows : serveurs divergents, aucune organisation des fichiers et droits d'accès incohérents. Le dirigeant attendait des solutions concrètes, pas un audit.",
