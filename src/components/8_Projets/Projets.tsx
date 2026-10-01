@@ -1,6 +1,7 @@
 import Reveal from "../ui/Reveal";
 import Experimentations from "../4_Portofolio/Portofolio";
 import FlowDiagram, { Etape } from "./FlowDiagram";
+import ParallelDiagram from "./ParallelDiagram";
 
 // Projets phares : résumé court de missions détaillées dans le Parcours.
 type Projet = {
@@ -11,7 +12,9 @@ type Projet = {
   chiffre?: string;
   tags: string[];
   lien?: { href: string; label: string };
-  schema: { etapes: Etape[]; colonnes?: number; cadre?: string };
+  schema?: { etapes: Etape[]; colonnes?: number; cadre?: string };
+  // Schéma spécifique (fan-out ATMP) et carte pleine largeur
+  parallele?: boolean;
 };
 
 const PROJETS: Projet[] = [
@@ -58,6 +61,16 @@ const PROJETS: Projet[] = [
     },
   },
   {
+    nom: "ATMP",
+    categorie: "Automatisation à grande échelle · Ayming",
+    periode: "06/2024 - 02/2025",
+    accroche:
+      "Récupération automatisée des taux AT/MP, feuilles de calcul et attestations pour environ 5 000 comptes clients via NET ENTREPRISE. Migration d'une solution Java vers une architecture Python asynchrone : chaque tâche AWS ECS s'exécute indépendamment et déclenche sa propre pipeline SnapLogic, avec auto-scaling selon la charge.",
+    chiffre: "~5 000 comptes · 1–2 M€/mois de bénéfice estimé",
+    tags: ["Python", "Requests", "AWS ECS", "DynamoDB", "S3", "XRay", "SnapLogic"],
+    parallele: true,
+  },
+  {
     nom: "ARC Gestion et Recouvrement",
     categorie: "Site, CRM & portail · Freelance",
     periode: "08/2026 - 09/2026",
@@ -100,7 +113,7 @@ export default function Projets() {
     <div className="flex w-full max-w-6xl flex-col gap-12 px-4">
       <div className="grid gap-6 md:grid-cols-2">
         {PROJETS.map((p, i) => (
-          <Reveal key={p.nom} delay={(i % 2) * 120}>
+          <Reveal key={p.nom} delay={p.parallele ? 0 : (i % 2) * 120} className={p.parallele ? "md:col-span-2" : undefined}>
             <article className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:shadow-2xl hover:shadow-violet-900/30">
               {/* Halo d'accent au survol */}
               <div
@@ -109,7 +122,11 @@ export default function Projets() {
               />
               <div className="relative flex h-full flex-col">
                 <div className="-mx-2 mb-5 rounded-xl border border-white/5 bg-black/30 p-2">
-                  <FlowDiagram id={p.nom.split(" ")[0].toLowerCase()} {...p.schema} />
+                  {p.parallele ? (
+                    <ParallelDiagram id="atmp" />
+                  ) : (
+                    p.schema && <FlowDiagram id={p.nom.split(" ")[0].toLowerCase()} {...p.schema} />
+                  )}
                 </div>
                 <p className="text-sm font-medium text-cyan-300">{p.categorie}</p>
                 <h3 className="mt-1 text-2xl font-semibold tracking-tight">{p.nom}</h3>

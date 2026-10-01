@@ -99,4 +99,8 @@ footer[id] {
   .flow-diagram .flow-glow {
     display: none;
   }
+  /* Les animations SMIL ne lisent pas ce réglage : la règle CSS fige l'opacité */
+  .flow-diagram .flow-grid rect {
+    fill-opacity: 0.3;
+  }
 }
