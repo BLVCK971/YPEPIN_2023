@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Company.css";
 
 const companyColors: { [key: string]: string } = {
+  Freelance: "FreelanceBox",
   Drevio: "DrevioBox",
   Proelan: "SchneiderBox",
   Avisto: "AvistoBox",

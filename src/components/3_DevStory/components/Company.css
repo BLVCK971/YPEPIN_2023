@@ -22,8 +22,13 @@
     backdrop-filter: blur(50px);
 }
 
+.FreelanceBox{
+    background: linear-gradient(112deg,rgba(124, 58, 237, 0.35) 2.19%, rgba(76, 29, 149, 0.2) 95%);
+    backdrop-filter: blur(50px);
+}
+
 .DrevioBox{
-    background: linear-gradient(112deg,rgba(234, 88, 12, 0.35) 2.19%, rgba(124, 45, 18, 0.2) 95%);
+    background: linear-gradient(112deg,rgba(34, 197, 94, 0.30) 2.19%, rgba(6, 182, 212, 0.15) 95%);
     backdrop-filter: blur(50px);
 }
 

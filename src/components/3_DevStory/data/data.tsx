@@ -3,6 +3,7 @@ import { ICompany, IMission } from "./interfaces";
 import {
   faArrowsRotate,
   faBolt,
+  faBrain,
   faBook,
   faBug,
   faChalkboardUser,
@@ -22,6 +23,7 @@ import {
   faDiagramNext,
   faDroplet,
   faEnvelopeOpenText,
+  faFolderTree,
   faFileExcel,
   faGaugeHigh,
   faGears,
@@ -78,6 +80,51 @@ export const drevio: IMission = {
     { icone: faDatabase, texte: "PostgreSQL, Supabase" },
     { icone: faWandMagicSparkles, texte: "OpenAI API" },
     { icone: faDocker, texte: "Docker, Traefik, GitHub Actions, Linux" },
+  ],
+  collabs: [
+    { icone: faUser, texte: "Théo, Développeur" },
+    { icone: faUser, texte: "Bruno, Commercial" },
+  ],
+};
+
+/// FREELANCE .............
+
+export const aivocat: IMission = {
+  nom: "Aivocat - LLM d'étude de dossiers légaux hors réseau",
+  periode: "07/2026 - 08/2026",
+  contexte:
+    "LLM basé sur Qwen, spécialisé dans l'étude de dossiers légaux et fonctionnant entièrement hors réseau, sans aucune possibilité de fuite d'information.",
+  taches: [
+    { icone: faBrain, texte: "Spécialisation d'un modèle Qwen pour l'étude de dossiers légaux" },
+    { icone: faShieldHalved, texte: "Fonctionnement 100 % hors réseau : aucune donnée des dossiers ne peut sortir de l'infrastructure" },
+  ],
+  techs: [
+    { icone: faBrain, texte: "Qwen (LLM)" },
+    { icone: faLock, texte: "Déploiement hors réseau (air-gapped)" },
+  ],
+};
+
+export const valado: IMission = {
+  nom: "Valado - Migration SAGE Batigest",
+  periode: "08/2026",
+  contexte: "Migration du logiciel de gestion SAGE Batigest pour l'entreprise Valado.",
+  taches: [
+    { icone: faCodeCompare, texte: "Migration des données et du paramétrage SAGE Batigest" },
+  ],
+  techs: [
+    { icone: faDatabase, texte: "SAGE Batigest" },
+  ],
+};
+
+export const sesam: IMission = {
+  nom: "SESAM - Migration de la base documentaire Synology",
+  contexte: "Migration de la base documentaire Synology de l'entreprise SESAM.",
+  taches: [
+    { icone: faFolderTree, texte: "Scripts Python de migration de la base documentaire Synology" },
+  ],
+  techs: [
+    { icone: faPython, texte: "Python" },
+    { icone: faServer, texte: "Synology" },
   ],
 };
 
@@ -393,6 +440,16 @@ const schneiderLogo = { src: "/logos/SCHNEIDER.png" };
 
 export const companies: ICompany[] = [
   {
+    id: "Freelance",
+    nom: "Freelance",
+    dates: "Depuis 07/2026",
+    postes: [
+      { icone: faCode, texte: "Ingénieur logiciel FullStack indépendant" },
+    ],
+    logos: [],
+    missions: [aivocat, valado, sesam],
+  },
+  {
     id: "Drevio",
     nom: "DREVIO",
     dates: "05/2026 - 07/2026",
@@ -400,7 +457,7 @@ export const companies: ICompany[] = [
       { icone: faCode, texte: "Lead Developer" },
       { icone: faSitemap, texte: "Architecte logiciel Full Stack" },
     ],
-    logos: [],
+    logos: [{ src: "/logos/DREVIO.png" }],
     missions: [drevio],
   },
   {
