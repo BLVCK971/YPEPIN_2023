@@ -104,3 +104,34 @@ footer[id] {
     fill-opacity: 0.3;
   }
 }
+
+/* --- Carte des collaborations -------------------------------------------- */
+.carte .arc {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carte.carte-visible .arc {
+  stroke-dashoffset: 0;
+}
+
+/* Les données ne circulent qu'une fois les arcs tracés */
+.carte .carte-particule {
+  opacity: 0;
+  transition: opacity 0.4s ease 1.8s;
+}
+
+.carte.carte-visible .carte-particule {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carte .arc {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+  .carte .flow-particle {
+    display: none;
+  }
+}

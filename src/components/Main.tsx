@@ -4,6 +4,7 @@ import Poste from "./1_Home/Poste";
 import CvButtons from "./1_Home/CvButtons";
 import ChiffresCles from "./1_Home/ChiffresCles";
 import Parcours from "./3_DevStory/Parcours";
+import CarteCollaborations from "./3_DevStory/CarteCollaborations";
 import Profil from "./5_Profil/Profil";
 import Formation from "./6_Formation/Formation";
 import ContactSection from "./7_Contact/ContactSection";
@@ -39,6 +40,7 @@ export default function Main() {
         <section id="Parcours" className={section}>
           <SectionTitle etiquette="Parcours" titre="Expériences professionnelles" />
           <Parcours />
+          <CarteCollaborations />
         </section>
         <section id="Projets" className={section}>
           <SectionTitle etiquette="Projets" titre="Projets phares" />
