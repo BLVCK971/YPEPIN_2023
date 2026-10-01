@@ -2,6 +2,8 @@ import { faAngular, faAws, faUsb, faDocker, faMicrosoft, faPython, faReact } fro
 import { ICompany, IMission } from "./interfaces";
 import {
   faArrowsRotate,
+  faPowerOff,
+  faHeadset,
   faComments,
   faMobileScreen,
   faBell,
@@ -165,14 +167,22 @@ export const aivocat: IMission = {
 };
 
 export const valado: IMission = {
-  nom: "Valado - Migration SAGE Batigest",
+  nom: "Migration et sécurisation d'une infrastructure Sage Batigest (PME)",
   periode: "08/2026",
-  contexte: "Migration du logiciel de gestion SAGE Batigest pour l'entreprise Valado.",
+  contexte:
+    "Migration et remise à niveau d'une infrastructure Sage Batigest reposant sur SQL Server, avec transfert vers un nouveau serveur Windows et rétablissement des accès multi-postes.",
   taches: [
-    { icone: faCodeCompare, texte: "Migration des données et du paramétrage SAGE Batigest" },
+    { icone: faDatabase, texte: "Migration de Sage Batigest et de sa base SQL Server Express vers un nouveau serveur Windows, rétablissement des accès multi-postes" },
+    { icone: faNetworkWired, texte: "Configuration de SQL Server, des services réseau et des règles de pare-feu nécessaires au fonctionnement de Batigest" },
+    { icone: faLock, texte: "Administration distante sécurisée via Tailscale (WireGuard) et RDP, sans exposition du service RDP sur Internet, avec compte administrateur dédié et gestion des accès" },
+    { icone: faHeadset, texte: "Déploiement de RustDesk avec accès sans surveillance pour la télémaintenance et le support utilisateur" },
+    { icone: faPowerOff, texte: "Fiabilisation du serveur : démarrage automatique des services, gestion de l'alimentation, accès réseau et continuité de service" },
   ],
   techs: [
-    { icone: faDatabase, texte: "SAGE Batigest" },
+    { icone: faServer, texte: "Windows Server, administration système, PowerShell" },
+    { icone: faDatabase, texte: "Sage Batigest, SQL Server Express" },
+    { icone: faNetworkWired, texte: "Tailscale (WireGuard), RDP, SMB, TCP/IP, pare-feu Windows" },
+    { icone: faHeadset, texte: "RustDesk" },
   ],
 };
 
