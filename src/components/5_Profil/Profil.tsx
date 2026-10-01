@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faMicrosoft, faPython } from "@fortawesome/free-brands-svg-icons";
 import { faLayerGroup } from "@fortawesome/free-solid-svg-icons";
+import StackGraph from "./StackGraph";
 
 const experiences = [
   "Leadership technique et rôle de Scrum Master SAFe dans des trains Agile internationaux (+90 personnes)",
@@ -89,6 +90,11 @@ export default function Profil() {
           robustes, testées et observables, avec une forte attention portée à la
           performance, la sécurité et la maintenabilité.
         </p>
+      </div>
+
+      {/* Réseau interactif : écrans moyens et grands (illisible en largeur téléphone) */}
+      <div className="hidden md:block">
+        <StackGraph />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
