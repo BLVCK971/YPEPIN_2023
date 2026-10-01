@@ -1,21 +1,20 @@
 import { cn } from "./utils/cn";
-import { useEffect, useRef, useState } from "react";
+import { CSSProperties, useEffect, useRef } from "react";
 
+// Fond animé fixe, affiché derrière toute la page (pas seulement le hero).
+// Les couleurs sont au format "R, G, B" car elles sont injectées dans rgba(...).
 export const BackgroundGradientAnimation = ({
-  gradientBackgroundStart = "rgb(108, 0, 162)",
-  gradientBackgroundEnd = "rgb(0, 17, 82)",
-  firstColor = "18, 113, 255",
-  secondColor = "221, 74, 255",
-  thirdColor = "100, 220, 255",
-  fourthColor = "200, 50, 50",
-  fifthColor = "180, 180, 50",
-  pointerColor = "140, 100, 255",
-  size = "8 0%",
+  gradientBackgroundStart = "rgb(0, 0, 0)",
+  gradientBackgroundEnd = "rgb(0, 0, 0)",
+  firstColor = "9, 38, 53",
+  secondColor = "3, 6, 55",
+  thirdColor = "60, 7, 83",
+  fourthColor = "114, 4, 85",
+  fifthColor = "145, 10, 103",
+  pointerColor = "88, 28, 135",
+  size = "80%",
   blendingValue = "hard-light",
-  children,
-  className,
   interactive = true,
-  containerClassName,
 }: {
   gradientBackgroundStart?: string;
   gradientBackgroundEnd?: string;
@@ -27,74 +26,72 @@ export const BackgroundGradientAnimation = ({
   pointerColor?: string;
   size?: string;
   blendingValue?: string;
-  children?: React.ReactNode;
-  className?: string;
   interactive?: boolean;
-  containerClassName?: string;
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
 
-  const [curX, setCurX] = useState(0);
-  const [curY, setCurY] = useState(0);
-  const [tgX, setTgX] = useState(0);
-  const [tgY, setTgY] = useState(0);
+  // Le blob interactif suit la souris avec un lissage, via requestAnimationFrame
+  // (et non un setState à chaque mouvement, qui re-rendait tout le composant).
   useEffect(() => {
-    document.body.style.setProperty(
-      "--gradient-background-start",
-      gradientBackgroundStart
-    );
-    document.body.style.setProperty(
-      "--gradient-background-end",
-      gradientBackgroundEnd
-    );
-    document.body.style.setProperty("--first-color", firstColor);
-    document.body.style.setProperty("--second-color", secondColor);
-    document.body.style.setProperty("--third-color", thirdColor);
-    document.body.style.setProperty("--fourth-color", fourthColor);
-    document.body.style.setProperty("--fifth-color", fifthColor);
-    document.body.style.setProperty("--pointer-color", pointerColor);
-    document.body.style.setProperty("--size", size);
-    document.body.style.setProperty("--blending-value", blendingValue);
-  }, []);
+    if (!interactive) return;
+    let curX = window.innerWidth / 2;
+    let curY = window.innerHeight / 2;
+    let tgX = curX;
+    let tgY = curY;
+    let frame = 0;
 
-  useEffect(() => {
-    function move() {
-      if (!interactiveRef.current) {
-        return;
+    const onMove = (e: MouseEvent) => {
+      tgX = e.clientX;
+      tgY = e.clientY;
+    };
+    const tick = () => {
+      curX += (tgX - curX) / 20;
+      curY += (tgY - curY) / 20;
+      if (interactiveRef.current) {
+        interactiveRef.current.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
       }
-      setCurX(curX + (tgX - curX) / 20);
-      setCurY(curY + (tgY - curY) / 20);
-      interactiveRef.current.style.transform = `translate(${Math.round(
-        curX
-      )}px, ${Math.round(curY)}px)`;
-    }
+      frame = requestAnimationFrame(tick);
+    };
 
-    move();
-  }, [tgX, tgY]);
+    window.addEventListener("mousemove", onMove, { passive: true });
+    frame = requestAnimationFrame(tick);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(frame);
+    };
+  }, [interactive]);
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (interactiveRef.current) {
-      const rect = interactiveRef.current.getBoundingClientRect();
-      setTgX(event.clientX - rect.left);
-      setTgY(event.clientY - rect.top);
-    }
-  };
+  // Safari gère mal le filtre SVG "goo" combiné au blur : simple flou à la place.
+  const isSafari =
+    typeof navigator !== "undefined" &&
+    /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+  const vars = {
+    "--gradient-background-start": gradientBackgroundStart,
+    "--gradient-background-end": gradientBackgroundEnd,
+    "--first-color": firstColor,
+    "--second-color": secondColor,
+    "--third-color": thirdColor,
+    "--fourth-color": fourthColor,
+    "--fifth-color": fifthColor,
+    "--pointer-color": pointerColor,
+    "--size": size,
+    "--blending-value": blendingValue,
+  } as CSSProperties;
+
+  const blob =
+    "absolute [mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)] motion-reduce:animate-none";
 
   return (
     <div
-      className={cn(
-        "h-screen relative overflow-clip top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
-        containerClassName
-      )}
+      aria-hidden="true"
+      style={vars}
+      className="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]"
     >
       <svg className="hidden">
         <defs>
           <filter id="blurMe">
-            <feGaussianBlur
-              in="SourceGraphic"
-              stdDeviation="10"
-              result="blur"
-            />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
             <feColorMatrix
               in="blur"
               mode="matrix"
@@ -105,64 +102,52 @@ export const BackgroundGradientAnimation = ({
           </filter>
         </defs>
       </svg>
-      <div className={cn("", className)}>{children}</div>
-      <div className="gradients-container [filter:url(#blurMe)_blur(40px)] h-full w-full">
+      <div
+        className={cn(
+          "gradients-container h-full w-full",
+          isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
+        )}
+      >
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_var(--first-color)_0,_var(--first-color)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:center_center]`,
-            `animate-first`,
-            `opacity-100`
+            blob,
+            "[background:radial-gradient(circle_at_center,_rgba(var(--first-color),_0.8)_0,_rgba(var(--first-color),_0)_50%)_no-repeat]",
+            "[transform-origin:center_center] animate-first opacity-100"
           )}
-        ></div>
+        />
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.8)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-0px)]`,
-            `animate-second`,
-            `opacity-100`
+            blob,
+            "[background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.8)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]",
+            "[transform-origin:calc(50%-400px)] animate-second opacity-100"
           )}
-        ></div>
+        />
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.8)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%+0px)]`,
-            `animate-third`,
-            `opacity-100`
+            blob,
+            "[background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.8)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]",
+            "[transform-origin:calc(50%+400px)] animate-third opacity-100"
           )}
-        ></div>
+        />
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.8)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-0px)]`,
-            `animate-fourth`,
-            `opacity-70`
+            blob,
+            "[background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.8)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]",
+            "[transform-origin:calc(50%-200px)] animate-fourth opacity-70"
           )}
-        ></div>
+        />
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.8)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-0px)_calc(50%+800px)]`,
-            `animate-fifth`,
-            `opacity-100`
+            blob,
+            "[background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.8)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]",
+            "[transform-origin:calc(50%-800px)_calc(50%+800px)] animate-fifth opacity-100"
           )}
-        ></div>
-
+        />
         {interactive && (
           <div
             ref={interactiveRef}
-            onMouseMove={handleMouseMove}
-            className={cn(
-              `absolute [background:radial-gradient(circle_at_center,_rgba(var(--pointer-color),_0.8)_0,_rgba(var(--pointer-color),_0)_50%)_no-repeat]`,
-              `[mix-blend-mode:var(--blending-value)] w-full h-full -top-1/2 -left-1/2`,
-              `opacity-70`
-            )}
-          ></div>
+            className="absolute [background:radial-gradient(circle_at_center,_rgba(var(--pointer-color),_0.8)_0,_rgba(var(--pointer-color),_0)_50%)_no-repeat] [mix-blend-mode:var(--blending-value)] w-full h-full -top-1/2 -left-1/2 opacity-70"
+          />
         )}
       </div>
     </div>

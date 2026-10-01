@@ -11,25 +11,16 @@ import { BackgroundGradientAnimation } from "./ui/background-gradient-animation"
 export default function Main() {
   return (
     <main>
-      <BackgroundGradientAnimation
-        className="bg-black flex min-h-screen flex-col items-center justify-between pt-24 p-2 md:p-24 "
-        gradientBackgroundStart="rgb(0, 0, 0)"
-        gradientBackgroundEnd="rgb(0, 0, 0)"
-        firstColor="rgb(9, 38, 53)"
-        secondColor="rgb(3, 6, 55)"
-        thirdColor="rgb(60, 7, 83)"
-        fourthColor="rgb(114, 4, 85)"
-        fifthColor="rgb(145, 10, 103)"
-      >
+      <BackgroundGradientAnimation />
+      <section className="relative flex min-h-screen flex-col items-center justify-between pt-24 p-2 md:p-24">
         <Contact />
         <Title />
         <Poste />
-        {/* <NavOpt/> */}
         <BaseNav />
-      </BackgroundGradientAnimation>
+      </section>
       <section
         id="Profil"
-        className="bg-gradient-to-b from-black flex flex-col items-center gap-8 py-16"
+        className="flex flex-col items-center gap-8 py-16"
       >
         <h1 className="text-5xl md:text-8xl font-semibold z-50 text-center">
           Profil & Compétences

@@ -2,7 +2,7 @@ import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa";
 
 export default function Contact() {
   return (
-    <div className="fixed top-5 right-5 z-50 flex flex-col gap-4 sm:flex-row">
+    <div className="fixed top-3 right-3 sm:top-5 sm:right-5 z-50 flex flex-row gap-2 sm:gap-4">
       <a
         href="tel:+33675263861"
         className="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-white/10 hover:bg-emerald-500/20 rounded-lg backdrop-blur-md shadow-lg hover:shadow-xl hover:scale-105 group"
