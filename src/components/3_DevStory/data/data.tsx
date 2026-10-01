@@ -2,6 +2,16 @@ import { faAngular, faAws, faDocker, faMicrosoft, faPython, faReact } from "@for
 import { ICompany, IMission } from "./interfaces";
 import {
   faArrowsRotate,
+  faMobileScreen,
+  faBell,
+  faFileShield,
+  faCreditCard,
+  faLocationDot,
+  faCarBurst,
+  faCamera,
+  faCalculator,
+  faCodePullRequest,
+  faListCheck,
   faCalendarDays,
   faUserShield,
   faFileWord,
@@ -65,8 +75,41 @@ import {
 
 /// DREVIO .............
 
+export const drevioMobile: IMission = {
+  nom: "DREVIO Mobile - Tech Lead de l'application iOS / Android",
+  periode: "06/2026 - aujourd'hui",
+  contexte:
+    "Application mobile qui estime les dommages d'un véhicule à partir de photos analysées par IA : elle produit un rapport d'expertise, calcule un devis pour chaque garage partenaire et gère le paiement en ligne.",
+  taches: [
+    { icone: faRocket, texte: "Mise en place du projet : initialisation de l'application, environnements de développement et de production, choix de la stack et de l'architecture par fonctionnalité (auth, scan, véhicule, paiement, notifications)" },
+    { icone: faListCheck, texte: "Pilotage d'un développeur : découpage du produit en plus de 60 lots livrables, rédaction et priorisation des tâches, suivi de leur réalisation" },
+    { icone: faCodePullRequest, texte: "Qualité et revue de code : relecture de plus de 140 pull requests, durcissements après revue, contrôles TypeScript et lint" },
+    { icone: faCalculator, texte: "Logique métier : conception du calcul du prix par garage, qui applique à chaque garage ses propres tarifs et son mode de tarification" },
+    { icone: faArrowsRotate, texte: "Montée de version de l'application du SDK Expo 54 vers le SDK 57" },
+    { icone: faGears, texte: "Fonctionnalités livrées sous ma direction :", soustaches: [
+      { icone: faCamera, texte: "Scan guidé à la caméra avec contrôle qualité des photos et suivi de l'analyse IA en temps réel" },
+      { icone: faCarBurst, texte: "Rapport IA avec localisation des dommages, relance de l'analyse et demande d'expertise humaine" },
+      { icone: faLocationDot, texte: "Recherche de garages par géolocalisation, avec tri et filtres" },
+      { icone: faCreditCard, texte: "Paiement Stripe (acompte, solde, remboursement) via les Edge Functions Supabase" },
+      { icone: faFileShield, texte: "Parcours assurance et sinistre, gestion des véhicules en LLD / LOA" },
+      { icone: faBell, texte: "Notifications push (Firebase), connexion Google OAuth et mises à jour OTA" },
+    ]},
+  ],
+  techs: [
+    { icone: faMobileScreen, texte: "React Native 0.86, Expo SDK 57 (Expo Router)" },
+    { icone: faReact, texte: "TypeScript, Zustand, TanStack Query, React Hook Form + Zod" },
+    { icone: faDatabase, texte: "Supabase (Edge Functions)" },
+    { icone: faCreditCard, texte: "Stripe" },
+    { icone: faBell, texte: "Firebase FCM" },
+  ],
+  collabs: [
+    { icone: faUser, texte: "Théo, Développeur" },
+  ],
+};
+
 export const drevio: IMission = {
-  nom: "DREVIO - Plateforme SaaS d'évaluation des dommages automobiles",
+  nom: "DREVIO Phase 1 - Plateforme SaaS d'évaluation des dommages automobiles",
+  periode: "05/2026 - 07/2026",
   contexte:
     "Conception de DREVIO, une plateforme SaaS destinée à digitaliser et automatiser l'évaluation des dommages automobiles : création d'un dossier à partir d'un véhicule et de photographies, analyse des dommages par intelligence artificielle, puis génération d'une première estimation exploitable par les professionnels de la carrosserie.",
   taches: [
@@ -514,13 +557,14 @@ export const companies: ICompany[] = [
   {
     id: "Drevio",
     nom: "DREVIO",
-    dates: "05/2026 - 07/2026",
+    dates: "Depuis 05/2026",
     postes: [
+      { icone: faPeopleGroup, texte: "Tech Lead" },
       { icone: faCode, texte: "Lead Developer" },
       { icone: faSitemap, texte: "Architecte logiciel Full Stack" },
     ],
     logos: [{ src: "/logos/DREVIO.png" }],
-    missions: [drevio],
+    missions: [drevioMobile, drevio],
   },
   {
     id: "Proelan",
