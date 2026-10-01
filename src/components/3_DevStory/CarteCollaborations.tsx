@@ -14,6 +14,7 @@ type Lieu = { id: string; nom: string; lon: number; lat: number; dx: number; dy:
 const LIEUX: Lieu[] = [
   { id: "gp", nom: "Guadeloupe", lon: -61.53, lat: 16.24, dx: 0, dy: 20, ancre: "middle", hub: true },
   { id: "fr", nom: "France", lon: 2.35, lat: 48.86, dx: -10, dy: 4, ancre: "end", hub: true },
+  { id: "nice", nom: "Nice", lon: 7.26, lat: 43.7, dx: -2, dy: 17, ancre: "middle" },
   { id: "es", nom: "Espagne", lon: -3.7, lat: 40.42, dx: -10, dy: 12, ancre: "end" },
   { id: "de", nom: "Allemagne", lon: 8.68, lat: 50.11, dx: 4, dy: -12, ancre: "middle" },
   { id: "rs", nom: "Serbie", lon: 20.46, lat: 44.79, dx: -2, dy: 20, ancre: "middle" },
@@ -31,13 +32,14 @@ const LIENS: [string, string, number][] = [
   ["fr", "sg", 0.3],
   ["fr", "es", 0.6],
   ["fr", "ro", 0.4],
+  ["ro", "nice", 0.45],
 ];
 
 const LEGENDE = [
-  { lieux: "Guadeloupe", texte: "Université des Antilles (MIAGE), DIGITOM, missions ICEKERA (SESAM)" },
-  { lieux: "France", texte: "Ayming, AViSTO et PROELAN pour Schneider Electric" },
+  { lieux: "Guadeloupe", texte: "Université des Antilles (MIAGE), DIGITOM, et les clients ICEKERA : SESAM, ARC Gestion et Recouvrement, Matheva, Aivocat, Valado" },
+  { lieux: "France", texte: "Ayming, AViSTO et PROELAN pour Schneider Electric, DREVIO à Nice" },
   { lieux: "Allemagne · Serbie · Inde · Singapour", texte: "Train Agile SAFe international de 90 personnes (AViSTO / Schneider)" },
-  { lieux: "Roumanie", texte: "Télétravail depuis la Roumanie (DREVIO), et développement avec des développeurs roumains (PROELAN / Schneider)" },
+  { lieux: "Roumanie", texte: "Télétravail depuis la Roumanie pour DREVIO (Nice), et développement avec des développeurs roumains (PROELAN / Schneider)" },
   { lieux: "Espagne", texte: "Formation par l'équipe espagnole (PROELAN / Schneider)" },
 ];
 
@@ -83,7 +85,7 @@ export default function CarteCollaborations() {
         </p>
 
         <div ref={ref} className={cn("carte mt-4", visible && "carte-visible")}>
-          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Carte des collaborations : Guadeloupe, France, Espagne, Allemagne, Serbie, Roumanie, Inde et Singapour">
+          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Carte des collaborations : Guadeloupe, France (dont Nice), Espagne, Allemagne, Serbie, Roumanie, Inde et Singapour">
             <defs>
               <linearGradient id="arc-grad" x1="0" x2="1">
                 <stop offset="0%" stopColor="#8b5cf6" />
