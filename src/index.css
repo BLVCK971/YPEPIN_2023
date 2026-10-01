@@ -79,3 +79,24 @@ footer[id] {
     transform: none;
   }
 }
+
+/* --- Schémas d'architecture animés --------------------------------------- */
+.flow-dash {
+  animation: flow-dash 1.2s linear infinite;
+}
+
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-dash {
+    animation: none;
+  }
+  .flow-diagram .flow-particle,
+  .flow-diagram .flow-glow {
+    display: none;
+  }
+}

@@ -1,5 +1,6 @@
 import Reveal from "../ui/Reveal";
 import Experimentations from "../4_Portofolio/Portofolio";
+import FlowDiagram, { Etape } from "./FlowDiagram";
 
 // Projets phares : résumé court de missions détaillées dans le Parcours.
 type Projet = {
@@ -10,6 +11,7 @@ type Projet = {
   chiffre?: string;
   tags: string[];
   lien?: { href: string; label: string };
+  schema: { etapes: Etape[]; colonnes?: number; cadre?: string };
 };
 
 const PROJETS: Projet[] = [
@@ -21,6 +23,19 @@ const PROJETS: Projet[] = [
       "Assistant juridique IA 100 % local pour un cabinet d'avocats : il analyse les pièces d'un dossier sans qu'aucune donnée ne sorte de la machine, et ses réponses citent leurs sources.",
     chiffre: "~650 tests · 100 % hors ligne",
     tags: ["Python", "FastAPI", "Qdrant", "Ollama", "Qwen 3.5", "RAG"],
+    schema: {
+      colonnes: 4,
+      cadre: "PC du cabinet · 100 % hors ligne",
+      etapes: [
+        { titre: "Pièces & lois", sous: "PDF, Word, LEGI" },
+        { titre: "OCR", sous: "RapidOCR" },
+        { titre: "Vectorisation", sous: "bge-m3" },
+        { titre: "Recherche", sous: "Qdrant + BM25" },
+        { titre: "Reranking", sous: "cross-encoder" },
+        { titre: "Génération", sous: "Qwen 3.5 9B" },
+        { titre: "Réponse", sous: "sources citées" },
+      ],
+    },
   },
   {
     nom: "DREVIO",
@@ -31,6 +46,16 @@ const PROJETS: Projet[] = [
     chiffre: "140+ PR relues · 60+ lots livrables",
     tags: ["React Native", "Expo", ".NET 10", "Supabase", "Stripe", "OpenAI"],
     lien: { href: "https://drevio.tech", label: "drevio.tech" },
+    schema: {
+      etapes: [
+        { titre: "Scan guidé", sous: "React Native · Expo" },
+        { titre: "Stockage privé", sous: "Supabase · RLS" },
+        { titre: "Analyse IA", sous: "Worker · OpenAI" },
+        { titre: "Rapport", sous: "Dommages localisés" },
+        { titre: "Devis par garage", sous: "Tarifs de chaque garage" },
+        { titre: "Paiement", sous: "Stripe" },
+      ],
+    },
   },
   {
     nom: "ARC Gestion et Recouvrement",
@@ -40,6 +65,15 @@ const PROJETS: Projet[] = [
       "Plateforme d'un cabinet de recouvrement : site vitrine, mini-CRM de suivi des relances, import des fichiers clients, comptes rendus Word générés avec l'IA et portail client privé.",
     tags: ["React", "FastAPI", "PostgreSQL", "API Claude", "Docker", "Traefik"],
     lien: { href: "https://arc-gr.fr", label: "arc-gr.fr" },
+    schema: {
+      etapes: [
+        { titre: "Import fichiers", sous: "Excel / CSV" },
+        { titre: "Mini-CRM", sous: "Kanban des dossiers" },
+        { titre: "Relances", sous: "Mails groupés" },
+        { titre: "Compte rendu", sous: "Word + IA Claude" },
+        { titre: "Portail client", sous: "Accès sécurisé JWT" },
+      ],
+    },
   },
   {
     nom: "Matheva",
@@ -48,6 +82,16 @@ const PROJETS: Projet[] = [
     accroche:
       "Plateforme de cours particuliers de mathématiques : test diagnostique public, espace professeur (élèves, séances, paiements) et espace parent, avec export Google Calendar.",
     tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "iCal"],
+    schema: {
+      etapes: [
+        { titre: "Test diagnostique", sous: "Scoring serveur" },
+        { titre: "Élèves en attente", sous: "Leads captés" },
+        { titre: "Séances", sous: "Calendrier · notions" },
+        { titre: "Paiements", sous: "Générés automatiquement" },
+        { titre: "Espace parent", sous: "Lien personnel" },
+        { titre: "Google Calendar", sous: "Flux iCal" },
+      ],
+    },
   },
 ];
 
@@ -64,6 +108,9 @@ export default function Projets() {
                 aria-hidden="true"
               />
               <div className="relative flex h-full flex-col">
+                <div className="-mx-2 mb-5 rounded-xl border border-white/5 bg-black/30 p-2">
+                  <FlowDiagram id={p.nom.split(" ")[0].toLowerCase()} {...p.schema} />
+                </div>
                 <p className="text-sm font-medium text-cyan-300">{p.categorie}</p>
                 <h3 className="mt-1 text-2xl font-semibold tracking-tight">{p.nom}</h3>
                 <p className="mt-1 text-sm text-neutral-500 tabular-nums">{p.periode}</p>
