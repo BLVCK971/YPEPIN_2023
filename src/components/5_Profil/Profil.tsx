@@ -97,8 +97,27 @@ export default function Profil() {
         <StackGraph />
       </div>
 
-      {/* Cartes de stack : uniquement sur mobile, où le réseau est masqué */}
-      <div className="grid grid-cols-1 gap-6 md:hidden">
+      {/* Stack complète du CV, repliée par défaut pour ne pas prendre de place */}
+      <details className="group">
+        <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer w-fit mx-auto flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-white/10 hover:bg-white/20 rounded-lg shadow-lg hover:shadow-xl">
+          <span className="group-open:hidden">Voir le détail de la stack</span>
+          <span className="hidden group-open:inline">Masquer le détail de la stack</span>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="transition-transform duration-300 group-open:rotate-90"
+            aria-hidden="true"
+          >
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </summary>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
         {stacks.map((stack) => (
           <div key={stack.titre} className={card}>
             <h2 className="text-2xl font-semibold mb-4">
@@ -115,6 +134,7 @@ export default function Profil() {
           </div>
         ))}
       </div>
+      </details>
     </div>
   );
 }
