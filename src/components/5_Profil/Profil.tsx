@@ -97,7 +97,8 @@ export default function Profil() {
         <StackGraph />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {/* Cartes de stack : uniquement sur mobile, où le réseau est masqué */}
+      <div className="grid grid-cols-1 gap-6 md:hidden">
         {stacks.map((stack) => (
           <div key={stack.titre} className={card}>
             <h2 className="text-2xl font-semibold mb-4">
