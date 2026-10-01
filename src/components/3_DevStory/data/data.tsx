@@ -79,6 +79,7 @@ import {
 /// DREVIO .............
 
 export const drevioMobile: IMission = {
+  chiffreCle: "140+ PR relues · 60+ lots livrables",
   nom: "DREVIO Mobile - Tech Lead de l'application iOS / Android",
   periode: "06/2026 - aujourd'hui",
   contexte:
@@ -140,6 +141,7 @@ export const drevio: IMission = {
 /// FREELANCE .............
 
 export const aivocat: IMission = {
+  chiffreCle: "~650 tests · 100 % hors ligne",
   nom: "Aivocat - Assistant juridique IA 100 % local (RAG souverain)",
   periode: "07/2026 - 08/2026",
   contexte:
@@ -238,6 +240,7 @@ export const matheva: IMission = {
 };
 
 export const sesam: IMission = {
+  chiffreCle: "~265 000 fichiers audités",
   nom: "SESAM - Reprise en main et réorganisation du SI d'un groupe BTP (Consultant IT & Ingénieur Python)",
   periode: "09/2026 - aujourd'hui",
   contexte:
@@ -307,6 +310,7 @@ export const set: IMission = {
 /// AYMING .............
 
 export const roboatmp: IMission = {
+  chiffreCle: "~5 000 comptes · 1–2 M€/mois estimés",
   nom: "ATMP (Scraping NET ENTREPRISE)",
   contexte:
     "Automatiser la récupération des taux AT/MP, feuilles de calcul et attestations pour environ 5000 comptes clients via NET ENTREPRISE.",
@@ -337,6 +341,7 @@ export const roboatmp: IMission = {
 };
 
 export const robosylae: IMission = {
+  chiffreCle: "Plusieurs semaines de travail manuel par mois automatisées",
   nom: "SYLAE (Robot Scraping)",
   contexte:
     "Automatiser la récupération des montants et détails des aides financières pour les alternants via la plateforme SYLAE.",
@@ -394,6 +399,7 @@ export const robocred: IMission = {
 /// AVISTO / SCHNEIDER .............
 
 export const ESME: IMission = {
+  chiffreCle: "Le travail de 2 ans de l'équipe précédente, en 6 mois",
   nom: "EcoStruxure Machine Expert - Team Device Integration",
   image: {
     src: "/MachineExpert1.jpg",
@@ -557,6 +563,7 @@ export const powerBiSupport: IMission = {
 };
 
 export const gestrav: IMission = {
+  chiffreCle: "Application officielle du SMGEAG",
   nom: "Gestrav - Coordination de la réparation des fuites d'eau",
   periode: "06/2020 - 10/2020",
   contexte:

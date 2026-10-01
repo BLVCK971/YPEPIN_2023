@@ -45,3 +45,37 @@ video {
   top: 0;
   left: 0;
 }  */
+
+/* --- Navigation & animations d'apparition --------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Les ancres ne passent pas sous la barre de navigation fixe */
+section[id],
+footer[id] {
+  scroll-margin-top: 5rem;
+}
+
+.reveal {
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal-hidden {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,10 +1,15 @@
 export default function Poste() {
   return (
-    <div className=" z-[3] relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:blur-2xl after:content-[''] before:bg-gradient-to-br before:from-transparent before:to-blue-700 before:opacity-10 after:from-sky-900 after:via-[#0141ff] after:opacity-40 before:lg:h-[360px] ">
-      <p className=" text-center mb-3 font-semibold">
-        Ingénieur logiciel FullStack C# / Python
-        <br />
+    <div className="relative z-10 mt-6 flex flex-col items-center gap-3 text-center">
+      <p className="text-lg md:text-2xl font-medium text-neutral-200">
+        Ingénieur logiciel FullStack <span className="text-cyan-300">C# / Python</span>
+      </p>
+      <p className="text-base md:text-lg font-medium text-neutral-300">
         Tech Lead · Architecture .NET · Mobile · Data & IA
+      </p>
+      <p className="mt-2 max-w-2xl text-base md:text-lg text-neutral-400">
+        Je conçois des systèmes scalables, fiables et maintenables, du desktop industriel au cloud,
+        avec une forte orientation architecture, data et IA.
       </p>
     </div>
   );

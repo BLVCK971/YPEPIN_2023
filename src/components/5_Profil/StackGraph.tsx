@@ -289,7 +289,7 @@ export default function StackGraph() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
-      <div className="rounded-xl border border-neutral-800 bg-neutral-500/20 backdrop-blur-lg p-2 md:p-4">
+      <div className="rounded-xl border border-white/10 bg-black/40 backdrop-blur-xl p-2 md:p-4">
         {/* Légende : identité jamais portée par la couleur seule (les hubs sont aussi libellés) */}
         <ul className="flex flex-wrap gap-x-4 gap-y-1 px-2 pt-1 text-sm text-neutral-300">
           {DOMAINES.map((d) => (
@@ -431,7 +431,7 @@ export default function StackGraph() {
       </div>
 
       {/* Panneau de détail (hover, focus clavier ou tap) */}
-      <div className="rounded-xl border border-neutral-800 bg-neutral-500/20 backdrop-blur-lg p-4 md:p-6 min-h-[12rem]" aria-live="polite">
+      <div className="rounded-xl border border-white/10 bg-black/40 backdrop-blur-xl p-4 md:p-6 min-h-[12rem]" aria-live="polite">
         {!sel && (
           <div className="text-neutral-300">
             <h3 className="text-xl font-semibold text-white mb-2">Explorer la stack</h3>

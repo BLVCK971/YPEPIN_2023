@@ -1,72 +1,43 @@
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../../ui/3d-card";
 
-const technosColor: { [key: string]: string } = {
-  css: "bg-blue-400",
-  js: "bg-yellow-400",
-  threejs: "bg-orange-400",
-  "dat.gui": "bg-orange-400",
-  sass: "bg-rose-400",
-  pygame: "bg-yellow-400",
-  minmax: "bg-red-400",
-};
-
-export const Demo: React.FC<{
+export type IDemo = {
   title: string;
   image: string;
   href: string;
   desc: string;
-  classe: string;
   technos: string[];
-}> = ({ title, image, href, desc, classe, technos }) => {
+};
+
+// Carte d'une démo avec effet 3D au survol
+export const Demo: React.FC<IDemo> = ({ title, image, href, desc, technos }) => {
   return (
-    <CardContainer className="inter-var   border-neutral-800 w-auto rounded-xl border mx-5 max-w-sm  overflow-hidden shadow-lg">
-      <CardBody className={` bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-2 border ${classe}`}>
-        <CardItem translateZ="200" className="w-full">
+    <CardContainer containerClassName="py-4" className="w-full">
+      <CardBody className="relative group/card w-full h-auto rounded-xl border border-white/10 bg-black/50 p-3 backdrop-blur-md transition-colors hover:border-white/25">
+        <CardItem translateZ="60" className="w-full">
           <img
             src={image}
             alt={title}
             loading="lazy"
-            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+            className="h-40 w-full rounded-lg object-cover"
           />
         </CardItem>
-        <div className="flex flex-col justify-between items-center">
-          <CardItem
-            translateZ="200"
-            className="text-xl font-bold text-neutral-600 dark:text-white px-6 pt-2"
-          >
-            <h4 className="text-lg font-bold mb-1 ">{title}</h4>
-            <div className="text-sm font-semibold">{desc}</div>
-          </CardItem>
-
-          <CardItem
-            translateZ={20}
-            className=" text-xl font-bold px-4 py-2 rounded-xl dark:text-white"
-          >
-            <a
-              href={href}
-              className="inline-block text-center bg-gradient-to-tr w-44 from-pink-500 to-yellow-500 text-white shadow-lg rounded-full "
-            >
-              Accéder à la Démo
-            </a>
-          </CardItem>
-
-          <CardItem
-            translateZ="50"
-            className="flex justify-center items-center w-full"
-          >
-            {technos.map((tech) => {
-              return (
-                <span
-                  key={tech}
-                  className={`inline-block ${technosColor[tech]} rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2`}
-                >
-                  #{tech}
-                </span>
-              );
-            })}
-          </CardItem>
-        </div>
+        <CardItem translateZ="40" className="w-full px-1 pt-3">
+          <h4 className="font-semibold">{title}</h4>
+          <p className="mt-1 text-sm text-neutral-400">{desc}</p>
+        </CardItem>
+        <CardItem translateZ="20" className="flex w-full items-center justify-between gap-2 px-1 pt-3">
+          <ul className="flex flex-wrap gap-1.5">
+            {technos.map((tech) => (
+              <li key={tech} className="rounded-md bg-white/[0.06] px-2 py-0.5 text-xs text-neutral-300">
+                {tech}
+              </li>
+            ))}
+          </ul>
+          <a href={href} className="shrink-0 text-sm font-medium text-cyan-300 hover:text-cyan-200">
+            Démo ↗
+          </a>
+        </CardItem>
       </CardBody>
     </CardContainer>
   );

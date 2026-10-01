@@ -19,7 +19,7 @@ const concours = [
 ];
 
 const card =
-  "rounded-xl border border-neutral-800 bg-neutral-500/20 backdrop-blur-lg p-4 md:p-6";
+  "rounded-xl border border-white/10 bg-black/40 backdrop-blur-xl p-4 md:p-6";
 
 const blocs = [
   { titre: "Diplômes", icone: faGraduationCap, items: diplomes },
@@ -29,7 +29,7 @@ const blocs = [
 
 export default function Formation() {
   return (
-    <div className="md:px-24 p-2 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div className="w-full max-w-6xl px-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
       {blocs.map((bloc) => (
         <div key={bloc.titre} className={card}>
           <h3 className="text-2xl font-semibold mb-4">

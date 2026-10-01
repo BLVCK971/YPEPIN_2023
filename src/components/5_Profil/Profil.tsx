@@ -61,11 +61,11 @@ const stacks: { titre: string; icone: IconProp; lignes: [string, string][] }[] =
 ];
 
 const card =
-  "rounded-xl border border-neutral-800 bg-neutral-500/20 backdrop-blur-lg p-4 md:p-6";
+  "rounded-xl border border-white/10 bg-black/40 backdrop-blur-xl p-4 md:p-6";
 
 export default function Profil() {
   return (
-    <div className="md:px-24 p-2 w-full max-w-7xl flex flex-col gap-6">
+    <div className="w-full max-w-6xl px-4 flex flex-col gap-6">
       <div className={`${card} text-base md:text-lg leading-relaxed`}>
         <p>
           Ingénieur logiciel FullStack (C# / Python) avec une forte orientation

@@ -25,6 +25,8 @@ export interface IPoste {
  export interface IMission {
    nom: string
    periode?: string
+   // Chiffre ou résultat clé affiché en badge (issu du CV uniquement)
+   chiffreCle?: string
    contexte: string
    taches : ITache[]
    resultats?: ITache[]

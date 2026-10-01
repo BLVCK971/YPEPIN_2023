@@ -1,95 +1,80 @@
 import React, { useState } from "react";
 import { ICompany } from "../data/interfaces";
-import { ArrowIcon } from "../CustomIcons/ArrowIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Company.css";
+import { cn } from "../../ui/utils/cn";
 
-const companyColors: { [key: string]: string } = {
-  Freelance: "FreelanceBox",
-  Drevio: "DrevioBox",
-  Proelan: "SchneiderBox",
-  Avisto: "AvistoBox",
-  Digitom: "DigitomBox",
-  Ayming: "AymingBox",
-};
-
+// Carte d'une expérience : style unique pour toutes les entreprises (le logo
+// porte l'identité), missions repliées par défaut.
 export const Company: React.FC<{
   company: ICompany;
   children: React.ReactNode;
 }> = ({ company, children }) => {
-  const { id: Id, nom, dates, contexte, postes: companyPostes, logos: companyLogos } = company;
-  const [isCollapsed, setIsCollapsed] = useState(true);
-
-  const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
-  };
+  const { nom, dates, contexte, postes, logos, missions } = company;
+  const [ouvert, setOuvert] = useState(false);
 
   return (
-    <div className={`sm:grid-cols-12 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl border-neutral-800 bg-zinc-800/30 from-inherit lg:w-auto rounded-xl border bg-gray-200 lg:p-4 p-2 pt-8 mb-5 ${companyColors[Id]}`}>
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <div className="sm:col-span-2">
-          <div className="text-xl font-bold">
-            <h3 className="flex items-center">
-              {nom}
-            </h3>
-            <div className="text-lg font-semibold">{dates}</div>
-            <div className="mt-5 text-base font-semibold">
-              <div className="mt-2 mb-3">Postes occupés : </div>
-              {companyPostes.map((poste) => (
-                <div key={poste.texte} className="flex items-center gap-3 mb-2">
-                  <div className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-lg">
-                    <FontAwesomeIcon icon={poste.icone} className="w-8 h-8" />
-                  </div>
-                  <span>{poste.texte}</span>
+    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl">
+      {/* Liseré d'accent */}
+      <div className="absolute inset-y-0 left-0 w-[3px] bg-gradient-to-b from-violet-500 to-cyan-400" aria-hidden="true" />
+
+      <div className="p-5 md:p-7 pl-6 md:pl-8">
+        <div className="flex flex-col-reverse gap-5 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <p className="text-sm font-medium text-cyan-300 tabular-nums">{dates}</p>
+            <h3 className="mt-1 text-2xl font-semibold tracking-tight">{nom}</h3>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {postes.map((poste) => (
+                <li
+                  key={poste.texte}
+                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-neutral-200"
+                >
+                  <FontAwesomeIcon icon={poste.icone} className="text-xs text-neutral-400" />
+                  {poste.texte}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {logos.length > 0 && (
+            <div className="flex items-center gap-3 sm:justify-end">
+              {logos.map((logo) => (
+                <div
+                  key={logo.src}
+                  className={cn("flex items-center", logo.surFondClair && "rounded-lg bg-white/90 p-1.5")}
+                >
+                  <img
+                    src={logo.src}
+                    alt={`Logo ${nom}`}
+                    loading="lazy"
+                    className={cn("w-auto object-contain", logo.surFondClair ? "h-10 md:h-12" : "h-12 md:h-16")}
+                  />
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-        <div className="sm:col-span-2 flex items-center justify-between flex-wrap gap-4">
-          <div className="flex justify-start items-center gap-4 flex-wrap">
-            {companyLogos.map((logo) => (
-              <div
-                key={logo.src}
-                className={`flex items-center justify-start h-full ${logo.surFondClair ? "bg-white/90 rounded-xl p-2" : ""}`}
-              >
-                <img
-                  src={logo.src}
-                  alt={`Logo ${nom}`}
-                  className={logo.surFondClair ? "h-14 sm:h-28 object-contain" : "h-16 sm:h-32 object-contain"}
-                />
-              </div>
-            ))}
-          </div>
-          <button
-            onClick={toggleCollapse}
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-white/10 hover:bg-white/20 rounded-lg shadow-lg hover:shadow-xl ml-auto"
-            aria-label={isCollapsed ? "Déplier les missions" : "Replier les missions"}
-          >
-            <span className="hidden sm:inline whitespace-nowrap">
-              {isCollapsed ? "Voir les missions" : "Masquer les missions"}
-            </span>
-            <div
-              className="transition-transform duration-300"
-              style={{ transform: isCollapsed ? 'rotate(0deg)' : 'rotate(90deg)' }}
-            >
-              <ArrowIcon />
-            </div>
-          </button>
-        </div>
-      </div>
-      <div
-        className={`transition-all duration-300 mt-4 origin-top ${isCollapsed
-          ? 'grid-rows-[0fr] opacity-0 scale-y-0'
-          : 'grid-rows-[1fr] opacity-100 scale-y-100'
-          }`}
-        style={{ display: 'grid' }}
-      >
-        <div className="overflow-hidden">
-          {contexte && (
-            <div className="text-base bg-white/5 rounded-xl p-4">{contexte}</div>
           )}
-          {children}
+        </div>
+
+        {contexte && <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-neutral-400">{contexte}</p>}
+
+        <button
+          type="button"
+          onClick={() => setOuvert((o) => !o)}
+          aria-expanded={ouvert}
+          aria-label={ouvert ? "Replier les missions" : "Déplier les missions"}
+          className="mt-5 flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/15"
+        >
+          {ouvert ? "Masquer les missions" : `Voir les missions (${missions.length})`}
+          <span className={cn("inline-block transition-transform duration-300", ouvert && "rotate-90")}>›</span>
+        </button>
+
+        <div
+          className={cn("grid transition-[grid-template-rows,opacity] duration-500 ease-out", ouvert ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0")}
+          aria-hidden={!ouvert}
+          inert={!ouvert}
+        >
+          <div className="overflow-hidden">
+            <div className="mt-5 grid gap-4">{children}</div>
+          </div>
         </div>
       </div>
     </div>

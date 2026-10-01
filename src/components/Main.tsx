@@ -1,56 +1,52 @@
-import Contact from "./1_Home/Contact";
+import NavBar from "./0_Nav/NavBar";
 import Title from "./1_Home/Title";
 import Poste from "./1_Home/Poste";
-import BaseNav from "./1_Home/BaseNav";
 import CvButtons from "./1_Home/CvButtons";
+import ChiffresCles from "./1_Home/ChiffresCles";
 import Parcours from "./3_DevStory/Parcours";
-import Portfolio from "./4_Portofolio/Portofolio";
 import Profil from "./5_Profil/Profil";
 import Formation from "./6_Formation/Formation";
 import ContactSection from "./7_Contact/ContactSection";
+import Projets from "./8_Projets/Projets";
+import SectionTitle from "./ui/SectionTitle";
 import { BackgroundGradientAnimation } from "./ui/background-gradient-animation";
 
-const sectionTitle = "text-5xl md:text-8xl font-semibold z-50 text-center";
+const section = "flex flex-col items-center py-20 md:py-28";
 
 export default function Main() {
   return (
     <>
       <BackgroundGradientAnimation />
-      <header className="relative flex min-h-screen flex-col items-center justify-between pt-24 p-2 md:p-24">
-        <Contact />
+      <NavBar />
+      <header id="top" className="relative flex min-h-screen flex-col items-center justify-center px-4 pt-28 pb-16">
         <Title />
         <Poste />
         <CvButtons />
-        <BaseNav />
+        <ChiffresCles />
+        <a
+          href="#Profil"
+          className="mt-12 text-neutral-500 hover:text-white transition-colors motion-safe:animate-bounce"
+          aria-label="Découvrir le profil"
+        >
+          ↓
+        </a>
       </header>
       <main>
-        <section
-          id="Profil"
-          className="flex flex-col items-center gap-8 py-16"
-        >
-          <h2 className={sectionTitle}>Profil & Compétences</h2>
+        <section id="Profil" className={section}>
+          <SectionTitle etiquette="Profil" titre="Compétences & stack" />
           <Profil />
         </section>
-        <section
-          id="Parcours"
-          className="flex min-h-screen flex-col items-center justify-between "
-        >
-          <h2 className={sectionTitle}>Parcours Professionnel</h2>
+        <section id="Parcours" className={section}>
+          <SectionTitle etiquette="Parcours" titre="Expériences professionnelles" />
           <Parcours />
         </section>
-        <section
-          id="Formation"
-          className="flex flex-col items-center gap-8 py-16"
-        >
-          <h2 className={sectionTitle}>Formation</h2>
-          <Formation />
+        <section id="Projets" className={section}>
+          <SectionTitle etiquette="Projets" titre="Projets phares" />
+          <Projets />
         </section>
-        <section
-          id="Portfolio"
-          className="flex min-h-screen flex-col items-center "
-        >
-          <h2 className="mb-3 text-5xl md:text-9xl font-semibold">Portfolio</h2>
-          <Portfolio />
+        <section id="Formation" className={section}>
+          <SectionTitle etiquette="Formation" titre="Diplômes, certifications & concours" />
+          <Formation />
         </section>
       </main>
       <ContactSection />
