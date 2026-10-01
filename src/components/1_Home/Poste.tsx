@@ -4,7 +4,7 @@ export default function Poste() {
       <p className=" text-center mb-3 font-semibold">
         Ingénieur logiciel FullStack C# / Python
         <br />
-        Spécialisé DataScience et BI
+        Tech Lead · Architecture .NET · Mobile · Data & IA
       </p>
     </div>
   );

@@ -30,6 +30,8 @@ export interface IPoste {
    resultats?: ITache[]
    techs : ITech[]
    collabs? : ICollab[]
+   // Capture illustrant la mission (affichée sous le titre)
+   image? : { src: string, alt: string, width: number, height: number }
 }
 
 export interface ILogo {

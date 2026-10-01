@@ -395,6 +395,12 @@ export const robocred: IMission = {
 
 export const ESME: IMission = {
   nom: "EcoStruxure Machine Expert - Team Device Integration",
+  image: {
+    src: "/MachineExpert1.jpg",
+    alt: "Programmation d'un automate dans l'IDE EcoStruxure Machine Expert de Schneider Electric",
+    width: 1200,
+    height: 684,
+  },
   contexte:
     "Développement d'un IDE en C# WinForms basé sur CoDeSys pour programmer les automates industriels Schneider Electric, et travail sur EdgeIO, produit visant à gérer des modules industriels variés avec différents protocoles de communication (Ethernet, ModBus, Sercos).",
   taches: [
