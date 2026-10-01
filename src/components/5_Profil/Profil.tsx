@@ -21,12 +21,11 @@ const experiences: Record<Lang, string[]> = { fr: [
 const STACK_EN: Record<string, string> = {
   "CQRS, Médiateur, REPR": "CQRS, Mediator, REPR",
   Librairies: "Libraries",
-  "Et aussi": "Also",
-  "Tous les domaines déjà présents dans la stack .NET": "Every area already covered by the .NET stack",
+  "Et aussi : tous les domaines déjà présents dans la stack .NET": "Also: every area already covered by the .NET stack",
   Autres: "Other",
 };
 
-const stacks: { titre: string; icone: IconProp; lignes: [string, string][] }[] = [
+const stacks: { titre: string; icone: IconProp; lignes: [string, string][]; note?: string }[] = [
   {
     titre: "Stack C# .NET",
     icone: faMicrosoft,
@@ -58,8 +57,8 @@ const stacks: { titre: string; icone: IconProp; lignes: [string, string][] }[] =
       ["Data Analysis", "Pandas, NumPy"],
       ["ML", "TensorFlow, PyTorch, NEAT, OpenCV"],
       ["ETLs", "CSV, XML, PDF"],
-      ["Et aussi", "Tous les domaines déjà présents dans la stack .NET"],
     ],
+    note: "Et aussi : tous les domaines déjà présents dans la stack .NET",
   },
   {
     titre: "Autres",
@@ -135,20 +134,39 @@ export default function Profil() {
             <path d="M9 6l6 6-6 6" />
           </svg>
         </summary>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-        {stacks.map((stack) => (
-          <div key={stack.titre} className={card}>
-            <h3 className="text-2xl font-semibold mb-4">
-              <FontAwesomeIcon icon={stack.icone} /> {tr(stack.titre)}
+      {/* .NET en grande carte pleine largeur, Python et Autres côte à côte en dessous */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        {stacks.map((stack, i) => (
+          <div key={stack.titre} className={`${card} ${i === 0 ? "md:col-span-2" : ""}`}>
+            <h3 className="text-2xl font-semibold mb-5 flex items-center gap-3">
+              <FontAwesomeIcon icon={stack.icone} className="opacity-90" /> {tr(stack.titre)}
             </h3>
-            <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm md:text-base">
+            <dl
+              className={`grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 ${
+                i === 0 ? "lg:grid-cols-3" : ""
+              }`}
+            >
               {stack.lignes.map(([domaine, valeur]) => (
-                <div key={domaine} className="contents">
-                  <dt className="font-semibold opacity-80">{tr(domaine)}</dt>
-                  <dd>{tr(valeur)}</dd>
+                <div key={domaine}>
+                  <dt className="text-xs font-semibold uppercase tracking-wider opacity-60 mb-1.5">
+                    {tr(domaine)}
+                  </dt>
+                  <dd className="flex flex-wrap gap-1.5">
+                    {tr(valeur)
+                      .split(", ")
+                      .map((techno) => (
+                        <span
+                          key={techno}
+                          className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-sm"
+                        >
+                          {techno}
+                        </span>
+                      ))}
+                  </dd>
                 </div>
               ))}
             </dl>
+            {stack.note && <p className="mt-5 text-sm italic opacity-70">{tr(stack.note)}</p>}
           </div>
         ))}
       </div>
