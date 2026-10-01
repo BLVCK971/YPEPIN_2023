@@ -564,13 +564,15 @@ export const powerBiSupport: IMission = {
 
 export const gestrav: IMission = {
   chiffreCle: "Application officielle du SMGEAG",
-  nom: "Gestrav - Coordination de la réparation des fuites d'eau",
+  nom: "Gestrav - Mission Urgence Eau Guadeloupe 2020",
   periode: "06/2020 - 10/2020",
   contexte:
-    "Projet régional de coordination des acteurs de la réparation des fuites d'eau. Gestrav est devenue l'application officielle de détection et de suivi des réparations des fuites du SMGEAG.",
+    "Mission « Urgence Eau Guadeloupe » 2020 : face aux pénuries d'eau, l'État a ordonné des réquisitions préfectorales confiées au groupement Karukér'Ô / SUEZ. Au sein d'une équipe DIGITOM de 3 personnes, élaboration d'un outil de gestion coordonnant les détecteurs de fuites, les réparateurs et le gestionnaire du réseau (SIAEAG), et des données publiées sur le site public urgence-eau-guadeloupe.org. Gestrav est devenue l'application officielle de détection et de suivi des réparations des fuites du SMGEAG.",
   taches: [
+    { icone: faChartPie, texte: "Données et rapports Power BI des indicateurs de la mission (fuites détectées et réparées), suivis en temps réel par les usagers sur le site urgence-eau-guadeloupe.org" },
     { icone: faChartPie, texte: "POC Power BI de la géolocalisation des fuites" },
-    { icone: faMapLocationDot, texte: "Intégration d'OpenStreetMap dans l'application .NET, dans les locaux d'Eau d'Excellence" },
+    { icone: faPenToSquare, texte: "Développement d'une partie de l'interface utilisateur de Gestrav" },
+    { icone: faMapLocationDot, texte: "Géolocalisation et intégration d'OpenStreetMap dans l'application .NET, dans les locaux d'Eau d'Excellence" },
     { icone: faRoute, texte: "Fonctionnalités de la carte : itinéraires optimisés, affichage des points et des données associées" },
   ],
   techs: [
