@@ -50,7 +50,8 @@
   `public/sitemap.xml` (mettre à jour `lastmod`), `public/robots.txt`, `public/og-image.jpg`.
   Titre ~60 caractères, description ~155 (au-delà, Google tronque). Ces textes sont aussi des
   constantes de `scripts/prerender.mjs` (FR et EN, remplacements stricts) : modifier les deux, sinon
-  le build échoue. À chaque mise à jour du contenu : `dateModified` du JSON-LD (ProfilePage) et
+  le build échoue. À chaque mise à jour du contenu : `dateModified` du JSON-LD (ProfilePage, date et heure
+  avec fuseau, ex. `2026-10-25T12:00:00-04:00`, sinon Google le signale) et
   `lastmod` du sitemap.
 - `public/llms.txt` (résumé pour les moteurs IA) : à garder aligné avec le profil, les services et
   le parcours (entreprises, diplômes) quand ils changent.
