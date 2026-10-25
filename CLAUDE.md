@@ -38,7 +38,8 @@
   `public/demos/`. Essai local : `node demos/serve.mjs` (http://localhost:5180/demos/arc-gr/, même
   fallback SPA que nginx). Une nouvelle démo doit aussi être ajoutée à la regex de `deploy/nginx.conf`.
 - Marques des clients affichées avec leur accord ; toutes les autres données (personnes, dossiers,
-  photos, pièces) doivent rester fictives. Démos en `noindex` (meta, en-tête nginx et robots.txt).
+  photos, pièces) doivent rester fictives. Démos en `noindex` (meta et en-tête nginx `X-Robots-Tag`).
+  Ne pas les bloquer dans robots.txt : un robot bloqué ne verrait jamais le `noindex`.
 
 ## SEO
 
@@ -47,7 +48,22 @@
   (pas d'accès à `window`/`document` pendant le rendu, uniquement dans les effets).
 - Métadonnées (title, description, Open Graph, JSON-LD schema.org) dans `index.html` ;
   `public/sitemap.xml` (mettre à jour `lastmod`), `public/robots.txt`, `public/og-image.jpg`.
+  Titre ~60 caractères, description ~155 (au-delà, Google tronque). Ces textes sont aussi des
+  constantes de `scripts/prerender.mjs` (FR et EN, remplacements stricts) : modifier les deux, sinon
+  le build échoue. À chaque mise à jour du contenu : `dateModified` du JSON-LD (ProfilePage) et
+  `lastmod` du sitemap.
+- `public/llms.txt` (résumé pour les moteurs IA) : à garder aligné avec le profil, les services et
+  le parcours (entreprises, diplômes) quand ils changent.
 - Un seul `<h1>` (le nom) ; les sections utilisent `<h2>`, les entreprises `<h3>`, les missions `<h4>`.
+- Images : WebP aux dimensions d'affichage (x2), avec `width`/`height` (pas de décalage de mise en page).
+- Performance (Core Web Vitals) : CSS insérée dans le HTML et police préchargée par `prerender.mjs` ;
+  sections sous la ligne de flottaison en `content-visibility: auto` (`src/index.css`, hauteur estimée
+  par section : toute nouvelle section de `<main>` y ajoute la sienne) ; pas de `getBoundingClientRect`
+  au chargement dans ces sections (préférer `IntersectionObserver`) ; animations SVG (SMIL) mises en
+  pause hors écran via `useAnimationsSvg`.
+- nginx : `X-Robots-Tag: noindex` sur `/Web`, `/py` et les `.docx` (map `$robots_tag`),
+  `/index.html` et `/en/index.html` redirigés en 301 vers `/` et `/en/`. La CI vérifie la config
+  (`nginx -t`) avant de déployer.
 
 ## Vérifications avant push
 

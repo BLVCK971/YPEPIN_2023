@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, startTransition } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import "@fontsource-variable/inter";
 import "./index.css";
@@ -23,7 +23,11 @@ const app = (
 // En production le HTML est prérendu au build : on l'hydrate.
 // En dev (vite), la div est vide : rendu client classique.
 if (root.firstElementChild) {
-  hydrateRoot(root, app);
+  // Hydratation en transition : découpée en tranches de quelques ms au lieu d'un
+  // seul long blocage du thread principal (page déjà affichée et lisible).
+  startTransition(() => {
+    hydrateRoot(root, app);
+  });
 } else {
   createRoot(root).render(app);
 }

@@ -1,7 +1,10 @@
 // Schéma "fan-out" d'ATMP : ~5 000 comptes répartis sur des tâches AWS ECS
 // indépendantes qui tournent en parallèle, puis une pipeline SnapLogic par
-// tâche vers le stockage et le monitoring. 100 % SVG (SMIL), sans JavaScript.
+// tâche vers le stockage et le monitoring. 100 % SVG (SMIL) ; le JavaScript ne
+// fait que mettre les animations en pause hors écran.
+import { useRef } from "react";
 import { Lang, useLang } from "../../i18n";
+import { useAnimationsSvg } from "../ui/useAnimationsSvg";
 
 type Boite = { x: number; y: number; w: number; h: number; titre: string; sous: string };
 
@@ -123,9 +126,12 @@ function Schema({ id, l, txt }: { id: string; l: Layout; txt: Textes }) {
   const gw = g.cols * PAS - (PAS - CELL);
   const gh = g.rows * PAS - (PAS - CELL);
   const dureeVoie = 3.4;
+  const svgRef = useRef<SVGSVGElement>(null);
+  useAnimationsSvg(svgRef);
 
   return (
     <svg
+      ref={svgRef}
       viewBox={`0 0 ${l.W} ${l.H}`}
       className="flow-diagram w-full h-auto"
       role="img"

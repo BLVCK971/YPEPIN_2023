@@ -19,8 +19,9 @@ export const Demo: React.FC<IDemo> = ({ title, image, href, desc, technos }) => 
         <CardItem translateZ="60" className="w-full">
           <img
             src={image}
-            alt={title}
+            alt={t(`Aperçu de la démo ${title}`, `${title} demo preview`)}
             loading="lazy"
+            decoding="async"
             className="h-40 w-full rounded-lg object-cover"
           />
         </CardItem>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Reveal from "../ui/Reveal";
 import { cn } from "../ui/utils/cn";
+import { useAnimationsSvg } from "../ui/useAnimationsSvg";
 import { Lang, useLang, useT } from "../../i18n";
 
 // Carte des collaborations internationales : fond en points (public/carte-monde.svg,
@@ -65,7 +66,9 @@ const arc = (a: { x: number; y: number }, b: { x: number; y: number }, k: number
 
 export default function CarteCollaborations() {
   const ref = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
   const [visible, setVisible] = useState(false);
+  useAnimationsSvg(svgRef);
   const lang = useLang();
   const t = useT();
 
@@ -97,7 +100,7 @@ export default function CarteCollaborations() {
         </p>
 
         <div ref={ref} className={cn("carte mt-4", visible && "carte-visible")}>
-          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label={t(
+          <svg ref={svgRef} viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label={t(
               "Carte des collaborations : Guadeloupe, France (dont Nice), Espagne, Allemagne, Serbie, Roumanie, Inde et Singapour",
               "Collaboration map: Guadeloupe, France (including Nice), Spain, Germany, Serbia, Romania, India and Singapore"
             )}>

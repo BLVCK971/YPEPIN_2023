@@ -47,7 +47,10 @@ export const Company: React.FC<{
                   <img
                     src={logo.src}
                     alt={t(`Logo ${nom}`, `${nom} logo`)}
+                    width={logo.width}
+                    height={logo.height}
                     loading="lazy"
+                    decoding="async"
                     className={cn("w-auto object-contain", logo.surFondClair ? "h-10 md:h-12" : "h-12 md:h-16")}
                   />
                 </div>

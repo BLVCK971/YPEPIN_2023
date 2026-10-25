@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Lang, useLang } from "../../i18n";
 
 // Chiffres clés tirés du CV (aucune valeur inventée), animés au défilement.
@@ -25,14 +25,18 @@ const format = (n: number, lang: Lang, decimales = 0) =>
 
 function Compteur({ chiffre }: { chiffre: Chiffre }) {
   const lang = useLang();
-  // Rendu serveur : valeur finale (SEO). Côté client : décompte à l'apparition.
-  const [n, setN] = useState(chiffre.valeur);
   const ref = useRef<HTMLSpanElement>(null);
+  const texte = (n: number) => `${chiffre.prefixe ?? ""}${format(n, lang, chiffre.decimales)}${chiffre.suffixe ?? ""}`;
 
+  // Rendu serveur : valeur finale (SEO). Côté client : décompte à l'apparition,
+  // écrit directement dans le DOM (aucun rendu React à chaque image).
   useEffect(() => {
     const el = ref.current;
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    setN(0);
+    const ecrire = (n: number) => {
+      el.textContent = texte(n);
+    };
+    ecrire(0);
     let frame = 0;
     const io = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return;
@@ -43,7 +47,7 @@ function Compteur({ chiffre }: { chiffre: Chiffre }) {
         const p = Math.min(1, (t - debut) / duree);
         const ease = 1 - Math.pow(1 - p, 3);
         const f = 10 ** (chiffre.decimales ?? 0);
-        setN(Math.round(chiffre.valeur * ease * f) / f);
+        ecrire(Math.round(chiffre.valeur * ease * f) / f);
         if (p < 1) frame = requestAnimationFrame(tick);
       };
       frame = requestAnimationFrame(tick);
@@ -52,14 +56,13 @@ function Compteur({ chiffre }: { chiffre: Chiffre }) {
     return () => {
       io.disconnect();
       cancelAnimationFrame(frame);
+      ecrire(chiffre.valeur);
     };
-  }, [chiffre.valeur]);
+  }, [chiffre, lang]);
 
   return (
     <span ref={ref} className="tabular-nums">
-      {chiffre.prefixe}
-      {format(n, lang, chiffre.decimales)}
-      {chiffre.suffixe}
+      {texte(chiffre.valeur)}
     </span>
   );
 }
@@ -69,12 +72,16 @@ export default function ChiffresCles() {
   return (
     <dl className="relative z-10 mt-16 grid w-full max-w-5xl grid-cols-2 md:grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10">
       {CHIFFRES[lang].map((c) => (
+        // Ordre HTML valide (dt puis dd), ordre visuel : chiffre, libellé, source
         <div key={c.label} className="flex flex-col gap-1 bg-black/50 backdrop-blur-md p-4 md:p-6">
-          <dd className="order-1 text-2xl md:text-4xl font-semibold text-white">
-            <Compteur chiffre={c} />
-          </dd>
           <dt className="order-2 text-sm md:text-base text-neutral-300">{c.label}</dt>
-          <span className="order-3 text-xs text-neutral-500">{c.source}</span>
+          <dd className="order-1 text-2xl md:text-4xl font-semibold text-white">
+            {/* Hauteur fixe + containment : le décompte ne recalcule pas la mise en page de toute la page */}
+            <span className="block h-8 md:h-10 [contain:size_layout_style]">
+              <Compteur chiffre={c} />
+            </span>
+          </dd>
+          <dd className="order-3 text-xs text-neutral-500">{c.source}</dd>
         </div>
       ))}
     </dl>

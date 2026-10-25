@@ -29,11 +29,21 @@ export default function Parcours() {
         if (p) p.dataset.actif = String(p.getBoundingClientRect().top < repere);
       }
     };
+    // Calculs uniquement quand la frise est proche de l'écran : hors écran, ses
+    // mesures forceraient la mise en page de la section différée (content-visibility).
+    let proche = false;
     const planifier = () => {
-      if (!frame) frame = requestAnimationFrame(maj);
+      if (proche && !frame) frame = requestAnimationFrame(maj);
     };
+    const io = new IntersectionObserver(
+      ([e]) => {
+        proche = e.isIntersecting;
+        planifier();
+      },
+      { rootMargin: "100% 0px" }
+    );
+    io.observe(el);
 
-    maj();
     window.addEventListener("scroll", planifier, { passive: true });
     window.addEventListener("resize", planifier);
     // Déplier des missions change la hauteur de la frise
@@ -42,6 +52,7 @@ export default function Parcours() {
     return () => {
       window.removeEventListener("scroll", planifier);
       window.removeEventListener("resize", planifier);
+      io.disconnect();
       ro.disconnect();
       cancelAnimationFrame(frame);
     };

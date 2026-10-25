@@ -57,6 +57,39 @@ footer[id] {
   scroll-margin-top: 5rem;
 }
 
+/* --- Sections différées ---------------------------------------------------
+   Le style, la mise en page et la peinture d'une section ne sont calculés qu'à
+   son approche de l'écran : premier affichage bien plus rapide sur mobile. Le
+   contenu reste dans le HTML (référencement, recherche dans la page, lecteurs
+   d'écran). Hauteurs estimées d'après les hauteurs mesurées (téléphone, puis
+   ≥ md), remplacées par la vraie hauteur dès qu'une section a été affichée. */
+main > section,
+footer#Contact {
+  content-visibility: auto;
+}
+#Profil { contain-intrinsic-height: auto 1200px; }
+#Parcours { contain-intrinsic-height: auto 4200px; }
+#Formation { contain-intrinsic-height: auto 1850px; }
+#Projets { contain-intrinsic-height: auto 6050px; }
+#Services { contain-intrinsic-height: auto 3700px; }
+#Contact { contain-intrinsic-height: auto 950px; }
+
+/* Après un clic sur une ancre interne (NavBar) : tout est rendu, pour que le
+   défilement doux s'arrête au bon endroit */
+.sections-rendues main > section,
+.sections-rendues footer#Contact {
+  content-visibility: visible;
+}
+
+@media (min-width: 768px) {
+  #Profil { contain-intrinsic-height: auto 1400px; }
+  #Parcours { contain-intrinsic-height: auto 3050px; }
+  #Formation { contain-intrinsic-height: auto 1170px; }
+  #Projets { contain-intrinsic-height: auto 2950px; }
+  #Services { contain-intrinsic-height: auto 1740px; }
+  #Contact { contain-intrinsic-height: auto 800px; }
+}
+
 .reveal {
   transition:
     opacity 700ms ease,

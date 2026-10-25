@@ -21,15 +21,23 @@ export default function Reveal({
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (el.getBoundingClientRect().top < window.innerHeight * 0.92) return;
 
-    el.classList.add("reveal-hidden");
+    // Pas de getBoundingClientRect : il forcerait la mise en page des sections
+    // différées (content-visibility). Le premier rappel de l'observateur indique
+    // si l'élément est déjà à l'écran (rien à faire) ou plus bas (masqué puis révélé).
+    let premier = true;
     const io = new IntersectionObserver(
       ([e]) => {
-        if (!e.isIntersecting) return;
-        el.style.transitionDelay = `${delay}ms`;
-        el.classList.remove("reveal-hidden");
-        io.disconnect();
+        if (e.isIntersecting) {
+          if (!premier) {
+            el.style.transitionDelay = `${delay}ms`;
+            el.classList.remove("reveal-hidden");
+          }
+          io.disconnect();
+        } else if (premier) {
+          el.classList.add("reveal-hidden");
+        }
+        premier = false;
       },
       { rootMargin: "0px 0px -8% 0px" }
     );

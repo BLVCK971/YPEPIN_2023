@@ -1,0 +1,29 @@
+# Yoel PEPIN
+
+> Ingénieur logiciel FullStack C# / Python et Tech Lead, freelance sous la marque ICEKERA (EI Yoel PEPIN). Développement sur mesure (web, mobile, API .NET et Python), IA locale et confidentielle, data et automatisation, audit et migration de SI, en Guadeloupe, en France et à distance.
+
+Site personnel de Yoel PEPIN : profil, compétences, parcours professionnel depuis 2019 (DIGITOM, AViSTO / Schneider Electric, Ayming, PROELAN / Schneider Electric, DREVIO, ICEKERA), formation (Master MIAGE spécialisation Data Science, Université des Antilles ; SAFe 6.0 Scrum Master ; CS50x et CS50AI de Harvard), projets phares et offres freelance.
+
+## Pages
+
+- [Portfolio et CV (français)](https://ypepin.com/): profil, compétences, expériences et missions détaillées, formation, projets, services
+- [Portfolio and CV (English)](https://ypepin.com/en/): the same content in English
+
+## CV
+
+- [CV PDF (français)](https://ypepin.com/cv/CV_Yoel_PEPIN.pdf)
+- [CV PDF (English)](https://ypepin.com/cv/CV_Yoel_PEPIN_EN.pdf)
+
+## Services ICEKERA
+
+- [Développement sur mesure](https://ypepin.com/#Services): sites, CRM, portails clients et applications métier, de la conception à la mise en production
+- [IA locale et confidentielle](https://ypepin.com/#Services): assistants IA (RAG, LLM locaux) qui travaillent sur vos documents sans qu'aucune donnée ne quitte vos locaux
+- [Audit, migration et sécurité du SI](https://ypepin.com/#Services): reprise en main d'un système d'information (données, serveurs, logiciels métier, accès)
+- [Automatisation et data](https://ypepin.com/#Services): robots de collecte, ETL, traitements à grande échelle et rapports Power BI
+- [Tech Lead et architecte à temps partagé](https://ypepin.com/#Services): cadrage produit, architecture, revue de code et animation Agile (Scrum Master SAFe certifié)
+
+## Contact
+
+- [E-mail](mailto:yoelpepin97@gmail.com): yoelpepin97@gmail.com
+- [LinkedIn](https://www.linkedin.com/in/ypepin/)
+- [GitHub](https://github.com/BLVCK971)

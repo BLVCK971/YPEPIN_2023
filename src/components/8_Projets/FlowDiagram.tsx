@@ -1,7 +1,10 @@
 // Schéma d'architecture animé : étapes disposées en serpentin, ligne qui
 // s'écoule et "particules" de données qui traversent la chaîne.
-// 100 % SVG (animateMotion) : rendu serveur possible, aucun JavaScript.
+// 100 % SVG (animateMotion) : rendu serveur possible ; le JavaScript ne fait que
+// mettre les animations en pause hors écran.
+import { useRef } from "react";
 import { useT } from "../../i18n";
+import { useAnimationsSvg } from "../ui/useAnimationsSvg";
 
 export type Etape = { titre: string; sous: string };
 
@@ -54,6 +57,8 @@ const keyTimes = (f: number) => {
 
 function Schema({ id, etapes, colonnes = 3, cadre }: Props) {
   const t = useT();
+  const svgRef = useRef<SVGSVGElement>(null);
+  useAnimationsSvg(svgRef);
   // Largeur 540 (3-4 colonnes) ou 360 en 2 colonnes : le texte reste lisible sur mobile
   const W = colonnes <= 2 ? COL_W * 2 : COL_W * 3;
   const colW = W / colonnes;
@@ -82,6 +87,7 @@ function Schema({ id, etapes, colonnes = 3, cadre }: Props) {
 
   return (
     <svg
+      ref={svgRef}
       viewBox={`0 0 ${W} ${H}`}
       className="flow-diagram w-full h-auto"
       role="img"

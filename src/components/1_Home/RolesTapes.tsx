@@ -34,9 +34,11 @@ export default function RolesTapes() {
   }, [texte, efface, index, ROLES]);
 
   return (
-    <p className="text-base md:text-xl font-medium text-neutral-300">
+    // Largeur et hauteur fixes + containment : l'effet de frappe (une mise à jour
+    // toutes les 35 à 75 ms) ne recalcule pas la mise en page de toute la page.
+    <p className="w-full text-base md:text-xl font-medium text-neutral-300">
       <span className="sr-only">{ROLES.join(" · ")}</span>
-      <span aria-hidden="true">
+      <span aria-hidden="true" className="block h-6 md:h-7 [contain:size_layout_style]">
         <span className="bg-gradient-to-r from-violet-400 to-cyan-300 bg-clip-text text-transparent">{texte}</span>
         <span className="ml-0.5 inline-block w-[2px] h-[1.1em] translate-y-[0.2em] bg-cyan-300 animate-pulse" />
       </span>

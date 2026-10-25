@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /demos/
+
+# Pas de Disallow pour /demos/, /Web/ et /py/ : ces pages sont exclues de l'index par
+# l'en-tête X-Robots-Tag: noindex (deploy/nginx.conf). Un robot bloqué ici ne lirait
+# jamais cet en-tête et pourrait indexer l'URL sans son contenu.
 
 Sitemap: https://ypepin.com/sitemap.xml

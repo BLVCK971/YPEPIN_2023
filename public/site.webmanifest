@@ -1,6 +1,8 @@
 {
+  "id": "/",
   "name": "Yoel PEPIN - Ingénieur logiciel FullStack",
   "short_name": "Yoel PEPIN",
+  "description": "Ingénieur logiciel FullStack C# / Python et Tech Lead freelance (ICEKERA) : parcours, projets, services et CV.",
   "lang": "fr",
   "start_url": "/",
   "display": "browser",

@@ -38,6 +38,9 @@ export interface IPoste {
 
 export interface ILogo {
    src: string
+   // Dimensions réelles du fichier : réservent la place avant chargement (pas de décalage)
+   width: number
+   height: number
    // Logo sombre : affiché sur une pastille claire pour rester lisible
    surFondClair?: boolean
 }

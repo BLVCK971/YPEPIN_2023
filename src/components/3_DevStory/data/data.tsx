@@ -458,7 +458,7 @@ export const ESME: IMission = {
   chiffreCle: "Le travail de 2 ans de l'équipe précédente, en 6 mois",
   nom: "EcoStruxure Machine Expert - Team Device Integration",
   image: {
-    src: "/MachineExpert1.jpg",
+    src: "/MachineExpert1.webp",
     alt: "Programmation d'un automate dans l'IDE EcoStruxure Machine Expert de Schneider Electric",
     width: 1200,
     height: 684,
@@ -640,7 +640,7 @@ export const gestrav: IMission = {
 
 /// PARCOURS .............
 
-const schneiderLogo = { src: "/logos/SCHNEIDER.png" };
+const schneiderLogo = { src: "/logos/SCHNEIDER.webp", width: 320, height: 128 };
 
 export const companies: ICompany[] = [
   {
@@ -651,7 +651,7 @@ export const companies: ICompany[] = [
       { icone: faCode, texte: "Ingénieur logiciel FullStack indépendant" },
       { icone: faServer, texte: "Consultant IT" },
     ],
-    logos: [{ src: "/Icekera.svg" }],
+    logos: [{ src: "/Icekera.svg", width: 1059, height: 1222 }],
     missions: [sesam, wondo, arcgr, matheva, valado, aivocat],
   },
   {
@@ -665,7 +665,7 @@ export const companies: ICompany[] = [
       { icone: faCode, texte: "Lead Developer" },
       { icone: faSitemap, texte: "Architecte logiciel Full Stack" },
     ],
-    logos: [{ src: "/logos/DREVIO.png" }],
+    logos: [{ src: "/logos/DREVIO.webp", width: 367, height: 128 }],
     missions: [hellboy, drevioMobile, drevio],
   },
   {
@@ -688,7 +688,7 @@ export const companies: ICompany[] = [
       { icone: faPython, texte: "Ingénieur Python" },
       { icone: faCloud, texte: "Architecte Cloud" },
     ],
-    logos: [{ src: "/logos/AYMING.png" }],
+    logos: [{ src: "/logos/AYMING.webp", width: 278, height: 128 }],
     missions: [roboatmp, robosylae, robocred],
   },
   {
@@ -701,7 +701,7 @@ export const companies: ICompany[] = [
       { icone: faCode, texte: "Ingénieur Logiciel C#" },
       { icone: faPeopleGroup, texte: "Scrum Master SAFe certifié" },
     ],
-    logos: [{ src: "/logos/avisto.png", surFondClair: true }, schneiderLogo],
+    logos: [{ src: "/logos/avisto.webp", width: 176, height: 128, surFondClair: true }, schneiderLogo],
     missions: [ESME],
   },
   {
@@ -716,7 +716,7 @@ export const companies: ICompany[] = [
       { icone: faCodeBranch, texte: "Intégrateur Odoo" },
       { icone: faDocker, texte: "Ingénieur DevOps" },
     ],
-    logos: [{ src: "/logos/DIGITOM.png" }],
+    logos: [{ src: "/logos/DIGITOM.webp", width: 400, height: 128 }],
     missions: [BZ, OdooDocker, powerBiOdoo, powerBiSupport, powerBiCoaching, gestrav],
   },
 ];

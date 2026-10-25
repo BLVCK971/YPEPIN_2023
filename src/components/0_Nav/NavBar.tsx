@@ -39,8 +39,21 @@ export default function NavBar() {
       const el = document.getElementById(s.id);
       if (el) io.observe(el);
     });
+
+    // Sections différées (content-visibility, index.css) : tant qu'elles n'ont pas
+    // été affichées, leur hauteur est estimée et le défilement doux vers une ancre
+    // s'arrêterait au mauvais endroit. Au premier clic sur une ancre interne, toutes
+    // les sections sont rendues (hauteurs réelles) avant que le navigateur ne défile.
+    const onClickAncre = (e: MouseEvent) => {
+      if (!(e.target instanceof Element) || !e.target.closest('a[href^="#"]')) return;
+      document.documentElement.classList.add("sections-rendues");
+      document.removeEventListener("click", onClickAncre, true);
+    };
+    document.addEventListener("click", onClickAncre, true);
+
     return () => {
       window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("click", onClickAncre, true);
       io.disconnect();
     };
   }, []);
@@ -62,8 +75,10 @@ export default function NavBar() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <a href="#top" className="font-semibold tracking-tight text-lg" aria-label={t("Retour en haut", "Back to top")}>
+        {/* Nom accessible = texte visible + précision (règle « label in name ») */}
+        <a href="#top" className="font-semibold tracking-tight text-lg">
           Y<span className="text-cyan-300">P</span>
+          <span className="sr-only"> · Yoel PEPIN, {t("retour en haut", "back to top")}</span>
         </a>
 
         <ul className="hidden md:flex items-center gap-1">
@@ -89,9 +104,9 @@ export default function NavBar() {
             hrefLang={lang === "en" ? "fr" : "en"}
             lang={lang === "en" ? "fr" : "en"}
             className="flex items-center rounded-full border border-white/15 px-2.5 py-1 text-xs font-semibold tracking-wider text-neutral-300 transition-colors hover:border-white/40 hover:text-white"
-            aria-label={lang === "en" ? "Version française" : "English version"}
           >
             {lang === "en" ? "FR" : "EN"}
+            <span className="sr-only">{lang === "en" ? " · Version française" : " · English version"}</span>
           </a>
           <a
             href="https://www.linkedin.com/in/ypepin/"
