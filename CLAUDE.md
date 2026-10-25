@@ -62,11 +62,15 @@
   au chargement dans ces sections (préférer `IntersectionObserver`) ; animations SVG (SMIL) mises en
   pause hors écran via `useAnimationsSvg`.
 - nginx : `X-Robots-Tag: noindex` sur `/Web`, `/py` et les `.docx` (map `$robots_tag`),
-  `/index.html` et `/en/index.html` redirigés en 301 vers `/` et `/en/`. La CI vérifie la config
-  (`nginx -t`) avant de déployer.
+  `/index.html` et `/en/index.html` redirigés en 301 vers `/` et `/en/`.
 
 ## Vérifications avant push
 
 ```bash
-npm run build   # tsc --noEmit + vite build
+npm run build         # tsc --noEmit + vite build
+npm run check:nginx   # si deploy/nginx.conf a changé (Docker Desktop démarré)
 ```
+
+La CI GitHub ne teste pas la config nginx : une erreur ne casse pas le build mais empêche le
+conteneur de démarrer sur le VPS, d'où la vérification locale. Le workflow
+`.github/workflows/` ne peut pas être modifié depuis ce poste (jeton gh sans scope `workflow`).
