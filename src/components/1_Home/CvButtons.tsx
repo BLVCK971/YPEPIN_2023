@@ -1,10 +1,10 @@
-import { FaFilePdf, FaFileWord } from "react-icons/fa";
+import { FaFilePdf } from "react-icons/fa";
 import { Lang, useLang, useT } from "../../i18n";
 
-// CV dans la langue de la page (version anglaise : CV_Yoel_PEPIN_EN.*)
-const CV: Record<Lang, { pdf: string; docx: string }> = {
-  fr: { pdf: "/cv/CV_Yoel_PEPIN.pdf", docx: "/cv/CV_Yoel_PEPIN.docx" },
-  en: { pdf: "/cv/CV_Yoel_PEPIN_EN.pdf", docx: "/cv/CV_Yoel_PEPIN_EN.docx" },
+// CV PDF dans la langue de la page (le .docx reste la source, non proposé au téléchargement)
+const CV: Record<Lang, { pdf: string }> = {
+  fr: { pdf: "/cv/CV_Yoel_PEPIN.pdf" },
+  en: { pdf: "/cv/CV_Yoel_PEPIN_EN.pdf" },
 };
 
 export const useCv = () => CV[useLang()];
@@ -21,14 +21,6 @@ export default function CvButtons() {
       >
         <FaFilePdf className="text-xl" aria-hidden="true" />
         {t("Télécharger mon CV (PDF)", "Download my CV (PDF)")}
-      </a>
-      <a
-        href={cv.docx}
-        download
-        className="flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-full border border-white/15 bg-white/5 backdrop-blur-md transition-all duration-300 hover:bg-white/15"
-      >
-        <FaFileWord className="text-lg" aria-hidden="true" />
-        {t("Version Word", "Word version")}
       </a>
       <a
         href="#Contact"
