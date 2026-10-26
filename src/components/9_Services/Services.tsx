@@ -156,6 +156,8 @@ const ETAPES_EN: Etape[] = [
 ];
 
 const OFFRES: Record<Lang, Offre[]> = { fr: OFFRES_FR, en: OFFRES_EN };
+
+const lienProduit = "font-medium text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline";
 const ETAPES: Record<Lang, Etape[]> = { fr: ETAPES_FR, en: ETAPES_EN };
 
 export default function Services() {
@@ -171,6 +173,20 @@ export default function Services() {
             "(EI Yoel PEPIN), j'accompagne entreprises et indépendants, en Guadeloupe, en France et à distance. Chaque offre ci-dessous s'appuie sur des projets réellement livrés.",
             "brand (EI Yoel PEPIN), I support companies and independent professionals in Guadeloupe, in France and remotely. Each offer below is backed by projects actually delivered."
           )}
+        </p>
+        <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-neutral-400">
+          {t("Produits ICEKERA :", "ICEKERA products:")}{" "}
+          <a href="https://erp.kera.gp" target="_blank" rel="noopener" className={lienProduit}>
+            ERP KERA
+          </a>
+          {t(
+            ", le logiciel de gestion et de facturation des indépendants et TPE de Guadeloupe, et ",
+            ", management and invoicing software for freelancers and small businesses in Guadeloupe, and "
+          )}
+          <a href="https://kera.gp" target="_blank" rel="noopener" className={lienProduit}>
+            KERA GP
+          </a>
+          {t(", le portail des applications développées en Guadeloupe.", ", a portal of apps built in Guadeloupe.")}
         </p>
       </Reveal>
 

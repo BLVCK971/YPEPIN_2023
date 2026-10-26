@@ -52,7 +52,7 @@ const PROJETS_FR: Projet[] = [
       "Expertise automobile par IA : photos du véhicule, analyse des dommages, rapport d'expertise, devis pour chaque garage partenaire et paiement en ligne.",
     chiffre: "140+ PR relues · 60+ lots livrables",
     tags: ["React Native", "Expo", ".NET 10", "Supabase", "Stripe", "OpenAI"],
-    lien: { href: "https://drevio.tech", label: "drevio.tech" },
+    lien: { href: "https://www.drevio.tech", label: "drevio.tech" },
     schema: {
       etapes: [
         { titre: "Scan guidé", sous: "React Native · Expo" },
@@ -137,6 +137,7 @@ const PROJETS_FR: Projet[] = [
     accroche:
       "Plateforme de cours particuliers de mathématiques : test diagnostique public, espace professeur (élèves, séances, paiements) et espace parent, avec export Google Calendar.",
     tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "iCal"],
+    lien: { href: "https://matheva.arc-gr.fr", label: "matheva.arc-gr.fr" },
     demo: "/demos/matheva/",
     schema: {
       etapes: [
@@ -183,7 +184,7 @@ const PROJETS_EN: Projet[] = [
       "AI-powered vehicle damage assessment: photos of the vehicle, damage analysis, assessment report, a quote for each partner garage and online payment.",
     chiffre: "140+ PRs reviewed · 60+ deliverable work packages",
     tags: ["React Native", "Expo", ".NET 10", "Supabase", "Stripe", "OpenAI"],
-    lien: { href: "https://drevio.tech", label: "drevio.tech" },
+    lien: { href: "https://www.drevio.tech", label: "drevio.tech" },
     schema: {
       etapes: [
         { titre: "Guided scan", sous: "React Native · Expo" },
@@ -268,6 +269,7 @@ const PROJETS_EN: Projet[] = [
     accroche:
       "Private maths tutoring platform: public diagnostic test, tutor area (students, sessions, payments) and parent area, with Google Calendar export.",
     tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "iCal"],
+    lien: { href: "https://matheva.arc-gr.fr", label: "matheva.arc-gr.fr" },
     demo: "/demos/matheva/",
     schema: {
       etapes: [

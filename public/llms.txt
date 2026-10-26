@@ -22,6 +22,14 @@ Site personnel de Yoel PEPIN : profil, compétences, parcours professionnel depu
 - [Automatisation et data](https://ypepin.com/#Services): robots de collecte, ETL, traitements à grande échelle et rapports Power BI
 - [Tech Lead et architecte à temps partagé](https://ypepin.com/#Services): cadrage produit, architecture, revue de code et animation Agile (Scrum Master SAFe certifié)
 
+## Réalisations en ligne
+
+- [ERP KERA](https://erp.kera.gp/): logiciel de gestion et de facturation des indépendants et TPE de Guadeloupe (produit ICEKERA)
+- [KERA GP](https://kera.gp/): portail des applications développées en Guadeloupe (produit ICEKERA)
+- [DREVIO](https://www.drevio.tech/): expertise automobile par IA (Tech Lead)
+- [AREMYS Conseil](https://arc-gr.fr/): site d'un cabinet de gestion et de recouvrement de créances
+- [Matheva](https://matheva.arc-gr.fr/): plateforme de cours particuliers de mathématiques
+
 ## Contact
 
 - [E-mail](mailto:yoelpepin97@gmail.com): yoelpepin97@gmail.com
