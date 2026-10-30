@@ -39,9 +39,10 @@
   fallback SPA que nginx). Une nouvelle démo doit aussi être ajoutée à la regex de `deploy/nginx.conf`.
 - Accès sur autorisation : sans cookie valide, « Essayer la démo » ouvre une fenêtre
   (`src/components/8_Projets/DemoAcces.tsx`) de demande d'accès (formulaire Web3Forms, reçu par mail ;
-  clé `WEB3FORMS_KEY`, vide = mailto prérempli) ou de connexion par email. Yoel accorde l'accès avec
-  `npm run demos:acces -- ajouter <email> [démos]` (SSH vers le VPS, alias `ypepin` ou `YPEPIN_SSH`),
-  qui affiche le mail à envoyer ; `retirer <email>`, `liste`. nginx compare le cookie `demo_acces`
+  clé `WEB3FORMS_KEY`, vide = mailto prérempli) ou de connexion par email. Yoel accorde l'accès depuis
+  la page locale `npm run demos:admin` (http://localhost:5181 : ajout, retrait, liste, mail prêt à
+  envoyer) ou `npm run demos:acces -- ajouter <email> [démos]` / `retirer <email>` / `liste`
+  (SSH vers le VPS, alias `ypepin` ou `YPEPIN_SSH`). nginx compare le cookie `demo_acces`
   (SHA-256 de `ypepin-demos:` + email) à `/opt/apps/ypepin-acces/*.map` sur le VPS, hors dépôt
   (dépôt public : jamais d'emails de prospects dans le code). Sans accès : 302 vers `/?demo=<nom>#Projets`.
 - Marques des clients affichées avec leur accord ; toutes les autres données (personnes, dossiers,

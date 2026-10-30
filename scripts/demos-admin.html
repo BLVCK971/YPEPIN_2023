@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accès aux démos</title>
+<style>
+  :root { color-scheme: dark; --fond: #0a0a0a; --carte: #141414; --bord: #2a2a2a; --texte: #ececec; --doux: #9a9a9a; --accent: #22d3ee; --rouge: #fca5a5; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fond); color: var(--texte); font: 15px/1.5 system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; display: grid; gap: 20px; }
+  h1 { margin: 0; font-size: 22px; }
+  h2 { margin: 0 0 12px; font-size: 16px; }
+  section { background: var(--carte); border: 1px solid var(--bord); border-radius: 12px; padding: 20px; }
+  input[type=email], textarea { width: 100%; padding: 9px 12px; border-radius: 8px; border: 1px solid var(--bord); background: #0d0d0d; color: inherit; font: inherit; }
+  textarea { min-height: 220px; resize: vertical; }
+  .demos { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 12px 0; color: var(--doux); }
+  .ligne { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  button, a.bouton { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--bord); background: #1d1d1d; color: inherit; font: inherit; cursor: pointer; text-decoration: none; }
+  button.principal { background: linear-gradient(90deg, #7c3aed, #06b6d4); border: 0; font-weight: 600; }
+  button:disabled { opacity: .5; cursor: wait; }
+  .petit { padding: 4px 12px; font-size: 13px; }
+  .info { color: var(--doux); font-size: 13px; margin: 8px 0 0; }
+  #statut { min-height: 1.5em; margin: 0; }
+  #statut.erreur { color: var(--rouge); white-space: pre-wrap; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 8px 4px; border-top: 1px solid var(--bord); }
+  td.date { color: var(--doux); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.actions { text-align: right; white-space: nowrap; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Accès aux démos</h1>
+  <p id="statut"></p>
+
+  <section>
+    <h2>Donner l'accès</h2>
+    <form id="ajout">
+      <input type="email" name="email" required placeholder="prenom.nom@exemple.fr" autocomplete="off">
+      <div class="demos" id="demos"></div>
+      <button class="principal" type="submit">Donner l'accès</button>
+      <p class="info">Démos cochées : listées dans le mail (aucune cochée = toutes). L'email ouvre toutes les démos.</p>
+    </form>
+  </section>
+
+  <section id="mail" hidden>
+    <h2>Mail à envoyer à <span id="destinataire"></span></h2>
+    <textarea id="texte"></textarea>
+    <div class="ligne" style="margin-top: 12px">
+      <a class="bouton" id="ouvrir" href="#">Ouvrir dans ma messagerie</a>
+      <a class="bouton" id="gmail" href="#" target="_blank" rel="noopener">Ouvrir dans Gmail</a>
+      <button type="button" id="copier">Copier le texte</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="ligne" style="justify-content: space-between">
+      <h2>Emails autorisés <span id="nombre"></span></h2>
+      <button type="button" class="petit" id="actualiser">Actualiser</button>
+    </div>
+    <table><tbody id="liste"></tbody></table>
+  </section>
+</main>
+<script>
+  const JETON = "__JETON__";
+  const DEMOS = __DEMOS__;
+  const $ = (id) => document.getElementById(id);
+  let sujet = "";
+
+  for (const [cle, nom] of Object.entries(DEMOS)) {
+    const label = document.createElement("label");
+    label.innerHTML = `<input type="checkbox" name="demos" value="${cle}"> ${nom}`;
+    $("demos").append(label);
+  }
+
+  const statut = (texte, erreur = false) => {
+    $("statut").textContent = texte;
+    $("statut").className = erreur ? "erreur" : "";
+  };
+
+  // Les appels passent par SSH : quelques secondes, boutons désactivés pendant ce temps.
+  const api = async (chemin, donnees) => {
+    document.querySelectorAll("button").forEach((b) => (b.disabled = true));
+    try {
+      const r = await fetch(chemin, {
+        method: donnees ? "POST" : "GET",
+        headers: { "X-Jeton": JETON, "Content-Type": "application/json" },
+        body: donnees && JSON.stringify(donnees),
+      });
+      const json = await r.json();
+      if (!r.ok) throw new Error(json.erreur);
+      return json;
+    } finally {
+      document.querySelectorAll("button").forEach((b) => (b.disabled = false));
+    }
+  };
+
+  const majLiens = () => {
+    const email = $("destinataire").textContent;
+    const corps = $("texte").value;
+    const q = (o) => new URLSearchParams(o).toString().replace(/\+/g, "%20");
+    $("ouvrir").href = `mailto:${email}?${q({ subject: sujet, body: corps })}`;
+    $("gmail").href = `https://mail.google.com/mail/?${q({ view: "cm", fs: "1", to: email, su: sujet, body: corps })}`;
+  };
+
+  const afficherMail = ({ email, sujet: s, corps }) => {
+    sujet = s;
+    $("destinataire").textContent = email;
+    $("texte").value = corps;
+    majLiens();
+    $("mail").hidden = false;
+    $("mail").scrollIntoView({ behavior: "smooth" });
+  };
+
+  // discret : après un ajout ou un retrait, garde le message de résultat affiché
+  const charger = async (discret = false) => {
+    if (!discret) statut("Lecture de la liste sur le VPS…");
+    try {
+      const emails = await api("/api/liste");
+      $("nombre").textContent = `(${emails.length})`;
+      $("liste").replaceChildren(
+        ...emails.reverse().map(({ email, date }) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td></td><td class="date"></td><td class="actions">
+            <button type="button" class="petit" data-action="mail">Mail</button>
+            <button type="button" class="petit" data-action="retirer">Retirer</button></td>`;
+          tr.cells[0].textContent = email;
+          tr.cells[1].textContent = date;
+          tr.dataset.email = email;
+          return tr;
+        })
+      );
+      if (!emails.length) $("liste").innerHTML = `<tr><td class="date">Aucun email autorisé.</td></tr>`;
+      if (!discret) statut("");
+    } catch (e) {
+      statut(e.message, true);
+    }
+  };
+
+  $("ajout").addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const f = new FormData(ev.target);
+    const email = f.get("email");
+    statut(`Ajout de ${email}…`);
+    try {
+      afficherMail(await api("/api/ajouter", { email, demos: f.getAll("demos") }));
+      ev.target.reset();
+      statut(`Accès ouvert pour ${email}. Envoie-lui le mail ci-dessous.`);
+      charger(true);
+    } catch (e) {
+      statut(e.message, true);
+    }
+  });
+
+  $("liste").addEventListener("click", async (ev) => {
+    const action = ev.target.dataset?.action;
+    const email = ev.target.closest("tr")?.dataset.email;
+    if (!action || !email) return;
+    if (action === "retirer" && !confirm(`Retirer l'accès de ${email} ?`)) return;
+    statut(action === "retirer" ? `Retrait de ${email}…` : `Préparation du mail…`);
+    try {
+      if (action === "retirer") {
+        await api("/api/retirer", { email });
+        statut(`Accès retiré pour ${email}.`);
+        charger(true);
+      } else {
+        afficherMail(await api("/api/ajouter", { email }));
+        statut("");
+      }
+    } catch (e) {
+      statut(e.message, true);
+    }
+  });
+
+  $("texte").addEventListener("input", majLiens);
+  $("copier").addEventListener("click", async () => {
+    await navigator.clipboard.writeText($("texte").value);
+    statut("Texte copié.");
+  });
+  $("actualiser").addEventListener("click", () => charger());
+  charger();
+</script>
+</body>
+</html>

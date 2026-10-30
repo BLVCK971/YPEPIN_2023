@@ -45,6 +45,22 @@ dépôt (public) et de `VPS_TARGET_DIR` (le `rsync --delete` l'effacerait) :
 Depuis le PC, avec un alias SSH `ypepin` dans `~/.ssh/config` (ou la variable
 `YPEPIN_SSH="deploy@<VPS> -p <PORT> -i ~/.ssh/ypepin_deploy"`) :
 
+```
+Host ypepin
+  HostName <IP du VPS>
+  Port <PORT>
+  User deploy
+  IdentityFile ~/.ssh/ypepin_deploy
+```
+
+Page locale (ajout, retrait, liste, mail prêt à envoyer via la messagerie ou Gmail) :
+
+```bash
+npm run demos:admin   # ouvre http://localhost:5181, Ctrl+C pour arrêter
+```
+
+Ou en ligne de commande :
+
 ```bash
 npm run demos:acces -- ajouter prenom.nom@exemple.fr arc-gr matheva   # affiche le mail à envoyer
 npm run demos:acces -- retirer prenom.nom@exemple.fr
