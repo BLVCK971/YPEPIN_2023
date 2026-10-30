@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import Reveal from "../ui/Reveal";
 import Experimentations from "../4_Portofolio/Portofolio";
 import FlowDiagram, { Etape } from "./FlowDiagram";
 import ParallelDiagram from "./ParallelDiagram";
+import DemoAcces, { aAccesDemos, DemoChoisie } from "./DemoAcces";
 import { Lang, useLang, useT } from "../../i18n";
 
 // Projets phares : résumé court de missions détaillées dans le Parcours.
@@ -289,8 +291,22 @@ const PROJETS: Record<Lang, Projet[]> = { fr: PROJETS_FR, en: PROJETS_EN };
 export default function Projets() {
   const lang = useLang();
   const t = useT();
+  const [demo, setDemo] = useState<DemoChoisie | null>(null);
+
+  // Lien de démo ouvert sans accès : nginx renvoie ici avec ?demo=<nom> (deploy/nginx.conf).
+  useEffect(() => {
+    const url = new URL(location.href);
+    const nom = url.searchParams.get("demo");
+    const p = PROJETS[lang].find((p) => p.demo === `/demos/${nom}/`);
+    if (!p?.demo) return;
+    setDemo({ nom: p.nom, url: p.demo, mode: "connexion" });
+    url.searchParams.delete("demo");
+    history.replaceState(null, "", url);
+  }, [lang]);
+
   return (
     <div className="flex w-full max-w-6xl flex-col gap-12 px-4">
+      {demo && <DemoAcces demo={demo} onClose={() => setDemo(null)} />}
       <div className="grid gap-6 md:grid-cols-2">
         {PROJETS[lang].map((p, i) => (
           <Reveal key={p.nom} delay={p.parallele ? 0 : (i % 2) * 120} className={p.parallele ? "md:col-span-2" : undefined}>
@@ -330,8 +346,13 @@ export default function Projets() {
                       href={p.demo}
                       target="_blank"
                       rel="noopener"
+                      onClick={(e) => {
+                        if (aAccesDemos()) return;
+                        e.preventDefault();
+                        setDemo({ nom: p.nom, url: p.demo!, mode: "demande" });
+                      }}
                       className="rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-1.5 text-cyan-200 transition-colors hover:bg-cyan-400/20 hover:text-white"
-                      title={t("Application réelle, données fictives", "Real application (French interface), sample data")}
+                      title={t("Application réelle, données fictives, accès sur demande", "Real application (French interface), sample data, access on request")}
                     >
                       {t("Essayer la démo", "Try the demo")} ↗
                     </a>

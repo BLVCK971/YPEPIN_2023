@@ -37,6 +37,13 @@
   (ou `npm run demos -- arc-gr`), `npm run demos:check` (types des fausses API), puis commiter
   `public/demos/`. Essai local : `node demos/serve.mjs` (http://localhost:5180/demos/arc-gr/, même
   fallback SPA que nginx). Une nouvelle démo doit aussi être ajoutée à la regex de `deploy/nginx.conf`.
+- Accès sur autorisation : sans cookie valide, « Essayer la démo » ouvre une fenêtre
+  (`src/components/8_Projets/DemoAcces.tsx`) de demande d'accès (formulaire Web3Forms, reçu par mail ;
+  clé `WEB3FORMS_KEY`, vide = mailto prérempli) ou de connexion par email. Yoel accorde l'accès avec
+  `npm run demos:acces -- ajouter <email> [démos]` (SSH vers le VPS, alias `ypepin` ou `YPEPIN_SSH`),
+  qui affiche le mail à envoyer ; `retirer <email>`, `liste`. nginx compare le cookie `demo_acces`
+  (SHA-256 de `ypepin-demos:` + email) à `/opt/apps/ypepin-acces/*.map` sur le VPS, hors dépôt
+  (dépôt public : jamais d'emails de prospects dans le code). Sans accès : 302 vers `/?demo=<nom>#Projets`.
 - Marques des clients affichées avec leur accord ; toutes les autres données (personnes, dossiers,
   photos, pièces) doivent rester fictives. Démos en `noindex` (meta et en-tête nginx `X-Robots-Tag`).
   Ne pas les bloquer dans robots.txt : un robot bloqué ne verrait jamais le `noindex`.

@@ -9,6 +9,9 @@ services:
       - /var/cache/nginx
       - /var/run
       - /tmp
+    # Emails autorisés à voir les démos (hors dépôt, voir scripts/demos-acces.mjs)
+    volumes:
+      - ../ypepin-acces:/etc/nginx/demos-acces:ro
     security_opt:
       - no-new-privileges:true
     networks:

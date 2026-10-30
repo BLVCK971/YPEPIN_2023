@@ -36,6 +36,24 @@ ssh-keygen -t ed25519 -f ~/.ssh/ypepin_deploy -C "ypepin-deploy" -N ""
 # Ajouter ~/.ssh/ypepin_deploy.pub à /home/deploy/.ssh/authorized_keys sur le VPS
 ```
 
+## Accès aux démos (`/demos/`)
+
+Les démos ne sont servies qu'aux emails autorisés. La liste est sur le VPS, hors du
+dépôt (public) et de `VPS_TARGET_DIR` (le `rsync --delete` l'effacerait) :
+`/opt/apps/ypepin-acces/emails.map`, monté en lecture seule dans le conteneur.
+
+Depuis le PC, avec un alias SSH `ypepin` dans `~/.ssh/config` (ou la variable
+`YPEPIN_SSH="deploy@<VPS> -p <PORT> -i ~/.ssh/ypepin_deploy"`) :
+
+```bash
+npm run demos:acces -- ajouter prenom.nom@exemple.fr arc-gr matheva   # affiche le mail à envoyer
+npm run demos:acces -- retirer prenom.nom@exemple.fr
+npm run demos:acces -- liste
+```
+
+Le script écrit le fichier via un conteneur `ypepin:latest` (le dossier peut appartenir
+à root) puis recharge nginx (`docker exec ypepin nginx -s reload`).
+
 ## DNS
 
 Enregistrements `A` de `ypepin.com` et `www.ypepin.com` vers l'IP du VPS.
