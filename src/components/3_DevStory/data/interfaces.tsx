@@ -27,6 +27,9 @@ export interface IPoste {
    periode?: string
    // Chiffre ou résultat clé affiché en badge (issu du CV uniquement)
    chiffreCle?: string
+   // Qui a décidé de l'architecture : « concue » = décisions prises par Yoel,
+   // « contribution » = architecture définie en amont (ex. Schneider Electric)
+   architecture?: "concue" | "contribution"
    contexte: string
    taches : ITache[]
    resultats?: ITache[]

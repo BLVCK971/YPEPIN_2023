@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Ul from "./Ul";
 import { Li } from "./Li";
 import { IMission } from "../data/interfaces";
-import { faLaptopCode, faPenToSquare, faPeopleArrows, faTrophy } from "@fortawesome/free-solid-svg-icons";
+import { faLaptopCode, faPenToSquare, faPeopleArrows, faSitemap, faTrophy } from "@fortawesome/free-solid-svg-icons";
 import { TaskItem } from "./TaskItem";
 import { cn } from "../../ui/utils/cn";
 import { useT } from "../../../i18n";
@@ -29,7 +29,7 @@ const Bloc = ({ icone, titre, children }: { icone: typeof faTrophy; titre: strin
 );
 
 export const Mission: React.FC<{ mission: IMission }> = ({ mission }) => {
-  const { nom, periode, chiffreCle, contexte, taches, resultats, techs, collabs, image } = mission;
+  const { nom, periode, chiffreCle, architecture, contexte, taches, resultats, techs, collabs, image } = mission;
   const [ouvert, setOuvert] = useState(false);
   const t = useT();
 
@@ -40,11 +40,28 @@ export const Mission: React.FC<{ mission: IMission }> = ({ mission }) => {
         {periode && <span className="text-sm text-neutral-400 tabular-nums">{periode}</span>}
       </div>
 
-      {chiffreCle && (
-        <p className="mt-2 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-200">
-          <FontAwesomeIcon icon={faTrophy} className="text-xs" aria-hidden="true" />
-          {chiffreCle}
-        </p>
+      {(chiffreCle || architecture) && (
+        <div className="mt-2 flex flex-wrap gap-2">
+          {architecture && (
+            <p
+              className={cn(
+                "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium",
+                architecture === "concue" ? "border-violet-400/40 bg-violet-500/15 text-violet-100" : "border-white/15 bg-white/5 text-neutral-300"
+              )}
+            >
+              <FontAwesomeIcon icon={faSitemap} className="text-xs" aria-hidden="true" />
+              {architecture === "concue"
+                ? t("Architecture conçue par moi", "Architecture designed by me")
+                : t("Architecture existante : contribution", "Contribution to an existing architecture")}
+            </p>
+          )}
+          {chiffreCle && (
+            <p className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-200">
+              <FontAwesomeIcon icon={faTrophy} className="text-xs" aria-hidden="true" />
+              {chiffreCle}
+            </p>
+          )}
+        </div>
       )}
 
       <p className={cn("mt-3 text-[15px] leading-relaxed text-neutral-300", !ouvert && "line-clamp-2")}>{contexte}</p>
@@ -87,7 +104,7 @@ export const Mission: React.FC<{ mission: IMission }> = ({ mission }) => {
                 />
               </figure>
             )}
-            <Bloc icone={faPenToSquare} titre={t("Tâches", "Tasks")}>
+            <Bloc icone={faPenToSquare} titre={t("Responsabilités & réalisations", "Responsibilities & achievements")}>
               <Ul>
                 {taches.map((tache) => (
                   <TaskItem key={tache.texte} tache={tache} />
@@ -95,18 +112,8 @@ export const Mission: React.FC<{ mission: IMission }> = ({ mission }) => {
               </Ul>
             </Bloc>
 
-            {resultats && (
-              <Bloc icone={faTrophy} titre={t("Résultats & impact", "Results & impact")}>
-                <Ul>
-                  {resultats.map((resultat) => (
-                    <TaskItem key={resultat.texte} tache={resultat} />
-                  ))}
-                </Ul>
-              </Bloc>
-            )}
-
             <div className={cn("grid gap-6", collabs && "md:grid-cols-2")}>
-              <Bloc icone={faLaptopCode} titre={t("Environnement technique", "Tech environment")}>
+              <Bloc icone={faLaptopCode} titre={t("Architecture & technologies", "Architecture & technologies")}>
                 <Ul>
                   {techs.map((techno) => (
                     <Li key={techno.texte} icon={techno.icone}>
@@ -127,6 +134,16 @@ export const Mission: React.FC<{ mission: IMission }> = ({ mission }) => {
                 </Bloc>
               )}
             </div>
+            {resultats && (
+              <Bloc icone={faTrophy} titre={t("Résultats & impact", "Results & impact")}>
+                <Ul>
+                  {resultats.map((resultat) => (
+                    <TaskItem key={resultat.texte} tache={resultat} />
+                  ))}
+                </Ul>
+              </Bloc>
+            )}
+
           </div>
         </div>
       </div>

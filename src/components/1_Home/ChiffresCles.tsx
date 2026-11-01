@@ -6,18 +6,18 @@ type Chiffre = { valeur: number; decimales?: number; prefixe?: string; suffixe?:
 
 const CHIFFRES: Record<Lang, Chiffre[]> = { fr: [
   { valeur: 7, suffixe: "+ ans", label: "d'expérience", source: "Depuis 2019" },
+  { valeur: 140, suffixe: "+", label: "pull requests relues", source: "DREVIO · Tech Lead" },
+  { valeur: 650, prefixe: "~", label: "tests automatisés", source: "Aivocat · IA locale" },
   { valeur: 5000, prefixe: "~", label: "comptes clients automatisés", source: "ATMP · Ayming" },
   { valeur: 1.5, decimales: 1, prefixe: "~", suffixe: " M€", label: "de perte par semaine de retard", source: "ATMP · estimation de la DSI Ayming" },
   { valeur: 265000, prefixe: "~", label: "fichiers audités en lecture seule", source: "SESAM · ICEKERA" },
-  { valeur: 140, suffixe: "+", label: "pull requests relues", source: "DREVIO Mobile" },
-  { valeur: 650, prefixe: "~", label: "tests automatisés", source: "Aivocat · ICEKERA" },
 ], en: [
   { valeur: 7, suffixe: "+ years", label: "of experience", source: "Since 2019" },
+  { valeur: 140, suffixe: "+", label: "pull requests reviewed", source: "DREVIO · Tech Lead" },
+  { valeur: 650, prefixe: "~", label: "automated tests", source: "Aivocat · Local AI" },
   { valeur: 5000, prefixe: "~", label: "client accounts automated", source: "ATMP · Ayming" },
   { valeur: 1.5, decimales: 1, prefixe: "~€", suffixe: "M", label: "lost per week of delay", source: "ATMP · Ayming IT director's estimate" },
   { valeur: 265000, prefixe: "~", label: "files audited read-only", source: "SESAM · ICEKERA" },
-  { valeur: 140, suffixe: "+", label: "pull requests reviewed", source: "DREVIO Mobile" },
-  { valeur: 650, prefixe: "~", label: "automated tests", source: "Aivocat · ICEKERA" },
 ] };
 
 const format = (n: number, lang: Lang, decimales = 0) =>

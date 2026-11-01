@@ -1,12 +1,16 @@
 # Yoel PEPIN
 
-> Ingénieur logiciel FullStack C# / Python et Tech Lead, freelance sous la marque ICEKERA (EI Yoel PEPIN). Développement sur mesure (web, mobile, API .NET et Python), IA locale et confidentielle, data et automatisation, audit et migration de SI, en Guadeloupe, en France et à distance.
+> Senior Software Engineer & Tech Lead | Software Architecture & AI Solutions | .NET · Python. Environ 7 ans d'expérience (depuis 2019), freelance sous la marque ICEKERA (EI Yoel PEPIN), en Guadeloupe, en France et à distance.
+
+Quatre compétences principales : ingénierie logicielle senior (applications métier complexes en .NET et Python), Technical Leadership (encadrement de développeurs, revue de code, qualité des livrables, Scrum Master SAFe certifié), architecture logicielle (conception de solutions complètes, choix technologiques, intégration de systèmes) et AI Solutions Engineering (RAG local, intégration de LLM, analyse d'images, agents et serveurs MCP).
+
+Réalisations majeures : Aivocat (IA juridique 100 % locale, RAG avec Qwen, environ 650 tests, conçue et réalisée seul), DREVIO (Tech Lead et architecte d'une plateforme SaaS d'expertise automobile par IA, API .NET 10, encadrement d'un développeur junior, 140+ pull requests relues), Ayming ATMP (architecture AWS conçue pour remplacer un monolithe Java par des services Python asynchrones, environ 5 000 comptes clients). Aussi : ERP KERA, ERP .NET 10 commercialisé avec serveur MCP et approbation humaine des actions de l'IA.
 
 Site personnel de Yoel PEPIN : profil, compétences, parcours professionnel depuis 2019 (DIGITOM, AViSTO / Schneider Electric, Ayming, PROELAN / Schneider Electric, DREVIO, ICEKERA), formation (Master MIAGE spécialisation Data Science, Université des Antilles ; SAFe 6.0 Scrum Master ; CS50x et CS50AI de Harvard), projets phares et offres freelance.
 
 ## Pages
 
-- [Portfolio et CV (français)](https://ypepin.com/): profil, compétences, expériences et missions détaillées, formation, projets, services
+- [Portfolio et CV (français)](https://ypepin.com/): profil, expertises, réalisations majeures, expériences et missions détaillées, projets, approche IA, missions freelance, formation
 - [Portfolio and CV (English)](https://ypepin.com/en/): the same content in English
 
 ## CV
@@ -14,17 +18,20 @@ Site personnel de Yoel PEPIN : profil, compétences, parcours professionnel depu
 - [CV PDF (français)](https://ypepin.com/cv/CV_Yoel_PEPIN.pdf)
 - [CV PDF (English)](https://ypepin.com/cv/CV_Yoel_PEPIN_EN.pdf)
 
-## Services ICEKERA
+## Missions freelance (ICEKERA)
 
-- [Développement sur mesure](https://ypepin.com/#Services): sites, CRM, portails clients et applications métier, de la conception à la mise en production
-- [IA locale et confidentielle](https://ypepin.com/#Services): assistants IA (RAG, LLM locaux) qui travaillent sur vos documents sans qu'aucune donnée ne quitte vos locaux
-- [Audit, migration et sécurité du SI](https://ypepin.com/#Services): reprise en main d'un système d'information (données, serveurs, logiciels métier, accès)
-- [Automatisation et data](https://ypepin.com/#Services): robots de collecte, ETL, traitements à grande échelle et rapports Power BI
-- [Tech Lead et architecte à temps partagé](https://ypepin.com/#Services): cadrage produit, architecture, revue de code et animation Agile (Scrum Master SAFe certifié)
+- [Architecture et développement logiciel](https://ypepin.com/#Services): .NET, C#, Python, Angular, React ; applications métier, API, SaaS et mobile
+- [AI Solutions](https://ypepin.com/#Services): IA locale et souveraine, RAG, intégration de LLM, agents IA et serveurs MCP, automatisation intelligente
+- [Tech Lead et pilotage technique](https://ypepin.com/#Services): architecture logicielle, encadrement de développeurs, organisation technique et qualité des livrables
+- Également : audit, migration et sécurité du SI ; automatisation et data (ETL, Power BI)
+
+## Développement assisté par IA
+
+- [Approche](https://ypepin.com/#IA): Claude Code avec instructions de projet versionnées, automatisation du build et des tests, agents IA et MCP, tests automatisés, revue de code et supervision humaine des résultats
 
 ## Réalisations en ligne
 
-- [ERP KERA](https://erp.kera.gp/): logiciel de gestion et de facturation des indépendants et TPE de Guadeloupe (produit ICEKERA)
+- [ERP KERA](https://erp.kera.gp/): logiciel de gestion et de facturation des indépendants et TPE de Guadeloupe (produit ICEKERA, .NET 10, serveur MCP)
 - [KERA GP](https://kera.gp/): portail des applications développées en Guadeloupe (produit ICEKERA)
 - [DREVIO](https://www.drevio.tech/): expertise automobile par IA (Tech Lead)
 - [AREMYS Conseil](https://arc-gr.fr/): site d'un cabinet de gestion et de recouvrement de créances

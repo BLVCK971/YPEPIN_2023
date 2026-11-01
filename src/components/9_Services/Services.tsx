@@ -5,7 +5,6 @@ import {
   faChartLine,
   faCode,
   faComments,
-  faPeopleGroup,
   faRocket,
   faServer,
   faSitemap,
@@ -26,59 +25,46 @@ type Offre = {
 const OFFRES_FR: Offre[] = [
   {
     icone: faCode,
-    titre: "Développement sur mesure",
-    promesse: "Sites, CRM, portails clients et applications métier, de la conception à la mise en production.",
+    titre: "Architecture & développement logiciel",
+    promesse: "Applications métier, API et plateformes web ou mobiles conçues pour durer, de l'architecture à la mise en production.",
     inclus: [
-      "Web, mobile (React Native) et API (.NET, FastAPI)",
-      "Base de données, authentification et rôles",
-      "Déploiement Docker et CI/CD sur votre serveur",
+      ".NET / C#, Python (FastAPI, Django), Angular, React",
+      "Applications métier, API, SaaS et mobile (React Native)",
+      "Tests, CI/CD et déploiement Docker",
     ],
-    preuves: ["ARC Gestion et Recouvrement", "Matheva", "DREVIO"],
+    preuves: ["ERP KERA", "DREVIO", "ARC Gestion et Recouvrement", "WONDO"],
   },
   {
     icone: faBrain,
-    titre: "IA locale & confidentielle",
-    promesse: "Des assistants IA qui travaillent sur vos documents sans qu'aucune donnée ne quitte vos locaux.",
+    titre: "AI Solutions",
+    promesse: "Concevoir et livrer une solution IA complète, intégrée à vos outils et à vos données, avec des résultats vérifiables.",
     inclus: [
+      "IA locale et souveraine (Ollama, Qwen) ou API (OpenAI, Claude)",
       "RAG sur vos documents, avec réponses sourcées",
-      "LLM locaux (Ollama, Qwen) ou API selon le besoin",
-      "OCR, recherche hybride et évaluation de la qualité",
+      "Intégration de LLM, agents IA et serveurs MCP",
+      "Automatisation intelligente, analyse d'images et de documents",
     ],
-    preuves: ["Aivocat", "DREVIO (analyse IA)", "ARC (comptes rendus IA)"],
-  },
-  {
-    icone: faServer,
-    titre: "Audit, migration & sécurité du SI",
-    promesse: "Reprendre en main un système d'information : données, serveurs, logiciels métier et accès.",
-    inclus: [
-      "Audit outillé et en lecture seule de vos fichiers",
-      "Migrations (NAS, serveurs, Sage Batigest, Excel)",
-      "Droits d'accès, accès distant sécurisé, sauvegarde",
-    ],
-    preuves: ["SESAM", "Valado"],
-  },
-  {
-    icone: faChartLine,
-    titre: "Automatisation & data",
-    promesse: "Automatiser les tâches répétitives et transformer vos données en tableaux de bord utiles.",
-    inclus: [
-      "Robots de collecte et ETL (Python, AWS)",
-      "Traitements à grande échelle et en parallèle",
-      "Rapports Power BI et formation de vos équipes",
-    ],
-    preuves: ["ATMP · ~5 000 comptes", "SYLAE", "Power BI (DIGITOM)"],
+    preuves: ["Aivocat", "DREVIO (analyse IA)", "ERP KERA (MCP)", "ARC (comptes rendus IA)"],
   },
   {
     icone: faSitemap,
-    titre: "Tech Lead & architecte à temps partagé",
-    promesse: "Cadrer le produit, choisir l'architecture et faire avancer une équipe de développement.",
+    titre: "Tech Lead & pilotage technique",
+    promesse: "Prendre la responsabilité technique d'un produit : architecture, organisation de l'équipe et qualité des livrables.",
     inclus: [
-      "Architecture, stack et découpage en lots livrables",
-      "Revue de code et qualité (tests, CI)",
-      "Animation Agile (Scrum Master SAFe certifié)",
+      "Architecture logicielle, choix de stack et découpage en lots livrables",
+      "Encadrement de développeurs et revue de code",
+      "Organisation technique, tests et CI ; animation Agile (Scrum Master SAFe certifié)",
     ],
-    preuves: ["DREVIO · 140+ PR relues", "Schneider Electric (SAFe)"],
+    preuves: ["DREVIO · 140+ PR relues", "Business Zone (DIGITOM)", "Schneider Electric (SAFe)"],
   },
+];
+
+// Offres secondaires : toujours proposées, présentées en plus petit
+type Secondaire = { icone: IconProp; titre: string; texte: string };
+
+const SECONDAIRES_FR: Secondaire[] = [
+  { icone: faServer, titre: "Audit, migration & sécurité du SI", texte: "Données, serveurs, logiciels métier et accès (SESAM, Valado)." },
+  { icone: faChartLine, titre: "Automatisation & data", texte: "Robots de collecte, ETL, traitements à grande échelle, Power BI (ATMP, SYLAE, DIGITOM)." },
 ];
 
 type Etape = { icone: IconProp; titre: string; texte: string };
@@ -93,59 +79,43 @@ const ETAPES_FR: Etape[] = [
 const OFFRES_EN: Offre[] = [
   {
     icone: faCode,
-    titre: "Custom development",
-    promesse: "Websites, CRMs, client portals and business applications, from design to production.",
+    titre: "Software architecture & development",
+    promesse: "Business applications, APIs and web or mobile platforms built to last, from architecture to production.",
     inclus: [
-      "Web, mobile (React Native) and APIs (.NET, FastAPI)",
-      "Database, authentication and roles",
-      "Docker deployment and CI/CD on your server",
+      ".NET / C#, Python (FastAPI, Django), Angular, React",
+      "Business applications, APIs, SaaS and mobile (React Native)",
+      "Tests, CI/CD and Docker deployment",
     ],
-    preuves: ["ARC Gestion et Recouvrement", "Matheva", "DREVIO"],
+    preuves: ["ERP KERA", "DREVIO", "ARC Gestion et Recouvrement", "WONDO"],
   },
   {
     icone: faBrain,
-    titre: "Local & confidential AI",
-    promesse: "AI assistants that work on your documents without any data leaving your premises.",
+    titre: "AI Solutions",
+    promesse: "Design and deliver a complete AI solution, integrated with your tools and data, with verifiable results.",
     inclus: [
+      "Local, sovereign AI (Ollama, Qwen) or APIs (OpenAI, Claude)",
       "RAG on your documents, with sourced answers",
-      "Local LLMs (Ollama, Qwen) or APIs as needed",
-      "OCR, hybrid search and quality evaluation",
+      "LLM integration, AI agents and MCP servers",
+      "Intelligent automation, image and document analysis",
     ],
-    preuves: ["Aivocat", "DREVIO (AI analysis)", "ARC (AI reports)"],
-  },
-  {
-    icone: faServer,
-    titre: "IT audit, migration & security",
-    promesse: "Take back control of an information system: data, servers, business software and access.",
-    inclus: [
-      "Tooled, read-only audit of your files",
-      "Migrations (NAS, servers, Sage Batigest, Excel)",
-      "Access rights, secure remote access, backups",
-    ],
-    preuves: ["SESAM", "Valado"],
-  },
-  {
-    icone: faChartLine,
-    titre: "Automation & data",
-    promesse: "Automate repetitive tasks and turn your data into useful dashboards.",
-    inclus: [
-      "Data collection bots and ETL (Python, AWS)",
-      "Large-scale, parallel processing",
-      "Power BI reports and training for your teams",
-    ],
-    preuves: ["ATMP · ~5,000 accounts", "SYLAE", "Power BI (DIGITOM)"],
+    preuves: ["Aivocat", "DREVIO (AI analysis)", "ERP KERA (MCP)", "ARC (AI reports)"],
   },
   {
     icone: faSitemap,
-    titre: "Part-time Tech Lead & architect",
-    promesse: "Frame the product, choose the architecture and move a development team forward.",
+    titre: "Tech Lead & technical management",
+    promesse: "Take technical ownership of a product: architecture, team organisation and quality of deliverables.",
     inclus: [
-      "Architecture, stack and split into deliverable work packages",
-      "Code review and quality (tests, CI)",
-      "Agile facilitation (certified SAFe Scrum Master)",
+      "Software architecture, stack choices and split into deliverable work packages",
+      "Mentoring developers and code review",
+      "Technical organisation, tests and CI; Agile facilitation (certified SAFe Scrum Master)",
     ],
-    preuves: ["DREVIO · 140+ PRs reviewed", "Schneider Electric (SAFe)"],
+    preuves: ["DREVIO · 140+ PRs reviewed", "Business Zone (DIGITOM)", "Schneider Electric (SAFe)"],
   },
+];
+
+const SECONDAIRES_EN: Secondaire[] = [
+  { icone: faServer, titre: "IT audit, migration & security", texte: "Data, servers, business software and access (SESAM, Valado)." },
+  { icone: faChartLine, titre: "Automation & data", texte: "Data collection bots, ETL, large-scale processing, Power BI (ATMP, SYLAE, DIGITOM)." },
 ];
 
 const ETAPES_EN: Etape[] = [
@@ -156,6 +126,7 @@ const ETAPES_EN: Etape[] = [
 ];
 
 const OFFRES: Record<Lang, Offre[]> = { fr: OFFRES_FR, en: OFFRES_EN };
+const SECONDAIRES: Record<Lang, Secondaire[]> = { fr: SECONDAIRES_FR, en: SECONDAIRES_EN };
 
 const lienProduit = "font-medium text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline";
 const ETAPES: Record<Lang, Etape[]> = { fr: ETAPES_FR, en: ETAPES_EN };
@@ -190,7 +161,7 @@ export default function Services() {
         </p>
       </Reveal>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 lg:grid-cols-3">
         {OFFRES[lang].map((o, i) => (
           <Reveal key={o.titre} delay={(i % 3) * 100}>
             <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-2xl hover:shadow-violet-900/30">
@@ -227,11 +198,33 @@ export default function Services() {
           </Reveal>
         ))}
 
+      </div>
+
+      <div className="grid gap-5 lg:grid-cols-3">
+        <Reveal className="lg:col-span-2">
+          <div className="h-full rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-xl">
+            <p className="text-xs font-semibold uppercase tracking-wider text-neutral-500">{t("Également", "Also")}</p>
+            <ul className="mt-4 grid gap-5 sm:grid-cols-2">
+              {SECONDAIRES[lang].map((o) => (
+                <li key={o.titre} className="flex gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] text-cyan-200">
+                    <FontAwesomeIcon icon={o.icone} className="text-sm" />
+                  </span>
+                  <div>
+                    <h3 className="font-semibold">{o.titre}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-neutral-400">{o.texte}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+
         {/* Carte d'appel à l'action */}
-        <Reveal delay={200}>
+        <Reveal delay={100}>
           <a
             href="#Contact"
-            className="group flex h-full min-h-[16rem] flex-col justify-between rounded-2xl border border-dashed border-cyan-400/40 bg-gradient-to-br from-violet-600/20 to-cyan-500/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300 hover:shadow-2xl hover:shadow-violet-900/30"
+            className="group flex h-full flex-col justify-between rounded-2xl border border-dashed border-cyan-400/40 bg-gradient-to-br from-violet-600/20 to-cyan-500/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300 hover:shadow-2xl hover:shadow-violet-900/30"
           >
             <div>
               <p className="text-sm font-semibold uppercase tracking-wider text-cyan-300">{t("Un autre besoin ?", "Something else?")}</p>

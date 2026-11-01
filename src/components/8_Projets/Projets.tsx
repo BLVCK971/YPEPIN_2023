@@ -20,11 +20,14 @@ type Projet = {
   schema?: { etapes: Etape[]; colonnes?: number; cadre?: string };
   // Schéma spécifique (fan-out ATMP) et carte pleine largeur
   parallele?: boolean;
+  // Présenté en détail dans « Réalisations majeures » (2_Realisations), pas dans la grille
+  majeur?: boolean;
 };
 
 const PROJETS_FR: Projet[] = [
   {
     nom: "Aivocat",
+    majeur: true,
     categorie: "IA souveraine · Freelance",
     periode: "07/2026 - 08/2026",
     accroche:
@@ -48,12 +51,13 @@ const PROJETS_FR: Projet[] = [
   },
   {
     nom: "DREVIO",
+    majeur: true,
     categorie: "Mobile & SaaS · Tech Lead",
     periode: "Depuis 05/2026",
     accroche:
       "Expertise automobile par IA : photos du véhicule, analyse des dommages, rapport d'expertise, devis pour chaque garage partenaire et paiement en ligne.",
     chiffre: "140+ PR relues · 60+ lots livrables",
-    tags: ["React Native", "Expo", ".NET 10", "Supabase", "Stripe", "OpenAI"],
+    tags: [".NET 10", "C#", "React Native", "Expo", "Supabase", "OpenAI", "Stripe"],
     lien: { href: "https://www.drevio.tech", label: "drevio.tech" },
     schema: {
       etapes: [
@@ -68,6 +72,7 @@ const PROJETS_FR: Projet[] = [
   },
   {
     nom: "ATMP",
+    majeur: true,
     categorie: "Automatisation à grande échelle · Ayming",
     periode: "06/2024 - 02/2025",
     accroche:
@@ -75,6 +80,27 @@ const PROJETS_FR: Projet[] = [
     chiffre: "~5 000 comptes · ~1,5 M€ de perte par semaine de retard (DSI)",
     tags: ["Python", "Requests", "AWS ECS", "DynamoDB", "S3", "XRay", "SnapLogic"],
     parallele: true,
+  },
+  {
+    nom: "ERP KERA",
+    categorie: "Produit SaaS · .NET · Agents IA",
+    periode: "Depuis 10/2026",
+    accroche:
+      "ERP de gestion et de facturation que je conçois et commercialise pour les indépendants et TPE de Guadeloupe. Un assistant IA y travaille à travers un serveur MCP intégré : il prépare, l'humain approuve.",
+    chiffre: "3 000+ tests automatisés · en production",
+    tags: ["C#", ".NET 10", "ASP.NET Core", "React", "PostgreSQL", "MCP", "OAuth 2.1"],
+    lien: { href: "https://erp.kera.gp", label: "erp.kera.gp" },
+    schema: {
+      colonnes: 3,
+      etapes: [
+        { titre: "Devis", sous: "Brouillon · envoi" },
+        { titre: "Facture", sous: "Factur-X" },
+        { titre: "Encaissement", sous: "Affecté aux factures" },
+        { titre: "Déclarations", sous: "URSSAF · TVA" },
+        { titre: "Assistant IA", sous: "Serveur MCP" },
+        { titre: "Approbation", sous: "Validation humaine" },
+      ],
+    },
   },
   {
     nom: "HellBoy",
@@ -157,6 +183,7 @@ const PROJETS_FR: Projet[] = [
 const PROJETS_EN: Projet[] = [
   {
     nom: "Aivocat",
+    majeur: true,
     categorie: "Sovereign AI · Freelance",
     periode: "07/2026 - 08/2026",
     accroche:
@@ -180,12 +207,13 @@ const PROJETS_EN: Projet[] = [
   },
   {
     nom: "DREVIO",
+    majeur: true,
     categorie: "Mobile & SaaS · Tech Lead",
     periode: "Since 05/2026",
     accroche:
       "AI-powered vehicle damage assessment: photos of the vehicle, damage analysis, assessment report, a quote for each partner garage and online payment.",
     chiffre: "140+ PRs reviewed · 60+ deliverable work packages",
-    tags: ["React Native", "Expo", ".NET 10", "Supabase", "Stripe", "OpenAI"],
+    tags: [".NET 10", "C#", "React Native", "Expo", "Supabase", "OpenAI", "Stripe"],
     lien: { href: "https://www.drevio.tech", label: "drevio.tech" },
     schema: {
       etapes: [
@@ -200,6 +228,7 @@ const PROJETS_EN: Projet[] = [
   },
   {
     nom: "ATMP",
+    majeur: true,
     categorie: "Large-scale automation · Ayming",
     periode: "06/2024 - 02/2025",
     accroche:
@@ -207,6 +236,27 @@ const PROJETS_EN: Projet[] = [
     chiffre: "~5,000 accounts · ~€1.5M lost per week of delay (IT director)",
     tags: ["Python", "Requests", "AWS ECS", "DynamoDB", "S3", "XRay", "SnapLogic"],
     parallele: true,
+  },
+  {
+    nom: "ERP KERA",
+    categorie: "SaaS product · .NET · AI agents",
+    periode: "Since 10/2026",
+    accroche:
+      "Management and invoicing ERP that I design and sell to freelancers and small businesses in Guadeloupe. An AI assistant works in it through a built-in MCP server: it prepares, a human approves.",
+    chiffre: "3,000+ automated tests · in production",
+    tags: ["C#", ".NET 10", "ASP.NET Core", "React", "PostgreSQL", "MCP", "OAuth 2.1"],
+    lien: { href: "https://erp.kera.gp", label: "erp.kera.gp" },
+    schema: {
+      colonnes: 3,
+      etapes: [
+        { titre: "Quote", sous: "Draft · sending" },
+        { titre: "Invoice", sous: "Factur-X" },
+        { titre: "Payment", sous: "Allocated to invoices" },
+        { titre: "Tax returns", sous: "URSSAF · VAT" },
+        { titre: "AI assistant", sous: "MCP server" },
+        { titre: "Approval", sous: "Human validation" },
+      ],
+    },
   },
   {
     nom: "HellBoy",
@@ -286,12 +336,13 @@ const PROJETS_EN: Projet[] = [
   },
 ];
 
-const PROJETS: Record<Lang, Projet[]> = { fr: PROJETS_FR, en: PROJETS_EN };
+export const PROJETS: Record<Lang, Projet[]> = { fr: PROJETS_FR, en: PROJETS_EN };
 
 export default function Projets() {
   const lang = useLang();
   const t = useT();
   const [demo, setDemo] = useState<DemoChoisie | null>(null);
+  const autres = PROJETS[lang].filter((p) => !p.majeur);
 
   // Lien de démo ouvert sans accès : nginx renvoie ici avec ?demo=<nom> (deploy/nginx.conf).
   useEffect(() => {
@@ -308,8 +359,9 @@ export default function Projets() {
     <div className="flex w-full max-w-6xl flex-col gap-12 px-4">
       {demo && <DemoAcces demo={demo} onClose={() => setDemo(null)} />}
       <div className="grid gap-6 md:grid-cols-2">
-        {PROJETS[lang].map((p, i) => (
-          <Reveal key={p.nom} delay={p.parallele ? 0 : (i % 2) * 120} className={p.parallele ? "md:col-span-2" : undefined}>
+        {autres.map((p, i) => (
+          // Nombre impair de cartes : la première (ERP KERA) prend toute la largeur
+          <Reveal key={p.nom} delay={(i % 2) * 120} className={p.parallele || (i === 0 && autres.length % 2) ? "md:col-span-2" : undefined}>
             <article className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:shadow-2xl hover:shadow-violet-900/30">
               {/* Halo d'accent au survol */}
               <div

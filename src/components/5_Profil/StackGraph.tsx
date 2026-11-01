@@ -45,6 +45,7 @@ const TECHNOS: Techno[] = [
   { nom: "API Claude", en: "Claude API", domaine: "data", motif: /Claude/ },
   { nom: "Qwen / Ollama", domaine: "data", motif: /Qwen|Ollama/ },
   { nom: "RAG / Qdrant", domaine: "data", motif: /\bRAG\b|Qdrant/ },
+  { nom: "MCP / Agents IA", en: "MCP / AI agents", domaine: "data", motif: /\bMCP\b|\bagent\b/i },
   { nom: "ETL", domaine: "data", motif: /\bETLs?\b/ },
   { nom: "TensorFlow", domaine: "data", motif: /TensorFlow/ },
 

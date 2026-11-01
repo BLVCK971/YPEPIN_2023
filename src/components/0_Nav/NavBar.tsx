@@ -6,10 +6,12 @@ import { ACCUEIL, useLang, useT } from "../../i18n";
 
 export const SECTIONS = [
   { id: "Profil", label: "Profil", en: "Profile" },
+  { id: "Realisations", label: "Réalisations", en: "Key projects" },
   { id: "Parcours", label: "Parcours", en: "Experience" },
-  { id: "Formation", label: "Formation", en: "Education" },
   { id: "Projets", label: "Projets", en: "Projects" },
-  { id: "Services", label: "Services", en: "Services" },
+  { id: "IA", label: "IA", en: "AI" },
+  { id: "Services", label: "Freelance", en: "Freelance" },
+  { id: "Formation", label: "Formation", en: "Education" },
   { id: "Contact", label: "Contact", en: "Contact" },
 ];
 
@@ -81,7 +83,7 @@ export default function NavBar() {
           <span className="sr-only"> · Yoel PEPIN, {t("retour en haut", "back to top")}</span>
         </a>
 
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden lg:flex items-center gap-1">
           {SECTIONS.map((s) => (
             <li key={s.id}>
               <a href={`#${s.id}`} className={lien(s.id)}>
@@ -136,7 +138,7 @@ export default function NavBar() {
           </a>
           <button
             type="button"
-            className="md:hidden p-2 text-neutral-300"
+            className="lg:hidden p-2 text-neutral-300"
             aria-label={menuOuvert ? t("Fermer le menu", "Close menu") : t("Ouvrir le menu", "Open menu")}
             aria-expanded={menuOuvert}
             onClick={() => setMenuOuvert((o) => !o)}
@@ -147,7 +149,7 @@ export default function NavBar() {
       </div>
 
       {menuOuvert && (
-        <ul className="md:hidden flex flex-col px-4 pb-4">
+        <ul className="lg:hidden flex flex-col px-4 pb-4">
           {SECTIONS.map((s) => (
             <li key={s.id}>
               <a

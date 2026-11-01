@@ -23,16 +23,16 @@ const remplacer = (html, avant, apres) => {
 };
 
 // Textes du <head> : titre ~60 caractères, description ~155 (au-delà, Google tronque)
-const TITRE_FR = "Yoel PEPIN | Développeur freelance C# .NET &amp; Python, Guadeloupe";
-const TITRE_EN = "Yoel PEPIN | Freelance C# .NET &amp; Python software engineer";
+const TITRE_FR = "Yoel PEPIN | Ingénieur logiciel senior, Tech Lead .NET &amp; IA";
+const TITRE_EN = "Yoel PEPIN | Senior Software Engineer &amp; Tech Lead, .NET &amp; AI";
 const DESCRIPTION_FR =
-  "Ingénieur logiciel et Tech Lead freelance (ICEKERA) en Guadeloupe, en France et à distance : applications web et mobiles, API .NET et Python, IA, data, cloud.";
+  "Ingénieur logiciel senior et Tech Lead .NET / Python (7 ans) : architecture logicielle, solutions IA (RAG, LLM locaux). Freelance en Guadeloupe et à distance.";
 const DESCRIPTION_EN =
-  "FullStack software engineer and freelance Tech Lead (ICEKERA) in Guadeloupe, France and remotely: web and mobile apps, .NET and Python APIs, AI, data and cloud.";
+  "Senior software engineer and Tech Lead, .NET / Python (7 years): software architecture, AI solutions (RAG, local LLMs). Freelance in Guadeloupe and remote.";
 const OG_DESCRIPTION_FR =
-  "Applications web et mobiles, API .NET et Python, IA locale, data et cloud : projets, parcours et CV de Yoel PEPIN, ingénieur logiciel et Tech Lead freelance (ICEKERA).";
+  "Architecture logicielle, AI Solutions et leadership technique .NET / Python : réalisations, parcours et CV de Yoel PEPIN, ingénieur logiciel senior et Tech Lead.";
 const OG_DESCRIPTION_EN =
-  "Web and mobile apps, .NET and Python APIs, local AI, data and cloud: projects, experience and CV of Yoel PEPIN, freelance software engineer and Tech Lead (ICEKERA).";
+  "Software architecture, AI solutions and technical leadership in .NET / Python: key projects, experience and CV of Yoel PEPIN, senior software engineer and Tech Lead.";
 const texteJson = (html) => html.replaceAll("&amp;", "&");
 
 // Données structurées : mêmes entités (@id) que la page française, textes traduits
@@ -47,9 +47,8 @@ const jsonLdEn = (html) => {
   };
 
   const person = noeud("Person");
-  person.jobTitle = "FullStack C# / Python software engineer";
   person.description =
-    "FullStack software engineer (C# / Python) with a strong focus on architecture, data and cloud. Tech Lead, certified SAFe Scrum Master, freelance under the ICEKERA brand.";
+    "Senior software engineer and Tech Lead (.NET / Python) with about 7 years of experience: software architecture, artificial intelligence solutions (RAG, local LLMs, MCP agents), technical leadership. Certified SAFe Scrum Master, freelance under the ICEKERA brand.";
   const diplomes = {
     "Master MIAGE, spécialisation Data Science": "Master's degree in MIAGE, Data Science specialisation",
     "Licence MIAGE": "Bachelor's degree in MIAGE",
@@ -60,14 +59,14 @@ const jsonLdEn = (html) => {
   person.award = ["Hack my Flat hackathon (IAD), 1st place, 2022"];
 
   const org = noeud("Organization");
-  org.description = "Yoel PEPIN's freelance business: custom software development and IT consulting.";
+  org.description = "Yoel PEPIN's freelance business: software architecture and development, artificial intelligence solutions, Tech Lead and IT consulting.";
   org.hasOfferCatalog.name = "ICEKERA services";
   const offres = [
-    ["Custom development", "Websites, CRMs, client portals and business applications, from design to production."],
-    ["Local and confidential AI", "AI assistants (RAG, local LLMs) that work on your documents without any data leaving your premises."],
+    ["Software architecture and development", "Business applications, APIs and web or mobile platforms in .NET, C#, Python, Angular and React, from architecture to production."],
+    ["AI Solutions", "Local and sovereign AI, RAG, LLM integration, AI agents and MCP servers, intelligent automation."],
+    ["Tech Lead and technical management", "Software architecture, mentoring developers, technical organisation and quality of deliverables."],
     ["IT audit, migration and security", "Taking back control of an information system: data, servers, business software and access."],
     ["Automation and data", "Data collection bots, ETL, large-scale processing and Power BI reports."],
-    ["Part-time Tech Lead and architect", "Product framing, architecture, code review and Agile facilitation."],
   ];
   if (offres.length !== org.hasOfferCatalog.itemListElement.length) throw new Error("Offres JSON-LD : traduction EN incomplète");
   org.hasOfferCatalog.itemListElement.forEach((o, i) => {
@@ -101,8 +100,8 @@ const versionAnglaise = (html) => {
     ['<meta property="og:url" content="https://ypepin.com/" />', '<meta property="og:url" content="https://ypepin.com/en/" />'],
     // og:image:alt et twitter:image:alt
     [
-      'content="Yoel PEPIN, ingénieur logiciel FullStack C# / Python"',
-      'content="Yoel PEPIN, FullStack C# / Python software engineer"',
+      'content="Yoel PEPIN, ingénieur logiciel senior et Tech Lead .NET / Python"',
+      'content="Yoel PEPIN, senior software engineer and Tech Lead, .NET / Python"',
     ],
   ];
   let en = remplacements.reduce((h, [a, b]) => remplacer(h, a, b), html);

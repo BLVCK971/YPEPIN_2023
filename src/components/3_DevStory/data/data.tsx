@@ -81,11 +81,14 @@ import {
   faTags,
   faUserCheck,
   faStore,
+  faPaperclip,
+  faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 
 /// DREVIO .............
 
 export const hellboy: IMission = {
+  architecture: "concue",
   nom: "DREVIO Phase 2 - HellBoy, plateforme de constitution du dataset d'entraînement",
   periode: "09/2026 - aujourd'hui",
   contexte:
@@ -108,6 +111,7 @@ export const hellboy: IMission = {
 };
 
 export const drevioMobile: IMission = {
+  architecture: "concue",
   chiffreCle: "140+ PR relues · 60+ lots livrables",
   nom: "DREVIO Mobile - Tech Lead de l'application iOS / Android",
   periode: "06/2026 - aujourd'hui",
@@ -115,7 +119,7 @@ export const drevioMobile: IMission = {
     "Application mobile qui estime les dommages d'un véhicule à partir de photos analysées par IA : elle produit un rapport d'expertise, calcule un devis pour chaque garage partenaire et gère le paiement en ligne.",
   taches: [
     { icone: faRocket, texte: "Mise en place du projet : initialisation de l'application, environnements de développement et de production, choix de la stack et de l'architecture par fonctionnalité (auth, scan, véhicule, paiement, notifications)" },
-    { icone: faListCheck, texte: "Pilotage d'un développeur : découpage du produit en plus de 60 lots livrables, rédaction et priorisation des tâches, suivi de leur réalisation" },
+    { icone: faListCheck, texte: "Encadrement d'un développeur junior : découpage du produit en plus de 60 lots livrables, rédaction et priorisation des tâches, suivi de leur réalisation" },
     { icone: faCodePullRequest, texte: "Qualité et revue de code : relecture de plus de 140 pull requests, durcissements après revue, contrôles TypeScript et lint" },
     { icone: faCalculator, texte: "Logique métier : conception du calcul du prix par garage, qui applique à chaque garage ses propres tarifs et son mode de tarification" },
     { icone: faArrowsRotate, texte: "Montée de version de l'application du SDK Expo 54 vers le SDK 57" },
@@ -136,11 +140,12 @@ export const drevioMobile: IMission = {
     { icone: faBell, texte: "Firebase FCM" },
   ],
   collabs: [
-    { icone: faUser, texte: "Théo, Développeur" },
+    { icone: faUser, texte: "Théo, Développeur junior" },
   ],
 };
 
 export const drevio: IMission = {
+  architecture: "concue",
   nom: "DREVIO Phase 1 - Plateforme SaaS d'évaluation des dommages automobiles",
   periode: "05/2026 - 08/2026",
   contexte:
@@ -162,14 +167,43 @@ export const drevio: IMission = {
     { icone: faDocker, texte: "Docker, Traefik, GitHub Actions, Linux" },
   ],
   collabs: [
-    { icone: faUser, texte: "Théo, Développeur" },
+    { icone: faUser, texte: "Théo, Développeur junior" },
     { icone: faUser, texte: "Bruno, Commercial" },
   ],
 };
 
 /// FREELANCE .............
 
+export const erpKera: IMission = {
+  architecture: "concue",
+  chiffreCle: "3 000+ tests automatisés · en production",
+  nom: "ERP KERA - ERP de gestion et de facturation, produit ICEKERA",
+  periode: "10/2026 - aujourd'hui",
+  contexte:
+    "Logiciel de gestion que je conçois, développe et commercialise pour les indépendants et TPE de Guadeloupe (erp.kera.gp) : devis, factures, CRM, finance, déclarations et facturation électronique. Un assistant IA peut y travailler à travers un serveur MCP intégré, sous le contrôle de l'utilisateur.",
+  taches: [
+    { icone: faSitemap, texte: "Architecture en monolithe modulaire ASP.NET Core (.NET 10) : 17 modules (ventes, facturation, CRM, finance, prévisionnel, projets…), activables par entreprise, dont les frontières sont vérifiées par des tests d'architecture" },
+    { icone: faRobot, texte: "Serveur MCP intégré : un assistant IA (Claude Desktop, claude.ai, Claude Code) consulte les données et prépare des brouillons ; toute action sensible (envoi, émission, encaissement) crée une demande d'approbation validée par l'utilisateur dans l'ERP" },
+    { icone: faShieldHalved, texte: "Sécurité de l'accès IA : OAuth 2.1 (PKCE), droits Lecture ou Brouillons, limites d'appels, textes issus des données marqués comme non fiables (protection contre l'injection de consignes)" },
+    { icone: faFileShield, texte: "Facturation électronique Factur-X et déclarations URSSAF / TVA préparées à partir des encaissements" },
+    { icone: faReact, texte: "Interface React aux types générés depuis l'API, thèmes clair et sombre, saisies protégées contre toute perte (copie de secours locale)" },
+    { icone: faDocker, texte: "Mise en production Docker avec sauvegarde de la base, migrations, contrôle de santé et retour arrière automatique en cas d'échec" },
+  ],
+  resultats: [
+    { icone: faVial, texte: "Plus de 3 000 tests automatisés : environ 1 960 côté .NET (dont tests d'intégration Testcontainers) et 1 185 côté interface" },
+    { icone: faRocket, texte: "En production sur erp.kera.gp depuis octobre 2026" },
+  ],
+  techs: [
+    { icone: faCode, texte: "C#, .NET 10, ASP.NET Core, Entity Framework Core, OpenIddict" },
+    { icone: faReact, texte: "React, TypeScript, Vite, Vitest" },
+    { icone: faDatabase, texte: "PostgreSQL, stockage S3" },
+    { icone: faRobot, texte: "MCP (Model Context Protocol), OAuth 2.1" },
+    { icone: faDocker, texte: "Docker, GitHub Actions, Testcontainers" },
+  ],
+};
+
 export const aivocat: IMission = {
+  architecture: "concue",
   chiffreCle: "~650 tests · 100 % hors ligne",
   nom: "Aivocat - Assistant juridique IA 100 % local (RAG souverain)",
   periode: "07/2026 - 08/2026",
@@ -198,6 +232,7 @@ export const aivocat: IMission = {
 };
 
 export const wondo: IMission = {
+  architecture: "concue",
   nom: "WONDO - Application mobile de gestion de clubs d'arts martiaux",
   periode: "08/2026 - aujourd'hui",
   contexte:
@@ -245,6 +280,7 @@ export const valado: IMission = {
 };
 
 export const arcgr: IMission = {
+  architecture: "concue",
   nom: "ARC Gestion et Recouvrement - Site vitrine, CRM et portail client",
   periode: "08/2026 - 09/2026",
   contexte:
@@ -272,6 +308,7 @@ export const arcgr: IMission = {
 };
 
 export const matheva: IMission = {
+  architecture: "concue",
   nom: "Matheva - Plateforme de cours particuliers de mathématiques",
   periode: "08/2026 - 09/2026",
   contexte:
@@ -295,10 +332,56 @@ export const matheva: IMission = {
   ],
 };
 
+export const intervSesam: IMission = {
+  architecture: "concue",
+  nom: "SESAM Interventions - Application de relevé d'intervention sur site (PWA hors ligne)",
+  periode: "10/2026 - aujourd'hui",
+  contexte:
+    "Suite de la mission SESAM : le responsable des chantiers (collèges et bâtiments du Département) établissait ses relevés d'intervention et ses déboursés sous Excel. L'application les remplace, sur le téléphone comme au bureau, même sans réseau sur le chantier.",
+  taches: [
+    { icone: faComments, texte: "Cadrage à partir de l'enregistrement du rendez-vous client (transcription Whisper) : besoins et écarts avec l'application listés et priorisés, puis analyse des vrais classeurs Excel du client" },
+    { icone: faMobileScreen, texte: "PWA installable et utilisable hors ligne : relevé par chantier (salles, matériel, photos), données stockées sur le téléphone (IndexedDB) et synchronisées avec le serveur au retour du réseau" },
+    { icone: faCamera, texte: "Photos prises sur place ou depuis la galerie, avec date et position GPS lues dans la photo (EXIF)" },
+    { icone: faCalculator, texte: "Déboursé chiffré calculé sur le téléphone : main d'œuvre et matériel par prestataire, marge, aléas, TVA des sous-traitants, montants HT et TTC, un numéro de devis par artisan" },
+    { icone: faTable, texte: "Tableau de suivi reprenant les classeurs du client : une ligne par prestataire, coefficient de marge modifiable par chantier" },
+    { icone: faPaperclip, texte: "Devis, factures et bons de livraison joints à chaque chantier, PDF du déboursé prêt à transmettre" },
+    { icone: faUserShield, texte: "Comptes par utilisateur (JWT), écran d'accueil paramétrable par compte ; API FastAPI / PostgreSQL limitée à l'authentification, à la synchronisation et au stockage des photos" },
+  ],
+  resultats: [
+    { icone: faRocket, texte: "En production depuis octobre 2026, déployée en Docker derrière Traefik" },
+  ],
+  techs: [
+    { icone: faReact, texte: "React 19, TypeScript, Vite, PWA (vite-plugin-pwa)" },
+    { icone: faDatabase, texte: "Dexie (IndexedDB), PostgreSQL" },
+    { icone: faPython, texte: "FastAPI, SQLAlchemy, JWT" },
+    { icone: faFileExport, texte: "jsPDF" },
+    { icone: faDocker, texte: "Docker, Traefik" },
+  ],
+  collabs: [
+    { icone: faUser, texte: "Dylan, Commanditaire (SESAM)" },
+  ],
+};
+
+export const camerasSesam: IMission = {
+  nom: "SESAM Vidéosurveillance - Remplacement de SmartPSS",
+  periode: "À venir",
+  contexte:
+    "Prochaine mission pour le même groupe : remplacer SmartPSS, le logiciel actuel de visualisation des caméras de l'entreprise, par une solution plus simple à utiliser au quotidien.",
+  taches: [
+    { icone: faVideo, texte: "Visualisation plus aisée de l'ensemble des caméras" },
+    { icone: faBell, texte: "Alertes sur mobile selon des zones de détection définies" },
+    { icone: faPuzzlePiece, texte: "Connexion avec l'application d'alerte déjà utilisée par le client" },
+  ],
+  techs: [
+    { icone: faCamera, texte: "Caméras IP, SmartPSS (solution remplacée)" },
+  ],
+};
+
 export const sesam: IMission = {
+  architecture: "concue",
   chiffreCle: "~265 000 fichiers audités",
   nom: "SESAM - Reprise en main et réorganisation du SI d'un groupe BTP (Consultant IT & Ingénieur Python)",
-  periode: "09/2026 - aujourd'hui",
+  periode: "09/2026 - 10/2026",
   contexte:
     "Mission pour un groupe familial BTP de 6 sociétés en Guadeloupe, qui réalise des travaux pour le Conseil départemental. Leurs données étaient stockées sur un NAS Synology installé par un précédent prestataire, après une migration incomplète depuis l'ancien serveur Windows : serveurs divergents, aucune organisation des fichiers et droits d'accès incohérents. Le dirigeant attendait des solutions concrètes, pas un audit.",
   taches: [
@@ -323,6 +406,7 @@ export const sesam: IMission = {
 /// PROELAN / SCHNEIDER .............
 
 export const topologyManager: IMission = {
+  architecture: "contribution",
   nom: "Topology Manager - IDE Desktop (C# / WPF)",
   contexte:
     "Topology Manager est un IDE en C# / WPF permettant la programmation collaborative en temps réel des automates PLC (API en .NET 8, client lourd en WPF).",
@@ -343,6 +427,7 @@ export const topologyManager: IMission = {
 };
 
 export const set: IMission = {
+  architecture: "contribution",
   nom: "SET - Schneider Electric Toolkit (Web)",
   contexte:
     "Plateforme web unifiée visant à regrouper l'accès à tous les produits Schneider (Control Expert, Machine Expert, Automation Expert).",
@@ -366,11 +451,13 @@ export const set: IMission = {
 /// AYMING .............
 
 export const roboatmp: IMission = {
+  architecture: "concue",
   chiffreCle: "~5 000 comptes · ~1,5 M€ par semaine de retard (DSI)",
   nom: "ATMP (Scraping NET ENTREPRISE)",
   contexte:
-    "Automatiser la récupération des taux AT/MP, feuilles de calcul et attestations pour environ 5000 comptes clients via NET ENTREPRISE.",
+    "Automatiser la récupération des taux AT/MP, feuilles de calcul et attestations pour environ 5000 comptes clients via NET ENTREPRISE. ATMP existait déjà, en Java, monolithique et sur des paradigmes anciens : Ayming m'a confié sa refonte en services multiples, adaptés à AWS et sécurisés.",
   taches: [
+    { icone: faSitemap, texte: "Conception de toute l'architecture cible sur AWS, présentée à l'équipe sous forme de schémas (Miro) : passage du monolithe Java à des services indépendants, sécurisés et adaptés au cloud" },
     { icone: faCookieBite, texte: "Identification des cookies nécessaires pour maintenir une session active et effectuer les requêtes serveur" },
     { icone: faBug, texte: "Gestion fine des erreurs spécifiques (CGU à valider, mot de passe expiré) avec mise à jour automatique de l'état du compte dans DynamoDB et notification par mailing automatisé" },
     { icone: faCubes, texte: "Modèle asynchrone sur AWS ECS : chaque tâche s'exécute indépendamment et déclenche une pipeline SnapLogic dédiée pour stocker les données et logger les résultats" },
@@ -426,6 +513,7 @@ export const robosylae: IMission = {
 };
 
 export const robocred: IMission = {
+  architecture: "concue",
   nom: "RobotCredentials (Gestion des Identifiants)",
   contexte:
     "Fournir une solution sécurisée pour la gestion et l'accès aux identifiants nécessaires aux processus de scraping.",
@@ -455,6 +543,7 @@ export const robocred: IMission = {
 /// AVISTO / SCHNEIDER .............
 
 export const ESME: IMission = {
+  architecture: "contribution",
   chiffreCle: "Le travail de 2 ans de l'équipe précédente, en 6 mois",
   nom: "EcoStruxure Machine Expert - Team Device Integration",
   image: {
@@ -500,6 +589,7 @@ export const ESME: IMission = {
 /// DIGITOM .............
 
 export const BZ: IMission = {
+  architecture: "concue",
   nom : "Business Zone",
   periode: "09/2020 - 05/2023",
   contexte : "Une application Web ASP.NET MVC en C# en Clean Architecture permettant le partage contrôlé de rapports Power BI pour les clients de DIGITOM dans leur service.",
@@ -539,6 +629,7 @@ export const BZ: IMission = {
 }
 
 export const OdooDocker: IMission = {
+  architecture: "concue",
   nom : "Odoo Docker",
   periode: "2 mois",
   contexte : "Conteneurisation d'une Application ERP",
@@ -619,6 +710,7 @@ export const powerBiSupport: IMission = {
 };
 
 export const gestrav: IMission = {
+  architecture: "contribution",
   chiffreCle: "Application officielle du SMGEAG",
   nom: "Gestrav - Mission Urgence Eau Guadeloupe 2020",
   periode: "06/2020 - 10/2020",
@@ -648,11 +740,12 @@ export const companies: ICompany[] = [
     nom: "ICEKERA - Freelance (EI Yoel PEPIN)",
     dates: "Depuis 07/2026",
     postes: [
-      { icone: faCode, texte: "Ingénieur logiciel FullStack indépendant" },
+      { icone: faCode, texte: "Ingénieur logiciel senior indépendant" },
+      { icone: faBrain, texte: "Architecte logiciel & AI Solutions" },
       { icone: faServer, texte: "Consultant IT" },
     ],
     logos: [{ src: "/Icekera.svg", width: 1059, height: 1222 }],
-    missions: [sesam, wondo, arcgr, matheva, valado, aivocat],
+    missions: [erpKera, intervSesam, camerasSesam, sesam, wondo, arcgr, matheva, valado, aivocat],
   },
   {
     id: "Drevio",
@@ -662,8 +755,8 @@ export const companies: ICompany[] = [
       "Phase 1 terminée en août 2026, application mobile en cours. Phase 2 amorcée en septembre 2026 avec HellBoy (dataset d'entraînement), lancement complet en novembre 2026.",
     postes: [
       { icone: faPeopleGroup, texte: "Tech Lead" },
+      { icone: faSitemap, texte: "Architecte logiciel" },
       { icone: faCode, texte: "Lead Developer" },
-      { icone: faSitemap, texte: "Architecte logiciel Full Stack" },
     ],
     logos: [{ src: "/logos/DREVIO.webp", width: 367, height: 128 }],
     missions: [hellboy, drevioMobile, drevio],
@@ -673,7 +766,7 @@ export const companies: ICompany[] = [
     nom: "PROELAN / Schneider Electric",
     dates: "03/2025 - 03/2026",
     contexte:
-      "Intégré à l'Agile Release Train « CEART » de plus de 90 personnes, au sein de l'équipe « Topology Manager » (5 personnes) suivant la méthodologie SAFe.",
+      "Intégré à l'Agile Release Train « CEART » de plus de 90 personnes, au sein de l'équipe « Topology Manager » (5 personnes) suivant la méthodologie SAFe. Architecture définie en amont par Schneider Electric : contribution au développement et à la migration des fonctionnalités.",
     postes: [{ icone: faCode, texte: "Ingénieur Logiciel FullStack .NET / WPF" }],
     logos: [schneiderLogo],
     missions: [topologyManager, set],
@@ -685,8 +778,8 @@ export const companies: ICompany[] = [
     contexte:
       "Société internationale de conseil spécialisée dans l'amélioration de la performance opérationnelle et financière des entreprises. Contribution à plusieurs projets stratégiques d'automatisation des processus métier et de gestion sécurisée des données sensibles.",
     postes: [
+      { icone: faCloud, texte: "Architecte Cloud AWS" },
       { icone: faPython, texte: "Ingénieur Python" },
-      { icone: faCloud, texte: "Architecte Cloud" },
     ],
     logos: [{ src: "/logos/AYMING.webp", width: 278, height: 128 }],
     missions: [roboatmp, robosylae, robocred],
@@ -696,7 +789,7 @@ export const companies: ICompany[] = [
     nom: "AViSTO / Schneider Electric",
     dates: "06/2023 - 05/2024",
     contexte:
-      "Agile Release Train international de 90 personnes réparties entre la France, l'Allemagne, la Serbie, l'Inde et Singapour, avec une collaboration quotidienne en anglais.",
+      "Agile Release Train international de 90 personnes réparties entre la France, l'Allemagne, la Serbie, l'Inde et Singapour, avec une collaboration quotidienne en anglais. Architecture du produit définie par Schneider Electric ; rôle de Scrum Master de l'équipe.",
     postes: [
       { icone: faCode, texte: "Ingénieur Logiciel C#" },
       { icone: faPeopleGroup, texte: "Scrum Master SAFe certifié" },

@@ -23,6 +23,12 @@ export default function CvButtons() {
         {t("Télécharger mon CV (PDF)", "Download my CV (PDF)")}
       </a>
       <a
+        href="#Services"
+        className="rounded-full border border-white/20 bg-black/40 px-5 py-3 font-medium text-neutral-100 backdrop-blur-md transition-colors hover:border-cyan-300/60 hover:text-white"
+      >
+        {t("Missions freelance", "Freelance engagements")}
+      </a>
+      <a
         href="#Contact"
         className="px-4 py-3 text-sm font-medium text-neutral-300 transition-colors hover:text-white"
       >

@@ -89,7 +89,7 @@ const drevioMobile = traduire(fr.drevioMobile, {
     "Mobile app that estimates vehicle damage from AI-analysed photos: it produces an assessment report, computes a quote for each partner garage and handles online payment.",
   taches: [
     "Project setup: app initialisation, development and production environments, choice of the stack and of a feature-based architecture (auth, scan, vehicle, payment, notifications)",
-    "Leading a developer: breaking the product down into 60+ deliverable work packages, writing and prioritising tasks, tracking their delivery",
+    "Mentoring a junior developer: breaking the product down into 60+ deliverable work packages, writing and prioritising tasks, tracking their delivery",
     "Quality and code review: 140+ pull requests reviewed, post-review hardening, TypeScript and lint checks",
     "Business logic: design of the per-garage pricing, applying each garage's own rates and pricing model",
     "Upgrade of the app from Expo SDK 54 to SDK 57",
@@ -102,7 +102,7 @@ const drevioMobile = traduire(fr.drevioMobile, {
       "Push notifications (Firebase), Google OAuth sign-in and OTA updates",
     ]],
   ],
-  collabs: ["Théo, Developer"],
+  collabs: ["Théo, Junior developer"],
 });
 
 const drevio = traduire(fr.drevio, {
@@ -118,10 +118,37 @@ const drevio = traduire(fr.drevio, {
     "Dockerisation and deployment on a VPS with Traefik, GitHub Actions and GitHub Container Registry",
     "Definition of the MVP scope, the backlog and the technical architecture; coordination of development within a two-person team",
   ],
-  collabs: ["Théo, Developer", "Bruno, Sales"],
+  collabs: ["Théo, Junior developer", "Bruno, Sales"],
 });
 
 /// FREELANCE .............
+
+const erpKera = traduire(fr.erpKera, {
+  chiffreCle: "3,000+ automated tests · in production",
+  nom: "ERP KERA - Management and invoicing ERP, ICEKERA product",
+  periode: "10/2026 - present",
+  contexte:
+    "Management software that I design, build and sell to freelancers and small businesses in Guadeloupe (erp.kera.gp): quotes, invoices, CRM, finance, tax returns and e-invoicing. An AI assistant can work in it through a built-in MCP server, under the user's control.",
+  taches: [
+    "Modular monolith architecture on ASP.NET Core (.NET 10): 17 modules (sales, invoicing, CRM, finance, forecasting, projects…), enabled per company, with boundaries enforced by architecture tests",
+    "Built-in MCP server: an AI assistant (Claude Desktop, claude.ai, Claude Code) reads the data and prepares drafts; every sensitive action (sending, issuing, recording a payment) creates an approval request validated by the user in the ERP",
+    "Securing AI access: OAuth 2.1 (PKCE), Read or Drafts permissions, rate limits, data-sourced texts marked as untrusted (protection against prompt injection)",
+    "Factur-X e-invoicing and URSSAF / VAT returns prepared from recorded payments",
+    "React interface with types generated from the API, light and dark themes, input protected against any loss (local backup copy)",
+    "Docker go-live with database backup, migrations, health check and automatic rollback on failure",
+  ],
+  resultats: [
+    "3,000+ automated tests: about 1,960 on the .NET side (including Testcontainers integration tests) and 1,185 on the interface",
+    "In production at erp.kera.gp since October 2026",
+  ],
+  techs: [
+    "C#, .NET 10, ASP.NET Core, Entity Framework Core, OpenIddict",
+    "React, TypeScript, Vite, Vitest",
+    "PostgreSQL, S3 storage",
+    "MCP (Model Context Protocol), OAuth 2.1",
+    "Docker, GitHub Actions, Testcontainers",
+  ],
+});
 
 const aivocat = traduire(fr.aivocat, {
   chiffreCle: "~650 tests · 100% offline",
@@ -233,10 +260,48 @@ const matheva = traduire(fr.matheva, {
   collabs: ["Maeva, Client (maths teacher)"],
 });
 
+const intervSesam = traduire(fr.intervSesam, {
+  nom: "SESAM Interventions - On-site intervention survey app (offline PWA)",
+  periode: "10/2026 - present",
+  contexte:
+    "Follow-up to the SESAM assignment: the site manager (schools and buildings of the Departmental Council) was writing his intervention surveys and cost breakdowns in Excel. The app replaces them, on the phone as well as at the office, even with no network on site.",
+  taches: [
+    "Scoping from the recording of the client meeting (Whisper transcription): needs and gaps with the app listed and prioritised, then analysis of the client's real Excel workbooks",
+    "Installable PWA that works offline: survey per site (rooms, equipment, photos), data stored on the phone (IndexedDB) and synchronised with the server when the network is back",
+    "Photos taken on site or picked from the gallery, with date and GPS position read from the photo (EXIF)",
+    "Cost breakdown computed on the phone: labour and equipment per contractor, margin, contingencies, subcontractor VAT, amounts excl. and incl. VAT, one quote number per craftsman",
+    "Tracking table based on the client's workbooks: one line per contractor, margin coefficient adjustable per site",
+    "Quotes, invoices and delivery notes attached to each site, cost-breakdown PDF ready to send",
+    "Per-user accounts (JWT), home screen configurable per account; FastAPI / PostgreSQL API limited to authentication, synchronisation and photo storage",
+  ],
+  resultats: ["In production since October 2026, deployed with Docker behind Traefik"],
+  techs: [
+    "React 19, TypeScript, Vite, PWA (vite-plugin-pwa)",
+    "Dexie (IndexedDB), PostgreSQL",
+    "FastAPI, SQLAlchemy, JWT",
+    "jsPDF",
+    "Docker, Traefik",
+  ],
+  collabs: ["Dylan, Sponsor (SESAM)"],
+});
+
+const camerasSesam = traduire(fr.camerasSesam, {
+  nom: "SESAM Video surveillance - Replacing SmartPSS",
+  periode: "Upcoming",
+  contexte:
+    "Next assignment for the same group: replace SmartPSS, the software currently used to view the company's cameras, with a solution that is easier to use day to day.",
+  taches: [
+    "Easier viewing of all cameras",
+    "Mobile alerts based on defined detection zones",
+    "Connection with the alert app the client already uses",
+  ],
+  techs: ["IP cameras, SmartPSS (being replaced)"],
+});
+
 const sesam = traduire(fr.sesam, {
   chiffreCle: "~265,000 files audited",
   nom: "SESAM - Taking back control of a construction group's IT system (IT Consultant & Python Engineer)",
-  periode: "09/2026 - present",
+  periode: "09/2026 - 10/2026",
   contexte:
     "Assignment for a family-owned construction group of 6 companies in Guadeloupe, working for the Departmental Council. Their data sat on a Synology NAS installed by a previous provider, after an incomplete migration from the old Windows server: diverging servers, no file organisation and inconsistent access rights. The CEO expected concrete solutions, not an audit.",
   taches: [
@@ -298,8 +363,9 @@ const roboatmp = traduire(fr.roboatmp, {
   chiffreCle: "~5,000 accounts · ~€1.5M per week of delay (IT director)",
   nom: "ATMP (NET ENTREPRISE scraping)",
   contexte:
-    "Automate the retrieval of AT/MP (workplace accident) rates, calculation sheets and certificates for about 5,000 client accounts through NET ENTREPRISE.",
+    "Automate the retrieval of AT/MP (workplace accident) rates, calculation sheets and certificates for about 5,000 client accounts through NET ENTREPRISE. ATMP already existed, in Java, monolithic and built on dated paradigms: Ayming asked me to rebuild it as multiple services, adapted to AWS and secured.",
   taches: [
+    "Designed the entire target architecture on AWS, presented to the team as diagrams (Miro): from the Java monolith to independent, secured, cloud-ready services",
     "Identifying the cookies required to keep a session alive and send the server requests",
     "Fine-grained handling of specific errors (terms to accept, expired password) with automatic update of the account status in DynamoDB and automated email notification",
     "Asynchronous model on AWS ECS: each task runs independently and triggers a dedicated SnapLogic pipeline to store the data and log the results",
@@ -503,11 +569,14 @@ const missionsEn = new Map<IMission, IMission>([
   [fr.hellboy, hellboy],
   [fr.drevioMobile, drevioMobile],
   [fr.drevio, drevio],
+  [fr.erpKera, erpKera],
   [fr.aivocat, aivocat],
   [fr.wondo, wondo],
   [fr.valado, valado],
   [fr.arcgr, arcgr],
   [fr.matheva, matheva],
+  [fr.intervSesam, intervSesam],
+  [fr.camerasSesam, camerasSesam],
   [fr.sesam, sesam],
   [fr.topologyManager, topologyManager],
   [fr.set, set],
@@ -527,30 +596,30 @@ const SOCIETES: Record<string, TradSociete> = {
   Freelance: {
     nom: "ICEKERA - Freelance (EI Yoel PEPIN)",
     dates: "Since 07/2026",
-    postes: ["Independent FullStack software engineer", "IT Consultant"],
+    postes: ["Independent senior software engineer", "Software architect & AI Solutions", "IT Consultant"],
   },
   Drevio: {
     dates: "Since 05/2026",
     contexte:
       "Phase 1 completed in August 2026, mobile app in progress. Phase 2 started in September 2026 with HellBoy (training dataset), full launch in November 2026.",
-    postes: ["Tech Lead", "Lead Developer", "Full Stack software architect"],
+    postes: ["Tech Lead", "Software architect", "Lead Developer"],
   },
   Proelan: {
     dates: "03/2025 - 03/2026",
     contexte:
-      "Part of the “CEART” Agile Release Train of 90+ people, in the “Topology Manager” team (5 people) following the SAFe methodology.",
+      "Part of the “CEART” Agile Release Train of 90+ people, in the “Topology Manager” team (5 people) following the SAFe methodology. Architecture defined upstream by Schneider Electric: contribution to feature development and migration.",
     postes: ["FullStack Software Engineer .NET / WPF"],
   },
   Ayming: {
     dates: "06/2024 - 02/2025",
     contexte:
       "International consulting firm specialised in improving companies' operational and financial performance. Contributed to several strategic projects automating business processes and securely managing sensitive data.",
-    postes: ["Python Engineer", "Cloud Architect"],
+    postes: ["AWS Cloud Architect", "Python Engineer"],
   },
   Avisto: {
     dates: "06/2023 - 05/2024",
     contexte:
-      "International Agile Release Train of 90 people across France, Germany, Serbia, India and Singapore, with daily collaboration in English.",
+      "International Agile Release Train of 90 people across France, Germany, Serbia, India and Singapore, with daily collaboration in English. Product architecture defined by Schneider Electric; Scrum Master of the team.",
     postes: ["C# Software Engineer", "Certified SAFe Scrum Master"],
   },
   Digitom: {

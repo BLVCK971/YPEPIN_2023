@@ -67,11 +67,13 @@ main > section,
 footer#Contact {
   content-visibility: auto;
 }
-#Profil { contain-intrinsic-height: auto 1200px; }
-#Parcours { contain-intrinsic-height: auto 4200px; }
+#Profil { contain-intrinsic-height: auto 2050px; }
+#Realisations { contain-intrinsic-height: auto 6150px; }
+#Parcours { contain-intrinsic-height: auto 4400px; }
+#Projets { contain-intrinsic-height: auto 4250px; }
+#IA { contain-intrinsic-height: auto 2550px; }
+#Services { contain-intrinsic-height: auto 3200px; }
 #Formation { contain-intrinsic-height: auto 1850px; }
-#Projets { contain-intrinsic-height: auto 6050px; }
-#Services { contain-intrinsic-height: auto 3700px; }
 #Contact { contain-intrinsic-height: auto 950px; }
 
 /* Après un clic sur une ancre interne (NavBar) : tout est rendu, pour que le
@@ -82,11 +84,13 @@ footer#Contact {
 }
 
 @media (min-width: 768px) {
-  #Profil { contain-intrinsic-height: auto 1400px; }
-  #Parcours { contain-intrinsic-height: auto 3050px; }
+  #Profil { contain-intrinsic-height: auto 1770px; }
+  #Realisations { contain-intrinsic-height: auto 2760px; }
+  #Parcours { contain-intrinsic-height: auto 3100px; }
+  #Projets { contain-intrinsic-height: auto 2460px; }
+  #IA { contain-intrinsic-height: auto 1220px; }
+  #Services { contain-intrinsic-height: auto 1570px; }
   #Formation { contain-intrinsic-height: auto 1170px; }
-  #Projets { contain-intrinsic-height: auto 2950px; }
-  #Services { contain-intrinsic-height: auto 1740px; }
   #Contact { contain-intrinsic-height: auto 800px; }
 }
 

@@ -1,20 +1,64 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faMicrosoft, faPython } from "@fortawesome/free-brands-svg-icons";
-import { faLayerGroup } from "@fortawesome/free-solid-svg-icons";
+import { faBrain, faCode, faLayerGroup, faPeopleGroup, faSitemap } from "@fortawesome/free-solid-svg-icons";
 import StackGraph from "./StackGraph";
 import { Lang, useLang, useT } from "../../i18n";
 
-const experiences: Record<Lang, string[]> = { fr: [
-  "Leadership technique et rôle de Scrum Master SAFe dans des trains Agile internationaux (+90 personnes)",
-  "Intégration de systèmes legacy et modernisation d'architectures",
-  "Développement de plateformes BI et data pour l'aide à la décision",
-  "Automatisation avancée (scraping, ETL, pipelines asynchrones, orchestration)",
+// Les quatre compétences du positionnement, chacune adossée à des missions du
+// parcours (aucune réalisation qui n'y figure pas). Termes IA en anglais.
+type Pilier = { icone: IconProp; titre: string; texte: string; preuves: string[] };
+
+const PILIERS: Record<Lang, Pilier[]> = { fr: [
+  {
+    icone: faCode,
+    titre: "Ingénierie logicielle senior",
+    texte: "Applications professionnelles complexes en .NET et Python, du desktop industriel au cloud : modernisation de systèmes legacy, automatisation à grande échelle, BI, avec tests et CI/CD.",
+    preuves: ["Schneider Electric", "Ayming", "ERP KERA"],
+  },
+  {
+    icone: faPeopleGroup,
+    titre: "Technical Leadership",
+    texte: "Encadrement de développeurs, découpage du produit en lots livrables, revue de code et supervision de la qualité des livrables. Scrum Master SAFe certifié.",
+    preuves: ["DREVIO · 140+ PR relues", "Business Zone", "SAFe (8 personnes)"],
+  },
+  {
+    icone: faSitemap,
+    titre: "Architecture logicielle",
+    texte: "Conception de solutions complètes : choix technologiques, API et workflows, intégration de systèmes, sécurité et déploiement. Architectures décidées et portées de bout en bout.",
+    preuves: ["DREVIO", "ATMP · AWS", "ERP KERA", "Aivocat"],
+  },
+  {
+    icone: faBrain,
+    titre: "AI Solutions Engineering",
+    texte: "Solutions intégrant des modèles d'IA comme des briques logicielles à part entière : RAG local, LLM (Qwen, OpenAI, Claude), analyse d'images, agents et serveurs MCP, avec évaluation et supervision humaine.",
+    preuves: ["Aivocat", "DREVIO", "ERP KERA · MCP"],
+  },
 ], en: [
-  "Technical leadership and SAFe Scrum Master role in international Agile Release Trains (90+ people)",
-  "Legacy system integration and architecture modernisation",
-  "Development of BI and data platforms for decision support",
-  "Advanced automation (scraping, ETL, asynchronous pipelines, orchestration)",
+  {
+    icone: faCode,
+    titre: "Senior Software Engineering",
+    texte: "Complex business applications in .NET and Python, from industrial desktop software to the cloud: legacy modernisation, large-scale automation, BI, with tests and CI/CD.",
+    preuves: ["Schneider Electric", "Ayming", "ERP KERA"],
+  },
+  {
+    icone: faPeopleGroup,
+    titre: "Technical Leadership",
+    texte: "Mentoring developers, splitting the product into deliverable work packages, code review and supervising the quality of deliverables. Certified SAFe Scrum Master.",
+    preuves: ["DREVIO · 140+ PRs reviewed", "Business Zone", "SAFe (8 people)"],
+  },
+  {
+    icone: faSitemap,
+    titre: "Software Architecture",
+    texte: "Designing complete solutions: technology choices, APIs and workflows, system integration, security and deployment. Architectures decided and carried end to end.",
+    preuves: ["DREVIO", "ATMP · AWS", "ERP KERA", "Aivocat"],
+  },
+  {
+    icone: faBrain,
+    titre: "AI Solutions Engineering",
+    texte: "Solutions that integrate AI models as first-class software components: local RAG, LLMs (Qwen, OpenAI, Claude), image analysis, agents and MCP servers, with evaluation and human oversight.",
+    preuves: ["Aivocat", "DREVIO", "ERP KERA · MCP"],
+  },
 ] };
 
 // Les seuls libellés français des cartes de stack (le reste est en anglais)
@@ -23,6 +67,9 @@ const STACK_EN: Record<string, string> = {
   Librairies: "Libraries",
   "Et aussi : tous les domaines déjà présents dans la stack .NET": "Also: every area already covered by the .NET stack",
   Autres: "Other",
+  "Stack IA": "AI stack",
+  "OpenAI (analyse d'images), OpenCV, RapidOCR": "OpenAI (image analysis), OpenCV, RapidOCR",
+  "Jeux de test, Seuils d'abstention, Citations vérifiées": "Test sets, Abstention thresholds, Verified citations",
 };
 
 const stacks: { titre: string; icone: IconProp; lignes: [string, string][]; note?: string }[] = [
@@ -61,6 +108,17 @@ const stacks: { titre: string; icone: IconProp; lignes: [string, string][]; note
     note: "Et aussi : tous les domaines déjà présents dans la stack .NET",
   },
   {
+    titre: "Stack IA",
+    icone: faBrain,
+    lignes: [
+      ["LLM", "Qwen, OpenAI API, Claude API, Ollama"],
+      ["RAG", "Qdrant, BM25, bge-m3, Reranking cross-encoder"],
+      ["Vision & OCR", "OpenAI (analyse d'images), OpenCV, RapidOCR"],
+      ["Agents", "MCP, Claude Code, OpenClaw"],
+      ["Evaluation", "Jeux de test, Seuils d'abstention, Citations vérifiées"],
+    ],
+  },
+  {
     titre: "Autres",
     icone: faLayerGroup,
     lignes: [
@@ -86,28 +144,44 @@ export default function Profil() {
       <div className={`${card} text-base md:text-lg leading-relaxed`}>
         <p>
           {t(
-            "Ingénieur logiciel FullStack (C# / Python) avec une forte orientation architecture, data et cloud. J'accompagne des organisations dans la conception et la mise en œuvre de systèmes scalables, fiables et maintenables, en combinant Clean Architecture, CQRS et bonnes pratiques DevOps.",
-            "FullStack software engineer (C# / Python) with a strong focus on architecture, data and cloud. I help organisations design and deliver scalable, reliable and maintainable systems, combining Clean Architecture, CQRS and DevOps best practices."
+            "Ingénieur logiciel senior et Tech Lead, environ 7 ans d'expérience (depuis 2019). Je conçois et livre des applications professionnelles complètes en .NET et Python : architecture, API, web et mobile, cloud AWS / Azure et intégration de modèles d'IA.",
+            "Senior software engineer and Tech Lead with about 7 years of experience (since 2019). I design and deliver complete business applications in .NET and Python: architecture, APIs, web and mobile, AWS / Azure cloud and AI model integration."
           )}
         </p>
         <p className="mt-4">
           {t(
-            "J'ai conçu et industrialisé des solutions critiques allant du desktop industriel (WPF, .NET) aux plateformes cloud sur AWS (ECS, RDS, DynamoDB, XRay), en passant par des pipelines de data et d'automatisation à grande échelle.",
-            "I have designed and industrialised critical solutions ranging from industrial desktop software (WPF, .NET) to cloud platforms on AWS (ECS, RDS, DynamoDB, XRay), including large-scale data and automation pipelines."
+            "Après des environnements industriels exigeants (Schneider Electric, trains SAFe de plus de 90 personnes) et l'automatisation à grande échelle sur AWS (Ayming), je porte aujourd'hui des produits de bout en bout : Tech Lead et architecte chez DREVIO, architecte et développeur de mes propres solutions en freelance (ICEKERA).",
+            "After demanding industrial environments (Schneider Electric, SAFe trains of 90+ people) and large-scale automation on AWS (Ayming), I now own products end to end: Tech Lead and architect at DREVIO, architect and developer of my own solutions as a freelancer (ICEKERA)."
           )}
         </p>
-        <ul className="mt-4 list-disc pl-6 space-y-1">
-          {experiences[lang].map((e) => (
-            <li key={e}>{e}</li>
-          ))}
-        </ul>
         <p className="mt-4">
           {t(
-            "Passionné par l'ingénierie logicielle, je privilégie des solutions robustes, testées et observables, avec une forte attention portée à la performance, la sécurité et la maintenabilité.",
-            "Passionate about software engineering, I favour robust, tested and observable solutions, with close attention to performance, security and maintainability."
+            "J'intègre l'IA comme une brique logicielle à part entière, avec la même exigence que le reste du système : architecture, tests, sécurité des données, maintenabilité et supervision humaine des résultats.",
+            "I integrate AI as a first-class software component, held to the same standards as the rest of the system: architecture, tests, data security, maintainability and human oversight of the results."
           )}
         </p>
       </div>
+
+      <ul className="grid gap-4 sm:grid-cols-2">
+        {PILIERS[lang].map((p) => (
+          <li key={p.titre} className={`${card} flex flex-col`}>
+            <h3 className="flex items-center gap-3 text-lg font-semibold tracking-tight">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600/40 to-cyan-500/30 text-cyan-200 ring-1 ring-white/10">
+                <FontAwesomeIcon icon={p.icone} className="text-sm" />
+              </span>
+              {p.titre}
+            </h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-neutral-300">{p.texte}</p>
+            <ul className="mt-auto flex flex-wrap gap-1.5 pt-4">
+              {p.preuves.map((x) => (
+                <li key={x} className="rounded-md bg-white/[0.06] px-2 py-0.5 text-xs text-neutral-300">
+                  {x}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
 
       {/* Réseau interactif : écrans moyens et grands (illisible en largeur téléphone) */}
       <div className="hidden md:block">
@@ -134,16 +208,18 @@ export default function Profil() {
             <path d="M9 6l6 6-6 6" />
           </svg>
         </summary>
-      {/* .NET en grande carte pleine largeur, Python et Autres côte à côte en dessous */}
+      {/* .NET et Autres en cartes pleine largeur, Python et IA côte à côte entre les deux */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        {stacks.map((stack, i) => (
-          <div key={stack.titre} className={`${card} ${i === 0 ? "md:col-span-2" : ""}`}>
+        {stacks.map((stack, i) => {
+          const large = i === 0 || i === stacks.length - 1;
+          return (
+          <div key={stack.titre} className={`${card} ${large ? "md:col-span-2" : ""}`}>
             <h3 className="text-2xl font-semibold mb-5 flex items-center gap-3">
               <FontAwesomeIcon icon={stack.icone} className="opacity-90" /> {tr(stack.titre)}
             </h3>
             <dl
               className={`grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 ${
-                i === 0 ? "lg:grid-cols-3" : ""
+                large ? "lg:grid-cols-3" : ""
               }`}
             >
               {stack.lignes.map(([domaine, valeur]) => (
@@ -168,7 +244,8 @@ export default function Profil() {
             </dl>
             {stack.note && <p className="mt-5 text-sm italic opacity-70">{tr(stack.note)}</p>}
           </div>
-        ))}
+          );
+        })}
       </div>
       </details>
     </div>
